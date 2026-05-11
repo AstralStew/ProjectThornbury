@@ -1,0 +1,56 @@
+[gd_scene format=3 uid="uid://jcnlsaxu7mak"]
+
+[node name="Level" type="Node2D" unique_id=1480908935]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=785319097]
+
+[node name="Control" type="Control" parent="CanvasLayer" unique_id=314585851]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect2" type="ColorRect" parent="CanvasLayer/Control" unique_id=17845380]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.16078432, 0.15686275, 0.19215687, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Control" unique_id=24225174]
+custom_minimum_size = Vector2(720, 0)
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 40.0
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 20
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/Control/MarginContainer" unique_id=1447699892]
+layout_mode = 2
+color = Color(0.93333334, 0.5254902, 0.58431375, 1)
+
+[node name="MarginContainer2" type="MarginContainer" parent="CanvasLayer/Control" unique_id=1398160966]
+custom_minimum_size = Vector2(560, 0)
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/Control/MarginContainer2" unique_id=488784514]
+layout_mode = 2
+color = Color(0.2, 0.24705882, 0.34509805, 1)
