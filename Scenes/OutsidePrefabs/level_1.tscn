@@ -1,0 +1,448 @@
+[gd_scene format=3 uid="uid://bquo8wgijs6u3"]
+
+[ext_resource type="PackedScene" uid="uid://c14fl8nyl0y11" path="res://Scenes/OutsidePrefabs/collectable_1.tscn" id="1_tmlh5"]
+
+[sub_resource type="Gradient" id="Gradient_slk23"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0.6201172, 0.66308594)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_6phgx"]
+noise_type = 0
+frequency = 0.1157
+fractal_octaves = 2
+fractal_lacunarity = 3.295
+fractal_gain = 4.73
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_81xng"]
+width = 64
+height = 64
+generate_mipmaps = false
+noise = SubResource("FastNoiseLite_6phgx")
+color_ramp = SubResource("Gradient_slk23")
+seamless = true
+normalize = false
+seamless_blend_skirt = 0.105
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_51e2h"]
+
+[node name="Level1" type="Node2D" unique_id=647410072]
+
+[node name="Background" type="ColorRect" parent="." unique_id=344819305]
+z_index = -2
+texture_filter = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -3000.0
+offset_top = -3000.0
+offset_right = 3000.0
+offset_bottom = 3000.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset_ratio = Vector2(1, 0)
+color = Color(0.93333334, 0.5254902, 0.58431375, 1)
+
+[node name="Background2" type="ColorRect" parent="." unique_id=930244538]
+z_index = -2
+texture_filter = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -3000.0
+offset_top = -3200.0
+offset_right = 3000.0
+offset_bottom = -3000.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset_ratio = Vector2(1, 0)
+color = Color(0, 0.77396834, 0.6492011, 1)
+
+[node name="Background3" type="ColorRect" parent="." unique_id=1826562676]
+z_index = -2
+texture_filter = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -3000.0
+offset_top = 3000.0
+offset_right = 3000.0
+offset_bottom = 3200.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset_ratio = Vector2(1, 0)
+color = Color(0, 0.77396834, 0.6492011, 1)
+
+[node name="Background4" type="ColorRect" parent="." unique_id=950265741]
+z_index = -2
+texture_filter = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -3200.0
+offset_top = -3000.0
+offset_right = -3000.0
+offset_bottom = 3000.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset_ratio = Vector2(1, 0)
+color = Color(0, 0.77396834, 0.6492011, 1)
+
+[node name="Background5" type="ColorRect" parent="." unique_id=1381890016]
+z_index = -2
+texture_filter = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 3000.0
+offset_top = -3000.0
+offset_right = 3200.0
+offset_bottom = 3000.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset_ratio = Vector2(1, 0)
+color = Color(0, 0.77396834, 0.6492011, 1)
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1373130641]
+modulate = Color(0.98, 0.7318967, 0.67620003, 0.05490196)
+z_index = -2
+texture_filter = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -3000.0
+offset_top = -3000.0
+offset_right = 3000.0
+offset_bottom = 3000.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("NoiseTexture2D_81xng")
+stretch_mode = 1
+
+[node name="BoundaryTop" type="StaticBody2D" parent="." unique_id=1002903861]
+position = Vector2(0, -2960)
+rotation = -3.1415925
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BoundaryTop" unique_id=1774301274]
+shape = SubResource("WorldBoundaryShape2D_51e2h")
+
+[node name="BoundaryBottom" type="StaticBody2D" parent="." unique_id=540079174]
+position = Vector2(0, 2960)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BoundaryBottom" unique_id=1810854981]
+shape = SubResource("WorldBoundaryShape2D_51e2h")
+
+[node name="BoundaryLeft" type="StaticBody2D" parent="." unique_id=1109677079]
+position = Vector2(-2960, 0)
+rotation = 1.5707964
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BoundaryLeft" unique_id=381609872]
+shape = SubResource("WorldBoundaryShape2D_51e2h")
+
+[node name="BoundaryRight" type="StaticBody2D" parent="." unique_id=1975964168]
+position = Vector2(2960, 0)
+rotation = -1.5707964
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BoundaryRight" unique_id=326949298]
+shape = SubResource("WorldBoundaryShape2D_51e2h")
+
+[node name="Collectables" type="Node2D" parent="." unique_id=9974128]
+
+[node name="CollectableCloud" type="Node2D" parent="Collectables" unique_id=622519073]
+position = Vector2(1136, 1371)
+
+[node name="CollectableA" parent="Collectables/CollectableCloud" unique_id=1843489661 instance=ExtResource("1_tmlh5")]
+texture_filter = 1
+position = Vector2(-96, -11)
+
+[node name="CollectableA2" parent="Collectables/CollectableCloud" unique_id=1891531207 instance=ExtResource("1_tmlh5")]
+texture_filter = 1
+position = Vector2(-173, -66)
+
+[node name="CollectableA3" parent="Collectables/CollectableCloud" unique_id=341126223 instance=ExtResource("1_tmlh5")]
+texture_filter = 1
+position = Vector2(-183, -182)
+
+[node name="CollectableA4" parent="Collectables/CollectableCloud" unique_id=1862892259 instance=ExtResource("1_tmlh5")]
+texture_filter = 1
+position = Vector2(18, -182)
+
+[node name="CollectableA5" parent="Collectables/CollectableCloud" unique_id=889625070 instance=ExtResource("1_tmlh5")]
+texture_filter = 1
+position = Vector2(8, -33)
+
+[node name="CollectableA6" parent="Collectables/CollectableCloud" unique_id=235210750 instance=ExtResource("1_tmlh5")]
+texture_filter = 1
+position = Vector2(205, -103)
+
+[node name="CollectableA7" parent="Collectables/CollectableCloud" unique_id=61972342 instance=ExtResource("1_tmlh5")]
+texture_filter = 1
+position = Vector2(151, 56)
+
+[node name="CollectableA8" parent="Collectables/CollectableCloud" unique_id=250409456 instance=ExtResource("1_tmlh5")]
+texture_filter = 1
+position = Vector2(-44, 133)
+
+[node name="CollectableA9" parent="Collectables/CollectableCloud" unique_id=1268629208 instance=ExtResource("1_tmlh5")]
+texture_filter = 1
+position = Vector2(-263, 111)
+
+[node name="CollectableA10" parent="Collectables/CollectableCloud" unique_id=1617661339 instance=ExtResource("1_tmlh5")]
+texture_filter = 1
+position = Vector2(-193, 223)
+
+[node name="CollectableA11" parent="Collectables/CollectableCloud" unique_id=637491935 instance=ExtResource("1_tmlh5")]
+texture_filter = 1
+position = Vector2(-155, 87)
+
+[node name="CollectableA12" parent="Collectables/CollectableCloud" unique_id=212382590 instance=ExtResource("1_tmlh5")]
+texture_filter = 1
+position = Vector2(-263, -144)
+
+[node name="CollectableA13" parent="Collectables/CollectableCloud" unique_id=125859502 instance=ExtResource("1_tmlh5")]
+texture_filter = 1
+position = Vector2(195, -234)
+
+[node name="CollectableA14" parent="Collectables/CollectableCloud" unique_id=292034051 instance=ExtResource("1_tmlh5")]
+texture_filter = 1
+position = Vector2(261, 133)
+
+[node name="CollectableA15" parent="Collectables/CollectableCloud" unique_id=1466523203 instance=ExtResource("1_tmlh5")]
+texture_filter = 1
+position = Vector2(151, 196)
+
+[node name="CollectableA16" parent="Collectables/CollectableCloud" unique_id=1318559107 instance=ExtResource("1_tmlh5")]
+texture_filter = 1
+position = Vector2(271, 300)
+
+[node name="CollectableA17" parent="Collectables/CollectableCloud" unique_id=1982474886 instance=ExtResource("1_tmlh5")]
+texture_filter = 1
+position = Vector2(34, 56)
+
+[node name="CollectableA18" parent="Collectables/CollectableCloud" unique_id=4457333 instance=ExtResource("1_tmlh5")]
+texture_filter = 1
+position = Vector2(-86, -244)
+
+[node name="CollectableCloud2" type="Node2D" parent="Collectables" unique_id=1246567609]
+position = Vector2(855, -1448)
+
+[node name="CollectableA" parent="Collectables/CollectableCloud2" unique_id=1363189793 instance=ExtResource("1_tmlh5")]
+texture_filter = 1
+position = Vector2(-96, -11)
+
+[node name="CollectableA2" parent="Collectables/CollectableCloud2" unique_id=1010731291 instance=ExtResource("1_tmlh5")]
+texture_filter = 1
+position = Vector2(-173, -66)
+
+[node name="CollectableA3" parent="Collectables/CollectableCloud2" unique_id=1276828133 instance=ExtResource("1_tmlh5")]
+texture_filter = 1
+position = Vector2(-183, -182)
+
+[node name="CollectableA4" parent="Collectables/CollectableCloud2" unique_id=506351245 instance=ExtResource("1_tmlh5")]
+texture_filter = 1
+position = Vector2(18, -182)
+
+[node name="CollectableA5" parent="Collectables/CollectableCloud2" unique_id=1915079097 instance=ExtResource("1_tmlh5")]
+texture_filter = 1
+position = Vector2(8, -33)
+
+[node name="CollectableA6" parent="Collectables/CollectableCloud2" unique_id=1390032610 instance=ExtResource("1_tmlh5")]
+texture_filter = 1
+position = Vector2(205, -103)
+
+[node name="CollectableA7" parent="Collectables/CollectableCloud2" unique_id=512483888 instance=ExtResource("1_tmlh5")]
+texture_filter = 1
+position = Vector2(151, 56)
+
+[node name="CollectableA8" parent="Collectables/CollectableCloud2" unique_id=2015305420 instance=ExtResource("1_tmlh5")]
+texture_filter = 1
+position = Vector2(-44, 133)
+
+[node name="CollectableA9" parent="Collectables/CollectableCloud2" unique_id=658718551 instance=ExtResource("1_tmlh5")]
+texture_filter = 1
+position = Vector2(-263, 111)
+
+[node name="CollectableA10" parent="Collectables/CollectableCloud2" unique_id=266069443 instance=ExtResource("1_tmlh5")]
+texture_filter = 1
+position = Vector2(-193, 223)
+
+[node name="CollectableA11" parent="Collectables/CollectableCloud2" unique_id=321686884 instance=ExtResource("1_tmlh5")]
+texture_filter = 1
+position = Vector2(-155, 87)
+
+[node name="CollectableA12" parent="Collectables/CollectableCloud2" unique_id=1147182863 instance=ExtResource("1_tmlh5")]
+texture_filter = 1
+position = Vector2(-263, -144)
+
+[node name="CollectableA13" parent="Collectables/CollectableCloud2" unique_id=2086485393 instance=ExtResource("1_tmlh5")]
+texture_filter = 1
+position = Vector2(195, -234)
+
+[node name="CollectableA14" parent="Collectables/CollectableCloud2" unique_id=297339924 instance=ExtResource("1_tmlh5")]
+texture_filter = 1
+position = Vector2(261, 133)
+
+[node name="CollectableA15" parent="Collectables/CollectableCloud2" unique_id=2139203386 instance=ExtResource("1_tmlh5")]
+texture_filter = 1
+position = Vector2(151, 196)
+
+[node name="CollectableA16" parent="Collectables/CollectableCloud2" unique_id=1546676102 instance=ExtResource("1_tmlh5")]
+texture_filter = 1
+position = Vector2(271, 300)
+
+[node name="CollectableA17" parent="Collectables/CollectableCloud2" unique_id=1547669849 instance=ExtResource("1_tmlh5")]
+texture_filter = 1
+position = Vector2(34, 56)
+
+[node name="CollectableA18" parent="Collectables/CollectableCloud2" unique_id=543496504 instance=ExtResource("1_tmlh5")]
+texture_filter = 1
+position = Vector2(-86, -244)
+
+[node name="CollectableCloud3" type="Node2D" parent="Collectables" unique_id=371337259]
+position = Vector2(-1115, -941)
+
+[node name="CollectableA" parent="Collectables/CollectableCloud3" unique_id=1872265351 instance=ExtResource("1_tmlh5")]
+texture_filter = 1
+position = Vector2(-96, -11)
+
+[node name="CollectableA2" parent="Collectables/CollectableCloud3" unique_id=1893816610 instance=ExtResource("1_tmlh5")]
+texture_filter = 1
+position = Vector2(-173, -66)
+
+[node name="CollectableA3" parent="Collectables/CollectableCloud3" unique_id=995276635 instance=ExtResource("1_tmlh5")]
+texture_filter = 1
+position = Vector2(-183, -182)
+
+[node name="CollectableA4" parent="Collectables/CollectableCloud3" unique_id=1055213759 instance=ExtResource("1_tmlh5")]
+texture_filter = 1
+position = Vector2(18, -182)
+
+[node name="CollectableA5" parent="Collectables/CollectableCloud3" unique_id=1913967985 instance=ExtResource("1_tmlh5")]
+texture_filter = 1
+position = Vector2(8, -33)
+
+[node name="CollectableA6" parent="Collectables/CollectableCloud3" unique_id=1099600047 instance=ExtResource("1_tmlh5")]
+texture_filter = 1
+position = Vector2(205, -103)
+
+[node name="CollectableA7" parent="Collectables/CollectableCloud3" unique_id=6271532 instance=ExtResource("1_tmlh5")]
+texture_filter = 1
+position = Vector2(151, 56)
+
+[node name="CollectableA8" parent="Collectables/CollectableCloud3" unique_id=425883414 instance=ExtResource("1_tmlh5")]
+texture_filter = 1
+position = Vector2(-44, 133)
+
+[node name="CollectableA9" parent="Collectables/CollectableCloud3" unique_id=1541149149 instance=ExtResource("1_tmlh5")]
+texture_filter = 1
+position = Vector2(-263, 111)
+
+[node name="CollectableA10" parent="Collectables/CollectableCloud3" unique_id=592129941 instance=ExtResource("1_tmlh5")]
+texture_filter = 1
+position = Vector2(-193, 223)
+
+[node name="CollectableA11" parent="Collectables/CollectableCloud3" unique_id=2135898897 instance=ExtResource("1_tmlh5")]
+texture_filter = 1
+position = Vector2(-155, 87)
+
+[node name="CollectableA12" parent="Collectables/CollectableCloud3" unique_id=1114436463 instance=ExtResource("1_tmlh5")]
+texture_filter = 1
+position = Vector2(-263, -144)
+
+[node name="CollectableA13" parent="Collectables/CollectableCloud3" unique_id=2061032534 instance=ExtResource("1_tmlh5")]
+texture_filter = 1
+position = Vector2(195, -234)
+
+[node name="CollectableA14" parent="Collectables/CollectableCloud3" unique_id=393937466 instance=ExtResource("1_tmlh5")]
+texture_filter = 1
+position = Vector2(261, 133)
+
+[node name="CollectableA15" parent="Collectables/CollectableCloud3" unique_id=1960339571 instance=ExtResource("1_tmlh5")]
+texture_filter = 1
+position = Vector2(151, 196)
+
+[node name="CollectableA16" parent="Collectables/CollectableCloud3" unique_id=1767171582 instance=ExtResource("1_tmlh5")]
+texture_filter = 1
+position = Vector2(271, 300)
+
+[node name="CollectableA17" parent="Collectables/CollectableCloud3" unique_id=2081600906 instance=ExtResource("1_tmlh5")]
+texture_filter = 1
+position = Vector2(34, 56)
+
+[node name="CollectableA18" parent="Collectables/CollectableCloud3" unique_id=2003717120 instance=ExtResource("1_tmlh5")]
+texture_filter = 1
+position = Vector2(-86, -244)
+
+[node name="CollectableCloud4" type="Node2D" parent="Collectables" unique_id=1067136793]
+position = Vector2(-1263, 829)
+
+[node name="CollectableA" parent="Collectables/CollectableCloud4" unique_id=1114914014 instance=ExtResource("1_tmlh5")]
+texture_filter = 1
+position = Vector2(-96, -11)
+
+[node name="CollectableA2" parent="Collectables/CollectableCloud4" unique_id=169008826 instance=ExtResource("1_tmlh5")]
+texture_filter = 1
+position = Vector2(-173, -66)
+
+[node name="CollectableA3" parent="Collectables/CollectableCloud4" unique_id=1267354298 instance=ExtResource("1_tmlh5")]
+texture_filter = 1
+position = Vector2(-183, -182)
+
+[node name="CollectableA4" parent="Collectables/CollectableCloud4" unique_id=107816746 instance=ExtResource("1_tmlh5")]
+texture_filter = 1
+position = Vector2(18, -182)
+
+[node name="CollectableA5" parent="Collectables/CollectableCloud4" unique_id=435331756 instance=ExtResource("1_tmlh5")]
+texture_filter = 1
+position = Vector2(8, -33)
+
+[node name="CollectableA6" parent="Collectables/CollectableCloud4" unique_id=630445610 instance=ExtResource("1_tmlh5")]
+texture_filter = 1
+position = Vector2(205, -103)
+
+[node name="CollectableA7" parent="Collectables/CollectableCloud4" unique_id=649669789 instance=ExtResource("1_tmlh5")]
+texture_filter = 1
+position = Vector2(151, 56)
+
+[node name="CollectableA8" parent="Collectables/CollectableCloud4" unique_id=646257644 instance=ExtResource("1_tmlh5")]
+texture_filter = 1
+position = Vector2(-44, 133)
+
+[node name="CollectableA9" parent="Collectables/CollectableCloud4" unique_id=390601049 instance=ExtResource("1_tmlh5")]
+texture_filter = 1
+position = Vector2(-263, 111)
+
+[node name="CollectableA10" parent="Collectables/CollectableCloud4" unique_id=2144027508 instance=ExtResource("1_tmlh5")]
+texture_filter = 1
+position = Vector2(-193, 223)
+
+[node name="CollectableA11" parent="Collectables/CollectableCloud4" unique_id=1815918599 instance=ExtResource("1_tmlh5")]
+texture_filter = 1
+position = Vector2(-155, 87)
+
+[node name="CollectableA12" parent="Collectables/CollectableCloud4" unique_id=2103764061 instance=ExtResource("1_tmlh5")]
+texture_filter = 1
+position = Vector2(-263, -144)
+
+[node name="CollectableA13" parent="Collectables/CollectableCloud4" unique_id=497207022 instance=ExtResource("1_tmlh5")]
+texture_filter = 1
+position = Vector2(195, -234)
+
+[node name="CollectableA14" parent="Collectables/CollectableCloud4" unique_id=642201190 instance=ExtResource("1_tmlh5")]
+texture_filter = 1
+position = Vector2(261, 133)
+
+[node name="CollectableA15" parent="Collectables/CollectableCloud4" unique_id=140047009 instance=ExtResource("1_tmlh5")]
+texture_filter = 1
+position = Vector2(151, 196)
+
+[node name="CollectableA16" parent="Collectables/CollectableCloud4" unique_id=2018536830 instance=ExtResource("1_tmlh5")]
+texture_filter = 1
+position = Vector2(271, 300)
+
+[node name="CollectableA17" parent="Collectables/CollectableCloud4" unique_id=477472421 instance=ExtResource("1_tmlh5")]
+texture_filter = 1
+position = Vector2(34, 56)
+
+[node name="CollectableA18" parent="Collectables/CollectableCloud4" unique_id=1420123869 instance=ExtResource("1_tmlh5")]
+texture_filter = 1
+position = Vector2(-86, -244)

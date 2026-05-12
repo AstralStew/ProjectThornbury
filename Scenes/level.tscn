@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://jcnlsaxu7mak"]
 
-[ext_resource type="PackedScene" uid="uid://l0cg84jp4bre" path="res://Scenes/outside.tscn" id="2_81xng"]
-[ext_resource type="PackedScene" uid="uid://dfbi3x303ug65" path="res://Scenes/inventory.tscn" id="3_6phgx"]
+[ext_resource type="PackedScene" uid="uid://l0cg84jp4bre" path="res://Scenes/OutsidePrefabs/outside.tscn" id="2_81xng"]
+[ext_resource type="PackedScene" uid="uid://dfbi3x303ug65" path="res://Scenes/InventoryPrefabs/inventory.tscn" id="3_6phgx"]
 
 [node name="Level" type="Node2D" unique_id=1480908935]
 

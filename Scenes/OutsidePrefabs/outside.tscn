@@ -1,0 +1,99 @@
+[gd_scene format=3 uid="uid://l0cg84jp4bre"]
+
+[ext_resource type="Script" uid="uid://ch5c3b445iqyr" path="res://Scripts/Ship.gd" id="1_a5lob"]
+[ext_resource type="Script" uid="uid://di153cmafhifq" path="res://Scripts/OutsideManager.gd" id="1_dxilr"]
+[ext_resource type="PackedScene" uid="uid://bquo8wgijs6u3" path="res://Scenes/OutsidePrefabs/level_1.tscn" id="2_0luta"]
+[ext_resource type="Texture2D" uid="uid://bs8wppq8ctccy" path="res://Assets/Images/Ships/Ships_Sheet.png" id="3_slk23"]
+[ext_resource type="Script" uid="uid://c7fg3jgojxubh" path="res://Scripts/ship_trail.gd" id="5_hhqqv"]
+
+[sub_resource type="Curve" id="Curve_mf7ev"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 1.4, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_hhqqv"]
+colors = PackedColorArray(0, 1, 1, 0, 1, 1, 1, 1)
+
+[sub_resource type="Gradient" id="Gradient_mf7ev"]
+colors = PackedColorArray(1, 1, 0, 0, 1, 1, 1, 1)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tumq0"]
+radius = 9.0
+height = 36.0
+
+[node name="OutsideManager" type="MarginContainer" unique_id=1854772268]
+texture_filter = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -600.0
+offset_bottom = -40.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+script = ExtResource("1_dxilr")
+metadata/_custom_type_script = "uid://di153cmafhifq"
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="." unique_id=2109690331]
+layout_mode = 2
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer" unique_id=238183413]
+handle_input_locally = false
+size = Vector2i(680, 680)
+render_target_update_mode = 4
+
+[node name="Level1" parent="SubViewportContainer/SubViewport" unique_id=647410072 instance=ExtResource("2_0luta")]
+
+[node name="Ship" type="CharacterBody2D" parent="SubViewportContainer/SubViewport" unique_id=632637021]
+position = Vector2(331, 558)
+motion_mode = 1
+script = ExtResource("1_a5lob")
+rotation_speed = 30.0
+rotation_acc = 0.05
+change_rate = 75.0
+up_speed = 85.0
+down_speed = 10.0
+
+[node name="ShipsSheet" type="Sprite2D" parent="SubViewportContainer/SubViewport/Ship" unique_id=295043400]
+rotation = 3.1415927
+texture = ExtResource("3_slk23")
+region_enabled = true
+region_rect = Rect2(90, 5, 40, 33)
+
+[node name="TrailPivot" type="Node2D" parent="SubViewportContainer/SubViewport/Ship/ShipsSheet" unique_id=1086678533]
+position = Vector2(11, -7.000001)
+
+[node name="ShipTrail" type="Line2D" parent="SubViewportContainer/SubViewport/Ship/ShipsSheet/TrailPivot" unique_id=2021407589]
+top_level = true
+z_index = -1
+width = 4.0
+width_curve = SubResource("Curve_mf7ev")
+gradient = SubResource("Gradient_hhqqv")
+script = ExtResource("5_hhqqv")
+number_of_points = 10
+
+[node name="TrailPivot2" type="Node2D" parent="SubViewportContainer/SubViewport/Ship/ShipsSheet" unique_id=3057209]
+position = Vector2(-11, -6.999999)
+
+[node name="ShipTrail2" type="Line2D" parent="SubViewportContainer/SubViewport/Ship/ShipsSheet/TrailPivot2" unique_id=1518037546]
+top_level = true
+z_index = -1
+width = 4.0
+width_curve = SubResource("Curve_mf7ev")
+gradient = SubResource("Gradient_mf7ev")
+script = ExtResource("5_hhqqv")
+number_of_points = 10
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SubViewportContainer/SubViewport/Ship" unique_id=470645661]
+position = Vector2(0, -3)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_tumq0")
+
+[node name="Camera2D" type="Camera2D" parent="SubViewportContainer/SubViewport/Ship" unique_id=1345788709]
+process_callback = 0
+position_smoothing_enabled = true
+position_smoothing_speed = 0.5
+rotation_smoothing_enabled = true
+rotation_smoothing_speed = 3.185
+
+[node name="Line2D" type="Line2D" parent="SubViewportContainer/SubViewport/Ship" unique_id=223409123]
