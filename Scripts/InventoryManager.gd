@@ -13,10 +13,14 @@ enum ItemType {ItemA,ItemB,ItemC}
 
 @export var move_force : float = 0.5
 
-
+static var chute_open : bool = false
 
 func _enter_tree() -> void:
 	instance = self
+
+
+func _physics_process(delta: float) -> void:
+	chute_open = Input.is_action_pressed("OpenChute")
 
 static func add_item(_type:ItemType) -> void:
 	instance._add_item(_type)
@@ -35,11 +39,13 @@ func _add_item(_type:ItemType) -> void:
 			_name = "<ItemC>"
 	
 	await get_tree().physics_frame
-	var _new_scene = _prefab.instantiate() 
+	var _new_scene = _prefab.instantiate() as RigidBody2D
 	item_holder.add_child(_new_scene)
+	_new_scene.global_position = Chute.instance.global_position
+	_new_scene.reset_physics_interpolation()
 	_new_scene.name = _name
-	_new_scene.position = Vector2.ZERO
-	_new_scene.set_deferred("linear_velocity",Vector2(remap(randf(),0,1,-1,1),remap(randf(),0,1,-1,1)).normalized() * 30)
+	_new_scene.set_deferred("linear_velocity", Vector2(remap(randf(),0,1,-1,1), remap(randf(),0,1,1,3)).normalized() * 800)
+
 
 
 static func dragging(_object:RigidBody2D,_click_pos:Vector2) -> void:

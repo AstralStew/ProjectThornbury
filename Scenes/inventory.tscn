@@ -2,14 +2,14 @@
 
 [ext_resource type="Script" uid="uid://bf773hla6ca55" path="res://Scripts/InventoryManager.gd" id="1_5v8l0"]
 [ext_resource type="Script" uid="uid://cjl56v6vxytii" path="res://Scripts/Boot.gd" id="1_i2tdg"]
-[ext_resource type="Script" uid="uid://b0o8xyki30gi8" path="res://Scripts/InventoryObject.gd" id="2_5v8l0"]
+[ext_resource type="Script" uid="uid://b0o8xyki30gi8" path="res://Scripts/Item.gd" id="2_5v8l0"]
 [ext_resource type="PackedScene" uid="uid://d23b7v703vw2y" path="res://Scenes/InventoryPrefabs/item_a.tscn" id="3_0n8tc"]
 [ext_resource type="Script" uid="uid://de381ep43a5bi" path="res://Scripts/Chute.gd" id="3_k1vlg"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_51e2h"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0n8tc"]
-size = Vector2(180, 130)
+size = Vector2(198, 75)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tumq0"]
 size = Vector2(540, 680)
@@ -92,29 +92,44 @@ collision_mask = 0
 shape = SubResource("WorldBoundaryShape2D_51e2h")
 
 [node name="Chute" type="Area2D" parent="SubViewportContainer/SubViewport" unique_id=1174495063]
-position = Vector2(270, 92)
+position = Vector2(265, 19)
 collision_layer = 1024
 collision_mask = 256
 monitorable = false
 linear_damp = 100.0
 script = ExtResource("3_k1vlg")
 
-[node name="Chute" type="ColorRect" parent="SubViewportContainer/SubViewport/Chute" unique_id=1497257672]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SubViewportContainer/SubViewport/Chute" unique_id=1113201749]
+position = Vector2(0, 5.5)
+shape = SubResource("RectangleShape2D_0n8tc")
+
+[node name="Border" type="ColorRect" parent="SubViewportContainer/SubViewport/Chute" unique_id=1482982605]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = -90.0
-offset_top = -65.0
+offset_top = -47.0
 offset_right = 90.0
-offset_bottom = 65.0
+offset_bottom = 33.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset_ratio = Vector2(0.5, 0.5)
 mouse_filter = 2
-color = Color(0.4117647, 0, 0.03529412, 1)
+color = Color(0.16, 0.16, 0.16, 1)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="SubViewportContainer/SubViewport/Chute" unique_id=1113201749]
-shape = SubResource("RectangleShape2D_0n8tc")
+[node name="Chute" type="ColorRect" parent="SubViewportContainer/SubViewport/Chute" unique_id=1497257672]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -80.0
+offset_top = -14.0
+offset_right = 80.0
+offset_bottom = 26.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset_ratio = Vector2(0.5, 0.5)
+mouse_filter = 2
+color = Color(0.2, 0.2, 0.2, 1)
 
 [node name="BootArea" type="Area2D" parent="SubViewportContainer/SubViewport" unique_id=1927072519]
 position = Vector2(270, 340)
@@ -139,7 +154,7 @@ shape = SubResource("RectangleShape2D_tumq0")
 position = Vector2(271, 340)
 
 [node name="RigidBody2D5" type="RigidBody2D" parent="SubViewportContainer/SubViewport/ItemHolder" unique_id=16949964]
-position = Vector2(-173, 226)
+position = Vector2(145, 153)
 collision_layer = 256
 collision_mask = 768
 input_pickable = true

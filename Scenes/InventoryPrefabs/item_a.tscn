@@ -1,17 +1,18 @@
 [gd_scene format=3 uid="uid://d23b7v703vw2y"]
 
-[ext_resource type="Script" uid="uid://b0o8xyki30gi8" path="res://Scripts/InventoryObject.gd" id="1_gdkm1"]
+[ext_resource type="Script" uid="uid://b0o8xyki30gi8" path="res://Scripts/Item.gd" id="1_gdkm1"]
 [ext_resource type="Texture2D" uid="uid://dmq57wu6w20cl" path="res://Assets/Images/Resources/Small/RockResource_Small.png" id="2_0nati"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2vrau"]
 radius = 31.97
 
-[node name="ItemA" type="RigidBody2D" unique_id=1831535151]
+[node name="ItemA" type="RigidBody2D" unique_id=1291223074]
 collision_layer = 256
 collision_mask = 768
 input_pickable = true
 can_sleep = false
 script = ExtResource("1_gdkm1")
+metadata/_custom_type_script = "uid://b0o8xyki30gi8"
 
 [node name="RockResourceSmall" type="Sprite2D" parent="." unique_id=1882922353]
 texture = ExtResource("2_0nati")
