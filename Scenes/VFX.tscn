@@ -1,3 +1,31 @@
 [gd_scene format=3 uid="uid://qndkghelqkan"]
 
+[ext_resource type="Script" uid="uid://ch5c3b445iqyr" path="res://Scripts/Ship.gd" id="1_v7a8s"]
+[ext_resource type="Texture2D" uid="uid://bs8wppq8ctccy" path="res://Assets/Images/Ships/Ships_Sheet.png" id="2_bc7up"]
+[ext_resource type="Script" uid="uid://c7fg3jgojxubh" path="res://Scripts/ship_trail.gd" id="3_bc7up"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0s5yq"]
+radius = 9.0
+height = 36.0
+
 [node name="Node2D" type="Node2D" unique_id=1653713147]
+
+[node name="Ship" type="CharacterBody2D" parent="." unique_id=523255021]
+position = Vector2(331, 558)
+motion_mode = 1
+script = ExtResource("1_v7a8s")
+
+[node name="ShipsSheet" type="Sprite2D" parent="Ship" unique_id=495174309]
+rotation = 3.1415927
+texture = ExtResource("2_bc7up")
+region_enabled = true
+region_rect = Rect2(90, 5, 40, 33)
+
+[node name="Line2D" type="Line2D" parent="Ship/ShipsSheet" unique_id=1957401028]
+top_level = true
+script = ExtResource("3_bc7up")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ship" unique_id=357209123]
+position = Vector2(0, 4)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_0s5yq")
