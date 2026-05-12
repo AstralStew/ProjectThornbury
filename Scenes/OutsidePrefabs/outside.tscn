@@ -10,9 +10,6 @@
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 1.4, 0.0, 0, 0]
 point_count = 2
 
-[sub_resource type="Gradient" id="Gradient_hhqqv"]
-colors = PackedColorArray(0, 1, 1, 0, 1, 1, 1, 1)
-
 [sub_resource type="Gradient" id="Gradient_mf7ev"]
 colors = PackedColorArray(1, 1, 0, 0, 1, 1, 1, 1)
 
@@ -50,11 +47,14 @@ motion_mode = 1
 script = ExtResource("1_a5lob")
 rotation_speed = 30.0
 rotation_acc = 0.05
-change_rate = 75.0
+up_change_rate = 75.0
+down_change_rate = 50.0
+neutral_change_rate = 30.0
 up_speed = 85.0
 down_speed = 10.0
 
 [node name="ShipsSheet" type="Sprite2D" parent="SubViewportContainer/SubViewport/Ship" unique_id=295043400]
+texture_filter = 1
 rotation = 3.1415927
 texture = ExtResource("3_slk23")
 region_enabled = true
@@ -68,7 +68,7 @@ top_level = true
 z_index = -1
 width = 4.0
 width_curve = SubResource("Curve_mf7ev")
-gradient = SubResource("Gradient_hhqqv")
+gradient = SubResource("Gradient_mf7ev")
 script = ExtResource("5_hhqqv")
 number_of_points = 10
 

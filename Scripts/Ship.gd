@@ -9,10 +9,9 @@ static var instance : Ship = null
 
 @export_category("TD Controls")
 
-@export var change_rate : float = 1.0
-
-@export var left_speed : float = 1.0
-@export var right_speed : float = 1.0
+@export var up_change_rate : float = 1.0
+@export var down_change_rate : float = 1.0
+@export var neutral_change_rate : float = 1.0
 @export var up_speed : float = 1.0
 @export var down_speed : float = 1.0
 
@@ -54,11 +53,11 @@ func get_input(delta: float) -> void:
 		_target_rotation = move_toward(speed.x, 0, rotation_change_rate * delta)
 	
 	if Input.is_action_pressed("MoveDown"):
-		_new_speed = move_toward(speed.y, -down_speed, change_rate * 0.5  * delta)
+		_new_speed = move_toward(speed.y, -down_speed, down_change_rate  * delta)
 	elif Input.is_action_pressed("MoveUp"):
-		_new_speed = move_toward(speed.y, -up_speed, change_rate * delta)
+		_new_speed = move_toward(speed.y, -up_speed, up_change_rate * delta)
 	else:
-		_new_speed = move_toward(speed.y,-down_speed, change_rate * 0.125 * delta)
+		_new_speed = move_toward(speed.y,-down_speed, neutral_change_rate * delta)
 	
 	speed = Vector2(_target_rotation,_new_speed)
 	
