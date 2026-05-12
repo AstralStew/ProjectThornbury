@@ -569,6 +569,7 @@ texture = ExtResource("3_7asov")
 [node name="Building65" type="Sprite2D" parent="." unique_id=1483348009]
 texture_filter = 1
 position = Vector2(262, 136)
+scale = Vector2(2, 2)
 texture = ExtResource("4_80ic5")
 
 [node name="Building161" type="Sprite2D" parent="." unique_id=81093589]

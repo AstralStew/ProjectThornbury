@@ -1,19 +1,25 @@
 class_name Ship extends CharacterBody2D
 static var instance : Ship = null
 
-@export_category("Ast Controls")
+@export_category("Turning Controls")
 
 @export var rotation_speed : float = 0.25
 @export var rotation_change_rate : float = 50.0
+@export var boost_rotation_change_rate : float = 100.0
+
+
 @export var rotation_acc : float = 0.1
 
-@export_category("TD Controls")
+@export_category("Speed Controls")
 
 @export var up_change_rate : float = 1.0
 @export var down_change_rate : float = 1.0
 @export var neutral_change_rate : float = 1.0
 @export var up_speed : float = 1.0
 @export var down_speed : float = 1.0
+
+@export var boost_speed : float = 100.0
+@export var boost_change_rate : float = 100.0
 
 @export_category("READ ONLY")
 
@@ -45,19 +51,23 @@ func get_input(delta: float) -> void:
 	var _target_rotation : float
 	var _new_speed : float
 	
-	if Input.is_action_pressed("MoveLeft"):
-		_target_rotation = move_toward(speed.x, -rotation_speed,rotation_change_rate * delta)
-	elif Input.is_action_pressed("MoveRight"):
-		_target_rotation = move_toward(speed.x, rotation_speed,rotation_change_rate * delta)
+	if Input.is_action_pressed("Boost"):
+		_target_rotation = move_toward(speed.x, 0, boost_rotation_change_rate * delta)
+		_new_speed = move_toward(speed.y, -boost_speed, boost_change_rate  * delta)
 	else:
-		_target_rotation = move_toward(speed.x, 0, rotation_change_rate * delta)
-	
-	if Input.is_action_pressed("MoveDown"):
-		_new_speed = move_toward(speed.y, -down_speed, down_change_rate  * delta)
-	elif Input.is_action_pressed("MoveUp"):
-		_new_speed = move_toward(speed.y, -up_speed, up_change_rate * delta)
-	else:
-		_new_speed = move_toward(speed.y,-down_speed, neutral_change_rate * delta)
+		if Input.is_action_pressed("MoveLeft"):
+			_target_rotation = move_toward(speed.x, -rotation_speed, rotation_change_rate * delta)
+		elif Input.is_action_pressed("MoveRight"):
+			_target_rotation = move_toward(speed.x, rotation_speed, rotation_change_rate * delta)
+		else:
+			_target_rotation = move_toward(speed.x, 0, rotation_change_rate * delta)
+		
+		if Input.is_action_pressed("MoveDown"):
+			_new_speed = move_toward(speed.y, -down_speed, down_change_rate * delta)
+		elif Input.is_action_pressed("MoveUp"):
+			_new_speed = move_toward(speed.y, -up_speed, up_change_rate * delta)
+		else:
+			_new_speed = move_toward(speed.y,-down_speed, neutral_change_rate * delta)
 	
 	speed = Vector2(_target_rotation,_new_speed)
 	
