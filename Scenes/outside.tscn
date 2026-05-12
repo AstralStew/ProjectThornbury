@@ -70,6 +70,7 @@ motion_mode = 1
 script = ExtResource("1_a5lob")
 
 [node name="ShipsSheet" type="Sprite2D" parent="SubViewportContainer/SubViewport/Ship" unique_id=295043400]
+rotation = 3.1415927
 texture = ExtResource("3_slk23")
 region_enabled = true
 region_rect = Rect2(90, 5, 40, 33)
