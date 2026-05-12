@@ -52,6 +52,15 @@ MoveDown={
 ]
 }
 
+[layer_names]
+
+2d_physics/layer_1="Player"
+2d_physics/layer_5="Obstacles"
+2d_physics/layer_9="Items"
+2d_physics/layer_10="ItemHolder"
+2d_physics/layer_11="Chute"
+2d_physics/layer_13="Obstacles"
+
 [physics]
 
 3d/physics_engine="Jolt Physics"

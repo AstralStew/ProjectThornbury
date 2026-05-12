@@ -377,14 +377,6 @@ color = Color(0.9843137, 0.73333335, 0.6784314, 1)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SubViewportContainer/SubViewport/Collectables/Collectable15" unique_id=1450102307]
 shape = SubResource("RectangleShape2D_dxilr")
 
-[node name="Collectable16" type="Area2D" parent="SubViewportContainer/SubViewport/Collectables" unique_id=1592754151]
-position = Vector2(444, 477)
-script = ExtResource("3_ao2d0")
-metadata/_custom_type_script = "uid://bu7nan430podd"
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="SubViewportContainer/SubViewport/Collectables/Collectable16" unique_id=1698076322]
-shape = SubResource("RectangleShape2D_dxilr")
-
 [node name="Collectable17" type="Area2D" parent="SubViewportContainer/SubViewport/Collectables" unique_id=233603061]
 position = Vector2(529, 568)
 script = ExtResource("3_ao2d0")
@@ -497,7 +489,7 @@ region_enabled = true
 region_rect = Rect2(90, 5, 40, 33)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SubViewportContainer/SubViewport/Ship" unique_id=470645661]
-position = Vector2(0, 4)
+position = Vector2(0, -3)
 rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_tumq0")
 
@@ -515,7 +507,6 @@ shape = SubResource("CapsuleShape2D_tumq0")
 [connection signal="body_entered" from="SubViewportContainer/SubViewport/Collectables/Collectable13" to="SubViewportContainer/SubViewport/Collectables/Collectable13" method="_on_body_entered"]
 [connection signal="body_entered" from="SubViewportContainer/SubViewport/Collectables/Collectable14" to="SubViewportContainer/SubViewport/Collectables/Collectable14" method="_on_body_entered"]
 [connection signal="body_entered" from="SubViewportContainer/SubViewport/Collectables/Collectable15" to="SubViewportContainer/SubViewport/Collectables/Collectable15" method="_on_body_entered"]
-[connection signal="body_entered" from="SubViewportContainer/SubViewport/Collectables/Collectable16" to="SubViewportContainer/SubViewport/Collectables/Collectable16" method="_on_body_entered"]
 [connection signal="body_entered" from="SubViewportContainer/SubViewport/Collectables/Collectable17" to="SubViewportContainer/SubViewport/Collectables/Collectable17" method="_on_body_entered"]
 [connection signal="body_entered" from="SubViewportContainer/SubViewport/Collectables/Collectable18" to="SubViewportContainer/SubViewport/Collectables/Collectable18" method="_on_body_entered"]
 [connection signal="body_entered" from="SubViewportContainer/SubViewport/Collectables/Collectable19" to="SubViewportContainer/SubViewport/Collectables/Collectable19" method="_on_body_entered"]

@@ -7,6 +7,8 @@
 radius = 31.97
 
 [node name="ItemA" type="RigidBody2D" unique_id=1831535151]
+collision_layer = 256
+collision_mask = 768
 input_pickable = true
 can_sleep = false
 script = ExtResource("1_gdkm1")
