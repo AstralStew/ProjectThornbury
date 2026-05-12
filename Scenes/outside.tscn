@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://ch5c3b445iqyr" path="res://Scripts/Ship.gd" id="1_a5lob"]
 [ext_resource type="Script" uid="uid://di153cmafhifq" path="res://Scripts/OutsideManager.gd" id="1_dxilr"]
 [ext_resource type="Script" uid="uid://bu7nan430podd" path="res://Scripts/Collectable.gd" id="3_ao2d0"]
+[ext_resource type="Texture2D" uid="uid://bs8wppq8ctccy" path="res://Assets/Images/Ships/Ships_Sheet.png" id="3_slk23"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_6phgx"]
 noise_type = 0
@@ -15,7 +16,8 @@ seamless = true
 normalize = false
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tumq0"]
-radius = 7.0
+radius = 9.0
+height = 36.0
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_51e2h"]
 
@@ -67,62 +69,14 @@ position = Vector2(331, 558)
 motion_mode = 1
 script = ExtResource("1_a5lob")
 
-[node name="ColorRect" type="ColorRect" parent="SubViewportContainer/SubViewport/Ship" unique_id=44799144]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -5.0
-offset_top = -5.0
-offset_right = 5.0000305
-offset_bottom = 12.9999695
-grow_horizontal = 2
-grow_vertical = 2
-pivot_offset_ratio = Vector2(0.5, 0.5)
-color = Color(0.16078432, 0.15686275, 0.19215687, 1)
-
-[node name="ColorRect2" type="ColorRect" parent="SubViewportContainer/SubViewport/Ship" unique_id=779506238]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -5.9999695
-offset_top = -17.0
-offset_right = 5.4655457
-offset_bottom = 5.9196777
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(0.6977427, -0.2617837)
-pivot_offset_ratio = Vector2(0.5, 0.5)
-color = Color(0.16078432, 0.15686275, 0.19215687, 1)
-
-[node name="ColorRect4" type="ColorRect" parent="SubViewportContainer/SubViewport/Ship" unique_id=653066692]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -3.0
-offset_top = -17.000015
-offset_right = 3.7172852
-offset_bottom = 0.42485046
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(0.29774264, -0.70182276)
-pivot_offset_ratio = Vector2(0.5, 0.5)
-color = Color(0.16078432, 0.15686275, 0.19215687, 1)
-
-[node name="ColorRect3" type="ColorRect" parent="SubViewportContainer/SubViewport/Ship" unique_id=1667187123]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -4.498337
-offset_top = -0.2634282
-offset_right = 4.498398
-offset_bottom = 12.263428
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(2.4453285, 0.15965673)
-pivot_offset_ratio = Vector2(0.5, 0.5)
-color = Color(0.16078432, 0.15686275, 0.19215687, 1)
+[node name="ShipsSheet" type="Sprite2D" parent="SubViewportContainer/SubViewport/Ship" unique_id=295043400]
+texture = ExtResource("3_slk23")
+region_enabled = true
+region_rect = Rect2(90, 5, 40, 33)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SubViewportContainer/SubViewport/Ship" unique_id=470645661]
+position = Vector2(0, 4)
+rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_tumq0")
 
 [node name="BoundaryTop" type="StaticBody2D" parent="SubViewportContainer/SubViewport" unique_id=885169281]
@@ -422,7 +376,7 @@ offset_right = 6.0
 offset_bottom = 6.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.16078432, 1, 0.19215687, 1)
+color = Color(0.9843137, 0.73333335, 0.6784314, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SubViewportContainer/SubViewport/Collectable" unique_id=1132880465]
 shape = SubResource("RectangleShape2D_dxilr")
