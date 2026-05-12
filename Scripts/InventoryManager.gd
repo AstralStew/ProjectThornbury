@@ -34,6 +34,7 @@ func _add_item(_type:ItemType) -> void:
 			_prefab = item_C_prefab
 			_name = "<ItemC>"
 	
+	await get_tree().physics_frame
 	var _new_scene = _prefab.instantiate() 
 	item_holder.add_child(_new_scene)
 	_new_scene.name = _name
