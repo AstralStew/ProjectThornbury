@@ -39,7 +39,7 @@ func _add_item(_type:ItemType) -> void:
 			_name = "<ItemC>"
 	
 	await get_tree().physics_frame
-	var _new_scene = _prefab.instantiate() as RigidBody2D
+	var _new_scene = _prefab.instantiate() as Item
 	item_holder.add_child(_new_scene)
 	_new_scene.global_position = Chute.instance.global_position
 	_new_scene.reset_physics_interpolation()

@@ -23,7 +23,14 @@ static var instance : Ship = null
 
 @export_category("READ ONLY")
 
+@export var previous_speed : Vector2 = Vector2.ZERO
 @export var speed : Vector2 = Vector2.ZERO
+
+@export var acceleration: Vector2 = Vector2.ZERO :
+	get:
+		print("acceleration" + str(previous_speed - speed))
+		return previous_speed - speed
+
 @export var proportional_speed : Vector2 = Vector2.ZERO :
 	get:
 		return Vector2(
@@ -39,6 +46,7 @@ func _enter_tree() -> void:
 	instance = self
 
 func _physics_process(delta: float) -> void:
+	previous_speed = speed
 	
 	get_input(delta)
 	rotation = lerp_angle(rotation, rotation + deg_to_rad(speed.x), rotation_acc)

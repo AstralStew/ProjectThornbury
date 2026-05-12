@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://3vsdr16ipou2"]
+
+[ext_resource type="Script" uid="uid://b0o8xyki30gi8" path="res://Scripts/Item.gd" id="1_yvbue"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yvbue"]
+size = Vector2(120, 120)
+
+[node name="ItemB" type="RigidBody2D" unique_id=1291223074]
+texture_filter = 1
+collision_layer = 256
+collision_mask = 768
+input_pickable = true
+mass = 4.0
+gravity_scale = 0.69
+can_sleep = false
+linear_damp = 0.05
+script = ExtResource("1_yvbue")
+type = 1
+metadata/_custom_type_script = "uid://b0o8xyki30gi8"
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1558959491]
+offset_left = -60.0
+offset_top = -60.0
+offset_right = 60.0
+offset_bottom = 60.0
+mouse_filter = 2
+color = Color(1, 0, 1, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1138340637]
+shape = SubResource("RectangleShape2D_yvbue")
+
+[connection signal="input_event" from="." to="." method="_on_input_event"]

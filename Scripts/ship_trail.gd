@@ -10,6 +10,7 @@ func _ready() -> void:
 var _timer : float
 func _process(delta):
 	
+	modulate = Color.GOLD.lerp(Color.WHITE, ease(remap(Ship.instance.speed.y,0,-200,0,1),0.25))
 	
 	_timer += delta
 	if _timer >= min_time_step:

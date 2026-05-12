@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://dtkur4468wq5q"]
+
+[ext_resource type="Script" uid="uid://bu7nan430podd" path="res://Scripts/Collectable.gd" id="1_yaw1y"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dxilr"]
+size = Vector2(22, 22)
+
+[node name="CollectableB" type="Area2D" unique_id=1843489661]
+script = ExtResource("1_yaw1y")
+type = 1
+metadata/_custom_type_script = "uid://bu7nan430podd"
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1974496766]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -11.0
+offset_top = -11.0
+offset_right = 11.0
+offset_bottom = 11.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 0, 1, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=634640248]
+shape = SubResource("RectangleShape2D_dxilr")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

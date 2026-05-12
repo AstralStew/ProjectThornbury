@@ -1,11 +1,8 @@
-extends Node
+class_name LevelManager extends Node2D
+const DEBUG_NAME = "[b][LevelManager][/b] "
+static var instance : LevelManager = null
 
+@onready var collectable_holder : Node2D = $CollectableHolder
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+func _enter_tree() -> void:
+	instance = self

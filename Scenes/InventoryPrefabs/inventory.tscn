@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://cjl56v6vxytii" path="res://Scripts/Boot.gd" id="1_i2tdg"]
 [ext_resource type="Script" uid="uid://b0o8xyki30gi8" path="res://Scripts/Item.gd" id="2_5v8l0"]
 [ext_resource type="PackedScene" uid="uid://d23b7v703vw2y" path="res://Scenes/InventoryPrefabs/item_a.tscn" id="3_0n8tc"]
+[ext_resource type="PackedScene" uid="uid://3vsdr16ipou2" path="res://Scenes/InventoryPrefabs/item_b.tscn" id="3_03ybr"]
 [ext_resource type="Script" uid="uid://de381ep43a5bi" path="res://Scripts/Chute.gd" id="3_k1vlg"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_51e2h"]
@@ -27,6 +28,7 @@ size_flags_horizontal = 3
 mouse_filter = 2
 script = ExtResource("1_5v8l0")
 item_A_prefab = ExtResource("3_0n8tc")
+item_B_prefab = ExtResource("3_03ybr")
 metadata/_custom_type_script = "uid://bf773hla6ca55"
 
 [node name="DebugLine" type="Line2D" parent="." unique_id=1064474407]
@@ -143,7 +145,7 @@ gravity_direction = Vector2(0, 0)
 gravity = 0.0
 linear_damp = 0.0
 script = ExtResource("1_i2tdg")
-ship_force = Vector2(-2, 2)
+ship_force = Vector2(5, 3)
 random_force = 0.25
 force = 100.0
 
@@ -153,65 +155,11 @@ shape = SubResource("RectangleShape2D_tumq0")
 [node name="ItemHolder" type="Node2D" parent="SubViewportContainer/SubViewport" unique_id=1815584380]
 position = Vector2(271, 340)
 
-[node name="RigidBody2D5" type="RigidBody2D" parent="SubViewportContainer/SubViewport/ItemHolder" unique_id=16949964]
-position = Vector2(145, 153)
-collision_layer = 256
-collision_mask = 768
-input_pickable = true
-mass = 4.0
-gravity_scale = 0.69
-can_sleep = false
-linear_damp = 0.05
-script = ExtResource("2_5v8l0")
+[node name="ItemB" parent="SubViewportContainer/SubViewport/ItemHolder" unique_id=1291223074 instance=ExtResource("3_03ybr")]
+position = Vector2(-61, 61)
 
-[node name="ColorRect" type="ColorRect" parent="SubViewportContainer/SubViewport/ItemHolder/RigidBody2D5" unique_id=1240436872]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -30.0
-offset_top = -30.0
-offset_right = 30.0
-offset_bottom = 30.0
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(2, 2)
-pivot_offset_ratio = Vector2(0.5, 0.5)
-mouse_filter = 2
-color = Color(0.9843137, 0, 0.6784314, 1)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="SubViewportContainer/SubViewport/ItemHolder/RigidBody2D5" unique_id=308629339]
-scale = Vector2(2, 2)
-shape = SubResource("RectangleShape2D_51e2h")
-
-[node name="RigidBody2D6" type="RigidBody2D" parent="SubViewportContainer/SubViewport/ItemHolder" unique_id=831221951]
-position = Vector2(-59, 61)
-collision_layer = 256
-collision_mask = 768
-input_pickable = true
-mass = 4.0
-gravity_scale = 0.69
-can_sleep = false
-linear_damp = 0.05
-script = ExtResource("2_5v8l0")
-
-[node name="ColorRect" type="ColorRect" parent="SubViewportContainer/SubViewport/ItemHolder/RigidBody2D6" unique_id=730373004]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -30.0
-offset_top = -30.0
-offset_right = 30.0
-offset_bottom = 30.0
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(2, 2)
-pivot_offset_ratio = Vector2(0.5, 0.5)
-mouse_filter = 2
-color = Color(0.9843137, 0, 0.6784314, 1)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="SubViewportContainer/SubViewport/ItemHolder/RigidBody2D6" unique_id=1387597884]
-scale = Vector2(2, 2)
-shape = SubResource("RectangleShape2D_51e2h")
+[node name="ItemB2" parent="SubViewportContainer/SubViewport/ItemHolder" unique_id=1006710298 instance=ExtResource("3_03ybr")]
+position = Vector2(144, 153)
 
 [node name="RigidBody2D7" type="RigidBody2D" parent="SubViewportContainer/SubViewport/ItemHolder" unique_id=1670769929]
 position = Vector2(201, 59)
@@ -272,7 +220,5 @@ scale = Vector2(3.5, 0.5)
 shape = SubResource("RectangleShape2D_51e2h")
 
 [connection signal="body_entered" from="SubViewportContainer/SubViewport/Chute" to="SubViewportContainer/SubViewport/Chute" method="_on_body_entered"]
-[connection signal="input_event" from="SubViewportContainer/SubViewport/ItemHolder/RigidBody2D5" to="SubViewportContainer/SubViewport/ItemHolder/RigidBody2D5" method="_on_input_event"]
-[connection signal="input_event" from="SubViewportContainer/SubViewport/ItemHolder/RigidBody2D6" to="SubViewportContainer/SubViewport/ItemHolder/RigidBody2D6" method="_on_input_event"]
 [connection signal="input_event" from="SubViewportContainer/SubViewport/ItemHolder/RigidBody2D7" to="SubViewportContainer/SubViewport/ItemHolder/RigidBody2D7" method="_on_input_event"]
 [connection signal="input_event" from="SubViewportContainer/SubViewport/ItemHolder/RigidBody2D8" to="SubViewportContainer/SubViewport/ItemHolder/RigidBody2D8" method="_on_input_event"]
