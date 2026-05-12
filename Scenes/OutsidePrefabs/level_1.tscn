@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://bquo8wgijs6u3"]
 
 [ext_resource type="PackedScene" uid="uid://c14fl8nyl0y11" path="res://Scenes/OutsidePrefabs/collectable_1.tscn" id="1_tmlh5"]
+[ext_resource type="Texture2D" uid="uid://rpi66dfpi25r" path="res://Assets/Images/City/Building1.png" id="2_vx186"]
 
 [sub_resource type="Gradient" id="Gradient_slk23"]
 interpolation_mode = 2
@@ -148,7 +149,7 @@ shape = SubResource("WorldBoundaryShape2D_51e2h")
 [node name="Collectables" type="Node2D" parent="." unique_id=9974128]
 
 [node name="CollectableCloud" type="Node2D" parent="Collectables" unique_id=622519073]
-position = Vector2(1136, 1371)
+position = Vector2(627, 1233)
 
 [node name="CollectableA" parent="Collectables/CollectableCloud" unique_id=1843489661 instance=ExtResource("1_tmlh5")]
 texture_filter = 1
@@ -222,8 +223,83 @@ position = Vector2(34, 56)
 texture_filter = 1
 position = Vector2(-86, -244)
 
+[node name="CollectableCloud5" type="Node2D" parent="Collectables" unique_id=227923729]
+position = Vector2(1101, -43)
+
+[node name="CollectableA" parent="Collectables/CollectableCloud5" unique_id=454040788 instance=ExtResource("1_tmlh5")]
+texture_filter = 1
+position = Vector2(-96, -11)
+
+[node name="CollectableA2" parent="Collectables/CollectableCloud5" unique_id=49464330 instance=ExtResource("1_tmlh5")]
+texture_filter = 1
+position = Vector2(-173, -66)
+
+[node name="CollectableA3" parent="Collectables/CollectableCloud5" unique_id=1692000857 instance=ExtResource("1_tmlh5")]
+texture_filter = 1
+position = Vector2(-183, -182)
+
+[node name="CollectableA4" parent="Collectables/CollectableCloud5" unique_id=901198666 instance=ExtResource("1_tmlh5")]
+texture_filter = 1
+position = Vector2(18, -182)
+
+[node name="CollectableA5" parent="Collectables/CollectableCloud5" unique_id=1172708884 instance=ExtResource("1_tmlh5")]
+texture_filter = 1
+position = Vector2(8, -33)
+
+[node name="CollectableA6" parent="Collectables/CollectableCloud5" unique_id=2141476614 instance=ExtResource("1_tmlh5")]
+texture_filter = 1
+position = Vector2(205, -103)
+
+[node name="CollectableA7" parent="Collectables/CollectableCloud5" unique_id=1836460842 instance=ExtResource("1_tmlh5")]
+texture_filter = 1
+position = Vector2(151, 56)
+
+[node name="CollectableA8" parent="Collectables/CollectableCloud5" unique_id=60675736 instance=ExtResource("1_tmlh5")]
+texture_filter = 1
+position = Vector2(-44, 133)
+
+[node name="CollectableA9" parent="Collectables/CollectableCloud5" unique_id=84520690 instance=ExtResource("1_tmlh5")]
+texture_filter = 1
+position = Vector2(-263, 111)
+
+[node name="CollectableA10" parent="Collectables/CollectableCloud5" unique_id=1865495323 instance=ExtResource("1_tmlh5")]
+texture_filter = 1
+position = Vector2(-193, 223)
+
+[node name="CollectableA11" parent="Collectables/CollectableCloud5" unique_id=1371368969 instance=ExtResource("1_tmlh5")]
+texture_filter = 1
+position = Vector2(-155, 87)
+
+[node name="CollectableA12" parent="Collectables/CollectableCloud5" unique_id=2035964398 instance=ExtResource("1_tmlh5")]
+texture_filter = 1
+position = Vector2(-263, -144)
+
+[node name="CollectableA13" parent="Collectables/CollectableCloud5" unique_id=1961842409 instance=ExtResource("1_tmlh5")]
+texture_filter = 1
+position = Vector2(195, -234)
+
+[node name="CollectableA14" parent="Collectables/CollectableCloud5" unique_id=441734093 instance=ExtResource("1_tmlh5")]
+texture_filter = 1
+position = Vector2(261, 133)
+
+[node name="CollectableA15" parent="Collectables/CollectableCloud5" unique_id=581351745 instance=ExtResource("1_tmlh5")]
+texture_filter = 1
+position = Vector2(151, 196)
+
+[node name="CollectableA16" parent="Collectables/CollectableCloud5" unique_id=1591863578 instance=ExtResource("1_tmlh5")]
+texture_filter = 1
+position = Vector2(271, 300)
+
+[node name="CollectableA17" parent="Collectables/CollectableCloud5" unique_id=2147123719 instance=ExtResource("1_tmlh5")]
+texture_filter = 1
+position = Vector2(34, 56)
+
+[node name="CollectableA18" parent="Collectables/CollectableCloud5" unique_id=529696675 instance=ExtResource("1_tmlh5")]
+texture_filter = 1
+position = Vector2(-86, -244)
+
 [node name="CollectableCloud2" type="Node2D" parent="Collectables" unique_id=1246567609]
-position = Vector2(855, -1448)
+position = Vector2(808, -1028)
 
 [node name="CollectableA" parent="Collectables/CollectableCloud2" unique_id=1363189793 instance=ExtResource("1_tmlh5")]
 texture_filter = 1
@@ -298,7 +374,7 @@ texture_filter = 1
 position = Vector2(-86, -244)
 
 [node name="CollectableCloud3" type="Node2D" parent="Collectables" unique_id=371337259]
-position = Vector2(-1115, -941)
+position = Vector2(-782, -834)
 
 [node name="CollectableA" parent="Collectables/CollectableCloud3" unique_id=1872265351 instance=ExtResource("1_tmlh5")]
 texture_filter = 1
@@ -373,7 +449,7 @@ texture_filter = 1
 position = Vector2(-86, -244)
 
 [node name="CollectableCloud4" type="Node2D" parent="Collectables" unique_id=1067136793]
-position = Vector2(-1263, 829)
+position = Vector2(-868, 584)
 
 [node name="CollectableA" parent="Collectables/CollectableCloud4" unique_id=1114914014 instance=ExtResource("1_tmlh5")]
 texture_filter = 1
@@ -446,3 +522,26 @@ position = Vector2(34, 56)
 [node name="CollectableA18" parent="Collectables/CollectableCloud4" unique_id=1420123869 instance=ExtResource("1_tmlh5")]
 texture_filter = 1
 position = Vector2(-86, -244)
+
+[node name="Building1" type="Sprite2D" parent="." unique_id=1906938055]
+texture_filter = 1
+position = Vector2(854, 607)
+texture = ExtResource("2_vx186")
+
+[node name="Building2" type="Sprite2D" parent="." unique_id=463885866]
+position = Vector2(-771, -132)
+texture = ExtResource("2_vx186")
+
+[node name="Building3" type="Sprite2D" parent="." unique_id=857632545]
+texture_filter = 1
+position = Vector2(-17, -941)
+texture = ExtResource("2_vx186")
+
+[node name="Building4" type="Sprite2D" parent="." unique_id=749652249]
+position = Vector2(798, -573)
+texture = ExtResource("2_vx186")
+
+[node name="Building5" type="Sprite2D" parent="." unique_id=1858462902]
+texture_filter = 1
+position = Vector2(-112, 896)
+texture = ExtResource("2_vx186")
