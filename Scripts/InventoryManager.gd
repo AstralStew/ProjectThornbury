@@ -1,10 +1,10 @@
-class_name Inventory extends Node
-const DEBUG_NAME = "[b][Inventory][/b] "
-static var instance : Inventory = null
+class_name InventoryManager extends MarginContainer
+const DEBUG_NAME = "[b][InventoryManager][/b] "
+static var instance : InventoryManager = null
 
-@onready var debug_line : Line2D = $Line2D
+@onready var debug_line : Line2D = $DebugLine
 
-@export var move_force : float = 10.0
+@export var move_force : float = 0.5
 
 func _enter_tree() -> void:
 	instance = self

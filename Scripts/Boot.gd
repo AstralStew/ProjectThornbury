@@ -27,17 +27,10 @@ func _physics_process(delta: float) -> void:
 
 func _get_ship_speed() -> void:
 	
-	if Ship.instance.one_direction:
-		#ship_direction = Ship.instance.proportional_speed.normalized() * ship_force
-		ship_direction = Vector2(
-			Ship.instance.proportional_speed.x * ship_force.x,
-			Ship.instance.proportional_speed.y * ship_force.y
-		)
-	else:
-		ship_direction = Vector2(
-			Ship.instance.proportional_speed.x * ship_force.x * 1.5,
-			Ship.instance.proportional_speed.y * ship_force.y * 1.5
-		)
+	ship_direction = Vector2(
+		-Ship.instance.proportional_speed.x * ship_force.x,
+		Ship.instance.proportional_speed.y * ship_force.y
+	)
 
 func _add_random() -> void:
 	_random_direction = (_random_direction + Vector2(remap(randf(),0,1,-1,1),remap(randf(),0,1,-1,1))).normalized()

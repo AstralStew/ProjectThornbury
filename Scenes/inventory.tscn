@@ -1,0 +1,282 @@
+[gd_scene format=3 uid="uid://dfbi3x303ug65"]
+
+[ext_resource type="Script" uid="uid://bf773hla6ca55" path="res://Scripts/InventoryManager.gd" id="1_5v8l0"]
+[ext_resource type="Script" uid="uid://cjl56v6vxytii" path="res://Scripts/Boot.gd" id="1_i2tdg"]
+[ext_resource type="Script" uid="uid://b0o8xyki30gi8" path="res://Scripts/InventoryObject.gd" id="2_5v8l0"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_51e2h"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tumq0"]
+size = Vector2(540, 680)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_51e2h"]
+size = Vector2(60, 60)
+
+[node name="InventoryManager" type="MarginContainer" unique_id=1086248823]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+script = ExtResource("1_5v8l0")
+metadata/_custom_type_script = "uid://bf773hla6ca55"
+
+[node name="DebugLine" type="Line2D" parent="." unique_id=1064474407]
+z_index = 15
+position = Vector2(720, 161)
+points = PackedVector2Array(0, 0, 0, 34.955)
+width = 5.0
+default_color = Color(1, 0, 1, 1)
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="." unique_id=63514708]
+layout_mode = 2
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer" unique_id=682189103]
+handle_input_locally = false
+physics_object_picking = true
+gui_snap_controls_to_pixels = false
+size = Vector2i(1280, 720)
+render_target_update_mode = 4
+
+[node name="Background" type="ColorRect" parent="SubViewportContainer/SubViewport" unique_id=676433382]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.2, 0.24705882, 0.34509805, 1)
+
+[node name="BoundaryTop" type="StaticBody2D" parent="SubViewportContainer/SubViewport" unique_id=799551523]
+position = Vector2(265, 0)
+rotation = -3.1415925
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SubViewportContainer/SubViewport/BoundaryTop" unique_id=1257795425]
+shape = SubResource("WorldBoundaryShape2D_51e2h")
+
+[node name="BoundaryBottom" type="StaticBody2D" parent="SubViewportContainer/SubViewport" unique_id=881463654]
+position = Vector2(265, 680)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SubViewportContainer/SubViewport/BoundaryBottom" unique_id=1378531015]
+shape = SubResource("WorldBoundaryShape2D_51e2h")
+
+[node name="BoundaryLeft" type="StaticBody2D" parent="SubViewportContainer/SubViewport" unique_id=1668904604]
+position = Vector2(0, 320)
+rotation = 1.5707964
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SubViewportContainer/SubViewport/BoundaryLeft" unique_id=211440190]
+shape = SubResource("WorldBoundaryShape2D_51e2h")
+
+[node name="BoundaryRight" type="StaticBody2D" parent="SubViewportContainer/SubViewport" unique_id=1623602192]
+position = Vector2(540, 320)
+rotation = -1.5707964
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SubViewportContainer/SubViewport/BoundaryRight" unique_id=572296364]
+shape = SubResource("WorldBoundaryShape2D_51e2h")
+
+[node name="BootArea" type="Area2D" parent="SubViewportContainer/SubViewport" unique_id=1927072519]
+gravity_space_override = 1
+gravity_point_center = Vector2(0, 0)
+gravity_direction = Vector2(0, 0)
+gravity = 0.0
+linear_damp = 0.0
+script = ExtResource("1_i2tdg")
+ship_force = Vector2(-2, 2)
+random_force = 0.25
+force = 100.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SubViewportContainer/SubViewport/BootArea" unique_id=163712967]
+position = Vector2(270, 340)
+shape = SubResource("RectangleShape2D_tumq0")
+
+[node name="Objects" type="Node" parent="SubViewportContainer/SubViewport" unique_id=1627537064]
+
+[node name="RigidBody2D" type="RigidBody2D" parent="SubViewportContainer/SubViewport/Objects" unique_id=1793844753]
+position = Vector2(93, 122)
+input_pickable = true
+can_sleep = false
+script = ExtResource("2_5v8l0")
+
+[node name="ColorRect" type="ColorRect" parent="SubViewportContainer/SubViewport/Objects/RigidBody2D" unique_id=1377726394]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -30.0
+offset_top = -30.0
+offset_right = 30.0
+offset_bottom = 30.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset_ratio = Vector2(1, 0)
+mouse_filter = 2
+color = Color(0.9843137, 0.73333335, 0.6784314, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SubViewportContainer/SubViewport/Objects/RigidBody2D" unique_id=1035496059]
+shape = SubResource("RectangleShape2D_51e2h")
+
+[node name="RigidBody2D3" type="RigidBody2D" parent="SubViewportContainer/SubViewport/Objects" unique_id=2142016558]
+position = Vector2(262, 193)
+input_pickable = true
+can_sleep = false
+script = ExtResource("2_5v8l0")
+
+[node name="ColorRect" type="ColorRect" parent="SubViewportContainer/SubViewport/Objects/RigidBody2D3" unique_id=1816894693]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -30.0
+offset_top = -30.0
+offset_right = 30.0
+offset_bottom = 30.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset_ratio = Vector2(1, 0)
+mouse_filter = 2
+color = Color(0.9843137, 0.73333335, 0.6784314, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SubViewportContainer/SubViewport/Objects/RigidBody2D3" unique_id=1353938750]
+shape = SubResource("RectangleShape2D_51e2h")
+
+[node name="RigidBody2D4" type="RigidBody2D" parent="SubViewportContainer/SubViewport/Objects" unique_id=521711690]
+position = Vector2(128, 254)
+input_pickable = true
+can_sleep = false
+script = ExtResource("2_5v8l0")
+
+[node name="ColorRect" type="ColorRect" parent="SubViewportContainer/SubViewport/Objects/RigidBody2D4" unique_id=960487827]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -30.0
+offset_top = -30.0
+offset_right = 30.0
+offset_bottom = 30.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset_ratio = Vector2(1, 0)
+mouse_filter = 2
+color = Color(0.9843137, 0.73333335, 0.6784314, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SubViewportContainer/SubViewport/Objects/RigidBody2D4" unique_id=232766883]
+shape = SubResource("RectangleShape2D_51e2h")
+
+[node name="RigidBody2D5" type="RigidBody2D" parent="SubViewportContainer/SubViewport/Objects" unique_id=16949964]
+position = Vector2(97, 591)
+input_pickable = true
+mass = 4.0
+gravity_scale = 0.69
+can_sleep = false
+linear_damp = 0.05
+script = ExtResource("2_5v8l0")
+
+[node name="ColorRect" type="ColorRect" parent="SubViewportContainer/SubViewport/Objects/RigidBody2D5" unique_id=1240436872]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -30.0
+offset_top = -30.0
+offset_right = 30.0
+offset_bottom = 30.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2, 2)
+pivot_offset_ratio = Vector2(0.5, 0.5)
+mouse_filter = 2
+color = Color(0.9843137, 0, 0.6784314, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SubViewportContainer/SubViewport/Objects/RigidBody2D5" unique_id=308629339]
+scale = Vector2(2, 2)
+shape = SubResource("RectangleShape2D_51e2h")
+
+[node name="RigidBody2D6" type="RigidBody2D" parent="SubViewportContainer/SubViewport/Objects" unique_id=831221951]
+position = Vector2(211, 426)
+input_pickable = true
+mass = 4.0
+gravity_scale = 0.69
+can_sleep = false
+linear_damp = 0.05
+script = ExtResource("2_5v8l0")
+
+[node name="ColorRect" type="ColorRect" parent="SubViewportContainer/SubViewport/Objects/RigidBody2D6" unique_id=730373004]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -30.0
+offset_top = -30.0
+offset_right = 30.0
+offset_bottom = 30.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2, 2)
+pivot_offset_ratio = Vector2(0.5, 0.5)
+mouse_filter = 2
+color = Color(0.9843137, 0, 0.6784314, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SubViewportContainer/SubViewport/Objects/RigidBody2D6" unique_id=1387597884]
+scale = Vector2(2, 2)
+shape = SubResource("RectangleShape2D_51e2h")
+
+[node name="RigidBody2D7" type="RigidBody2D" parent="SubViewportContainer/SubViewport/Objects" unique_id=1670769929]
+position = Vector2(471, 424)
+input_pickable = true
+mass = 0.5
+can_sleep = false
+script = ExtResource("2_5v8l0")
+
+[node name="ColorRect" type="ColorRect" parent="SubViewportContainer/SubViewport/Objects/RigidBody2D7" unique_id=1300280125]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -93.0
+offset_top = -37.0
+offset_right = -33.0
+offset_bottom = 23.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(3.5, 0.5)
+pivot_offset_ratio = Vector2(0.5, 0.5)
+mouse_filter = 2
+color = Color(0.9843137, 0.73333335, 0.14117648, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SubViewportContainer/SubViewport/Objects/RigidBody2D7" unique_id=665525615]
+position = Vector2(-63, -8)
+scale = Vector2(3.5, 0.5)
+shape = SubResource("RectangleShape2D_51e2h")
+
+[node name="RigidBody2D8" type="RigidBody2D" parent="SubViewportContainer/SubViewport/Objects" unique_id=425117308]
+position = Vector2(334, 627)
+input_pickable = true
+mass = 0.5
+can_sleep = false
+script = ExtResource("2_5v8l0")
+
+[node name="ColorRect" type="ColorRect" parent="SubViewportContainer/SubViewport/Objects/RigidBody2D8" unique_id=86283616]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -93.0
+offset_top = -37.0
+offset_right = -33.0
+offset_bottom = 23.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(3.5, 0.5)
+pivot_offset_ratio = Vector2(0.5, 0.5)
+mouse_filter = 2
+color = Color(0.9843137, 0.73333335, 0.14117648, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SubViewportContainer/SubViewport/Objects/RigidBody2D8" unique_id=1011696304]
+position = Vector2(-63, -8)
+scale = Vector2(3.5, 0.5)
+shape = SubResource("RectangleShape2D_51e2h")
+
+[connection signal="input_event" from="SubViewportContainer/SubViewport/Objects/RigidBody2D" to="SubViewportContainer/SubViewport/Objects/RigidBody2D" method="_on_input_event"]
+[connection signal="input_event" from="SubViewportContainer/SubViewport/Objects/RigidBody2D3" to="SubViewportContainer/SubViewport/Objects/RigidBody2D3" method="_on_input_event"]
+[connection signal="input_event" from="SubViewportContainer/SubViewport/Objects/RigidBody2D4" to="SubViewportContainer/SubViewport/Objects/RigidBody2D4" method="_on_input_event"]
+[connection signal="input_event" from="SubViewportContainer/SubViewport/Objects/RigidBody2D5" to="SubViewportContainer/SubViewport/Objects/RigidBody2D5" method="_on_input_event"]
+[connection signal="input_event" from="SubViewportContainer/SubViewport/Objects/RigidBody2D6" to="SubViewportContainer/SubViewport/Objects/RigidBody2D6" method="_on_input_event"]
+[connection signal="input_event" from="SubViewportContainer/SubViewport/Objects/RigidBody2D7" to="SubViewportContainer/SubViewport/Objects/RigidBody2D7" method="_on_input_event"]
+[connection signal="input_event" from="SubViewportContainer/SubViewport/Objects/RigidBody2D8" to="SubViewportContainer/SubViewport/Objects/RigidBody2D8" method="_on_input_event"]

@@ -1,32 +1,11 @@
 [gd_scene format=3 uid="uid://jcnlsaxu7mak"]
 
-[ext_resource type="Script" uid="uid://bf773hla6ca55" path="res://Scripts/Inventory.gd" id="1_81xng"]
-[ext_resource type="Script" uid="uid://cjl56v6vxytii" path="res://Scripts/Boot.gd" id="1_tumq0"]
-[ext_resource type="PackedScene" uid="uid://bqnodlhxkjkxm" path="res://Scenes/td_outside.tscn" id="2_81xng"]
-[ext_resource type="Script" uid="uid://b0o8xyki30gi8" path="res://Scripts/InventoryObject.gd" id="5_wqkje"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_tumq0"]
-size = Vector2(530, 680)
-
-[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_51e2h"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_51e2h"]
-size = Vector2(60, 60)
+[ext_resource type="PackedScene" uid="uid://l0cg84jp4bre" path="res://Scenes/outside.tscn" id="2_81xng"]
+[ext_resource type="PackedScene" uid="uid://dfbi3x303ug65" path="res://Scenes/inventory.tscn" id="3_6phgx"]
 
 [node name="Level" type="Node2D" unique_id=1480908935]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=785319097]
-
-[node name="Inventory" type="Node" parent="CanvasLayer" unique_id=937058998]
-script = ExtResource("1_81xng")
-move_force = 0.5
-
-[node name="Line2D" type="Line2D" parent="CanvasLayer/Inventory" unique_id=1812657916]
-z_index = 15
-position = Vector2(720, 161)
-points = PackedVector2Array(0, 0, 0, 34.955)
-width = 5.0
-default_color = Color(1, 0, 1, 1)
 
 [node name="Control" type="Control" parent="CanvasLayer" unique_id=314585851]
 layout_mode = 3
@@ -46,269 +25,26 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.16078432, 0.15686275, 0.19215687, 1)
 
-[node name="TDOutside" parent="CanvasLayer/Control" unique_id=934158623 instance=ExtResource("2_81xng")]
-layout_mode = 0
-anchors_preset = 0
-
-[node name="Inside" type="MarginContainer" parent="CanvasLayer/Control" unique_id=1398160966]
-custom_minimum_size = Vector2(560, 0)
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Control" unique_id=1516043746]
 layout_mode = 1
-anchors_preset = 11
-anchor_left = 1.0
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-grow_horizontal = 0
+grow_horizontal = 2
 grow_vertical = 2
-mouse_filter = 2
-theme_override_constants/margin_left = 10
+theme_override_constants/margin_left = 20
 theme_override_constants/margin_top = 20
 theme_override_constants/margin_right = 20
 theme_override_constants/margin_bottom = 20
 
-[node name="SubViewportContainer2" type="SubViewportContainer" parent="CanvasLayer/Control/Inside" unique_id=787729051]
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Control/MarginContainer" unique_id=1013108697]
 layout_mode = 2
-stretch = true
+theme_override_constants/separation = 20
+alignment = 1
 
-[node name="SubViewport" type="SubViewport" parent="CanvasLayer/Control/Inside/SubViewportContainer2" unique_id=673702124]
-handle_input_locally = false
-physics_object_picking = true
-gui_snap_controls_to_pixels = false
-size = Vector2i(530, 680)
-render_target_update_mode = 4
+[node name="OutsideManager" parent="CanvasLayer/Control/MarginContainer/HBoxContainer" unique_id=1854772268 instance=ExtResource("2_81xng")]
+layout_mode = 2
+size_flags_stretch_ratio = 1.26
 
-[node name="Background" type="ColorRect" parent="CanvasLayer/Control/Inside/SubViewportContainer2/SubViewport" unique_id=488784514]
-offset_right = 530.0
-offset_bottom = 680.0
-mouse_filter = 2
-color = Color(0.2, 0.24705882, 0.34509805, 1)
-
-[node name="Boot" type="Area2D" parent="CanvasLayer/Control/Inside/SubViewportContainer2/SubViewport" unique_id=1929363762]
-gravity_space_override = 1
-gravity_point_center = Vector2(0, 0)
-gravity_direction = Vector2(0, 0)
-gravity = 0.0
-linear_damp = 0.0
-script = ExtResource("1_tumq0")
-ship_force = Vector2(-2, 2)
-random_force = 0.25
-force = 100.0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CanvasLayer/Control/Inside/SubViewportContainer2/SubViewport/Boot" unique_id=458359758]
-position = Vector2(267, 339)
-shape = SubResource("RectangleShape2D_tumq0")
-
-[node name="BoundaryTop" type="StaticBody2D" parent="CanvasLayer/Control/Inside/SubViewportContainer2/SubViewport" unique_id=1117937148]
-position = Vector2(265, 0)
-rotation = 3.1415927
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CanvasLayer/Control/Inside/SubViewportContainer2/SubViewport/BoundaryTop" unique_id=858179944]
-shape = SubResource("WorldBoundaryShape2D_51e2h")
-
-[node name="BoundaryBottom" type="StaticBody2D" parent="CanvasLayer/Control/Inside/SubViewportContainer2/SubViewport" unique_id=399888305]
-position = Vector2(265, 680)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CanvasLayer/Control/Inside/SubViewportContainer2/SubViewport/BoundaryBottom" unique_id=167598118]
-shape = SubResource("WorldBoundaryShape2D_51e2h")
-
-[node name="BoundaryLeft" type="StaticBody2D" parent="CanvasLayer/Control/Inside/SubViewportContainer2/SubViewport" unique_id=681958575]
-position = Vector2(0, 320)
-rotation = 1.5707964
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CanvasLayer/Control/Inside/SubViewportContainer2/SubViewport/BoundaryLeft" unique_id=185623311]
-shape = SubResource("WorldBoundaryShape2D_51e2h")
-
-[node name="BoundaryRight" type="StaticBody2D" parent="CanvasLayer/Control/Inside/SubViewportContainer2/SubViewport" unique_id=498174080]
-position = Vector2(530, 320)
-rotation = -1.5707964
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CanvasLayer/Control/Inside/SubViewportContainer2/SubViewport/BoundaryRight" unique_id=317682208]
-shape = SubResource("WorldBoundaryShape2D_51e2h")
-
-[node name="Objects" type="Node" parent="CanvasLayer/Control/Inside/SubViewportContainer2/SubViewport" unique_id=944497030]
-
-[node name="RigidBody2D" type="RigidBody2D" parent="CanvasLayer/Control/Inside/SubViewportContainer2/SubViewport/Objects" unique_id=1394855109]
-position = Vector2(93, 122)
-input_pickable = true
-can_sleep = false
-script = ExtResource("5_wqkje")
-
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer/Control/Inside/SubViewportContainer2/SubViewport/Objects/RigidBody2D" unique_id=1603454824]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -30.0
-offset_top = -30.0
-offset_right = 30.0
-offset_bottom = 30.0
-grow_horizontal = 2
-grow_vertical = 2
-pivot_offset_ratio = Vector2(1, 0)
-mouse_filter = 2
-color = Color(0.9843137, 0.73333335, 0.6784314, 1)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CanvasLayer/Control/Inside/SubViewportContainer2/SubViewport/Objects/RigidBody2D" unique_id=1493019451]
-shape = SubResource("RectangleShape2D_51e2h")
-
-[node name="RigidBody2D3" type="RigidBody2D" parent="CanvasLayer/Control/Inside/SubViewportContainer2/SubViewport/Objects" unique_id=562484209]
-position = Vector2(262, 193)
-input_pickable = true
-can_sleep = false
-script = ExtResource("5_wqkje")
-
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer/Control/Inside/SubViewportContainer2/SubViewport/Objects/RigidBody2D3" unique_id=21402730]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -30.0
-offset_top = -30.0
-offset_right = 30.0
-offset_bottom = 30.0
-grow_horizontal = 2
-grow_vertical = 2
-pivot_offset_ratio = Vector2(1, 0)
-mouse_filter = 2
-color = Color(0.9843137, 0.73333335, 0.6784314, 1)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CanvasLayer/Control/Inside/SubViewportContainer2/SubViewport/Objects/RigidBody2D3" unique_id=1746415512]
-shape = SubResource("RectangleShape2D_51e2h")
-
-[node name="RigidBody2D4" type="RigidBody2D" parent="CanvasLayer/Control/Inside/SubViewportContainer2/SubViewport/Objects" unique_id=834068976]
-position = Vector2(128, 254)
-input_pickable = true
-can_sleep = false
-script = ExtResource("5_wqkje")
-
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer/Control/Inside/SubViewportContainer2/SubViewport/Objects/RigidBody2D4" unique_id=309139165]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -30.0
-offset_top = -30.0
-offset_right = 30.0
-offset_bottom = 30.0
-grow_horizontal = 2
-grow_vertical = 2
-pivot_offset_ratio = Vector2(1, 0)
-mouse_filter = 2
-color = Color(0.9843137, 0.73333335, 0.6784314, 1)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CanvasLayer/Control/Inside/SubViewportContainer2/SubViewport/Objects/RigidBody2D4" unique_id=1836439921]
-shape = SubResource("RectangleShape2D_51e2h")
-
-[node name="RigidBody2D5" type="RigidBody2D" parent="CanvasLayer/Control/Inside/SubViewportContainer2/SubViewport/Objects" unique_id=1980641674]
-position = Vector2(97, 591)
-input_pickable = true
-mass = 4.0
-gravity_scale = 0.69
-can_sleep = false
-linear_damp = 0.05
-script = ExtResource("5_wqkje")
-
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer/Control/Inside/SubViewportContainer2/SubViewport/Objects/RigidBody2D5" unique_id=1845838364]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -30.0
-offset_top = -30.0
-offset_right = 30.0
-offset_bottom = 30.0
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(2, 2)
-pivot_offset_ratio = Vector2(0.5, 0.5)
-mouse_filter = 2
-color = Color(0.9843137, 0, 0.6784314, 1)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CanvasLayer/Control/Inside/SubViewportContainer2/SubViewport/Objects/RigidBody2D5" unique_id=1290553399]
-scale = Vector2(2, 2)
-shape = SubResource("RectangleShape2D_51e2h")
-
-[node name="RigidBody2D6" type="RigidBody2D" parent="CanvasLayer/Control/Inside/SubViewportContainer2/SubViewport/Objects" unique_id=1869398261]
-position = Vector2(211, 426)
-input_pickable = true
-mass = 4.0
-gravity_scale = 0.69
-can_sleep = false
-linear_damp = 0.05
-script = ExtResource("5_wqkje")
-
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer/Control/Inside/SubViewportContainer2/SubViewport/Objects/RigidBody2D6" unique_id=2114453600]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -30.0
-offset_top = -30.0
-offset_right = 30.0
-offset_bottom = 30.0
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(2, 2)
-pivot_offset_ratio = Vector2(0.5, 0.5)
-mouse_filter = 2
-color = Color(0.9843137, 0, 0.6784314, 1)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CanvasLayer/Control/Inside/SubViewportContainer2/SubViewport/Objects/RigidBody2D6" unique_id=137578648]
-scale = Vector2(2, 2)
-shape = SubResource("RectangleShape2D_51e2h")
-
-[node name="RigidBody2D7" type="RigidBody2D" parent="CanvasLayer/Control/Inside/SubViewportContainer2/SubViewport/Objects" unique_id=796122910]
-position = Vector2(471, 424)
-input_pickable = true
-mass = 0.5
-can_sleep = false
-script = ExtResource("5_wqkje")
-
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer/Control/Inside/SubViewportContainer2/SubViewport/Objects/RigidBody2D7" unique_id=1556427943]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -93.0
-offset_top = -37.0
-offset_right = -33.0
-offset_bottom = 23.0
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(3.5, 0.5)
-pivot_offset_ratio = Vector2(0.5, 0.5)
-mouse_filter = 2
-color = Color(0.9843137, 0.73333335, 0.14117648, 1)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CanvasLayer/Control/Inside/SubViewportContainer2/SubViewport/Objects/RigidBody2D7" unique_id=1091299684]
-position = Vector2(-63, -8)
-scale = Vector2(3.5, 0.5)
-shape = SubResource("RectangleShape2D_51e2h")
-
-[node name="RigidBody2D8" type="RigidBody2D" parent="CanvasLayer/Control/Inside/SubViewportContainer2/SubViewport/Objects" unique_id=1196585451]
-position = Vector2(334, 627)
-input_pickable = true
-mass = 0.5
-can_sleep = false
-script = ExtResource("5_wqkje")
-
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer/Control/Inside/SubViewportContainer2/SubViewport/Objects/RigidBody2D8" unique_id=1026083143]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -93.0
-offset_top = -37.0
-offset_right = -33.0
-offset_bottom = 23.0
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(3.5, 0.5)
-pivot_offset_ratio = Vector2(0.5, 0.5)
-mouse_filter = 2
-color = Color(0.9843137, 0.73333335, 0.14117648, 1)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CanvasLayer/Control/Inside/SubViewportContainer2/SubViewport/Objects/RigidBody2D8" unique_id=438487239]
-position = Vector2(-63, -8)
-scale = Vector2(3.5, 0.5)
-shape = SubResource("RectangleShape2D_51e2h")
-
-[connection signal="input_event" from="CanvasLayer/Control/Inside/SubViewportContainer2/SubViewport/Objects/RigidBody2D" to="CanvasLayer/Control/Inside/SubViewportContainer2/SubViewport/Objects/RigidBody2D" method="_on_input_event"]
-[connection signal="input_event" from="CanvasLayer/Control/Inside/SubViewportContainer2/SubViewport/Objects/RigidBody2D3" to="CanvasLayer/Control/Inside/SubViewportContainer2/SubViewport/Objects/RigidBody2D3" method="_on_input_event"]
-[connection signal="input_event" from="CanvasLayer/Control/Inside/SubViewportContainer2/SubViewport/Objects/RigidBody2D4" to="CanvasLayer/Control/Inside/SubViewportContainer2/SubViewport/Objects/RigidBody2D4" method="_on_input_event"]
-[connection signal="input_event" from="CanvasLayer/Control/Inside/SubViewportContainer2/SubViewport/Objects/RigidBody2D5" to="CanvasLayer/Control/Inside/SubViewportContainer2/SubViewport/Objects/RigidBody2D5" method="_on_input_event"]
-[connection signal="input_event" from="CanvasLayer/Control/Inside/SubViewportContainer2/SubViewport/Objects/RigidBody2D6" to="CanvasLayer/Control/Inside/SubViewportContainer2/SubViewport/Objects/RigidBody2D6" method="_on_input_event"]
-[connection signal="input_event" from="CanvasLayer/Control/Inside/SubViewportContainer2/SubViewport/Objects/RigidBody2D7" to="CanvasLayer/Control/Inside/SubViewportContainer2/SubViewport/Objects/RigidBody2D7" method="_on_input_event"]
-[connection signal="input_event" from="CanvasLayer/Control/Inside/SubViewportContainer2/SubViewport/Objects/RigidBody2D8" to="CanvasLayer/Control/Inside/SubViewportContainer2/SubViewport/Objects/RigidBody2D8" method="_on_input_event"]
+[node name="InventoryManager" parent="CanvasLayer/Control/MarginContainer/HBoxContainer" unique_id=1086248823 instance=ExtResource("3_6phgx")]
+layout_mode = 2
