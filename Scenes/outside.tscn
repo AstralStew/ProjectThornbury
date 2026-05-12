@@ -3,7 +3,6 @@
 [ext_resource type="Script" uid="uid://ch5c3b445iqyr" path="res://Scripts/Ship.gd" id="1_a5lob"]
 [ext_resource type="Script" uid="uid://di153cmafhifq" path="res://Scripts/OutsideManager.gd" id="1_dxilr"]
 [ext_resource type="PackedScene" uid="uid://c14fl8nyl0y11" path="res://Scenes/OutsidePrefabs/collectable_1.tscn" id="2_hhqqv"]
-[ext_resource type="Script" uid="uid://bu7nan430podd" path="res://Scripts/Collectable.gd" id="3_ao2d0"]
 [ext_resource type="Texture2D" uid="uid://bs8wppq8ctccy" path="res://Assets/Images/Ships/Ships_Sheet.png" id="3_slk23"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_6phgx"]
@@ -17,9 +16,6 @@ seamless = true
 normalize = false
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_51e2h"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_dxilr"]
-size = Vector2(12, 12)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tumq0"]
 radius = 9.0
@@ -97,385 +93,56 @@ shape = SubResource("WorldBoundaryShape2D_51e2h")
 [node name="CollectableA" parent="SubViewportContainer/SubViewport/Collectables" unique_id=1843489661 instance=ExtResource("2_hhqqv")]
 position = Vector2(237, 300)
 
-[node name="Collectable2" type="Area2D" parent="SubViewportContainer/SubViewport/Collectables" unique_id=1569956477]
-position = Vector2(176, 344)
-script = ExtResource("3_ao2d0")
-metadata/_custom_type_script = "uid://bu7nan430podd"
+[node name="CollectableA2" parent="SubViewportContainer/SubViewport/Collectables" unique_id=1799274168 instance=ExtResource("2_hhqqv")]
+position = Vector2(160, 245)
 
-[node name="ColorRect11" type="ColorRect" parent="SubViewportContainer/SubViewport/Collectables/Collectable2" unique_id=1769307685]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -6.0
-offset_top = -6.0
-offset_right = 6.0
-offset_bottom = 6.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.9843137, 0.73333335, 0.6784314, 1)
+[node name="CollectableA3" parent="SubViewportContainer/SubViewport/Collectables" unique_id=1647122767 instance=ExtResource("2_hhqqv")]
+position = Vector2(150, 129)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="SubViewportContainer/SubViewport/Collectables/Collectable2" unique_id=1691507654]
-shape = SubResource("RectangleShape2D_dxilr")
+[node name="CollectableA4" parent="SubViewportContainer/SubViewport/Collectables" unique_id=1953385804 instance=ExtResource("2_hhqqv")]
+position = Vector2(351, 129)
 
-[node name="Collectable3" type="Area2D" parent="SubViewportContainer/SubViewport/Collectables" unique_id=486891467]
-position = Vector2(78, 218)
-script = ExtResource("3_ao2d0")
-metadata/_custom_type_script = "uid://bu7nan430podd"
+[node name="CollectableA5" parent="SubViewportContainer/SubViewport/Collectables" unique_id=1167645312 instance=ExtResource("2_hhqqv")]
+position = Vector2(341, 278)
 
-[node name="ColorRect11" type="ColorRect" parent="SubViewportContainer/SubViewport/Collectables/Collectable3" unique_id=1800470411]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -6.0
-offset_top = -6.0
-offset_right = 6.0
-offset_bottom = 6.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.9843137, 0.73333335, 0.6784314, 1)
+[node name="CollectableA6" parent="SubViewportContainer/SubViewport/Collectables" unique_id=1192065373 instance=ExtResource("2_hhqqv")]
+position = Vector2(538, 208)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="SubViewportContainer/SubViewport/Collectables/Collectable3" unique_id=1270380150]
-shape = SubResource("RectangleShape2D_dxilr")
+[node name="CollectableA7" parent="SubViewportContainer/SubViewport/Collectables" unique_id=332122673 instance=ExtResource("2_hhqqv")]
+position = Vector2(484, 367)
 
-[node name="Collectable4" type="Area2D" parent="SubViewportContainer/SubViewport/Collectables" unique_id=63174618]
-position = Vector2(103, 66)
-script = ExtResource("3_ao2d0")
-metadata/_custom_type_script = "uid://bu7nan430podd"
+[node name="CollectableA8" parent="SubViewportContainer/SubViewport/Collectables" unique_id=2142628700 instance=ExtResource("2_hhqqv")]
+position = Vector2(289, 444)
 
-[node name="ColorRect11" type="ColorRect" parent="SubViewportContainer/SubViewport/Collectables/Collectable4" unique_id=741349003]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -6.0
-offset_top = -6.0
-offset_right = 6.0
-offset_bottom = 6.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.9843137, 0.73333335, 0.6784314, 1)
+[node name="CollectableA9" parent="SubViewportContainer/SubViewport/Collectables" unique_id=223335880 instance=ExtResource("2_hhqqv")]
+position = Vector2(70, 422)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="SubViewportContainer/SubViewport/Collectables/Collectable4" unique_id=1453886170]
-shape = SubResource("RectangleShape2D_dxilr")
+[node name="CollectableA10" parent="SubViewportContainer/SubViewport/Collectables" unique_id=663620473 instance=ExtResource("2_hhqqv")]
+position = Vector2(140, 534)
 
-[node name="Collectable5" type="Area2D" parent="SubViewportContainer/SubViewport/Collectables" unique_id=956457833]
-position = Vector2(211, 150)
-script = ExtResource("3_ao2d0")
-metadata/_custom_type_script = "uid://bu7nan430podd"
+[node name="CollectableA11" parent="SubViewportContainer/SubViewport/Collectables" unique_id=448294212 instance=ExtResource("2_hhqqv")]
+position = Vector2(178, 398)
 
-[node name="ColorRect11" type="ColorRect" parent="SubViewportContainer/SubViewport/Collectables/Collectable5" unique_id=1334123544]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -6.0
-offset_top = -6.0
-offset_right = 6.0
-offset_bottom = 6.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.9843137, 0.73333335, 0.6784314, 1)
+[node name="CollectableA12" parent="SubViewportContainer/SubViewport/Collectables" unique_id=1235448502 instance=ExtResource("2_hhqqv")]
+position = Vector2(70, 167)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="SubViewportContainer/SubViewport/Collectables/Collectable5" unique_id=1472842480]
-shape = SubResource("RectangleShape2D_dxilr")
+[node name="CollectableA13" parent="SubViewportContainer/SubViewport/Collectables" unique_id=866034701 instance=ExtResource("2_hhqqv")]
+position = Vector2(528, 77)
 
-[node name="Collectable6" type="Area2D" parent="SubViewportContainer/SubViewport/Collectables" unique_id=1786392111]
-position = Vector2(323, 82)
-script = ExtResource("3_ao2d0")
-metadata/_custom_type_script = "uid://bu7nan430podd"
+[node name="CollectableA14" parent="SubViewportContainer/SubViewport/Collectables" unique_id=1416639017 instance=ExtResource("2_hhqqv")]
+position = Vector2(594, 444)
 
-[node name="ColorRect11" type="ColorRect" parent="SubViewportContainer/SubViewport/Collectables/Collectable6" unique_id=1221144672]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -6.0
-offset_top = -6.0
-offset_right = 6.0
-offset_bottom = 6.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.9843137, 0.73333335, 0.6784314, 1)
+[node name="CollectableA15" parent="SubViewportContainer/SubViewport/Collectables" unique_id=1003250793 instance=ExtResource("2_hhqqv")]
+position = Vector2(484, 507)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="SubViewportContainer/SubViewport/Collectables/Collectable6" unique_id=1027724692]
-shape = SubResource("RectangleShape2D_dxilr")
+[node name="CollectableA16" parent="SubViewportContainer/SubViewport/Collectables" unique_id=332032144 instance=ExtResource("2_hhqqv")]
+position = Vector2(604, 611)
 
-[node name="Collectable7" type="Area2D" parent="SubViewportContainer/SubViewport/Collectables" unique_id=137143759]
-position = Vector2(366, 166)
-script = ExtResource("3_ao2d0")
-metadata/_custom_type_script = "uid://bu7nan430podd"
+[node name="CollectableA17" parent="SubViewportContainer/SubViewport/Collectables" unique_id=364024363 instance=ExtResource("2_hhqqv")]
+position = Vector2(367, 367)
 
-[node name="ColorRect11" type="ColorRect" parent="SubViewportContainer/SubViewport/Collectables/Collectable7" unique_id=571469239]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -6.0
-offset_top = -6.0
-offset_right = 6.0
-offset_bottom = 6.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.9843137, 0.73333335, 0.6784314, 1)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="SubViewportContainer/SubViewport/Collectables/Collectable7" unique_id=310477144]
-shape = SubResource("RectangleShape2D_dxilr")
-
-[node name="Collectable8" type="Area2D" parent="SubViewportContainer/SubViewport/Collectables" unique_id=1117924477]
-position = Vector2(429, 131)
-script = ExtResource("3_ao2d0")
-metadata/_custom_type_script = "uid://bu7nan430podd"
-
-[node name="ColorRect11" type="ColorRect" parent="SubViewportContainer/SubViewport/Collectables/Collectable8" unique_id=96680415]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -6.0
-offset_top = -6.0
-offset_right = 6.0
-offset_bottom = 6.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.9843137, 0.73333335, 0.6784314, 1)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="SubViewportContainer/SubViewport/Collectables/Collectable8" unique_id=1664489332]
-shape = SubResource("RectangleShape2D_dxilr")
-
-[node name="Collectable9" type="Area2D" parent="SubViewportContainer/SubViewport/Collectables" unique_id=1049291024]
-position = Vector2(616, 84)
-script = ExtResource("3_ao2d0")
-metadata/_custom_type_script = "uid://bu7nan430podd"
-
-[node name="ColorRect11" type="ColorRect" parent="SubViewportContainer/SubViewport/Collectables/Collectable9" unique_id=1794765939]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -6.0
-offset_top = -6.0
-offset_right = 6.0
-offset_bottom = 6.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.9843137, 0.73333335, 0.6784314, 1)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="SubViewportContainer/SubViewport/Collectables/Collectable9" unique_id=1603186878]
-shape = SubResource("RectangleShape2D_dxilr")
-
-[node name="Collectable10" type="Area2D" parent="SubViewportContainer/SubViewport/Collectables" unique_id=177056826]
-position = Vector2(498, 236)
-script = ExtResource("3_ao2d0")
-metadata/_custom_type_script = "uid://bu7nan430podd"
-
-[node name="ColorRect11" type="ColorRect" parent="SubViewportContainer/SubViewport/Collectables/Collectable10" unique_id=791685180]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -6.0
-offset_top = -6.0
-offset_right = 6.0
-offset_bottom = 6.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.9843137, 0.73333335, 0.6784314, 1)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="SubViewportContainer/SubViewport/Collectables/Collectable10" unique_id=242787167]
-shape = SubResource("RectangleShape2D_dxilr")
-
-[node name="Collectable11" type="Area2D" parent="SubViewportContainer/SubViewport/Collectables" unique_id=886583147]
-position = Vector2(592, 299)
-script = ExtResource("3_ao2d0")
-metadata/_custom_type_script = "uid://bu7nan430podd"
-
-[node name="ColorRect11" type="ColorRect" parent="SubViewportContainer/SubViewport/Collectables/Collectable11" unique_id=677034463]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -6.0
-offset_top = -6.0
-offset_right = 6.0
-offset_bottom = 6.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.9843137, 0.73333335, 0.6784314, 1)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="SubViewportContainer/SubViewport/Collectables/Collectable11" unique_id=1205195348]
-shape = SubResource("RectangleShape2D_dxilr")
-
-[node name="Collectable12" type="Area2D" parent="SubViewportContainer/SubViewport/Collectables" unique_id=1401407865]
-position = Vector2(532, 388)
-script = ExtResource("3_ao2d0")
-metadata/_custom_type_script = "uid://bu7nan430podd"
-
-[node name="ColorRect11" type="ColorRect" parent="SubViewportContainer/SubViewport/Collectables/Collectable12" unique_id=763856231]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -6.0
-offset_top = -6.0
-offset_right = 6.0
-offset_bottom = 6.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.9843137, 0.73333335, 0.6784314, 1)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="SubViewportContainer/SubViewport/Collectables/Collectable12" unique_id=1202732718]
-shape = SubResource("RectangleShape2D_dxilr")
-
-[node name="Collectable13" type="Area2D" parent="SubViewportContainer/SubViewport/Collectables" unique_id=33858353]
-position = Vector2(400, 355)
-script = ExtResource("3_ao2d0")
-metadata/_custom_type_script = "uid://bu7nan430podd"
-
-[node name="ColorRect11" type="ColorRect" parent="SubViewportContainer/SubViewport/Collectables/Collectable13" unique_id=727364368]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -6.0
-offset_top = -6.0
-offset_right = 6.0
-offset_bottom = 6.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.9843137, 0.73333335, 0.6784314, 1)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="SubViewportContainer/SubViewport/Collectables/Collectable13" unique_id=5014413]
-shape = SubResource("RectangleShape2D_dxilr")
-
-[node name="Collectable14" type="Area2D" parent="SubViewportContainer/SubViewport/Collectables" unique_id=123177136]
-position = Vector2(329, 386)
-script = ExtResource("3_ao2d0")
-metadata/_custom_type_script = "uid://bu7nan430podd"
-
-[node name="ColorRect11" type="ColorRect" parent="SubViewportContainer/SubViewport/Collectables/Collectable14" unique_id=2091619125]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -6.0
-offset_top = -6.0
-offset_right = 6.0
-offset_bottom = 6.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.9843137, 0.73333335, 0.6784314, 1)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="SubViewportContainer/SubViewport/Collectables/Collectable14" unique_id=1834226805]
-shape = SubResource("RectangleShape2D_dxilr")
-
-[node name="Collectable15" type="Area2D" parent="SubViewportContainer/SubViewport/Collectables" unique_id=1736496430]
-position = Vector2(360, 509)
-script = ExtResource("3_ao2d0")
-metadata/_custom_type_script = "uid://bu7nan430podd"
-
-[node name="ColorRect11" type="ColorRect" parent="SubViewportContainer/SubViewport/Collectables/Collectable15" unique_id=1829722920]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -6.0
-offset_top = -6.0
-offset_right = 6.0
-offset_bottom = 6.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.9843137, 0.73333335, 0.6784314, 1)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="SubViewportContainer/SubViewport/Collectables/Collectable15" unique_id=1450102307]
-shape = SubResource("RectangleShape2D_dxilr")
-
-[node name="Collectable17" type="Area2D" parent="SubViewportContainer/SubViewport/Collectables" unique_id=233603061]
-position = Vector2(529, 568)
-script = ExtResource("3_ao2d0")
-metadata/_custom_type_script = "uid://bu7nan430podd"
-
-[node name="ColorRect11" type="ColorRect" parent="SubViewportContainer/SubViewport/Collectables/Collectable17" unique_id=32914002]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -6.0
-offset_top = -6.0
-offset_right = 6.0
-offset_bottom = 6.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.9843137, 0.73333335, 0.6784314, 1)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="SubViewportContainer/SubViewport/Collectables/Collectable17" unique_id=686678265]
-shape = SubResource("RectangleShape2D_dxilr")
-
-[node name="Collectable18" type="Area2D" parent="SubViewportContainer/SubViewport/Collectables" unique_id=1049700959]
-position = Vector2(357, 645)
-script = ExtResource("3_ao2d0")
-metadata/_custom_type_script = "uid://bu7nan430podd"
-
-[node name="ColorRect11" type="ColorRect" parent="SubViewportContainer/SubViewport/Collectables/Collectable18" unique_id=1896346154]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -6.0
-offset_top = -6.0
-offset_right = 6.0
-offset_bottom = 6.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.9843137, 0.73333335, 0.6784314, 1)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="SubViewportContainer/SubViewport/Collectables/Collectable18" unique_id=2050329905]
-shape = SubResource("RectangleShape2D_dxilr")
-
-[node name="Collectable19" type="Area2D" parent="SubViewportContainer/SubViewport/Collectables" unique_id=2134889010]
-position = Vector2(267, 554)
-script = ExtResource("3_ao2d0")
-metadata/_custom_type_script = "uid://bu7nan430podd"
-
-[node name="ColorRect11" type="ColorRect" parent="SubViewportContainer/SubViewport/Collectables/Collectable19" unique_id=1492993387]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -6.0
-offset_top = -6.0
-offset_right = 6.0
-offset_bottom = 6.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.9843137, 0.73333335, 0.6784314, 1)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="SubViewportContainer/SubViewport/Collectables/Collectable19" unique_id=1884125770]
-shape = SubResource("RectangleShape2D_dxilr")
-
-[node name="Collectable20" type="Area2D" parent="SubViewportContainer/SubViewport/Collectables" unique_id=902573694]
-position = Vector2(119, 547)
-script = ExtResource("3_ao2d0")
-metadata/_custom_type_script = "uid://bu7nan430podd"
-
-[node name="ColorRect11" type="ColorRect" parent="SubViewportContainer/SubViewport/Collectables/Collectable20" unique_id=725890194]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -6.0
-offset_top = -6.0
-offset_right = 6.0
-offset_bottom = 6.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.9843137, 0.73333335, 0.6784314, 1)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="SubViewportContainer/SubViewport/Collectables/Collectable20" unique_id=1911711200]
-shape = SubResource("RectangleShape2D_dxilr")
-
-[node name="Collectable21" type="Area2D" parent="SubViewportContainer/SubViewport/Collectables" unique_id=108415466]
-position = Vector2(84, 446)
-script = ExtResource("3_ao2d0")
-metadata/_custom_type_script = "uid://bu7nan430podd"
-
-[node name="ColorRect11" type="ColorRect" parent="SubViewportContainer/SubViewport/Collectables/Collectable21" unique_id=1221201983]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -6.0
-offset_top = -6.0
-offset_right = 6.0
-offset_bottom = 6.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.9843137, 0.73333335, 0.6784314, 1)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="SubViewportContainer/SubViewport/Collectables/Collectable21" unique_id=1102916253]
-shape = SubResource("RectangleShape2D_dxilr")
+[node name="CollectableA18" parent="SubViewportContainer/SubViewport/Collectables" unique_id=1594781602 instance=ExtResource("2_hhqqv")]
+position = Vector2(247, 67)
 
 [node name="Ship" type="CharacterBody2D" parent="SubViewportContainer/SubViewport" unique_id=632637021]
 position = Vector2(331, 558)
@@ -492,23 +159,3 @@ region_rect = Rect2(90, 5, 40, 33)
 position = Vector2(0, -3)
 rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_tumq0")
-
-[connection signal="body_entered" from="SubViewportContainer/SubViewport/Collectables/Collectable2" to="SubViewportContainer/SubViewport/Collectables/Collectable2" method="_on_body_entered"]
-[connection signal="body_entered" from="SubViewportContainer/SubViewport/Collectables/Collectable3" to="SubViewportContainer/SubViewport/Collectables/Collectable3" method="_on_body_entered"]
-[connection signal="body_entered" from="SubViewportContainer/SubViewport/Collectables/Collectable4" to="SubViewportContainer/SubViewport/Collectables/Collectable4" method="_on_body_entered"]
-[connection signal="body_entered" from="SubViewportContainer/SubViewport/Collectables/Collectable5" to="SubViewportContainer/SubViewport/Collectables/Collectable5" method="_on_body_entered"]
-[connection signal="body_entered" from="SubViewportContainer/SubViewport/Collectables/Collectable6" to="SubViewportContainer/SubViewport/Collectables/Collectable6" method="_on_body_entered"]
-[connection signal="body_entered" from="SubViewportContainer/SubViewport/Collectables/Collectable7" to="SubViewportContainer/SubViewport/Collectables/Collectable7" method="_on_body_entered"]
-[connection signal="body_entered" from="SubViewportContainer/SubViewport/Collectables/Collectable8" to="SubViewportContainer/SubViewport/Collectables/Collectable8" method="_on_body_entered"]
-[connection signal="body_entered" from="SubViewportContainer/SubViewport/Collectables/Collectable9" to="SubViewportContainer/SubViewport/Collectables/Collectable9" method="_on_body_entered"]
-[connection signal="body_entered" from="SubViewportContainer/SubViewport/Collectables/Collectable10" to="SubViewportContainer/SubViewport/Collectables/Collectable10" method="_on_body_entered"]
-[connection signal="body_entered" from="SubViewportContainer/SubViewport/Collectables/Collectable11" to="SubViewportContainer/SubViewport/Collectables/Collectable11" method="_on_body_entered"]
-[connection signal="body_entered" from="SubViewportContainer/SubViewport/Collectables/Collectable12" to="SubViewportContainer/SubViewport/Collectables/Collectable12" method="_on_body_entered"]
-[connection signal="body_entered" from="SubViewportContainer/SubViewport/Collectables/Collectable13" to="SubViewportContainer/SubViewport/Collectables/Collectable13" method="_on_body_entered"]
-[connection signal="body_entered" from="SubViewportContainer/SubViewport/Collectables/Collectable14" to="SubViewportContainer/SubViewport/Collectables/Collectable14" method="_on_body_entered"]
-[connection signal="body_entered" from="SubViewportContainer/SubViewport/Collectables/Collectable15" to="SubViewportContainer/SubViewport/Collectables/Collectable15" method="_on_body_entered"]
-[connection signal="body_entered" from="SubViewportContainer/SubViewport/Collectables/Collectable17" to="SubViewportContainer/SubViewport/Collectables/Collectable17" method="_on_body_entered"]
-[connection signal="body_entered" from="SubViewportContainer/SubViewport/Collectables/Collectable18" to="SubViewportContainer/SubViewport/Collectables/Collectable18" method="_on_body_entered"]
-[connection signal="body_entered" from="SubViewportContainer/SubViewport/Collectables/Collectable19" to="SubViewportContainer/SubViewport/Collectables/Collectable19" method="_on_body_entered"]
-[connection signal="body_entered" from="SubViewportContainer/SubViewport/Collectables/Collectable20" to="SubViewportContainer/SubViewport/Collectables/Collectable20" method="_on_body_entered"]
-[connection signal="body_entered" from="SubViewportContainer/SubViewport/Collectables/Collectable21" to="SubViewportContainer/SubViewport/Collectables/Collectable21" method="_on_body_entered"]

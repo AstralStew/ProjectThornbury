@@ -95,7 +95,6 @@ position = Vector2(270, 92)
 collision_layer = 1024
 collision_mask = 256
 monitorable = false
-linear_damp_space_override = 3
 linear_damp = 100.0
 
 [node name="Chute" type="ColorRect" parent="SubViewportContainer/SubViewport/Chute" unique_id=1497257672]

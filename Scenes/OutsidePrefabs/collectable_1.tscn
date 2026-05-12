@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://c14fl8nyl0y11"]
 
 [ext_resource type="Script" uid="uid://bu7nan430podd" path="res://Scripts/Collectable.gd" id="1_2m8oy"]
+[ext_resource type="Texture2D" uid="uid://bpgchkri1h4x8" path="res://Assets/Images/Resources/Small_Map/RockResouce_Small_Map.png" id="2_40w81"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dxilr"]
 size = Vector2(12, 12)
@@ -9,17 +10,8 @@ size = Vector2(12, 12)
 script = ExtResource("1_2m8oy")
 metadata/_custom_type_script = "uid://bu7nan430podd"
 
-[node name="ColorRect11" type="ColorRect" parent="." unique_id=38944332]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -6.0
-offset_top = -6.0
-offset_right = 6.0
-offset_bottom = 6.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.9843137, 0.73333335, 0.6784314, 1)
+[node name="RockResouceSmallMap" type="Sprite2D" parent="." unique_id=201365052]
+texture = ExtResource("2_40w81")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=634640248]
 shape = SubResource("RectangleShape2D_dxilr")

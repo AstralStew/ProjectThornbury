@@ -13,21 +13,6 @@ input_pickable = true
 can_sleep = false
 script = ExtResource("1_gdkm1")
 
-[node name="ColorRect" type="ColorRect" parent="." unique_id=1008728291]
-visible = false
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -30.0
-offset_top = -30.0
-offset_right = 30.0
-offset_bottom = 30.0
-grow_horizontal = 2
-grow_vertical = 2
-pivot_offset_ratio = Vector2(1, 0)
-mouse_filter = 2
-color = Color(0.9843137, 0.73333335, 0.6784314, 1)
-
 [node name="RockResourceSmall" type="Sprite2D" parent="." unique_id=1882922353]
 texture = ExtResource("2_0nati")
 
