@@ -2,6 +2,9 @@
 
 [ext_resource type="PackedScene" uid="uid://c14fl8nyl0y11" path="res://Scenes/OutsidePrefabs/collectable_1.tscn" id="1_tmlh5"]
 [ext_resource type="Texture2D" uid="uid://rpi66dfpi25r" path="res://Assets/Images/City/Building1.png" id="2_vx186"]
+[ext_resource type="Texture2D" uid="uid://bilt7cu3ivxxr" path="res://Assets/Images/City/Building40.png" id="3_7asov"]
+[ext_resource type="Texture2D" uid="uid://c0sl1u4dvsqni" path="res://Assets/Images/City/Building64.png" id="4_80ic5"]
+[ext_resource type="Texture2D" uid="uid://b23ulwq6eo2yy" path="res://Assets/Images/City/Building160.png" id="5_65i52"]
 
 [sub_resource type="Gradient" id="Gradient_slk23"]
 interpolation_mode = 2
@@ -545,3 +548,30 @@ texture = ExtResource("2_vx186")
 texture_filter = 1
 position = Vector2(-112, 613)
 texture = ExtResource("2_vx186")
+
+[node name="Building40" type="Sprite2D" parent="." unique_id=1285642164]
+position = Vector2(119, 347)
+texture = ExtResource("3_7asov")
+
+[node name="Building64" type="Sprite2D" parent="." unique_id=381255100]
+position = Vector2(260, 301)
+texture = ExtResource("4_80ic5")
+
+[node name="Building160" type="Sprite2D" parent="." unique_id=1289763491]
+position = Vector2(428, 335)
+texture = ExtResource("5_65i52")
+
+[node name="Building41" type="Sprite2D" parent="." unique_id=40788786]
+texture_filter = 1
+position = Vector2(121, 182)
+texture = ExtResource("3_7asov")
+
+[node name="Building65" type="Sprite2D" parent="." unique_id=1483348009]
+texture_filter = 1
+position = Vector2(262, 136)
+texture = ExtResource("4_80ic5")
+
+[node name="Building161" type="Sprite2D" parent="." unique_id=81093589]
+texture_filter = 1
+position = Vector2(430, 170)
+texture = ExtResource("5_65i52")
