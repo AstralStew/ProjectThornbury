@@ -149,7 +149,7 @@ shape = SubResource("WorldBoundaryShape2D_51e2h")
 [node name="Collectables" type="Node2D" parent="." unique_id=9974128]
 
 [node name="CollectableCloud" type="Node2D" parent="Collectables" unique_id=622519073]
-position = Vector2(627, 1233)
+position = Vector2(425, 785)
 
 [node name="CollectableA" parent="Collectables/CollectableCloud" unique_id=1843489661 instance=ExtResource("1_tmlh5")]
 texture_filter = 1
@@ -299,7 +299,7 @@ texture_filter = 1
 position = Vector2(-86, -244)
 
 [node name="CollectableCloud2" type="Node2D" parent="Collectables" unique_id=1246567609]
-position = Vector2(808, -1028)
+position = Vector2(554, -788)
 
 [node name="CollectableA" parent="Collectables/CollectableCloud2" unique_id=1363189793 instance=ExtResource("1_tmlh5")]
 texture_filter = 1
@@ -374,7 +374,7 @@ texture_filter = 1
 position = Vector2(-86, -244)
 
 [node name="CollectableCloud3" type="Node2D" parent="Collectables" unique_id=371337259]
-position = Vector2(-782, -834)
+position = Vector2(-495, -565)
 
 [node name="CollectableA" parent="Collectables/CollectableCloud3" unique_id=1872265351 instance=ExtResource("1_tmlh5")]
 texture_filter = 1
@@ -449,7 +449,7 @@ texture_filter = 1
 position = Vector2(-86, -244)
 
 [node name="CollectableCloud4" type="Node2D" parent="Collectables" unique_id=1067136793]
-position = Vector2(-868, 584)
+position = Vector2(-584, 372)
 
 [node name="CollectableA" parent="Collectables/CollectableCloud4" unique_id=1114914014 instance=ExtResource("1_tmlh5")]
 texture_filter = 1
@@ -534,14 +534,14 @@ texture = ExtResource("2_vx186")
 
 [node name="Building3" type="Sprite2D" parent="." unique_id=857632545]
 texture_filter = 1
-position = Vector2(-17, -941)
+position = Vector2(-24, -687)
 texture = ExtResource("2_vx186")
 
 [node name="Building4" type="Sprite2D" parent="." unique_id=749652249]
-position = Vector2(798, -573)
+position = Vector2(641, -430)
 texture = ExtResource("2_vx186")
 
 [node name="Building5" type="Sprite2D" parent="." unique_id=1858462902]
 texture_filter = 1
-position = Vector2(-112, 896)
+position = Vector2(-112, 613)
 texture = ExtResource("2_vx186")
