@@ -1,9 +1,9 @@
-[gd_scene format=3 uid="uid://jcnlsaxu7mak"]
+[gd_scene format=3 uid="uid://csyd6fjudsyft"]
 
-[ext_resource type="Script" uid="uid://bf773hla6ca55" path="res://Scripts/Inventory.gd" id="1_81xng"]
-[ext_resource type="Script" uid="uid://cjl56v6vxytii" path="res://Scripts/Boot.gd" id="1_tumq0"]
-[ext_resource type="PackedScene" uid="uid://bqnodlhxkjkxm" path="res://Scenes/td_outside.tscn" id="2_81xng"]
-[ext_resource type="Script" uid="uid://b0o8xyki30gi8" path="res://Scripts/InventoryObject.gd" id="5_wqkje"]
+[ext_resource type="Script" uid="uid://bf773hla6ca55" path="res://Scripts/Inventory.gd" id="1_pd54y"]
+[ext_resource type="PackedScene" uid="uid://l0cg84jp4bre" path="res://Scenes/ast_outside.tscn" id="2_mk23p"]
+[ext_resource type="Script" uid="uid://cjl56v6vxytii" path="res://Scripts/Boot.gd" id="3_ndwry"]
+[ext_resource type="Script" uid="uid://b0o8xyki30gi8" path="res://Scripts/InventoryObject.gd" id="4_ei1s8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tumq0"]
 size = Vector2(530, 680)
@@ -18,7 +18,7 @@ size = Vector2(60, 60)
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=785319097]
 
 [node name="Inventory" type="Node" parent="CanvasLayer" unique_id=937058998]
-script = ExtResource("1_81xng")
+script = ExtResource("1_pd54y")
 move_force = 0.5
 
 [node name="Line2D" type="Line2D" parent="CanvasLayer/Inventory" unique_id=1812657916]
@@ -46,9 +46,12 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.16078432, 0.15686275, 0.19215687, 1)
 
-[node name="TDOutside" parent="CanvasLayer/Control" unique_id=934158623 instance=ExtResource("2_81xng")]
+[node name="AstOutside" parent="CanvasLayer/Control" unique_id=934158623 instance=ExtResource("2_mk23p")]
 layout_mode = 0
 anchors_preset = 0
+anchor_bottom = 0.0
+offset_right = 720.0
+grow_vertical = 1
 
 [node name="Inside" type="MarginContainer" parent="CanvasLayer/Control" unique_id=1398160966]
 custom_minimum_size = Vector2(560, 0)
@@ -88,8 +91,8 @@ gravity_point_center = Vector2(0, 0)
 gravity_direction = Vector2(0, 0)
 gravity = 0.0
 linear_damp = 0.0
-script = ExtResource("1_tumq0")
-ship_force = Vector2(-2, 2)
+script = ExtResource("3_ndwry")
+ship_force = Vector2(-0.5, 0.75)
 random_force = 0.25
 force = 100.0
 
@@ -130,7 +133,7 @@ shape = SubResource("WorldBoundaryShape2D_51e2h")
 position = Vector2(93, 122)
 input_pickable = true
 can_sleep = false
-script = ExtResource("5_wqkje")
+script = ExtResource("4_ei1s8")
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer/Control/Inside/SubViewportContainer2/SubViewport/Objects/RigidBody2D" unique_id=1603454824]
 anchors_preset = 15
@@ -153,7 +156,7 @@ shape = SubResource("RectangleShape2D_51e2h")
 position = Vector2(262, 193)
 input_pickable = true
 can_sleep = false
-script = ExtResource("5_wqkje")
+script = ExtResource("4_ei1s8")
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer/Control/Inside/SubViewportContainer2/SubViewport/Objects/RigidBody2D3" unique_id=21402730]
 anchors_preset = 15
@@ -176,7 +179,7 @@ shape = SubResource("RectangleShape2D_51e2h")
 position = Vector2(128, 254)
 input_pickable = true
 can_sleep = false
-script = ExtResource("5_wqkje")
+script = ExtResource("4_ei1s8")
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer/Control/Inside/SubViewportContainer2/SubViewport/Objects/RigidBody2D4" unique_id=309139165]
 anchors_preset = 15
@@ -202,7 +205,7 @@ mass = 4.0
 gravity_scale = 0.69
 can_sleep = false
 linear_damp = 0.05
-script = ExtResource("5_wqkje")
+script = ExtResource("4_ei1s8")
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer/Control/Inside/SubViewportContainer2/SubViewport/Objects/RigidBody2D5" unique_id=1845838364]
 anchors_preset = 15
@@ -230,7 +233,7 @@ mass = 4.0
 gravity_scale = 0.69
 can_sleep = false
 linear_damp = 0.05
-script = ExtResource("5_wqkje")
+script = ExtResource("4_ei1s8")
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer/Control/Inside/SubViewportContainer2/SubViewport/Objects/RigidBody2D6" unique_id=2114453600]
 anchors_preset = 15
@@ -256,7 +259,7 @@ position = Vector2(471, 424)
 input_pickable = true
 mass = 0.5
 can_sleep = false
-script = ExtResource("5_wqkje")
+script = ExtResource("4_ei1s8")
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer/Control/Inside/SubViewportContainer2/SubViewport/Objects/RigidBody2D7" unique_id=1556427943]
 anchors_preset = 15
@@ -283,7 +286,7 @@ position = Vector2(334, 627)
 input_pickable = true
 mass = 0.5
 can_sleep = false
-script = ExtResource("5_wqkje")
+script = ExtResource("4_ei1s8")
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer/Control/Inside/SubViewportContainer2/SubViewport/Objects/RigidBody2D8" unique_id=1026083143]
 anchors_preset = 15
