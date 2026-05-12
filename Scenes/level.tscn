@@ -1,8 +1,46 @@
 [gd_scene format=3 uid="uid://jcnlsaxu7mak"]
 
+[ext_resource type="Script" uid="uid://bf773hla6ca55" path="res://Scripts/Inventory.gd" id="1_81xng"]
+[ext_resource type="Script" uid="uid://ch5c3b445iqyr" path="res://Scripts/Ship.gd" id="1_k5f4k"]
+[ext_resource type="Script" uid="uid://cjl56v6vxytii" path="res://Scripts/Boot.gd" id="1_tumq0"]
+[ext_resource type="Script" uid="uid://d2org22s1qnea" path="res://Scripts/test_scroll.gd" id="2_6phgx"]
+[ext_resource type="Script" uid="uid://b0o8xyki30gi8" path="res://Scripts/InventoryObject.gd" id="5_wqkje"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tumq0"]
+radius = 7.0
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_51e2h"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_6phgx"]
+noise_type = 0
+frequency = 0.0042
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_81xng"]
+generate_mipmaps = false
+noise = SubResource("FastNoiseLite_6phgx")
+seamless = true
+normalize = false
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tumq0"]
+size = Vector2(530, 680)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_51e2h"]
+size = Vector2(60, 60)
+
 [node name="Level" type="Node2D" unique_id=1480908935]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=785319097]
+
+[node name="Inventory" type="Node" parent="CanvasLayer" unique_id=937058998]
+script = ExtResource("1_81xng")
+move_force = 0.5
+
+[node name="Line2D" type="Line2D" parent="CanvasLayer/Inventory" unique_id=1812657916]
+z_index = 15
+position = Vector2(720, 161)
+points = PackedVector2Array(0, 0, 0, 34.955)
+width = 5.0
+default_color = Color(1, 0, 1, 1)
 
 [node name="Control" type="Control" parent="CanvasLayer" unique_id=314585851]
 layout_mode = 3
@@ -11,6 +49,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="ColorRect2" type="ColorRect" parent="CanvasLayer/Control" unique_id=17845380]
 layout_mode = 1
@@ -21,7 +60,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.16078432, 0.15686275, 0.19215687, 1)
 
-[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Control" unique_id=24225174]
+[node name="Outside" type="MarginContainer" parent="CanvasLayer/Control" unique_id=24225174]
 custom_minimum_size = Vector2(720, 0)
 layout_mode = 1
 anchors_preset = 9
@@ -33,11 +72,361 @@ theme_override_constants/margin_top = 20
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 20
 
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer/Control/MarginContainer" unique_id=1447699892]
+[node name="SubViewportContainer" type="SubViewportContainer" parent="CanvasLayer/Control/Outside" unique_id=1266331648]
 layout_mode = 2
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="CanvasLayer/Control/Outside/SubViewportContainer" unique_id=2010252335]
+size = Vector2i(690, 680)
+
+[node name="Background" type="ColorRect" parent="CanvasLayer/Control/Outside/SubViewportContainer/SubViewport" unique_id=1581857675]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset_ratio = Vector2(1, 0)
 color = Color(0.93333334, 0.5254902, 0.58431375, 1)
 
-[node name="MarginContainer2" type="MarginContainer" parent="CanvasLayer/Control" unique_id=1398160966]
+[node name="Ship" type="CharacterBody2D" parent="CanvasLayer/Control/Outside/SubViewportContainer/SubViewport" unique_id=1651751147]
+position = Vector2(331, 558)
+motion_mode = 1
+script = ExtResource("1_k5f4k")
+change_rate = 3.0
+left_speed = 200.0
+right_speed = 200.0
+up_speed = 50.0
+down_speed = 50.0
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/Control/Outside/SubViewportContainer/SubViewport/Ship" unique_id=1447699892]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -5.0
+offset_top = -5.0
+offset_right = 5.0000305
+offset_bottom = 12.9999695
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset_ratio = Vector2(0.5, 0.5)
+color = Color(0.16078432, 0.15686275, 0.19215687, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="CanvasLayer/Control/Outside/SubViewportContainer/SubViewport/Ship" unique_id=949118258]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -5.9999695
+offset_top = -17.0
+offset_right = 5.4655457
+offset_bottom = 5.9196777
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.6977427, -0.2617837)
+pivot_offset_ratio = Vector2(0.5, 0.5)
+color = Color(0.16078432, 0.15686275, 0.19215687, 1)
+
+[node name="ColorRect4" type="ColorRect" parent="CanvasLayer/Control/Outside/SubViewportContainer/SubViewport/Ship" unique_id=436510066]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -3.0
+offset_top = -17.000015
+offset_right = 3.7172852
+offset_bottom = 0.42485046
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.29774264, -0.70182276)
+pivot_offset_ratio = Vector2(0.5, 0.5)
+color = Color(0.16078432, 0.15686275, 0.19215687, 1)
+
+[node name="ColorRect3" type="ColorRect" parent="CanvasLayer/Control/Outside/SubViewportContainer/SubViewport/Ship" unique_id=307989]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -4.498337
+offset_top = -0.2634282
+offset_right = 4.498398
+offset_bottom = 12.263428
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2.4453285, 0.15965673)
+pivot_offset_ratio = Vector2(0.5, 0.5)
+color = Color(0.16078432, 0.15686275, 0.19215687, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CanvasLayer/Control/Outside/SubViewportContainer/SubViewport/Ship" unique_id=1810527634]
+shape = SubResource("CapsuleShape2D_tumq0")
+
+[node name="BoundaryTop" type="StaticBody2D" parent="CanvasLayer/Control/Outside/SubViewportContainer/SubViewport" unique_id=1705118472]
+position = Vector2(351, 512)
+rotation = 3.1415927
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CanvasLayer/Control/Outside/SubViewportContainer/SubViewport/BoundaryTop" unique_id=801999792]
+shape = SubResource("WorldBoundaryShape2D_51e2h")
+
+[node name="BoundaryBottom" type="StaticBody2D" parent="CanvasLayer/Control/Outside/SubViewportContainer/SubViewport" unique_id=757163433]
+position = Vector2(351, 651)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CanvasLayer/Control/Outside/SubViewportContainer/SubViewport/BoundaryBottom" unique_id=837279032]
+shape = SubResource("WorldBoundaryShape2D_51e2h")
+
+[node name="BoundaryLeft" type="StaticBody2D" parent="CanvasLayer/Control/Outside/SubViewportContainer/SubViewport" unique_id=180028397]
+position = Vector2(25, 320)
+rotation = 1.5707964
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CanvasLayer/Control/Outside/SubViewportContainer/SubViewport/BoundaryLeft" unique_id=1346833720]
+shape = SubResource("WorldBoundaryShape2D_51e2h")
+
+[node name="BoundaryRight" type="StaticBody2D" parent="CanvasLayer/Control/Outside/SubViewportContainer/SubViewport" unique_id=1933461326]
+position = Vector2(666, 320)
+rotation = -1.5707964
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CanvasLayer/Control/Outside/SubViewportContainer/SubViewport/BoundaryRight" unique_id=2029659765]
+shape = SubResource("WorldBoundaryShape2D_51e2h")
+
+[node name="ScrollingBG" type="Node2D" parent="CanvasLayer/Control/Outside/SubViewportContainer/SubViewport" unique_id=1777570766]
+position = Vector2(351, -1281)
+script = ExtResource("2_6phgx")
+ship_acceleration = 0.5
+speed = 350.0
+min_ship_speed = 0.75
+
+[node name="ColorRect3" type="ColorRect" parent="CanvasLayer/Control/Outside/SubViewportContainer/SubViewport/ScrollingBG" unique_id=1325253364]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -198.0
+offset_top = 1208.0
+offset_right = -168.0
+offset_bottom = 1238.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.16078432, 1, 0.19215687, 1)
+
+[node name="ColorRect4" type="ColorRect" parent="CanvasLayer/Control/Outside/SubViewportContainer/SubViewport/ScrollingBG" unique_id=1568300147]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 195.0
+offset_top = 1040.0
+offset_right = 225.0
+offset_bottom = 1070.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.16078432, 1, 0.19215687, 1)
+
+[node name="ColorRect5" type="ColorRect" parent="CanvasLayer/Control/Outside/SubViewportContainer/SubViewport/ScrollingBG" unique_id=737224996]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 908.0
+offset_right = 30.0
+offset_bottom = 938.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.16078432, 1, 0.19215687, 1)
+
+[node name="ColorRect6" type="ColorRect" parent="CanvasLayer/Control/Outside/SubViewportContainer/SubViewport/ScrollingBG" unique_id=295832238]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -221.0
+offset_top = 632.0
+offset_right = -191.0
+offset_bottom = 662.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.16078432, 1, 0.19215687, 1)
+
+[node name="ColorRect7" type="ColorRect" parent="CanvasLayer/Control/Outside/SubViewportContainer/SubViewport/ScrollingBG" unique_id=1689639010]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -15.0
+offset_top = 517.0
+offset_right = 15.0
+offset_bottom = 547.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.16078432, 1, 0.19215687, 1)
+
+[node name="ColorRect8" type="ColorRect" parent="CanvasLayer/Control/Outside/SubViewportContainer/SubViewport/ScrollingBG" unique_id=2098055815]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 225.0
+offset_top = 404.0
+offset_right = 255.0
+offset_bottom = 434.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.16078432, 1, 0.19215687, 1)
+
+[node name="ColorRect9" type="ColorRect" parent="CanvasLayer/Control/Outside/SubViewportContainer/SubViewport/ScrollingBG" unique_id=2003068643]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 128.0
+offset_top = 72.0
+offset_right = 158.0
+offset_bottom = 102.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.16078432, 1, 0.19215687, 1)
+
+[node name="ColorRect10" type="ColorRect" parent="CanvasLayer/Control/Outside/SubViewportContainer/SubViewport/ScrollingBG" unique_id=325520114]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -87.0
+offset_top = 154.0
+offset_right = -57.0
+offset_bottom = 184.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.16078432, 1, 0.19215687, 1)
+
+[node name="ColorRect11" type="ColorRect" parent="CanvasLayer/Control/Outside/SubViewportContainer/SubViewport/ScrollingBG" unique_id=368460622]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -274.0
+offset_top = -203.0
+offset_right = -244.0
+offset_bottom = -173.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.16078432, 1, 0.19215687, 1)
+
+[node name="ColorRect12" type="ColorRect" parent="CanvasLayer/Control/Outside/SubViewportContainer/SubViewport/ScrollingBG" unique_id=2101145166]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 30.0
+offset_top = -461.0
+offset_right = 60.0
+offset_bottom = -431.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.16078432, 1, 0.19215687, 1)
+
+[node name="ColorRect13" type="ColorRect" parent="CanvasLayer/Control/Outside/SubViewportContainer/SubViewport/ScrollingBG" unique_id=2038480452]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -87.0
+offset_top = -725.0
+offset_right = -57.0
+offset_bottom = -695.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.16078432, 1, 0.19215687, 1)
+
+[node name="ColorRect14" type="ColorRect" parent="CanvasLayer/Control/Outside/SubViewportContainer/SubViewport/ScrollingBG" unique_id=70674652]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -87.0
+offset_top = -725.0
+offset_right = -57.0
+offset_bottom = -695.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.16078432, 1, 0.19215687, 1)
+
+[node name="ColorRect15" type="ColorRect" parent="CanvasLayer/Control/Outside/SubViewportContainer/SubViewport/ScrollingBG" unique_id=2109782217]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 195.0
+offset_top = -1087.0
+offset_right = 225.0
+offset_bottom = -1057.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.16078432, 1, 0.19215687, 1)
+
+[node name="ColorRect16" type="ColorRect" parent="CanvasLayer/Control/Outside/SubViewportContainer/SubViewport/ScrollingBG" unique_id=1575310285]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -253.0
+offset_top = -1557.0
+offset_right = -223.0
+offset_bottom = -1527.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.16078432, 1, 0.19215687, 1)
+
+[node name="ColorRect17" type="ColorRect" parent="CanvasLayer/Control/Outside/SubViewportContainer/SubViewport/ScrollingBG" unique_id=1657282913]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 68.0
+offset_top = -1966.0
+offset_right = 98.0
+offset_bottom = -1936.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.16078432, 1, 0.19215687, 1)
+
+[node name="ColorRect18" type="ColorRect" parent="CanvasLayer/Control/Outside/SubViewportContainer/SubViewport/ScrollingBG" unique_id=896547033]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 251.0
+offset_top = -2432.0
+offset_right = 281.0
+offset_bottom = -2402.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.16078432, 1, 0.19215687, 1)
+
+[node name="ColorRect19" type="ColorRect" parent="CanvasLayer/Control/Outside/SubViewportContainer/SubViewport/ScrollingBG" unique_id=599049856]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -309.0
+offset_top = -2997.0
+offset_right = -279.0
+offset_bottom = -2967.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.16078432, 1, 0.19215687, 1)
+
+[node name="ColorRect20" type="ColorRect" parent="CanvasLayer/Control/Outside/SubViewportContainer/SubViewport/ScrollingBG" unique_id=1342123116]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -6.0
+offset_top = -3167.0
+offset_right = 24.0
+offset_bottom = -3137.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.16078432, 1, 0.19215687, 1)
+
+[node name="ColorRect21" type="ColorRect" parent="CanvasLayer/Control/Outside/SubViewportContainer/SubViewport/ScrollingBG" unique_id=483026014]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -6.0
+offset_top = -3167.0
+offset_right = 24.0
+offset_bottom = -3137.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.16078432, 1, 0.19215687, 1)
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Control/Outside/SubViewportContainer/SubViewport/ScrollingBG" unique_id=1063973387]
+modulate = Color(0.9843137, 0.73333335, 0.6784314, 0.18431373)
+offset_left = -400.0
+offset_top = -5993.0
+offset_right = 400.0
+offset_bottom = 2007.0
+texture = SubResource("NoiseTexture2D_81xng")
+stretch_mode = 1
+
+[node name="Inside" type="MarginContainer" parent="CanvasLayer/Control" unique_id=1398160966]
 custom_minimum_size = Vector2(560, 0)
 layout_mode = 1
 anchors_preset = 11
@@ -46,11 +435,256 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 0
 grow_vertical = 2
+mouse_filter = 2
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 20
 theme_override_constants/margin_right = 20
 theme_override_constants/margin_bottom = 20
 
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer/Control/MarginContainer2" unique_id=488784514]
+[node name="SubViewportContainer2" type="SubViewportContainer" parent="CanvasLayer/Control/Inside" unique_id=787729051]
 layout_mode = 2
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="CanvasLayer/Control/Inside/SubViewportContainer2" unique_id=673702124]
+handle_input_locally = false
+physics_object_picking = true
+gui_snap_controls_to_pixels = false
+size = Vector2i(530, 680)
+render_target_update_mode = 4
+
+[node name="Background" type="ColorRect" parent="CanvasLayer/Control/Inside/SubViewportContainer2/SubViewport" unique_id=488784514]
+offset_right = 530.0
+offset_bottom = 680.0
+mouse_filter = 2
 color = Color(0.2, 0.24705882, 0.34509805, 1)
+
+[node name="Area2D" type="Area2D" parent="CanvasLayer/Control/Inside/SubViewportContainer2/SubViewport" unique_id=1929363762]
+gravity_space_override = 1
+gravity_point_center = Vector2(0, 0)
+gravity_direction = Vector2(0, 0)
+gravity = 0.0
+linear_damp = 0.0
+script = ExtResource("1_tumq0")
+ship_force = Vector2(-0.5, 0.75)
+random_force = 0.25
+force = 100.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CanvasLayer/Control/Inside/SubViewportContainer2/SubViewport/Area2D" unique_id=458359758]
+position = Vector2(267, 339)
+shape = SubResource("RectangleShape2D_tumq0")
+
+[node name="BoundaryTop" type="StaticBody2D" parent="CanvasLayer/Control/Inside/SubViewportContainer2/SubViewport" unique_id=1117937148]
+position = Vector2(265, 0)
+rotation = 3.1415927
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CanvasLayer/Control/Inside/SubViewportContainer2/SubViewport/BoundaryTop" unique_id=858179944]
+shape = SubResource("WorldBoundaryShape2D_51e2h")
+
+[node name="BoundaryBottom" type="StaticBody2D" parent="CanvasLayer/Control/Inside/SubViewportContainer2/SubViewport" unique_id=399888305]
+position = Vector2(265, 680)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CanvasLayer/Control/Inside/SubViewportContainer2/SubViewport/BoundaryBottom" unique_id=167598118]
+shape = SubResource("WorldBoundaryShape2D_51e2h")
+
+[node name="BoundaryLeft" type="StaticBody2D" parent="CanvasLayer/Control/Inside/SubViewportContainer2/SubViewport" unique_id=681958575]
+position = Vector2(0, 320)
+rotation = 1.5707964
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CanvasLayer/Control/Inside/SubViewportContainer2/SubViewport/BoundaryLeft" unique_id=185623311]
+shape = SubResource("WorldBoundaryShape2D_51e2h")
+
+[node name="BoundaryRight" type="StaticBody2D" parent="CanvasLayer/Control/Inside/SubViewportContainer2/SubViewport" unique_id=498174080]
+position = Vector2(530, 320)
+rotation = -1.5707964
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CanvasLayer/Control/Inside/SubViewportContainer2/SubViewport/BoundaryRight" unique_id=317682208]
+shape = SubResource("WorldBoundaryShape2D_51e2h")
+
+[node name="Objects" type="Node" parent="CanvasLayer/Control/Inside/SubViewportContainer2/SubViewport" unique_id=944497030]
+
+[node name="RigidBody2D" type="RigidBody2D" parent="CanvasLayer/Control/Inside/SubViewportContainer2/SubViewport/Objects" unique_id=1394855109]
+position = Vector2(93, 122)
+input_pickable = true
+can_sleep = false
+script = ExtResource("5_wqkje")
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/Control/Inside/SubViewportContainer2/SubViewport/Objects/RigidBody2D" unique_id=1603454824]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -30.0
+offset_top = -30.0
+offset_right = 30.0
+offset_bottom = 30.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset_ratio = Vector2(1, 0)
+mouse_filter = 2
+color = Color(0.9843137, 0.73333335, 0.6784314, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CanvasLayer/Control/Inside/SubViewportContainer2/SubViewport/Objects/RigidBody2D" unique_id=1493019451]
+shape = SubResource("RectangleShape2D_51e2h")
+
+[node name="RigidBody2D3" type="RigidBody2D" parent="CanvasLayer/Control/Inside/SubViewportContainer2/SubViewport/Objects" unique_id=562484209]
+position = Vector2(262, 193)
+input_pickable = true
+can_sleep = false
+script = ExtResource("5_wqkje")
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/Control/Inside/SubViewportContainer2/SubViewport/Objects/RigidBody2D3" unique_id=21402730]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -30.0
+offset_top = -30.0
+offset_right = 30.0
+offset_bottom = 30.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset_ratio = Vector2(1, 0)
+mouse_filter = 2
+color = Color(0.9843137, 0.73333335, 0.6784314, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CanvasLayer/Control/Inside/SubViewportContainer2/SubViewport/Objects/RigidBody2D3" unique_id=1746415512]
+shape = SubResource("RectangleShape2D_51e2h")
+
+[node name="RigidBody2D4" type="RigidBody2D" parent="CanvasLayer/Control/Inside/SubViewportContainer2/SubViewport/Objects" unique_id=834068976]
+position = Vector2(128, 254)
+input_pickable = true
+can_sleep = false
+script = ExtResource("5_wqkje")
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/Control/Inside/SubViewportContainer2/SubViewport/Objects/RigidBody2D4" unique_id=309139165]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -30.0
+offset_top = -30.0
+offset_right = 30.0
+offset_bottom = 30.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset_ratio = Vector2(1, 0)
+mouse_filter = 2
+color = Color(0.9843137, 0.73333335, 0.6784314, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CanvasLayer/Control/Inside/SubViewportContainer2/SubViewport/Objects/RigidBody2D4" unique_id=1836439921]
+shape = SubResource("RectangleShape2D_51e2h")
+
+[node name="RigidBody2D5" type="RigidBody2D" parent="CanvasLayer/Control/Inside/SubViewportContainer2/SubViewport/Objects" unique_id=1980641674]
+position = Vector2(97, 591)
+input_pickable = true
+mass = 4.0
+gravity_scale = 0.69
+can_sleep = false
+linear_damp = 0.05
+script = ExtResource("5_wqkje")
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/Control/Inside/SubViewportContainer2/SubViewport/Objects/RigidBody2D5" unique_id=1845838364]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -30.0
+offset_top = -30.0
+offset_right = 30.0
+offset_bottom = 30.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2, 2)
+pivot_offset_ratio = Vector2(0.5, 0.5)
+mouse_filter = 2
+color = Color(0.9843137, 0, 0.6784314, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CanvasLayer/Control/Inside/SubViewportContainer2/SubViewport/Objects/RigidBody2D5" unique_id=1290553399]
+scale = Vector2(2, 2)
+shape = SubResource("RectangleShape2D_51e2h")
+
+[node name="RigidBody2D6" type="RigidBody2D" parent="CanvasLayer/Control/Inside/SubViewportContainer2/SubViewport/Objects" unique_id=1869398261]
+position = Vector2(211, 426)
+input_pickable = true
+mass = 4.0
+gravity_scale = 0.69
+can_sleep = false
+linear_damp = 0.05
+script = ExtResource("5_wqkje")
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/Control/Inside/SubViewportContainer2/SubViewport/Objects/RigidBody2D6" unique_id=2114453600]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -30.0
+offset_top = -30.0
+offset_right = 30.0
+offset_bottom = 30.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2, 2)
+pivot_offset_ratio = Vector2(0.5, 0.5)
+mouse_filter = 2
+color = Color(0.9843137, 0, 0.6784314, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CanvasLayer/Control/Inside/SubViewportContainer2/SubViewport/Objects/RigidBody2D6" unique_id=137578648]
+scale = Vector2(2, 2)
+shape = SubResource("RectangleShape2D_51e2h")
+
+[node name="RigidBody2D7" type="RigidBody2D" parent="CanvasLayer/Control/Inside/SubViewportContainer2/SubViewport/Objects" unique_id=796122910]
+position = Vector2(471, 424)
+input_pickable = true
+mass = 0.5
+can_sleep = false
+script = ExtResource("5_wqkje")
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/Control/Inside/SubViewportContainer2/SubViewport/Objects/RigidBody2D7" unique_id=1556427943]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -93.0
+offset_top = -37.0
+offset_right = -33.0
+offset_bottom = 23.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(3.5, 0.5)
+pivot_offset_ratio = Vector2(0.5, 0.5)
+mouse_filter = 2
+color = Color(0.9843137, 0.73333335, 0.14117648, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CanvasLayer/Control/Inside/SubViewportContainer2/SubViewport/Objects/RigidBody2D7" unique_id=1091299684]
+position = Vector2(-63, -8)
+scale = Vector2(3.5, 0.5)
+shape = SubResource("RectangleShape2D_51e2h")
+
+[node name="RigidBody2D8" type="RigidBody2D" parent="CanvasLayer/Control/Inside/SubViewportContainer2/SubViewport/Objects" unique_id=1196585451]
+position = Vector2(334, 627)
+input_pickable = true
+mass = 0.5
+can_sleep = false
+script = ExtResource("5_wqkje")
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/Control/Inside/SubViewportContainer2/SubViewport/Objects/RigidBody2D8" unique_id=1026083143]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -93.0
+offset_top = -37.0
+offset_right = -33.0
+offset_bottom = 23.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(3.5, 0.5)
+pivot_offset_ratio = Vector2(0.5, 0.5)
+mouse_filter = 2
+color = Color(0.9843137, 0.73333335, 0.14117648, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CanvasLayer/Control/Inside/SubViewportContainer2/SubViewport/Objects/RigidBody2D8" unique_id=438487239]
+position = Vector2(-63, -8)
+scale = Vector2(3.5, 0.5)
+shape = SubResource("RectangleShape2D_51e2h")
+
+[connection signal="input_event" from="CanvasLayer/Control/Inside/SubViewportContainer2/SubViewport/Objects/RigidBody2D" to="CanvasLayer/Control/Inside/SubViewportContainer2/SubViewport/Objects/RigidBody2D" method="_on_input_event"]
+[connection signal="input_event" from="CanvasLayer/Control/Inside/SubViewportContainer2/SubViewport/Objects/RigidBody2D3" to="CanvasLayer/Control/Inside/SubViewportContainer2/SubViewport/Objects/RigidBody2D3" method="_on_input_event"]
+[connection signal="input_event" from="CanvasLayer/Control/Inside/SubViewportContainer2/SubViewport/Objects/RigidBody2D4" to="CanvasLayer/Control/Inside/SubViewportContainer2/SubViewport/Objects/RigidBody2D4" method="_on_input_event"]
+[connection signal="input_event" from="CanvasLayer/Control/Inside/SubViewportContainer2/SubViewport/Objects/RigidBody2D5" to="CanvasLayer/Control/Inside/SubViewportContainer2/SubViewport/Objects/RigidBody2D5" method="_on_input_event"]
+[connection signal="input_event" from="CanvasLayer/Control/Inside/SubViewportContainer2/SubViewport/Objects/RigidBody2D6" to="CanvasLayer/Control/Inside/SubViewportContainer2/SubViewport/Objects/RigidBody2D6" method="_on_input_event"]
+[connection signal="input_event" from="CanvasLayer/Control/Inside/SubViewportContainer2/SubViewport/Objects/RigidBody2D7" to="CanvasLayer/Control/Inside/SubViewportContainer2/SubViewport/Objects/RigidBody2D7" method="_on_input_event"]
+[connection signal="input_event" from="CanvasLayer/Control/Inside/SubViewportContainer2/SubViewport/Objects/RigidBody2D8" to="CanvasLayer/Control/Inside/SubViewportContainer2/SubViewport/Objects/RigidBody2D8" method="_on_input_event"]
