@@ -2,14 +2,47 @@ class_name InventoryManager extends MarginContainer
 const DEBUG_NAME = "[b][InventoryManager][/b] "
 static var instance : InventoryManager = null
 
+enum ItemType {ItemA,ItemB,ItemC}
+
+@export var item_A_prefab : PackedScene = null
+@export var item_B_prefab : PackedScene = null
+@export var item_C_prefab : PackedScene = null
+
 @onready var debug_line : Line2D = $DebugLine
+@onready var item_holder : Node2D = $SubViewportContainer/SubViewport/ItemHolder
 
 @export var move_force : float = 0.5
+
+
 
 func _enter_tree() -> void:
 	instance = self
 
-func dragging(_object:RigidBody2D,_click_pos:Vector2) -> void:
+static func add_item(_type:ItemType) -> void:
+	instance._add_item(_type)
+func _add_item(_type:ItemType) -> void:
+	var _prefab : PackedScene = null
+	var _name : String 
+	match _type:
+		ItemType.ItemA:
+			_prefab = item_A_prefab
+			_name = "<ItemA>"
+		ItemType.ItemB:
+			_prefab = item_B_prefab
+			_name = "<ItemB>"
+		ItemType.ItemC:
+			_prefab = item_C_prefab
+			_name = "<ItemC>"
+	
+	var _new_scene = _prefab.instantiate()
+	item_holder.add_child(_new_scene)
+	_new_scene.name = _name
+	_new_scene.position = Vector2.ZERO
+
+
+static func dragging(_object:RigidBody2D,_click_pos:Vector2) -> void:
+	instance._dragging(_object,_click_pos)
+func _dragging(_object:RigidBody2D,_click_pos:Vector2) -> void:
 	print_rich(DEBUG_NAME,"Dragging > Object '"+_object.name+"' initialised dragging! Waiting for mouse release...")
 	var _drag_start_pos = get_viewport().get_mouse_position()
 	debug_line.visible = true

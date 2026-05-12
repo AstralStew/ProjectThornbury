@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://d23b7v703vw2y"]
+
+[ext_resource type="Script" uid="uid://b0o8xyki30gi8" path="res://Scripts/InventoryObject.gd" id="1_gdkm1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_51e2h"]
+size = Vector2(60, 60)
+
+[node name="ItemA" type="RigidBody2D" unique_id=1831535151]
+input_pickable = true
+can_sleep = false
+script = ExtResource("1_gdkm1")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1008728291]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -30.0
+offset_top = -30.0
+offset_right = 30.0
+offset_bottom = 30.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset_ratio = Vector2(1, 0)
+mouse_filter = 2
+color = Color(0.9843137, 0.73333335, 0.6784314, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1138340637]
+shape = SubResource("RectangleShape2D_51e2h")
+
+[connection signal="input_event" from="." to="." method="_on_input_event"]
