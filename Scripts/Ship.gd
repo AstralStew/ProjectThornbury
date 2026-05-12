@@ -4,6 +4,7 @@ static var instance : Ship = null
 @export_category("Ast Controls")
 
 @export var rotation_speed : float = 0.25
+@export var rotation_change_rate : float = 50.0
 @export var rotation_acc : float = 0.1
 
 @export_category("TD Controls")
@@ -22,7 +23,7 @@ static var instance : Ship = null
 	get:
 		return Vector2(
 			1 if Input.is_action_pressed("MoveLeft") else -1 if Input.is_action_pressed("MoveRight") else 0,
-			1 if (Input.is_action_pressed("MoveUp") && speed.y > -50) else -1 if (Input.is_action_pressed("MoveDown") && speed.y < 0) else 0,
+			1 if (Input.is_action_pressed("MoveUp")) else -1 if (Input.is_action_pressed("MoveDown")) else 0,
 		)
 		#return Vector2(
 			#speed.x / left_speed if speed.x < 0 else speed.x / right_speed,
@@ -34,32 +35,32 @@ func _enter_tree() -> void:
 
 func _physics_process(delta: float) -> void:
 	
-	get_input()
-	rotation = speed.x
+	get_input(delta)
+	rotation = lerp_angle(rotation, rotation + deg_to_rad(speed.x), rotation_acc)
 	velocity = speed.y * transform.y
 	
 	move_and_slide()
 
 
-func get_input() -> void:
-	var _new_rotation : float
+func get_input(delta: float) -> void:
+	var _target_rotation : float
 	var _new_speed : float
 	
 	if Input.is_action_pressed("MoveLeft"):
-		_new_rotation = rotate_toward(speed.x,speed.x-(rotation_speed * 0.1),rotation_acc)
+		_target_rotation = move_toward(speed.x, -rotation_speed,rotation_change_rate * delta)
 	elif Input.is_action_pressed("MoveRight"):
-		_new_rotation = rotate_toward(speed.x,speed.x+(rotation_speed * 0.1),rotation_acc)
+		_target_rotation = move_toward(speed.x, rotation_speed,rotation_change_rate * delta)
 	else:
-		_new_rotation = speed.x
+		_target_rotation = move_toward(speed.x, 0, rotation_change_rate * delta)
 	
 	if Input.is_action_pressed("MoveDown"):
-		_new_speed = min(0,move_toward(speed.y, down_speed * 50, change_rate * 0.5))
+		_new_speed = move_toward(speed.y, -down_speed, change_rate * 0.5  * delta)
 	elif Input.is_action_pressed("MoveUp"):
-		_new_speed = min(0,move_toward(speed.y, -up_speed * 50, change_rate * 0.2))
+		_new_speed = move_toward(speed.y, -up_speed, change_rate * delta)
 	else:
-		_new_speed = speed.y # move_toward(speed.y,0, change_rate * 2)
+		_new_speed = move_toward(speed.y,-down_speed, change_rate * 0.125 * delta)
 	
-	speed = Vector2(_new_rotation,_new_speed)
+	speed = Vector2(_target_rotation,_new_speed)
 	
 	#speed = Vector2(0,_new_speed)
 

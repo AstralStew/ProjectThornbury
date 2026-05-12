@@ -4,24 +4,47 @@
 [ext_resource type="Script" uid="uid://di153cmafhifq" path="res://Scripts/OutsideManager.gd" id="1_dxilr"]
 [ext_resource type="PackedScene" uid="uid://c14fl8nyl0y11" path="res://Scenes/OutsidePrefabs/collectable_1.tscn" id="2_hhqqv"]
 [ext_resource type="Texture2D" uid="uid://bs8wppq8ctccy" path="res://Assets/Images/Ships/Ships_Sheet.png" id="3_slk23"]
+[ext_resource type="Script" uid="uid://c7fg3jgojxubh" path="res://Scripts/ship_trail.gd" id="5_hhqqv"]
+
+[sub_resource type="Gradient" id="Gradient_slk23"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0.6201172, 0.66308594)
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_6phgx"]
 noise_type = 0
-frequency = 0.0042
+frequency = 0.1157
+fractal_octaves = 2
+fractal_lacunarity = 3.295
+fractal_gain = 4.73
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_81xng"]
+width = 64
+height = 64
 generate_mipmaps = false
 noise = SubResource("FastNoiseLite_6phgx")
+color_ramp = SubResource("Gradient_slk23")
 seamless = true
 normalize = false
+seamless_blend_skirt = 0.105
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_51e2h"]
+
+[sub_resource type="Curve" id="Curve_mf7ev"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 1.4, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_hhqqv"]
+colors = PackedColorArray(0, 1, 1, 0, 1, 1, 1, 1)
+
+[sub_resource type="Gradient" id="Gradient_mf7ev"]
+colors = PackedColorArray(1, 1, 0, 0, 1, 1, 1, 1)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tumq0"]
 radius = 9.0
 height = 36.0
 
 [node name="OutsideManager" type="MarginContainer" unique_id=1854772268]
+texture_filter = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -43,46 +66,58 @@ size = Vector2i(680, 680)
 render_target_update_mode = 4
 
 [node name="Background" type="ColorRect" parent="SubViewportContainer/SubViewport" unique_id=1570585813]
+z_index = -2
+texture_filter = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = -3400.0
+offset_top = -3400.0
+offset_right = 2720.0
+offset_bottom = 2720.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset_ratio = Vector2(1, 0)
 color = Color(0.93333334, 0.5254902, 0.58431375, 1)
 
 [node name="TextureRect" type="TextureRect" parent="SubViewportContainer/SubViewport" unique_id=2135076105]
-modulate = Color(0.9843137, 0.73333335, 0.6784314, 0.18431373)
+modulate = Color(0.98, 0.7318967, 0.67620003, 0.05490196)
+z_index = -2
+texture_filter = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = -3400.0
+offset_top = -3400.0
+offset_right = 2720.0
+offset_bottom = 2720.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("NoiseTexture2D_81xng")
 stretch_mode = 1
 
 [node name="BoundaryTop" type="StaticBody2D" parent="SubViewportContainer/SubViewport" unique_id=885169281]
-position = Vector2(342, 23)
+position = Vector2(342, 8)
 rotation = 3.1415927
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SubViewportContainer/SubViewport/BoundaryTop" unique_id=1832996374]
 shape = SubResource("WorldBoundaryShape2D_51e2h")
 
 [node name="BoundaryBottom" type="StaticBody2D" parent="SubViewportContainer/SubViewport" unique_id=1066858431]
-position = Vector2(342, 655)
+position = Vector2(342, 674)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SubViewportContainer/SubViewport/BoundaryBottom" unique_id=451407872]
 shape = SubResource("WorldBoundaryShape2D_51e2h")
 
 [node name="BoundaryLeft" type="StaticBody2D" parent="SubViewportContainer/SubViewport" unique_id=1411203065]
-position = Vector2(25, 343)
+position = Vector2(8, 343)
 rotation = 1.5707964
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SubViewportContainer/SubViewport/BoundaryLeft" unique_id=1993318695]
 shape = SubResource("WorldBoundaryShape2D_51e2h")
 
 [node name="BoundaryRight" type="StaticBody2D" parent="SubViewportContainer/SubViewport" unique_id=142850417]
-position = Vector2(658, 343)
+position = Vector2(674, 345)
 rotation = -1.5707964
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SubViewportContainer/SubViewport/BoundaryRight" unique_id=1313853471]
@@ -91,63 +126,86 @@ shape = SubResource("WorldBoundaryShape2D_51e2h")
 [node name="Collectables" type="Node2D" parent="SubViewportContainer/SubViewport" unique_id=222395904]
 
 [node name="CollectableA" parent="SubViewportContainer/SubViewport/Collectables" unique_id=1843489661 instance=ExtResource("2_hhqqv")]
+texture_filter = 1
 position = Vector2(237, 300)
 
 [node name="CollectableA2" parent="SubViewportContainer/SubViewport/Collectables" unique_id=1799274168 instance=ExtResource("2_hhqqv")]
+texture_filter = 1
 position = Vector2(160, 245)
 
 [node name="CollectableA3" parent="SubViewportContainer/SubViewport/Collectables" unique_id=1647122767 instance=ExtResource("2_hhqqv")]
+texture_filter = 1
 position = Vector2(150, 129)
 
 [node name="CollectableA4" parent="SubViewportContainer/SubViewport/Collectables" unique_id=1953385804 instance=ExtResource("2_hhqqv")]
+texture_filter = 1
 position = Vector2(351, 129)
 
 [node name="CollectableA5" parent="SubViewportContainer/SubViewport/Collectables" unique_id=1167645312 instance=ExtResource("2_hhqqv")]
+texture_filter = 1
 position = Vector2(341, 278)
 
 [node name="CollectableA6" parent="SubViewportContainer/SubViewport/Collectables" unique_id=1192065373 instance=ExtResource("2_hhqqv")]
+texture_filter = 1
 position = Vector2(538, 208)
 
 [node name="CollectableA7" parent="SubViewportContainer/SubViewport/Collectables" unique_id=332122673 instance=ExtResource("2_hhqqv")]
+texture_filter = 1
 position = Vector2(484, 367)
 
 [node name="CollectableA8" parent="SubViewportContainer/SubViewport/Collectables" unique_id=2142628700 instance=ExtResource("2_hhqqv")]
+texture_filter = 1
 position = Vector2(289, 444)
 
 [node name="CollectableA9" parent="SubViewportContainer/SubViewport/Collectables" unique_id=223335880 instance=ExtResource("2_hhqqv")]
+texture_filter = 1
 position = Vector2(70, 422)
 
 [node name="CollectableA10" parent="SubViewportContainer/SubViewport/Collectables" unique_id=663620473 instance=ExtResource("2_hhqqv")]
+texture_filter = 1
 position = Vector2(140, 534)
 
 [node name="CollectableA11" parent="SubViewportContainer/SubViewport/Collectables" unique_id=448294212 instance=ExtResource("2_hhqqv")]
+texture_filter = 1
 position = Vector2(178, 398)
 
 [node name="CollectableA12" parent="SubViewportContainer/SubViewport/Collectables" unique_id=1235448502 instance=ExtResource("2_hhqqv")]
+texture_filter = 1
 position = Vector2(70, 167)
 
 [node name="CollectableA13" parent="SubViewportContainer/SubViewport/Collectables" unique_id=866034701 instance=ExtResource("2_hhqqv")]
+texture_filter = 1
 position = Vector2(528, 77)
 
 [node name="CollectableA14" parent="SubViewportContainer/SubViewport/Collectables" unique_id=1416639017 instance=ExtResource("2_hhqqv")]
+texture_filter = 1
 position = Vector2(594, 444)
 
 [node name="CollectableA15" parent="SubViewportContainer/SubViewport/Collectables" unique_id=1003250793 instance=ExtResource("2_hhqqv")]
+texture_filter = 1
 position = Vector2(484, 507)
 
 [node name="CollectableA16" parent="SubViewportContainer/SubViewport/Collectables" unique_id=332032144 instance=ExtResource("2_hhqqv")]
+texture_filter = 1
 position = Vector2(604, 611)
 
 [node name="CollectableA17" parent="SubViewportContainer/SubViewport/Collectables" unique_id=364024363 instance=ExtResource("2_hhqqv")]
+texture_filter = 1
 position = Vector2(367, 367)
 
 [node name="CollectableA18" parent="SubViewportContainer/SubViewport/Collectables" unique_id=1594781602 instance=ExtResource("2_hhqqv")]
+texture_filter = 1
 position = Vector2(247, 67)
 
 [node name="Ship" type="CharacterBody2D" parent="SubViewportContainer/SubViewport" unique_id=632637021]
 position = Vector2(331, 558)
 motion_mode = 1
 script = ExtResource("1_a5lob")
+rotation_speed = 30.0
+rotation_acc = 0.05
+change_rate = 75.0
+up_speed = 85.0
+down_speed = 10.0
 
 [node name="ShipsSheet" type="Sprite2D" parent="SubViewportContainer/SubViewport/Ship" unique_id=295043400]
 rotation = 3.1415927
@@ -155,7 +213,40 @@ texture = ExtResource("3_slk23")
 region_enabled = true
 region_rect = Rect2(90, 5, 40, 33)
 
+[node name="TrailPivot" type="Node2D" parent="SubViewportContainer/SubViewport/Ship/ShipsSheet" unique_id=1086678533]
+position = Vector2(11, -7.000001)
+
+[node name="ShipTrail" type="Line2D" parent="SubViewportContainer/SubViewport/Ship/ShipsSheet/TrailPivot" unique_id=2021407589]
+top_level = true
+z_index = -1
+width = 4.0
+width_curve = SubResource("Curve_mf7ev")
+gradient = SubResource("Gradient_hhqqv")
+script = ExtResource("5_hhqqv")
+number_of_points = 10
+
+[node name="TrailPivot2" type="Node2D" parent="SubViewportContainer/SubViewport/Ship/ShipsSheet" unique_id=3057209]
+position = Vector2(-11, -6.999999)
+
+[node name="ShipTrail2" type="Line2D" parent="SubViewportContainer/SubViewport/Ship/ShipsSheet/TrailPivot2" unique_id=1518037546]
+top_level = true
+z_index = -1
+width = 4.0
+width_curve = SubResource("Curve_mf7ev")
+gradient = SubResource("Gradient_mf7ev")
+script = ExtResource("5_hhqqv")
+number_of_points = 10
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SubViewportContainer/SubViewport/Ship" unique_id=470645661]
 position = Vector2(0, -3)
 rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_tumq0")
+
+[node name="Camera2D" type="Camera2D" parent="SubViewportContainer/SubViewport/Ship" unique_id=1345788709]
+process_callback = 0
+position_smoothing_enabled = true
+position_smoothing_speed = 0.5
+rotation_smoothing_enabled = true
+rotation_smoothing_speed = 3.185
+
+[node name="Line2D" type="Line2D" parent="SubViewportContainer/SubViewport/Ship" unique_id=223409123]
