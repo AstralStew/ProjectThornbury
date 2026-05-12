@@ -15,14 +15,14 @@ noise = SubResource("FastNoiseLite_6phgx")
 seamless = true
 normalize = false
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tumq0"]
-radius = 9.0
-height = 36.0
-
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_51e2h"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dxilr"]
 size = Vector2(12, 12)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tumq0"]
+radius = 9.0
+height = 36.0
 
 [node name="OutsideManager" type="MarginContainer" unique_id=1854772268]
 anchors_preset = 15
@@ -64,22 +64,6 @@ grow_vertical = 2
 texture = SubResource("NoiseTexture2D_81xng")
 stretch_mode = 1
 
-[node name="Ship" type="CharacterBody2D" parent="SubViewportContainer/SubViewport" unique_id=632637021]
-position = Vector2(331, 558)
-motion_mode = 1
-script = ExtResource("1_a5lob")
-
-[node name="ShipsSheet" type="Sprite2D" parent="SubViewportContainer/SubViewport/Ship" unique_id=295043400]
-rotation = 3.1415927
-texture = ExtResource("3_slk23")
-region_enabled = true
-region_rect = Rect2(90, 5, 40, 33)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="SubViewportContainer/SubViewport/Ship" unique_id=470645661]
-position = Vector2(0, 4)
-rotation = 1.5707964
-shape = SubResource("CapsuleShape2D_tumq0")
-
 [node name="BoundaryTop" type="StaticBody2D" parent="SubViewportContainer/SubViewport" unique_id=885169281]
 position = Vector2(342, 23)
 rotation = 3.1415927
@@ -107,261 +91,6 @@ rotation = -1.5707964
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SubViewportContainer/SubViewport/BoundaryRight" unique_id=1313853471]
 shape = SubResource("WorldBoundaryShape2D_51e2h")
 
-[node name="Node2D" type="Node2D" parent="SubViewportContainer/SubViewport" unique_id=498562629]
-position = Vector2(350, 327)
-scale = Vector2(0.35, 0.35)
-
-[node name="ColorRect3" type="ColorRect" parent="SubViewportContainer/SubViewport/Node2D" unique_id=360863593]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -800.0
-offset_top = -343.42847
-offset_right = -770.0
-offset_bottom = -313.42847
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.16078432, 1, 0.19215687, 1)
-
-[node name="ColorRect4" type="ColorRect" parent="SubViewportContainer/SubViewport/Node2D" unique_id=970309459]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -407.0
-offset_top = -511.42847
-offset_right = -377.0
-offset_bottom = -481.42847
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.16078432, 1, 0.19215687, 1)
-
-[node name="ColorRect5" type="ColorRect" parent="SubViewportContainer/SubViewport/Node2D" unique_id=347418051]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = 908.0
-offset_right = 30.0
-offset_bottom = 938.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.16078432, 1, 0.19215687, 1)
-
-[node name="ColorRect6" type="ColorRect" parent="SubViewportContainer/SubViewport/Node2D" unique_id=1081278978]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -221.0
-offset_top = 632.0
-offset_right = -191.0
-offset_bottom = 662.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.16078432, 1, 0.19215687, 1)
-
-[node name="ColorRect7" type="ColorRect" parent="SubViewportContainer/SubViewport/Node2D" unique_id=1049959827]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -15.0
-offset_top = 517.0
-offset_right = 15.0
-offset_bottom = 547.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.16078432, 1, 0.19215687, 1)
-
-[node name="ColorRect17" type="ColorRect" parent="SubViewportContainer/SubViewport/Node2D" unique_id=1235802229]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -520.0
-offset_top = 45.714264
-offset_right = -490.0
-offset_bottom = 75.714264
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.16078432, 1, 0.19215687, 1)
-
-[node name="ColorRect18" type="ColorRect" parent="SubViewportContainer/SubViewport/Node2D" unique_id=1182888876]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -711.4286
-offset_top = 620.0
-offset_right = -681.4286
-offset_bottom = 650.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.16078432, 1, 0.19215687, 1)
-
-[node name="ColorRect19" type="ColorRect" parent="SubViewportContainer/SubViewport/Node2D" unique_id=1099353024]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -774.2857
-offset_top = 325.7143
-offset_right = -744.2857
-offset_bottom = 355.7143
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.16078432, 1, 0.19215687, 1)
-
-[node name="ColorRect20" type="ColorRect" parent="SubViewportContainer/SubViewport/Node2D" unique_id=872929079]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 508.57135
-offset_top = 151.42859
-offset_right = 538.57135
-offset_bottom = 181.42859
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.16078432, 1, 0.19215687, 1)
-
-[node name="ColorRect21" type="ColorRect" parent="SubViewportContainer/SubViewport/Node2D" unique_id=1467589625]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 491.4285
-offset_top = 674.2857
-offset_right = 521.42847
-offset_bottom = 704.2857
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.16078432, 1, 0.19215687, 1)
-
-[node name="ColorRect22" type="ColorRect" parent="SubViewportContainer/SubViewport/Node2D" unique_id=1137192057]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -728.5714
-offset_top = -742.8571
-offset_right = -698.5714
-offset_bottom = -712.8571
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.16078432, 1, 0.19215687, 1)
-
-[node name="ColorRect23" type="ColorRect" parent="SubViewportContainer/SubViewport/Node2D" unique_id=1789605677]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 739.9999
-offset_top = -711.4285
-offset_right = 769.9999
-offset_bottom = -681.4285
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.16078432, 1, 0.19215687, 1)
-
-[node name="ColorRect24" type="ColorRect" parent="SubViewportContainer/SubViewport/Node2D" unique_id=1989691354]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 402.8572
-offset_top = -265.71432
-offset_right = 432.8572
-offset_bottom = -235.71432
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.16078432, 1, 0.19215687, 1)
-
-[node name="ColorRect8" type="ColorRect" parent="SubViewportContainer/SubViewport/Node2D" unique_id=370322244]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 225.0
-offset_top = 404.0
-offset_right = 255.0
-offset_bottom = 434.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.16078432, 1, 0.19215687, 1)
-
-[node name="ColorRect9" type="ColorRect" parent="SubViewportContainer/SubViewport/Node2D" unique_id=590492455]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 128.0
-offset_top = 72.0
-offset_right = 158.0
-offset_bottom = 102.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.16078432, 1, 0.19215687, 1)
-
-[node name="ColorRect10" type="ColorRect" parent="SubViewportContainer/SubViewport/Node2D" unique_id=675202997]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -87.0
-offset_top = 154.0
-offset_right = -57.0
-offset_bottom = 184.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.16078432, 1, 0.19215687, 1)
-
-[node name="ColorRect12" type="ColorRect" parent="SubViewportContainer/SubViewport/Node2D" unique_id=1316808012]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 30.0
-offset_top = -461.0
-offset_right = 60.0
-offset_bottom = -431.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.16078432, 1, 0.19215687, 1)
-
-[node name="ColorRect13" type="ColorRect" parent="SubViewportContainer/SubViewport/Node2D" unique_id=835353631]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -87.0
-offset_top = -725.0
-offset_right = -57.0
-offset_bottom = -695.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.16078432, 1, 0.19215687, 1)
-
-[node name="ColorRect14" type="ColorRect" parent="SubViewportContainer/SubViewport/Node2D" unique_id=453209185]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -87.0
-offset_top = -725.0
-offset_right = -57.0
-offset_bottom = -695.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.16078432, 1, 0.19215687, 1)
-
-[node name="ColorRect15" type="ColorRect" parent="SubViewportContainer/SubViewport/Node2D" unique_id=104665760]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 673.71423
-offset_top = -115.714294
-offset_right = 703.71423
-offset_bottom = -85.714294
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.16078432, 1, 0.19215687, 1)
-
-[node name="ColorRect16" type="ColorRect" parent="SubViewportContainer/SubViewport/Node2D" unique_id=823272848]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 225.71423
-offset_top = -585.7143
-offset_right = 255.71423
-offset_bottom = -555.7143
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.16078432, 1, 0.19215687, 1)
-
 [node name="Collectable" type="Area2D" parent="SubViewportContainer/SubViewport" unique_id=1557644052]
 position = Vector2(237, 300)
 script = ExtResource("3_ao2d0")
@@ -382,4 +111,440 @@ color = Color(0.9843137, 0.73333335, 0.6784314, 1)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SubViewportContainer/SubViewport/Collectable" unique_id=1132880465]
 shape = SubResource("RectangleShape2D_dxilr")
 
+[node name="Collectable2" type="Area2D" parent="SubViewportContainer/SubViewport" unique_id=1569956477]
+position = Vector2(176, 344)
+script = ExtResource("3_ao2d0")
+metadata/_custom_type_script = "uid://bu7nan430podd"
+
+[node name="ColorRect11" type="ColorRect" parent="SubViewportContainer/SubViewport/Collectable2" unique_id=1769307685]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -6.0
+offset_top = -6.0
+offset_right = 6.0
+offset_bottom = 6.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.9843137, 0.73333335, 0.6784314, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SubViewportContainer/SubViewport/Collectable2" unique_id=1691507654]
+shape = SubResource("RectangleShape2D_dxilr")
+
+[node name="Collectable3" type="Area2D" parent="SubViewportContainer/SubViewport" unique_id=486891467]
+position = Vector2(78, 218)
+script = ExtResource("3_ao2d0")
+metadata/_custom_type_script = "uid://bu7nan430podd"
+
+[node name="ColorRect11" type="ColorRect" parent="SubViewportContainer/SubViewport/Collectable3" unique_id=1800470411]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -6.0
+offset_top = -6.0
+offset_right = 6.0
+offset_bottom = 6.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.9843137, 0.73333335, 0.6784314, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SubViewportContainer/SubViewport/Collectable3" unique_id=1270380150]
+shape = SubResource("RectangleShape2D_dxilr")
+
+[node name="Collectable4" type="Area2D" parent="SubViewportContainer/SubViewport" unique_id=63174618]
+position = Vector2(103, 66)
+script = ExtResource("3_ao2d0")
+metadata/_custom_type_script = "uid://bu7nan430podd"
+
+[node name="ColorRect11" type="ColorRect" parent="SubViewportContainer/SubViewport/Collectable4" unique_id=741349003]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -6.0
+offset_top = -6.0
+offset_right = 6.0
+offset_bottom = 6.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.9843137, 0.73333335, 0.6784314, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SubViewportContainer/SubViewport/Collectable4" unique_id=1453886170]
+shape = SubResource("RectangleShape2D_dxilr")
+
+[node name="Collectable5" type="Area2D" parent="SubViewportContainer/SubViewport" unique_id=956457833]
+position = Vector2(211, 150)
+script = ExtResource("3_ao2d0")
+metadata/_custom_type_script = "uid://bu7nan430podd"
+
+[node name="ColorRect11" type="ColorRect" parent="SubViewportContainer/SubViewport/Collectable5" unique_id=1334123544]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -6.0
+offset_top = -6.0
+offset_right = 6.0
+offset_bottom = 6.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.9843137, 0.73333335, 0.6784314, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SubViewportContainer/SubViewport/Collectable5" unique_id=1472842480]
+shape = SubResource("RectangleShape2D_dxilr")
+
+[node name="Collectable6" type="Area2D" parent="SubViewportContainer/SubViewport" unique_id=1786392111]
+position = Vector2(323, 82)
+script = ExtResource("3_ao2d0")
+metadata/_custom_type_script = "uid://bu7nan430podd"
+
+[node name="ColorRect11" type="ColorRect" parent="SubViewportContainer/SubViewport/Collectable6" unique_id=1221144672]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -6.0
+offset_top = -6.0
+offset_right = 6.0
+offset_bottom = 6.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.9843137, 0.73333335, 0.6784314, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SubViewportContainer/SubViewport/Collectable6" unique_id=1027724692]
+shape = SubResource("RectangleShape2D_dxilr")
+
+[node name="Collectable7" type="Area2D" parent="SubViewportContainer/SubViewport" unique_id=137143759]
+position = Vector2(366, 166)
+script = ExtResource("3_ao2d0")
+metadata/_custom_type_script = "uid://bu7nan430podd"
+
+[node name="ColorRect11" type="ColorRect" parent="SubViewportContainer/SubViewport/Collectable7" unique_id=571469239]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -6.0
+offset_top = -6.0
+offset_right = 6.0
+offset_bottom = 6.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.9843137, 0.73333335, 0.6784314, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SubViewportContainer/SubViewport/Collectable7" unique_id=310477144]
+shape = SubResource("RectangleShape2D_dxilr")
+
+[node name="Collectable8" type="Area2D" parent="SubViewportContainer/SubViewport" unique_id=1117924477]
+position = Vector2(429, 131)
+script = ExtResource("3_ao2d0")
+metadata/_custom_type_script = "uid://bu7nan430podd"
+
+[node name="ColorRect11" type="ColorRect" parent="SubViewportContainer/SubViewport/Collectable8" unique_id=96680415]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -6.0
+offset_top = -6.0
+offset_right = 6.0
+offset_bottom = 6.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.9843137, 0.73333335, 0.6784314, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SubViewportContainer/SubViewport/Collectable8" unique_id=1664489332]
+shape = SubResource("RectangleShape2D_dxilr")
+
+[node name="Collectable9" type="Area2D" parent="SubViewportContainer/SubViewport" unique_id=1049291024]
+position = Vector2(616, 84)
+script = ExtResource("3_ao2d0")
+metadata/_custom_type_script = "uid://bu7nan430podd"
+
+[node name="ColorRect11" type="ColorRect" parent="SubViewportContainer/SubViewport/Collectable9" unique_id=1794765939]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -6.0
+offset_top = -6.0
+offset_right = 6.0
+offset_bottom = 6.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.9843137, 0.73333335, 0.6784314, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SubViewportContainer/SubViewport/Collectable9" unique_id=1603186878]
+shape = SubResource("RectangleShape2D_dxilr")
+
+[node name="Collectable10" type="Area2D" parent="SubViewportContainer/SubViewport" unique_id=177056826]
+position = Vector2(498, 236)
+script = ExtResource("3_ao2d0")
+metadata/_custom_type_script = "uid://bu7nan430podd"
+
+[node name="ColorRect11" type="ColorRect" parent="SubViewportContainer/SubViewport/Collectable10" unique_id=791685180]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -6.0
+offset_top = -6.0
+offset_right = 6.0
+offset_bottom = 6.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.9843137, 0.73333335, 0.6784314, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SubViewportContainer/SubViewport/Collectable10" unique_id=242787167]
+shape = SubResource("RectangleShape2D_dxilr")
+
+[node name="Collectable11" type="Area2D" parent="SubViewportContainer/SubViewport" unique_id=886583147]
+position = Vector2(592, 299)
+script = ExtResource("3_ao2d0")
+metadata/_custom_type_script = "uid://bu7nan430podd"
+
+[node name="ColorRect11" type="ColorRect" parent="SubViewportContainer/SubViewport/Collectable11" unique_id=677034463]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -6.0
+offset_top = -6.0
+offset_right = 6.0
+offset_bottom = 6.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.9843137, 0.73333335, 0.6784314, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SubViewportContainer/SubViewport/Collectable11" unique_id=1205195348]
+shape = SubResource("RectangleShape2D_dxilr")
+
+[node name="Collectable12" type="Area2D" parent="SubViewportContainer/SubViewport" unique_id=1401407865]
+position = Vector2(532, 388)
+script = ExtResource("3_ao2d0")
+metadata/_custom_type_script = "uid://bu7nan430podd"
+
+[node name="ColorRect11" type="ColorRect" parent="SubViewportContainer/SubViewport/Collectable12" unique_id=763856231]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -6.0
+offset_top = -6.0
+offset_right = 6.0
+offset_bottom = 6.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.9843137, 0.73333335, 0.6784314, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SubViewportContainer/SubViewport/Collectable12" unique_id=1202732718]
+shape = SubResource("RectangleShape2D_dxilr")
+
+[node name="Collectable13" type="Area2D" parent="SubViewportContainer/SubViewport" unique_id=33858353]
+position = Vector2(400, 355)
+script = ExtResource("3_ao2d0")
+metadata/_custom_type_script = "uid://bu7nan430podd"
+
+[node name="ColorRect11" type="ColorRect" parent="SubViewportContainer/SubViewport/Collectable13" unique_id=727364368]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -6.0
+offset_top = -6.0
+offset_right = 6.0
+offset_bottom = 6.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.9843137, 0.73333335, 0.6784314, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SubViewportContainer/SubViewport/Collectable13" unique_id=5014413]
+shape = SubResource("RectangleShape2D_dxilr")
+
+[node name="Collectable14" type="Area2D" parent="SubViewportContainer/SubViewport" unique_id=123177136]
+position = Vector2(329, 386)
+script = ExtResource("3_ao2d0")
+metadata/_custom_type_script = "uid://bu7nan430podd"
+
+[node name="ColorRect11" type="ColorRect" parent="SubViewportContainer/SubViewport/Collectable14" unique_id=2091619125]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -6.0
+offset_top = -6.0
+offset_right = 6.0
+offset_bottom = 6.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.9843137, 0.73333335, 0.6784314, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SubViewportContainer/SubViewport/Collectable14" unique_id=1834226805]
+shape = SubResource("RectangleShape2D_dxilr")
+
+[node name="Collectable15" type="Area2D" parent="SubViewportContainer/SubViewport" unique_id=1736496430]
+position = Vector2(360, 509)
+script = ExtResource("3_ao2d0")
+metadata/_custom_type_script = "uid://bu7nan430podd"
+
+[node name="ColorRect11" type="ColorRect" parent="SubViewportContainer/SubViewport/Collectable15" unique_id=1829722920]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -6.0
+offset_top = -6.0
+offset_right = 6.0
+offset_bottom = 6.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.9843137, 0.73333335, 0.6784314, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SubViewportContainer/SubViewport/Collectable15" unique_id=1450102307]
+shape = SubResource("RectangleShape2D_dxilr")
+
+[node name="Collectable16" type="Area2D" parent="SubViewportContainer/SubViewport" unique_id=1592754151]
+position = Vector2(444, 477)
+script = ExtResource("3_ao2d0")
+metadata/_custom_type_script = "uid://bu7nan430podd"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SubViewportContainer/SubViewport/Collectable16" unique_id=1698076322]
+shape = SubResource("RectangleShape2D_dxilr")
+
+[node name="Collectable17" type="Area2D" parent="SubViewportContainer/SubViewport" unique_id=233603061]
+position = Vector2(529, 568)
+script = ExtResource("3_ao2d0")
+metadata/_custom_type_script = "uid://bu7nan430podd"
+
+[node name="ColorRect11" type="ColorRect" parent="SubViewportContainer/SubViewport/Collectable17" unique_id=32914002]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -6.0
+offset_top = -6.0
+offset_right = 6.0
+offset_bottom = 6.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.9843137, 0.73333335, 0.6784314, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SubViewportContainer/SubViewport/Collectable17" unique_id=686678265]
+shape = SubResource("RectangleShape2D_dxilr")
+
+[node name="ColorRect12" type="ColorRect" parent="SubViewportContainer/SubViewport/Collectable17" unique_id=567060797]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -91.0
+offset_top = -97.0
+offset_right = -79.0
+offset_bottom = -85.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.9843137, 0.73333335, 0.6784314, 1)
+
+[node name="Collectable18" type="Area2D" parent="SubViewportContainer/SubViewport" unique_id=1049700959]
+position = Vector2(357, 645)
+script = ExtResource("3_ao2d0")
+metadata/_custom_type_script = "uid://bu7nan430podd"
+
+[node name="ColorRect11" type="ColorRect" parent="SubViewportContainer/SubViewport/Collectable18" unique_id=1896346154]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -6.0
+offset_top = -6.0
+offset_right = 6.0
+offset_bottom = 6.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.9843137, 0.73333335, 0.6784314, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SubViewportContainer/SubViewport/Collectable18" unique_id=2050329905]
+shape = SubResource("RectangleShape2D_dxilr")
+
+[node name="Collectable19" type="Area2D" parent="SubViewportContainer/SubViewport" unique_id=2134889010]
+position = Vector2(267, 554)
+script = ExtResource("3_ao2d0")
+metadata/_custom_type_script = "uid://bu7nan430podd"
+
+[node name="ColorRect11" type="ColorRect" parent="SubViewportContainer/SubViewport/Collectable19" unique_id=1492993387]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -6.0
+offset_top = -6.0
+offset_right = 6.0
+offset_bottom = 6.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.9843137, 0.73333335, 0.6784314, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SubViewportContainer/SubViewport/Collectable19" unique_id=1884125770]
+shape = SubResource("RectangleShape2D_dxilr")
+
+[node name="Collectable20" type="Area2D" parent="SubViewportContainer/SubViewport" unique_id=902573694]
+position = Vector2(119, 547)
+script = ExtResource("3_ao2d0")
+metadata/_custom_type_script = "uid://bu7nan430podd"
+
+[node name="ColorRect11" type="ColorRect" parent="SubViewportContainer/SubViewport/Collectable20" unique_id=725890194]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -6.0
+offset_top = -6.0
+offset_right = 6.0
+offset_bottom = 6.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.9843137, 0.73333335, 0.6784314, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SubViewportContainer/SubViewport/Collectable20" unique_id=1911711200]
+shape = SubResource("RectangleShape2D_dxilr")
+
+[node name="Collectable21" type="Area2D" parent="SubViewportContainer/SubViewport" unique_id=108415466]
+position = Vector2(84, 446)
+script = ExtResource("3_ao2d0")
+metadata/_custom_type_script = "uid://bu7nan430podd"
+
+[node name="ColorRect11" type="ColorRect" parent="SubViewportContainer/SubViewport/Collectable21" unique_id=1221201983]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -6.0
+offset_top = -6.0
+offset_right = 6.0
+offset_bottom = 6.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.9843137, 0.73333335, 0.6784314, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SubViewportContainer/SubViewport/Collectable21" unique_id=1102916253]
+shape = SubResource("RectangleShape2D_dxilr")
+
+[node name="Ship" type="CharacterBody2D" parent="SubViewportContainer/SubViewport" unique_id=632637021]
+position = Vector2(331, 558)
+motion_mode = 1
+script = ExtResource("1_a5lob")
+
+[node name="ShipsSheet" type="Sprite2D" parent="SubViewportContainer/SubViewport/Ship" unique_id=295043400]
+rotation = 3.1415927
+texture = ExtResource("3_slk23")
+region_enabled = true
+region_rect = Rect2(90, 5, 40, 33)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SubViewportContainer/SubViewport/Ship" unique_id=470645661]
+position = Vector2(0, 4)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_tumq0")
+
 [connection signal="body_entered" from="SubViewportContainer/SubViewport/Collectable" to="SubViewportContainer/SubViewport/Collectable" method="_on_body_entered"]
+[connection signal="body_entered" from="SubViewportContainer/SubViewport/Collectable2" to="SubViewportContainer/SubViewport/Collectable2" method="_on_body_entered"]
+[connection signal="body_entered" from="SubViewportContainer/SubViewport/Collectable3" to="SubViewportContainer/SubViewport/Collectable3" method="_on_body_entered"]
+[connection signal="body_entered" from="SubViewportContainer/SubViewport/Collectable4" to="SubViewportContainer/SubViewport/Collectable4" method="_on_body_entered"]
+[connection signal="body_entered" from="SubViewportContainer/SubViewport/Collectable5" to="SubViewportContainer/SubViewport/Collectable5" method="_on_body_entered"]
+[connection signal="body_entered" from="SubViewportContainer/SubViewport/Collectable6" to="SubViewportContainer/SubViewport/Collectable6" method="_on_body_entered"]
+[connection signal="body_entered" from="SubViewportContainer/SubViewport/Collectable7" to="SubViewportContainer/SubViewport/Collectable7" method="_on_body_entered"]
+[connection signal="body_entered" from="SubViewportContainer/SubViewport/Collectable8" to="SubViewportContainer/SubViewport/Collectable8" method="_on_body_entered"]
+[connection signal="body_entered" from="SubViewportContainer/SubViewport/Collectable9" to="SubViewportContainer/SubViewport/Collectable9" method="_on_body_entered"]
+[connection signal="body_entered" from="SubViewportContainer/SubViewport/Collectable10" to="SubViewportContainer/SubViewport/Collectable10" method="_on_body_entered"]
+[connection signal="body_entered" from="SubViewportContainer/SubViewport/Collectable11" to="SubViewportContainer/SubViewport/Collectable11" method="_on_body_entered"]
+[connection signal="body_entered" from="SubViewportContainer/SubViewport/Collectable12" to="SubViewportContainer/SubViewport/Collectable12" method="_on_body_entered"]
+[connection signal="body_entered" from="SubViewportContainer/SubViewport/Collectable13" to="SubViewportContainer/SubViewport/Collectable13" method="_on_body_entered"]
+[connection signal="body_entered" from="SubViewportContainer/SubViewport/Collectable14" to="SubViewportContainer/SubViewport/Collectable14" method="_on_body_entered"]
+[connection signal="body_entered" from="SubViewportContainer/SubViewport/Collectable15" to="SubViewportContainer/SubViewport/Collectable15" method="_on_body_entered"]
+[connection signal="body_entered" from="SubViewportContainer/SubViewport/Collectable16" to="SubViewportContainer/SubViewport/Collectable16" method="_on_body_entered"]
+[connection signal="body_entered" from="SubViewportContainer/SubViewport/Collectable17" to="SubViewportContainer/SubViewport/Collectable17" method="_on_body_entered"]
+[connection signal="body_entered" from="SubViewportContainer/SubViewport/Collectable18" to="SubViewportContainer/SubViewport/Collectable18" method="_on_body_entered"]
+[connection signal="body_entered" from="SubViewportContainer/SubViewport/Collectable19" to="SubViewportContainer/SubViewport/Collectable19" method="_on_body_entered"]
+[connection signal="body_entered" from="SubViewportContainer/SubViewport/Collectable20" to="SubViewportContainer/SubViewport/Collectable20" method="_on_body_entered"]
+[connection signal="body_entered" from="SubViewportContainer/SubViewport/Collectable21" to="SubViewportContainer/SubViewport/Collectable21" method="_on_body_entered"]
