@@ -34,10 +34,11 @@ func _add_item(_type:ItemType) -> void:
 			_prefab = item_C_prefab
 			_name = "<ItemC>"
 	
-	var _new_scene = _prefab.instantiate()
+	var _new_scene = _prefab.instantiate() as RigidBody2D
 	item_holder.add_child(_new_scene)
 	_new_scene.name = _name
 	_new_scene.position = Vector2.ZERO
+	_new_scene.linear_velocity = Vector2(remap(randf(),0,1,-1,1),remap(randf(),0,1,-1,1)).normalized() * 30
 
 
 static func dragging(_object:RigidBody2D,_click_pos:Vector2) -> void:

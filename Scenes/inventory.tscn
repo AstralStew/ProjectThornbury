@@ -50,7 +50,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-color = Color(0.2, 0.24705882, 0.34509805, 1)
+color = Color(0.2969033, 0.3585674, 0.48664355, 1)
 
 [node name="BoundaryTop" type="StaticBody2D" parent="SubViewportContainer/SubViewport" unique_id=799551523]
 position = Vector2(265, 0)
@@ -96,15 +96,6 @@ shape = SubResource("RectangleShape2D_tumq0")
 
 [node name="ItemHolder" type="Node2D" parent="SubViewportContainer/SubViewport" unique_id=1815584380]
 position = Vector2(271, 340)
-
-[node name="ItemA" parent="SubViewportContainer/SubViewport/ItemHolder" unique_id=1831535151 instance=ExtResource("3_0n8tc")]
-position = Vector2(-177, -243)
-
-[node name="ItemA2" parent="SubViewportContainer/SubViewport/ItemHolder" unique_id=2081074505 instance=ExtResource("3_0n8tc")]
-position = Vector2(-146, -120)
-
-[node name="ItemA3" parent="SubViewportContainer/SubViewport/ItemHolder" unique_id=2119640386 instance=ExtResource("3_0n8tc")]
-position = Vector2(-16, -178)
 
 [node name="RigidBody2D5" type="RigidBody2D" parent="SubViewportContainer/SubViewport/ItemHolder" unique_id=16949964]
 position = Vector2(-173, 226)
