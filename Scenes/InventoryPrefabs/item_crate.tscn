@@ -1,10 +1,10 @@
 [gd_scene format=3 uid="uid://3vsdr16ipou2"]
 
-[ext_resource type="Script" uid="uid://b0o8xyki30gi8" path="res://Scripts/Item.gd" id="1_yvbue"]
-[ext_resource type="Texture2D" uid="uid://cx8frip84f0f8" path="res://Assets/Images/Resources/Big/Crate_Big.png" id="2_yvbue"]
+[ext_resource type="Script" uid="uid://b0o8xyki30gi8" path="res://Scripts/Item.gd" id="1_8x6w1"]
+[ext_resource type="Texture2D" uid="uid://cx8frip84f0f8" path="res://Assets/Images/Resources/Big/Crate_Big.png" id="2_c3fgt"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yvbue"]
-size = Vector2(155, 151)
+size = Vector2(156, 152)
 
 [node name="ItemB" type="RigidBody2D" unique_id=1291223074]
 texture_filter = 1
@@ -15,12 +15,12 @@ mass = 4.0
 gravity_scale = 0.69
 can_sleep = false
 linear_damp = 0.05
-script = ExtResource("1_yvbue")
+script = ExtResource("1_8x6w1")
 type = 1
 metadata/_custom_type_script = "uid://b0o8xyki30gi8"
 
 [node name="CrateBig" type="Sprite2D" parent="." unique_id=1457128665]
-texture = ExtResource("2_yvbue")
+texture = ExtResource("2_c3fgt")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1138340637]
 shape = SubResource("RectangleShape2D_yvbue")
