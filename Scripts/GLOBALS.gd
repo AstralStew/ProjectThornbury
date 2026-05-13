@@ -1,5 +1,9 @@
 class_name GLOBALS
 
+
+static func random_rotation(range:float=360) -> float:
+	return deg_to_rad(randf_range(-range,range))
+	
 static func random_vector2(_length:float=1.0) -> Vector2:
 	if !_length: return Vector2.ZERO
 	return Vector2(remap(randf(),0,1,-1,1),remap(randf(),0,1,-1,1)) * _length

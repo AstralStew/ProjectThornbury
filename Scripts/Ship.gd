@@ -48,12 +48,38 @@ func _enter_tree() -> void:
 func _physics_process(delta: float) -> void:
 	previous_speed = speed
 	
-	get_input(delta)
-	rotation = lerp_angle(rotation, rotation + deg_to_rad(speed.x), rotation_acc)
+	if has_control:
+		get_input(delta)
+		rotation = lerp_angle(rotation, rotation + deg_to_rad(speed.x), rotation_acc)
+	else:
+		speed = Vector2(0,move_toward(speed.y,-down_speed, neutral_change_rate * delta))
 	velocity = speed.y * transform.y
 	
-	move_and_slide()
+	var collision = move_and_collide(velocity * delta)
+	if collision:
+		velocity = velocity.bounce(collision.get_normal())
+		speed.x = 0
+		speed.y = speed.y /2 
+		
+		#rotation = lerp_angle(rotation, collision.get + GLOBALS.random_rotation(15), rotation_acc)
+		#look_at(velocity)
+		rotation = collision.get_normal().angle() + deg_to_rad(90) + GLOBALS.random_rotation(30)
+		lose_control()
+		#if collision.get_collider().has_method("hit"):
+			#collision.get_collider().hit()
 
+	
+	#move_and_slide()
+
+var has_control := true
+func lose_control() -> void:
+	has_control = false
+	modulate = Color.RED
+	$ShipsSheet/Trails.visible = false
+	await get_tree().create_timer(0.25).timeout
+	$ShipsSheet/Trails.visible = true
+	modulate = Color.WHITE
+	has_control = true
 
 func get_input(delta: float) -> void:
 	var _target_rotation : float
