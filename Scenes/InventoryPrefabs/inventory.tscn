@@ -153,13 +153,13 @@ shape = SubResource("RectangleShape2D_tumq0")
 [node name="ItemHolder" type="Node2D" parent="SubViewportContainer/SubViewport" unique_id=1815584380]
 position = Vector2(271, 340)
 
-[node name="ItemA" parent="SubViewportContainer/SubViewport/ItemHolder" unique_id=1291223074 instance=ExtResource("3_0n8tc")]
-position = Vector2(94, 120)
+[node name="ItemCrate" parent="SubViewportContainer/SubViewport/ItemHolder" unique_id=1291223074 instance=ExtResource("3_03ybr")]
+position = Vector2(-116, -80)
 
-[node name="ItemB" parent="SubViewportContainer/SubViewport/ItemHolder" unique_id=2084890799 instance=ExtResource("3_03ybr")]
-position = Vector2(-61, 61)
+[node name="ItemPipe" parent="SubViewportContainer/SubViewport/ItemHolder" unique_id=708575499 instance=ExtResource("4_aco8w")]
+position = Vector2(120, 2)
 
-[node name="ItemC" parent="SubViewportContainer/SubViewport/ItemHolder" unique_id=494169210 instance=ExtResource("4_aco8w")]
-position = Vector2(76, -60)
+[node name="ItemRock" parent="SubViewportContainer/SubViewport/ItemHolder" unique_id=600246382 instance=ExtResource("3_0n8tc")]
+position = Vector2(-8, 100)
 
 [connection signal="body_entered" from="SubViewportContainer/SubViewport/Chute" to="SubViewportContainer/SubViewport/Chute" method="_on_body_entered"]

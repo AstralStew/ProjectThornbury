@@ -46,9 +46,10 @@ var trails : Array[ShipTrail] = []
 
 func _enter_tree() -> void:
 	instance = self
-#
-#func _ready() -> void:
-	#for _child:ShipTrail in find_children("","ShipTrail"):
+
+func _ready() -> void:
+	for _child:ShipTrail in find_children("","ShipTrail"):
+		trails.append(_child)
 
 func _physics_process(delta: float) -> void:
 	previous_speed = speed
@@ -80,6 +81,8 @@ var has_control := true
 func lose_control() -> void:
 	has_control = false
 	modulate = Color.RED
+	#for _trail in trails:
+		
 	$ShipsSheet/Trails.visible = false
 	await get_tree().create_timer(0.25).timeout
 	$ShipsSheet/Trails.visible = true

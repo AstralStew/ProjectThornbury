@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://jcnlsaxu7mak"]
 
+[ext_resource type="PackedScene" uid="uid://cbf7m3hmnto6d" path="res://Scenes/OutsidePrefabs/collectable_pipe.tscn" id="2_6phgx"]
 [ext_resource type="PackedScene" uid="uid://l0cg84jp4bre" path="res://Scenes/OutsidePrefabs/outside.tscn" id="2_81xng"]
 [ext_resource type="PackedScene" uid="uid://dfbi3x303ug65" path="res://Scenes/InventoryPrefabs/inventory.tscn" id="3_6phgx"]
 
@@ -45,6 +46,7 @@ alignment = 1
 [node name="OutsideManager" parent="CanvasLayer/Control/MarginContainer/HBoxContainer" unique_id=1854772268 instance=ExtResource("2_81xng")]
 layout_mode = 2
 size_flags_stretch_ratio = 1.26
+collectable_pipe_prefab = ExtResource("2_6phgx")
 
 [node name="InventoryManager" parent="CanvasLayer/Control/MarginContainer/HBoxContainer" unique_id=1086248823 instance=ExtResource("3_6phgx")]
 layout_mode = 2
