@@ -5,10 +5,11 @@ class_name ShipTrail extends Line2D
 @export var min_dist : float = 1.0
 
 func _ready() -> void:
-	add_point(get_parent().global_position)
+	activate()
 
 var _timer : float
 func _process(delta):
+	if !visible: return
 	
 	modulate = Color.GOLD.lerp(Color.WHITE, ease(remap(Ship.instance.speed.y,0,-200,0,1),0.25))
 	
@@ -19,8 +20,14 @@ func _process(delta):
 		if points.size() > number_of_points:
 			remove_point(0)
 		_timer = 0
-	else:
+	elif points.size() > 0:
 		set_point_position(points.size()-1,get_parent().global_position)
 
-func wipe_trail() -> void:
+
+func activate() -> void:
+	add_point(get_parent().global_position)
+	visible = true
+
+func deactivate() -> void:
 	clear_points()
+	visible = false

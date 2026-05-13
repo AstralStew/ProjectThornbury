@@ -30,6 +30,7 @@ item_pipe_prefab = ExtResource("4_aco8w")
 metadata/_custom_type_script = "uid://bf773hla6ca55"
 
 [node name="DebugLine" type="Line2D" parent="." unique_id=1064474407]
+visible = false
 z_index = 15
 position = Vector2(720, 161)
 points = PackedVector2Array(0, 0, 0, 34.955)
@@ -92,7 +93,7 @@ collision_mask = 0
 shape = SubResource("WorldBoundaryShape2D_51e2h")
 
 [node name="Chute" type="Area2D" parent="SubViewportContainer/SubViewport" unique_id=1174495063]
-position = Vector2(265, 19)
+position = Vector2(265, 138)
 collision_layer = 1024
 collision_mask = 256
 monitorable = false
@@ -143,7 +144,7 @@ gravity_direction = Vector2(0, 0)
 gravity = 0.0
 linear_damp = 0.0
 script = ExtResource("1_i2tdg")
-ship_force = Vector2(5, 3)
+ship_force = Vector2(2, 2)
 random_force = 0.25
 force = 100.0
 

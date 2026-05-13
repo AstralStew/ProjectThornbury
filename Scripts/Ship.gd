@@ -58,14 +58,14 @@ func _physics_process(delta: float) -> void:
 		get_input(delta)
 		rotation = lerp_angle(rotation, rotation + deg_to_rad(speed.x), rotation_acc)
 	else:
-		speed = Vector2(0,move_toward(speed.y,-down_speed, neutral_change_rate * delta))
+		speed = Vector2(0,move_toward(speed.y,-down_speed, neutral_change_rate * 0.5 * delta))
 	velocity = speed.y * transform.y
 	
 	var collision = move_and_collide(velocity * delta)
-	if collision:
+	if has_control && collision:
 		velocity = velocity.bounce(collision.get_normal())
 		speed.x = 0
-		speed.y = speed.y /2 
+		#speed.y = speed.y /2 
 		
 		#rotation = lerp_angle(rotation, collision.get + GLOBALS.random_rotation(15), rotation_acc)
 		#look_at(velocity)
@@ -78,14 +78,25 @@ func _physics_process(delta: float) -> void:
 	#move_and_slide()
 
 var has_control := true
+var _tween:Tween = null
 func lose_control() -> void:
 	has_control = false
 	modulate = Color.RED
-	#for _trail in trails:
-		
-	$ShipsSheet/Trails.visible = false
+	for _trail in trails: _trail.deactivate()
+	print("A")
+	if _tween: _tween.kill()
+	_tween = create_tween().set_parallel().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_SPRING)
+	_tween.tween_property(self,"rotation",rotation + GLOBALS.random_rotation(50),0.25)
+	_tween.tween_property($ShipsSheet,"rotation_degrees",$ShipsSheet.rotation_degrees+360,0.25)
+	
+	#await get_tree().physics_frame
+	UIManager.instance.jolt()
+	Boot.instance.jolt()
+	
 	await get_tree().create_timer(0.25).timeout
-	$ShipsSheet/Trails.visible = true
+	print("B")
+	$ShipsSheet.rotation_degrees = 180
+	for _trail in trails: _trail.activate()
 	modulate = Color.WHITE
 	has_control = true
 

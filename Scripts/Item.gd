@@ -17,6 +17,10 @@ func _spawn_countdown() -> void:
 func jettison() -> void:
 	freeze = true      
 	
+	for child in get_children():
+		if child is Line2D:
+			child.visible = false
+	
 	OutsideManager.add_collectable(type)
 	
 	var _tween = create_tween().set_parallel().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUAD)

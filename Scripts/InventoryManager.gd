@@ -11,7 +11,8 @@ enum ItemType {Rock,Crate,Pipe}
 @onready var debug_line : Line2D = $DebugLine
 @onready var item_holder : Node2D = $SubViewportContainer/SubViewport/ItemHolder
 
-@export var move_force : float = 0.5
+@export var drag_force : float = 2.5
+@export var release_force : float = 0.5
 
 static var chute_open : bool = false
 
@@ -20,7 +21,10 @@ func _enter_tree() -> void:
 
 
 func _physics_process(delta: float) -> void:
-	chute_open = Input.is_action_pressed("OpenChute")
+	if !Ship.instance.has_control:
+		chute_open = true
+	else:
+		chute_open = Input.is_action_pressed("OpenChute")
 
 static func add_item(_type:ItemType) -> void:
 	instance._add_item(_type)
@@ -47,21 +51,33 @@ func _add_item(_type:ItemType) -> void:
 	_new_scene.set_deferred("linear_velocity", Vector2(remap(randf(),0,1,-1,1), remap(randf(),0,1,1,3)).normalized() * 800)
 
 
-
 static func dragging(_object:RigidBody2D,_click_pos:Vector2) -> void:
 	instance._dragging(_object,_click_pos)
 func _dragging(_object:RigidBody2D,_click_pos:Vector2) -> void:
 	print_rich(DEBUG_NAME,"Dragging > Object '"+_object.name+"' initialised dragging! Waiting for mouse release...")
-	var _drag_start_pos = get_viewport().get_mouse_position()
-	debug_line.visible = true
-	debug_line.global_position = _drag_start_pos
+	
+	var _new_debug_line = debug_line.duplicate()
+	_object.add_child(_new_debug_line) #.reparent(_object)
+	_new_debug_line.position = _object.get_local_mouse_position()
+	_new_debug_line.visible = true
+	
+	var _move_vector : Vector2
+	var _old_damp = _object.linear_damp
+	_object.linear_damp = 2.5
+	_object.linear_damp_mode = RigidBody2D.DAMP_MODE_REPLACE
 	
 	while Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
-		debug_line.set_point_position(1,debug_line.get_local_mouse_position())
+		_new_debug_line.set_point_position(1,_new_debug_line.get_local_mouse_position())
+		_move_vector = _new_debug_line.to_global(_new_debug_line.get_point_position(1)) - _new_debug_line.to_global(_new_debug_line.get_point_position(0)) 
+		_object.apply_central_force(_move_vector * drag_force)
 		await get_tree().physics_frame
+		if !is_instance_valid(_object): break
 	
-	var _move_vector = get_viewport().get_mouse_position() - _drag_start_pos # _drag_start_pos.direction_to(get_viewport().get_mouse_position())  
-	_object.apply_central_impulse(_move_vector * move_force)#, _object.global_position)
-	debug_line.visible = false
-	print_rich(DEBUG_NAME,"Dragging > Mouse released! Moving '"+_object.name+"' with force of "+str(_move_vector)+" * "+str(move_force))
+	if is_instance_valid(_object): 
+		_new_debug_line.queue_free()
+		_object.linear_damp_mode = RigidBody2D.DAMP_MODE_COMBINE
+		_object.linear_damp = _old_damp
+		_object.apply_central_impulse(_move_vector * release_force)
+		print_rich(DEBUG_NAME,"Dragging > Mouse released! Releasing '"+_object.name+"' with force of "+str(_move_vector)+" * "+str(release_force))
+	print_rich(DEBUG_NAME,"Dragging > Oops, objects been freed! Cancelling.")
 	

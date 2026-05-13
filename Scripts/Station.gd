@@ -12,7 +12,7 @@ static var instance : Station = null
 @export var order_type : InventoryManager.ItemType = InventoryManager.ItemType.Rock
 @export var order_number : int = -1
 
-@onready var _label : Label = $Label
+@onready var _label : Label = $PanelContainer/Label
 
 
 func _ready() -> void:

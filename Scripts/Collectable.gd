@@ -9,6 +9,7 @@ var DEBUG_NAME : String :
 
 func _ready() -> void:
 	if !finished_spawning: _spawn_countdown()
+	rotation = GLOBALS.random_rotation(360)
 
 func _spawn_countdown() -> void:
 	await get_tree().physics_frame

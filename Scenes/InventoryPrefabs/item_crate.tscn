@@ -4,14 +4,14 @@
 [ext_resource type="Texture2D" uid="uid://cx8frip84f0f8" path="res://Assets/Images/Resources/Big/Crate_Big.png" id="2_c3fgt"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yvbue"]
-size = Vector2(156, 152)
+size = Vector2(156, 154)
 
 [node name="ItemCrate" type="RigidBody2D" unique_id=1291223074]
 texture_filter = 1
 collision_layer = 256
 collision_mask = 768
 input_pickable = true
-mass = 4.0
+mass = 2.0
 gravity_scale = 0.69
 can_sleep = false
 linear_damp = 0.05
