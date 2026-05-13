@@ -42,8 +42,13 @@ static var instance : Ship = null
 			#speed.y / down_speed if speed.y < 0 else speed.y / up_speed
 		#)
 
+var trails : Array[ShipTrail] = []
+
 func _enter_tree() -> void:
 	instance = self
+#
+#func _ready() -> void:
+	#for _child:ShipTrail in find_children("","ShipTrail"):
 
 func _physics_process(delta: float) -> void:
 	previous_speed = speed

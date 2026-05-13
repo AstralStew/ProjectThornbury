@@ -1088,182 +1088,140 @@ finished_spawning = true
 position = Vector2(-206, -62)
 finished_spawning = true
 
-[node name="CollectableCCloud" type="Node2D" parent="CollectableHolder" unique_id=1067136793]
+[node name="CollectablePipeCloud" type="Node2D" parent="CollectableHolder" unique_id=1067136793]
 position = Vector2(-50, 1859)
 
-[node name="CollectableC" parent="CollectableHolder/CollectableCCloud" unique_id=1779961238 instance=ExtResource("8_rx4sy")]
+[node name="CollectablePipe" parent="CollectableHolder/CollectablePipeCloud" unique_id=1779961238 instance=ExtResource("8_rx4sy")]
 position = Vector2(57, -74)
-type = 0
 
-[node name="CollectableC2" parent="CollectableHolder/CollectableCCloud" unique_id=1925361499 instance=ExtResource("8_rx4sy")]
+[node name="CollectablePipe2" parent="CollectableHolder/CollectablePipeCloud" unique_id=1925361499 instance=ExtResource("8_rx4sy")]
 position = Vector2(-35, -90)
-type = 0
 
-[node name="CollectableC3" parent="CollectableHolder/CollectableCCloud" unique_id=2114766873 instance=ExtResource("8_rx4sy")]
+[node name="CollectablePipe3" parent="CollectableHolder/CollectablePipeCloud" unique_id=2114766873 instance=ExtResource("8_rx4sy")]
 position = Vector2(-99, -31)
-type = 0
 
-[node name="CollectableC4" parent="CollectableHolder/CollectableCCloud" unique_id=985257525 instance=ExtResource("8_rx4sy")]
+[node name="CollectablePipe4" parent="CollectableHolder/CollectablePipeCloud" unique_id=985257525 instance=ExtResource("8_rx4sy")]
 position = Vector2(-99, 87)
-type = 0
 
-[node name="CollectableC5" parent="CollectableHolder/CollectableCCloud" unique_id=1105513593 instance=ExtResource("8_rx4sy")]
+[node name="CollectablePipe5" parent="CollectableHolder/CollectablePipeCloud" unique_id=1105513593 instance=ExtResource("8_rx4sy")]
 position = Vector2(135, 84)
-type = 0
 
-[node name="CollectableC6" parent="CollectableHolder/CollectableCCloud" unique_id=350977787 instance=ExtResource("8_rx4sy")]
+[node name="CollectablePipe6" parent="CollectableHolder/CollectablePipeCloud" unique_id=350977787 instance=ExtResource("8_rx4sy")]
 position = Vector2(44, 39)
-type = 0
 
-[node name="CollectableC7" parent="CollectableHolder/CollectableCCloud" unique_id=1949587799 instance=ExtResource("8_rx4sy")]
+[node name="CollectablePipe7" parent="CollectableHolder/CollectablePipeCloud" unique_id=1949587799 instance=ExtResource("8_rx4sy")]
 position = Vector2(-134, -125)
-type = 0
 
-[node name="CollectableC8" parent="CollectableHolder/CollectableCCloud" unique_id=1041229570 instance=ExtResource("8_rx4sy")]
+[node name="CollectablePipe8" parent="CollectableHolder/CollectablePipeCloud" unique_id=1041229570 instance=ExtResource("8_rx4sy")]
 position = Vector2(65, -209)
-type = 0
 
-[node name="CollectableC9" parent="CollectableHolder/CollectableCCloud" unique_id=740595348 instance=ExtResource("8_rx4sy")]
+[node name="CollectablePipe9" parent="CollectableHolder/CollectablePipeCloud" unique_id=740595348 instance=ExtResource("8_rx4sy")]
 position = Vector2(186, 28)
-type = 0
 
-[node name="CollectableC10" parent="CollectableHolder/CollectableCCloud" unique_id=430407669 instance=ExtResource("8_rx4sy")]
+[node name="CollectablePipe10" parent="CollectableHolder/CollectablePipeCloud" unique_id=430407669 instance=ExtResource("8_rx4sy")]
 position = Vector2(157, -90)
-type = 0
 
-[node name="CollectableC11" parent="CollectableHolder/CollectableCCloud" unique_id=1516242835 instance=ExtResource("8_rx4sy")]
+[node name="CollectablePipe11" parent="CollectableHolder/CollectablePipeCloud" unique_id=1516242835 instance=ExtResource("8_rx4sy")]
 position = Vector2(33, 165)
-type = 0
 
-[node name="CollectableC12" parent="CollectableHolder/CollectableCCloud" unique_id=2062487045 instance=ExtResource("8_rx4sy")]
+[node name="CollectablePipe12" parent="CollectableHolder/CollectablePipeCloud" unique_id=2062487045 instance=ExtResource("8_rx4sy")]
 position = Vector2(-71, -219)
-type = 0
 
-[node name="CollectableC13" parent="CollectableHolder/CollectableCCloud" unique_id=1968952627 instance=ExtResource("8_rx4sy")]
+[node name="CollectablePipe13" parent="CollectableHolder/CollectablePipeCloud" unique_id=1968952627 instance=ExtResource("8_rx4sy")]
 position = Vector2(167, -182)
-type = 0
 
-[node name="CollectableC14" parent="CollectableHolder/CollectableCCloud" unique_id=1796364244 instance=ExtResource("8_rx4sy")]
+[node name="CollectablePipe14" parent="CollectableHolder/CollectablePipeCloud" unique_id=1796364244 instance=ExtResource("8_rx4sy")]
 position = Vector2(270, -48)
-type = 0
 
-[node name="CollectableCCloud2" type="Node2D" parent="CollectableHolder" unique_id=1976148933]
+[node name="CollectablePipeCloud2" type="Node2D" parent="CollectableHolder" unique_id=1976148933]
 position = Vector2(-2069, 289)
 
-[node name="CollectableC" parent="CollectableHolder/CollectableCCloud2" unique_id=1029002952 instance=ExtResource("8_rx4sy")]
+[node name="CollectablePipe" parent="CollectableHolder/CollectablePipeCloud2" unique_id=1029002952 instance=ExtResource("8_rx4sy")]
 position = Vector2(57, -74)
-type = 0
 
-[node name="CollectableC2" parent="CollectableHolder/CollectableCCloud2" unique_id=423682026 instance=ExtResource("8_rx4sy")]
+[node name="CollectablePipe2" parent="CollectableHolder/CollectablePipeCloud2" unique_id=423682026 instance=ExtResource("8_rx4sy")]
 position = Vector2(-35, -90)
-type = 0
 
-[node name="CollectableC3" parent="CollectableHolder/CollectableCCloud2" unique_id=2004046870 instance=ExtResource("8_rx4sy")]
+[node name="CollectablePipe3" parent="CollectableHolder/CollectablePipeCloud2" unique_id=2004046870 instance=ExtResource("8_rx4sy")]
 position = Vector2(-99, -31)
-type = 0
 
-[node name="CollectableC4" parent="CollectableHolder/CollectableCCloud2" unique_id=1011395638 instance=ExtResource("8_rx4sy")]
+[node name="CollectablePipe4" parent="CollectableHolder/CollectablePipeCloud2" unique_id=1011395638 instance=ExtResource("8_rx4sy")]
 position = Vector2(-99, 87)
-type = 0
 
-[node name="CollectableC5" parent="CollectableHolder/CollectableCCloud2" unique_id=942875373 instance=ExtResource("8_rx4sy")]
+[node name="CollectablePipe5" parent="CollectableHolder/CollectablePipeCloud2" unique_id=942875373 instance=ExtResource("8_rx4sy")]
 position = Vector2(135, 84)
-type = 0
 
-[node name="CollectableC6" parent="CollectableHolder/CollectableCCloud2" unique_id=342368491 instance=ExtResource("8_rx4sy")]
+[node name="CollectablePipe6" parent="CollectableHolder/CollectablePipeCloud2" unique_id=342368491 instance=ExtResource("8_rx4sy")]
 position = Vector2(44, 39)
-type = 0
 
-[node name="CollectableC7" parent="CollectableHolder/CollectableCCloud2" unique_id=86767664 instance=ExtResource("8_rx4sy")]
+[node name="CollectablePipe7" parent="CollectableHolder/CollectablePipeCloud2" unique_id=86767664 instance=ExtResource("8_rx4sy")]
 position = Vector2(-134, -125)
-type = 0
 
-[node name="CollectableC8" parent="CollectableHolder/CollectableCCloud2" unique_id=1837656380 instance=ExtResource("8_rx4sy")]
+[node name="CollectablePipe8" parent="CollectableHolder/CollectablePipeCloud2" unique_id=1837656380 instance=ExtResource("8_rx4sy")]
 position = Vector2(65, -209)
-type = 0
 
-[node name="CollectableC9" parent="CollectableHolder/CollectableCCloud2" unique_id=142086721 instance=ExtResource("8_rx4sy")]
+[node name="CollectablePipe9" parent="CollectableHolder/CollectablePipeCloud2" unique_id=142086721 instance=ExtResource("8_rx4sy")]
 position = Vector2(186, 28)
-type = 0
 
-[node name="CollectableC10" parent="CollectableHolder/CollectableCCloud2" unique_id=90738309 instance=ExtResource("8_rx4sy")]
+[node name="CollectablePipe10" parent="CollectableHolder/CollectablePipeCloud2" unique_id=90738309 instance=ExtResource("8_rx4sy")]
 position = Vector2(157, -90)
-type = 0
 
-[node name="CollectableC11" parent="CollectableHolder/CollectableCCloud2" unique_id=1671471817 instance=ExtResource("8_rx4sy")]
+[node name="CollectablePipe11" parent="CollectableHolder/CollectablePipeCloud2" unique_id=1671471817 instance=ExtResource("8_rx4sy")]
 position = Vector2(33, 165)
-type = 0
 
-[node name="CollectableC12" parent="CollectableHolder/CollectableCCloud2" unique_id=1940085935 instance=ExtResource("8_rx4sy")]
+[node name="CollectablePipe12" parent="CollectableHolder/CollectablePipeCloud2" unique_id=1940085935 instance=ExtResource("8_rx4sy")]
 position = Vector2(-71, -219)
-type = 0
 
-[node name="CollectableC13" parent="CollectableHolder/CollectableCCloud2" unique_id=581391621 instance=ExtResource("8_rx4sy")]
+[node name="CollectablePipe13" parent="CollectableHolder/CollectablePipeCloud2" unique_id=581391621 instance=ExtResource("8_rx4sy")]
 position = Vector2(167, -182)
-type = 0
 
-[node name="CollectableC14" parent="CollectableHolder/CollectableCCloud2" unique_id=1254424395 instance=ExtResource("8_rx4sy")]
+[node name="CollectablePipe14" parent="CollectableHolder/CollectablePipeCloud2" unique_id=1254424395 instance=ExtResource("8_rx4sy")]
 position = Vector2(270, -48)
-type = 0
 
-[node name="CollectableCCloud3" type="Node2D" parent="CollectableHolder" unique_id=141582095]
+[node name="CollectablePipeCloud3" type="Node2D" parent="CollectableHolder" unique_id=141582095]
 position = Vector2(2086, 2338)
 
-[node name="CollectableC" parent="CollectableHolder/CollectableCCloud3" unique_id=1464262566 instance=ExtResource("8_rx4sy")]
+[node name="CollectablePipe" parent="CollectableHolder/CollectablePipeCloud3" unique_id=1464262566 instance=ExtResource("8_rx4sy")]
 position = Vector2(57, -74)
-type = 0
 
-[node name="CollectableC2" parent="CollectableHolder/CollectableCCloud3" unique_id=609743845 instance=ExtResource("8_rx4sy")]
+[node name="CollectablePipe2" parent="CollectableHolder/CollectablePipeCloud3" unique_id=609743845 instance=ExtResource("8_rx4sy")]
 position = Vector2(-35, -90)
-type = 0
 
-[node name="CollectableC3" parent="CollectableHolder/CollectableCCloud3" unique_id=19828185 instance=ExtResource("8_rx4sy")]
+[node name="CollectablePipe3" parent="CollectableHolder/CollectablePipeCloud3" unique_id=19828185 instance=ExtResource("8_rx4sy")]
 position = Vector2(-99, -31)
-type = 0
 
-[node name="CollectableC4" parent="CollectableHolder/CollectableCCloud3" unique_id=354562799 instance=ExtResource("8_rx4sy")]
+[node name="CollectablePipe4" parent="CollectableHolder/CollectablePipeCloud3" unique_id=354562799 instance=ExtResource("8_rx4sy")]
 position = Vector2(-99, 87)
-type = 0
 
-[node name="CollectableC5" parent="CollectableHolder/CollectableCCloud3" unique_id=1473987545 instance=ExtResource("8_rx4sy")]
+[node name="CollectablePipe5" parent="CollectableHolder/CollectablePipeCloud3" unique_id=1473987545 instance=ExtResource("8_rx4sy")]
 position = Vector2(135, 84)
-type = 0
 
-[node name="CollectableC6" parent="CollectableHolder/CollectableCCloud3" unique_id=1527251783 instance=ExtResource("8_rx4sy")]
+[node name="CollectablePipe6" parent="CollectableHolder/CollectablePipeCloud3" unique_id=1527251783 instance=ExtResource("8_rx4sy")]
 position = Vector2(44, 39)
-type = 0
 
-[node name="CollectableC7" parent="CollectableHolder/CollectableCCloud3" unique_id=891047514 instance=ExtResource("8_rx4sy")]
+[node name="CollectablePipe7" parent="CollectableHolder/CollectablePipeCloud3" unique_id=891047514 instance=ExtResource("8_rx4sy")]
 position = Vector2(-134, -125)
-type = 0
 
-[node name="CollectableC8" parent="CollectableHolder/CollectableCCloud3" unique_id=858846298 instance=ExtResource("8_rx4sy")]
+[node name="CollectablePipe8" parent="CollectableHolder/CollectablePipeCloud3" unique_id=858846298 instance=ExtResource("8_rx4sy")]
 position = Vector2(65, -209)
-type = 0
 
-[node name="CollectableC9" parent="CollectableHolder/CollectableCCloud3" unique_id=1538756572 instance=ExtResource("8_rx4sy")]
+[node name="CollectablePipe9" parent="CollectableHolder/CollectablePipeCloud3" unique_id=1538756572 instance=ExtResource("8_rx4sy")]
 position = Vector2(186, 28)
-type = 0
 
-[node name="CollectableC10" parent="CollectableHolder/CollectableCCloud3" unique_id=361388705 instance=ExtResource("8_rx4sy")]
+[node name="CollectablePipe10" parent="CollectableHolder/CollectablePipeCloud3" unique_id=361388705 instance=ExtResource("8_rx4sy")]
 position = Vector2(157, -90)
-type = 0
 
-[node name="CollectableC11" parent="CollectableHolder/CollectableCCloud3" unique_id=1190304360 instance=ExtResource("8_rx4sy")]
+[node name="CollectablePipe11" parent="CollectableHolder/CollectablePipeCloud3" unique_id=1190304360 instance=ExtResource("8_rx4sy")]
 position = Vector2(33, 165)
-type = 0
 
-[node name="CollectableC12" parent="CollectableHolder/CollectableCCloud3" unique_id=1912778747 instance=ExtResource("8_rx4sy")]
+[node name="CollectablePipe12" parent="CollectableHolder/CollectablePipeCloud3" unique_id=1912778747 instance=ExtResource("8_rx4sy")]
 position = Vector2(-71, -219)
-type = 0
 
-[node name="CollectableC13" parent="CollectableHolder/CollectableCCloud3" unique_id=960173618 instance=ExtResource("8_rx4sy")]
+[node name="CollectablePipe13" parent="CollectableHolder/CollectablePipeCloud3" unique_id=960173618 instance=ExtResource("8_rx4sy")]
 position = Vector2(167, -182)
-type = 0
 
-[node name="CollectableC14" parent="CollectableHolder/CollectableCCloud3" unique_id=860509739 instance=ExtResource("8_rx4sy")]
+[node name="CollectablePipe14" parent="CollectableHolder/CollectablePipeCloud3" unique_id=860509739 instance=ExtResource("8_rx4sy")]
 position = Vector2(270, -48)
-type = 0
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=1670817654]
 offset_left = -1842.0001

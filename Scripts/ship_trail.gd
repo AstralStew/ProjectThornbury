@@ -1,4 +1,4 @@
-extends Line2D
+class_name ShipTrail extends Line2D
 
 @export var number_of_points : int = 20
 @export var min_time_step : float = 0.1
@@ -21,3 +21,6 @@ func _process(delta):
 		_timer = 0
 	else:
 		set_point_position(points.size()-1,get_parent().global_position)
+
+func wipe_trail() -> void:
+	clear_points()
