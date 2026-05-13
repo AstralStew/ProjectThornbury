@@ -6,6 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://rpi66dfpi25r" path="res://Assets/Images/City/Building1.png" id="2_vx186"]
 [ext_resource type="Texture2D" uid="uid://bilt7cu3ivxxr" path="res://Assets/Images/City/Building40.png" id="3_7asov"]
 [ext_resource type="Texture2D" uid="uid://c0sl1u4dvsqni" path="res://Assets/Images/City/Building64.png" id="4_80ic5"]
+[ext_resource type="Script" uid="uid://dj133dg4r65on" path="res://Scripts/Station.gd" id="5_65i52"]
+[ext_resource type="PackedScene" uid="uid://cbf7m3hmnto6d" path="res://Scenes/OutsidePrefabs/collectable_c.tscn" id="8_rx4sy"]
 
 [sub_resource type="Gradient" id="Gradient_slk23"]
 interpolation_mode = 2
@@ -29,6 +31,9 @@ normalize = false
 seamless_blend_skirt = 0.105
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_51e2h"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_80ic5"]
+radius = 110.03
 
 [node name="Level1" type="Node2D" unique_id=1392275605]
 z_index = -2
@@ -216,289 +221,628 @@ rotation = 1.5707964
 pivot_offset_ratio = Vector2(1, 0)
 color = Color(0, 0.77396834, 0.6492011, 1)
 
+[node name="Station" type="Area2D" parent="." unique_id=1278109239]
+position = Vector2(736, 427)
+script = ExtResource("5_65i52")
+metadata/_custom_type_script = "uid://dj133dg4r65on"
+
+[node name="Gfx" type="Node2D" parent="Station" unique_id=461103004]
+
+[node name="Building41" type="Sprite2D" parent="Station/Gfx" unique_id=40788786]
+texture_filter = 1
+position = Vector2(18, -71)
+texture = ExtResource("3_7asov")
+
+[node name="Background8" type="ColorRect" parent="Station/Gfx" unique_id=93585657]
+z_index = -2
+texture_filter = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -82.0
+offset_top = -8.0
+offset_right = -50.0
+offset_bottom = 8.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset_ratio = Vector2(1, 0)
+color = Color(0.2, 0.24705882, 0.34509805, 1)
+
+[node name="Background9" type="ColorRect" parent="Station/Gfx" unique_id=463481367]
+z_index = -2
+texture_filter = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -82.0
+offset_top = -6.0
+offset_right = -50.0
+offset_bottom = 6.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset_ratio = Vector2(1, 0)
+color = Color(0.2901961, 0.47843137, 0.5882353, 1)
+
+[node name="Background10" type="ColorRect" parent="Station/Gfx" unique_id=1591966682]
+z_index = -2
+texture_filter = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -141.0
+offset_top = 19.0
+offset_right = -109.0
+offset_bottom = 35.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -1.5707964
+pivot_offset_ratio = Vector2(1, 0)
+color = Color(0.2, 0.24705882, 0.34509805, 1)
+
+[node name="Background11" type="ColorRect" parent="Station/Gfx" unique_id=66352284]
+z_index = -2
+texture_filter = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -143.0
+offset_top = 23.0
+offset_right = -107.0
+offset_bottom = 35.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -1.5707964
+pivot_offset_ratio = Vector2(1, 0)
+color = Color(0.2901961, 0.47843137, 0.5882353, 1)
+
+[node name="Building65" type="Sprite2D" parent="Station/Gfx" unique_id=1483348009]
+texture_filter = 1
+position = Vector2(61, -71)
+texture = ExtResource("4_80ic5")
+
+[node name="Building42" type="Sprite2D" parent="Station/Gfx" unique_id=332272658]
+texture_filter = 1
+position = Vector2(0, 76)
+texture = ExtResource("3_7asov")
+
+[node name="Building43" type="Sprite2D" parent="Station/Gfx" unique_id=1822636379]
+texture_filter = 1
+position = Vector2(-101, 56)
+texture = ExtResource("3_7asov")
+
+[node name="Building66" type="Sprite2D" parent="Station/Gfx" unique_id=1457264726]
+texture_filter = 1
+position = Vector2(-102, 0)
+texture = ExtResource("4_80ic5")
+
+[node name="Building5" type="Sprite2D" parent="Station/Gfx" unique_id=1858462902]
+texture_filter = 1
+position = Vector2(0, -6)
+texture = ExtResource("2_vx186")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Station" unique_id=18029490]
+shape = SubResource("CircleShape2D_80ic5")
+
+[node name="Label" type="Label" parent="Station" unique_id=1087648199]
+offset_left = -55.0
+offset_top = -63.0
+offset_right = 57.0
+offset_bottom = -40.0
+
+[node name="Station2" type="Area2D" parent="." unique_id=912917872]
+position = Vector2(603, -384)
+script = ExtResource("5_65i52")
+metadata/_custom_type_script = "uid://dj133dg4r65on"
+
+[node name="Gfx" type="Node2D" parent="Station2" unique_id=566231548]
+
+[node name="Building41" type="Sprite2D" parent="Station2/Gfx" unique_id=361586348]
+texture_filter = 1
+position = Vector2(18, -71)
+texture = ExtResource("3_7asov")
+
+[node name="Background8" type="ColorRect" parent="Station2/Gfx" unique_id=124457]
+z_index = -2
+texture_filter = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -82.0
+offset_top = -8.0
+offset_right = -50.0
+offset_bottom = 8.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset_ratio = Vector2(1, 0)
+color = Color(0.2, 0.24705882, 0.34509805, 1)
+
+[node name="Background9" type="ColorRect" parent="Station2/Gfx" unique_id=436973869]
+z_index = -2
+texture_filter = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -82.0
+offset_top = -6.0
+offset_right = -50.0
+offset_bottom = 6.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset_ratio = Vector2(1, 0)
+color = Color(0.2901961, 0.47843137, 0.5882353, 1)
+
+[node name="Background10" type="ColorRect" parent="Station2/Gfx" unique_id=508235190]
+z_index = -2
+texture_filter = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -141.0
+offset_top = 19.0
+offset_right = -109.0
+offset_bottom = 35.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -1.5707964
+pivot_offset_ratio = Vector2(1, 0)
+color = Color(0.2, 0.24705882, 0.34509805, 1)
+
+[node name="Background11" type="ColorRect" parent="Station2/Gfx" unique_id=630894539]
+z_index = -2
+texture_filter = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -143.0
+offset_top = 23.0
+offset_right = -107.0
+offset_bottom = 35.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -1.5707964
+pivot_offset_ratio = Vector2(1, 0)
+color = Color(0.2901961, 0.47843137, 0.5882353, 1)
+
+[node name="Building65" type="Sprite2D" parent="Station2/Gfx" unique_id=745212427]
+texture_filter = 1
+position = Vector2(61, -71)
+texture = ExtResource("4_80ic5")
+
+[node name="Building42" type="Sprite2D" parent="Station2/Gfx" unique_id=1120137470]
+texture_filter = 1
+position = Vector2(0, 76)
+texture = ExtResource("3_7asov")
+
+[node name="Building43" type="Sprite2D" parent="Station2/Gfx" unique_id=397571352]
+texture_filter = 1
+position = Vector2(-101, 56)
+texture = ExtResource("3_7asov")
+
+[node name="Building66" type="Sprite2D" parent="Station2/Gfx" unique_id=2101544199]
+texture_filter = 1
+position = Vector2(-102, 0)
+texture = ExtResource("4_80ic5")
+
+[node name="Building5" type="Sprite2D" parent="Station2/Gfx" unique_id=2049416926]
+texture_filter = 1
+position = Vector2(0, -6)
+texture = ExtResource("2_vx186")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Station2" unique_id=1561748796]
+shape = SubResource("CircleShape2D_80ic5")
+
+[node name="Label" type="Label" parent="Station2" unique_id=992374642]
+offset_left = -55.0
+offset_top = -63.0
+offset_right = 57.0
+offset_bottom = -40.0
+
+[node name="Station3" type="Area2D" parent="." unique_id=1886543051]
+position = Vector2(-11, -635)
+script = ExtResource("5_65i52")
+metadata/_custom_type_script = "uid://dj133dg4r65on"
+
+[node name="Gfx" type="Node2D" parent="Station3" unique_id=1041510674]
+
+[node name="Building41" type="Sprite2D" parent="Station3/Gfx" unique_id=1764484401]
+texture_filter = 1
+position = Vector2(18, -71)
+texture = ExtResource("3_7asov")
+
+[node name="Background8" type="ColorRect" parent="Station3/Gfx" unique_id=1463858145]
+z_index = -2
+texture_filter = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -82.0
+offset_top = -8.0
+offset_right = -50.0
+offset_bottom = 8.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset_ratio = Vector2(1, 0)
+color = Color(0.2, 0.24705882, 0.34509805, 1)
+
+[node name="Background9" type="ColorRect" parent="Station3/Gfx" unique_id=319962064]
+z_index = -2
+texture_filter = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -82.0
+offset_top = -6.0
+offset_right = -50.0
+offset_bottom = 6.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset_ratio = Vector2(1, 0)
+color = Color(0.2901961, 0.47843137, 0.5882353, 1)
+
+[node name="Background10" type="ColorRect" parent="Station3/Gfx" unique_id=717148304]
+z_index = -2
+texture_filter = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -141.0
+offset_top = 19.0
+offset_right = -109.0
+offset_bottom = 35.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -1.5707964
+pivot_offset_ratio = Vector2(1, 0)
+color = Color(0.2, 0.24705882, 0.34509805, 1)
+
+[node name="Background11" type="ColorRect" parent="Station3/Gfx" unique_id=1442764602]
+z_index = -2
+texture_filter = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -143.0
+offset_top = 23.0
+offset_right = -107.0
+offset_bottom = 35.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -1.5707964
+pivot_offset_ratio = Vector2(1, 0)
+color = Color(0.2901961, 0.47843137, 0.5882353, 1)
+
+[node name="Building65" type="Sprite2D" parent="Station3/Gfx" unique_id=1493337753]
+texture_filter = 1
+position = Vector2(61, -71)
+texture = ExtResource("4_80ic5")
+
+[node name="Building42" type="Sprite2D" parent="Station3/Gfx" unique_id=1447834097]
+texture_filter = 1
+position = Vector2(0, 76)
+texture = ExtResource("3_7asov")
+
+[node name="Building43" type="Sprite2D" parent="Station3/Gfx" unique_id=1534150378]
+texture_filter = 1
+position = Vector2(-101, 56)
+texture = ExtResource("3_7asov")
+
+[node name="Building66" type="Sprite2D" parent="Station3/Gfx" unique_id=1352317002]
+texture_filter = 1
+position = Vector2(-102, 0)
+texture = ExtResource("4_80ic5")
+
+[node name="Building5" type="Sprite2D" parent="Station3/Gfx" unique_id=884990701]
+texture_filter = 1
+position = Vector2(0, -6)
+texture = ExtResource("2_vx186")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Station3" unique_id=1438892201]
+shape = SubResource("CircleShape2D_80ic5")
+
+[node name="Label" type="Label" parent="Station3" unique_id=1718747141]
+offset_left = -55.0
+offset_top = -63.0
+offset_right = 57.0
+offset_bottom = -40.0
+
+[node name="Station4" type="Area2D" parent="." unique_id=775832256]
+position = Vector2(-712, -145)
+script = ExtResource("5_65i52")
+metadata/_custom_type_script = "uid://dj133dg4r65on"
+
+[node name="Gfx" type="Node2D" parent="Station4" unique_id=1666709173]
+
+[node name="Building41" type="Sprite2D" parent="Station4/Gfx" unique_id=1716730409]
+texture_filter = 1
+position = Vector2(18, -71)
+texture = ExtResource("3_7asov")
+
+[node name="Background8" type="ColorRect" parent="Station4/Gfx" unique_id=667416328]
+z_index = -2
+texture_filter = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -82.0
+offset_top = -8.0
+offset_right = -50.0
+offset_bottom = 8.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset_ratio = Vector2(1, 0)
+color = Color(0.2, 0.24705882, 0.34509805, 1)
+
+[node name="Background9" type="ColorRect" parent="Station4/Gfx" unique_id=1988995845]
+z_index = -2
+texture_filter = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -82.0
+offset_top = -6.0
+offset_right = -50.0
+offset_bottom = 6.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset_ratio = Vector2(1, 0)
+color = Color(0.2901961, 0.47843137, 0.5882353, 1)
+
+[node name="Background10" type="ColorRect" parent="Station4/Gfx" unique_id=211105888]
+z_index = -2
+texture_filter = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -141.0
+offset_top = 19.0
+offset_right = -109.0
+offset_bottom = 35.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -1.5707964
+pivot_offset_ratio = Vector2(1, 0)
+color = Color(0.2, 0.24705882, 0.34509805, 1)
+
+[node name="Background11" type="ColorRect" parent="Station4/Gfx" unique_id=1071478703]
+z_index = -2
+texture_filter = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -143.0
+offset_top = 23.0
+offset_right = -107.0
+offset_bottom = 35.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -1.5707964
+pivot_offset_ratio = Vector2(1, 0)
+color = Color(0.2901961, 0.47843137, 0.5882353, 1)
+
+[node name="Building65" type="Sprite2D" parent="Station4/Gfx" unique_id=1006591445]
+texture_filter = 1
+position = Vector2(61, -71)
+texture = ExtResource("4_80ic5")
+
+[node name="Building42" type="Sprite2D" parent="Station4/Gfx" unique_id=253000709]
+texture_filter = 1
+position = Vector2(0, 76)
+texture = ExtResource("3_7asov")
+
+[node name="Building43" type="Sprite2D" parent="Station4/Gfx" unique_id=189171368]
+texture_filter = 1
+position = Vector2(-101, 56)
+texture = ExtResource("3_7asov")
+
+[node name="Building66" type="Sprite2D" parent="Station4/Gfx" unique_id=1448387843]
+texture_filter = 1
+position = Vector2(-102, 0)
+texture = ExtResource("4_80ic5")
+
+[node name="Building5" type="Sprite2D" parent="Station4/Gfx" unique_id=161587439]
+texture_filter = 1
+position = Vector2(0, -6)
+texture = ExtResource("2_vx186")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Station4" unique_id=1107816097]
+shape = SubResource("CircleShape2D_80ic5")
+
+[node name="Label" type="Label" parent="Station4" unique_id=966726469]
+offset_left = -55.0
+offset_top = -63.0
+offset_right = 57.0
+offset_bottom = -40.0
+
 [node name="CollectableHolder" type="Node2D" parent="." unique_id=9974128]
 
-[node name="CollectableCloud5" type="Node2D" parent="CollectableHolder" unique_id=227923729]
+[node name="CollectableACloud" type="Node2D" parent="CollectableHolder" unique_id=227923729]
 position = Vector2(1101, -43)
 
-[node name="CollectableA" parent="CollectableHolder/CollectableCloud5" unique_id=454040788 instance=ExtResource("1_tmlh5")]
+[node name="CollectableA" parent="CollectableHolder/CollectableACloud" unique_id=454040788 instance=ExtResource("1_tmlh5")]
 texture_filter = 1
 position = Vector2(-96, -11)
 finished_spawning = true
 
-[node name="CollectableA2" parent="CollectableHolder/CollectableCloud5" unique_id=49464330 instance=ExtResource("1_tmlh5")]
+[node name="CollectableA2" parent="CollectableHolder/CollectableACloud" unique_id=49464330 instance=ExtResource("1_tmlh5")]
 texture_filter = 1
 position = Vector2(-173, -66)
 finished_spawning = true
 
-[node name="CollectableA3" parent="CollectableHolder/CollectableCloud5" unique_id=1692000857 instance=ExtResource("1_tmlh5")]
+[node name="CollectableA3" parent="CollectableHolder/CollectableACloud" unique_id=1692000857 instance=ExtResource("1_tmlh5")]
 texture_filter = 1
 position = Vector2(-183, -182)
 finished_spawning = true
 
-[node name="CollectableA4" parent="CollectableHolder/CollectableCloud5" unique_id=901198666 instance=ExtResource("1_tmlh5")]
+[node name="CollectableA4" parent="CollectableHolder/CollectableACloud" unique_id=901198666 instance=ExtResource("1_tmlh5")]
 texture_filter = 1
 position = Vector2(18, -182)
 finished_spawning = true
 
-[node name="CollectableA5" parent="CollectableHolder/CollectableCloud5" unique_id=1172708884 instance=ExtResource("1_tmlh5")]
+[node name="CollectableA5" parent="CollectableHolder/CollectableACloud" unique_id=1172708884 instance=ExtResource("1_tmlh5")]
 texture_filter = 1
 position = Vector2(8, -33)
 finished_spawning = true
 
-[node name="CollectableA6" parent="CollectableHolder/CollectableCloud5" unique_id=2141476614 instance=ExtResource("1_tmlh5")]
+[node name="CollectableA6" parent="CollectableHolder/CollectableACloud" unique_id=2141476614 instance=ExtResource("1_tmlh5")]
 texture_filter = 1
 position = Vector2(205, -103)
 finished_spawning = true
 
-[node name="CollectableA7" parent="CollectableHolder/CollectableCloud5" unique_id=1836460842 instance=ExtResource("1_tmlh5")]
+[node name="CollectableA7" parent="CollectableHolder/CollectableACloud" unique_id=1836460842 instance=ExtResource("1_tmlh5")]
 texture_filter = 1
 position = Vector2(151, 56)
 finished_spawning = true
 
-[node name="CollectableA8" parent="CollectableHolder/CollectableCloud5" unique_id=60675736 instance=ExtResource("1_tmlh5")]
+[node name="CollectableA8" parent="CollectableHolder/CollectableACloud" unique_id=60675736 instance=ExtResource("1_tmlh5")]
 texture_filter = 1
 position = Vector2(-44, 133)
 finished_spawning = true
 
-[node name="CollectableA9" parent="CollectableHolder/CollectableCloud5" unique_id=84520690 instance=ExtResource("1_tmlh5")]
+[node name="CollectableA9" parent="CollectableHolder/CollectableACloud" unique_id=84520690 instance=ExtResource("1_tmlh5")]
 texture_filter = 1
 position = Vector2(-263, 111)
 finished_spawning = true
 
-[node name="CollectableA10" parent="CollectableHolder/CollectableCloud5" unique_id=1865495323 instance=ExtResource("1_tmlh5")]
+[node name="CollectableA10" parent="CollectableHolder/CollectableACloud" unique_id=1865495323 instance=ExtResource("1_tmlh5")]
 texture_filter = 1
 position = Vector2(-193, 223)
 finished_spawning = true
 
-[node name="CollectableA11" parent="CollectableHolder/CollectableCloud5" unique_id=1371368969 instance=ExtResource("1_tmlh5")]
+[node name="CollectableA11" parent="CollectableHolder/CollectableACloud" unique_id=1371368969 instance=ExtResource("1_tmlh5")]
 texture_filter = 1
 position = Vector2(-155, 87)
 finished_spawning = true
 
-[node name="CollectableA12" parent="CollectableHolder/CollectableCloud5" unique_id=2035964398 instance=ExtResource("1_tmlh5")]
+[node name="CollectableA12" parent="CollectableHolder/CollectableACloud" unique_id=2035964398 instance=ExtResource("1_tmlh5")]
 texture_filter = 1
 position = Vector2(-263, -144)
 finished_spawning = true
 
-[node name="CollectableA13" parent="CollectableHolder/CollectableCloud5" unique_id=1961842409 instance=ExtResource("1_tmlh5")]
+[node name="CollectableA13" parent="CollectableHolder/CollectableACloud" unique_id=1961842409 instance=ExtResource("1_tmlh5")]
 texture_filter = 1
 position = Vector2(195, -234)
 finished_spawning = true
 
-[node name="CollectableA14" parent="CollectableHolder/CollectableCloud5" unique_id=441734093 instance=ExtResource("1_tmlh5")]
+[node name="CollectableA14" parent="CollectableHolder/CollectableACloud" unique_id=441734093 instance=ExtResource("1_tmlh5")]
 texture_filter = 1
 position = Vector2(261, 133)
 finished_spawning = true
 
-[node name="CollectableA15" parent="CollectableHolder/CollectableCloud5" unique_id=581351745 instance=ExtResource("1_tmlh5")]
+[node name="CollectableA15" parent="CollectableHolder/CollectableACloud" unique_id=581351745 instance=ExtResource("1_tmlh5")]
 texture_filter = 1
 position = Vector2(151, 196)
 finished_spawning = true
 
-[node name="CollectableA16" parent="CollectableHolder/CollectableCloud5" unique_id=1591863578 instance=ExtResource("1_tmlh5")]
+[node name="CollectableA16" parent="CollectableHolder/CollectableACloud" unique_id=1591863578 instance=ExtResource("1_tmlh5")]
 texture_filter = 1
 position = Vector2(271, 300)
 finished_spawning = true
 
-[node name="CollectableA17" parent="CollectableHolder/CollectableCloud5" unique_id=2147123719 instance=ExtResource("1_tmlh5")]
+[node name="CollectableA17" parent="CollectableHolder/CollectableACloud" unique_id=2147123719 instance=ExtResource("1_tmlh5")]
 texture_filter = 1
 position = Vector2(34, 56)
 finished_spawning = true
 
-[node name="CollectableA18" parent="CollectableHolder/CollectableCloud5" unique_id=529696675 instance=ExtResource("1_tmlh5")]
+[node name="CollectableA18" parent="CollectableHolder/CollectableACloud" unique_id=529696675 instance=ExtResource("1_tmlh5")]
 texture_filter = 1
 position = Vector2(-86, -244)
 finished_spawning = true
 
-[node name="CollectableCloud2" type="Node2D" parent="CollectableHolder" unique_id=1246567609]
+[node name="CollectableACloud2" type="Node2D" parent="CollectableHolder" unique_id=1246567609]
 position = Vector2(554, -788)
 
-[node name="CollectableA" parent="CollectableHolder/CollectableCloud2" unique_id=1363189793 instance=ExtResource("1_tmlh5")]
+[node name="CollectableA" parent="CollectableHolder/CollectableACloud2" unique_id=1363189793 instance=ExtResource("1_tmlh5")]
 texture_filter = 1
 position = Vector2(-96, -11)
 finished_spawning = true
 
-[node name="CollectableA2" parent="CollectableHolder/CollectableCloud2" unique_id=1010731291 instance=ExtResource("1_tmlh5")]
+[node name="CollectableA2" parent="CollectableHolder/CollectableACloud2" unique_id=1010731291 instance=ExtResource("1_tmlh5")]
 texture_filter = 1
 position = Vector2(-173, -66)
 finished_spawning = true
 
-[node name="CollectableA3" parent="CollectableHolder/CollectableCloud2" unique_id=1276828133 instance=ExtResource("1_tmlh5")]
+[node name="CollectableA3" parent="CollectableHolder/CollectableACloud2" unique_id=1276828133 instance=ExtResource("1_tmlh5")]
 texture_filter = 1
 position = Vector2(-183, -182)
 finished_spawning = true
 
-[node name="CollectableA4" parent="CollectableHolder/CollectableCloud2" unique_id=506351245 instance=ExtResource("1_tmlh5")]
+[node name="CollectableA4" parent="CollectableHolder/CollectableACloud2" unique_id=506351245 instance=ExtResource("1_tmlh5")]
 texture_filter = 1
 position = Vector2(18, -182)
 finished_spawning = true
 
-[node name="CollectableA5" parent="CollectableHolder/CollectableCloud2" unique_id=1915079097 instance=ExtResource("1_tmlh5")]
+[node name="CollectableA5" parent="CollectableHolder/CollectableACloud2" unique_id=1915079097 instance=ExtResource("1_tmlh5")]
 texture_filter = 1
 position = Vector2(8, -33)
 finished_spawning = true
 
-[node name="CollectableA6" parent="CollectableHolder/CollectableCloud2" unique_id=1390032610 instance=ExtResource("1_tmlh5")]
+[node name="CollectableA6" parent="CollectableHolder/CollectableACloud2" unique_id=1390032610 instance=ExtResource("1_tmlh5")]
 texture_filter = 1
 position = Vector2(205, -103)
 finished_spawning = true
 
-[node name="CollectableA7" parent="CollectableHolder/CollectableCloud2" unique_id=512483888 instance=ExtResource("1_tmlh5")]
+[node name="CollectableA7" parent="CollectableHolder/CollectableACloud2" unique_id=512483888 instance=ExtResource("1_tmlh5")]
 texture_filter = 1
 position = Vector2(151, 56)
 finished_spawning = true
 
-[node name="CollectableA8" parent="CollectableHolder/CollectableCloud2" unique_id=2015305420 instance=ExtResource("1_tmlh5")]
+[node name="CollectableA8" parent="CollectableHolder/CollectableACloud2" unique_id=2015305420 instance=ExtResource("1_tmlh5")]
 texture_filter = 1
 position = Vector2(-44, 133)
 finished_spawning = true
 
-[node name="CollectableA9" parent="CollectableHolder/CollectableCloud2" unique_id=658718551 instance=ExtResource("1_tmlh5")]
+[node name="CollectableA9" parent="CollectableHolder/CollectableACloud2" unique_id=658718551 instance=ExtResource("1_tmlh5")]
 texture_filter = 1
 position = Vector2(-263, 111)
 finished_spawning = true
 
-[node name="CollectableA10" parent="CollectableHolder/CollectableCloud2" unique_id=266069443 instance=ExtResource("1_tmlh5")]
+[node name="CollectableA10" parent="CollectableHolder/CollectableACloud2" unique_id=266069443 instance=ExtResource("1_tmlh5")]
 texture_filter = 1
 position = Vector2(-193, 223)
 finished_spawning = true
 
-[node name="CollectableA11" parent="CollectableHolder/CollectableCloud2" unique_id=321686884 instance=ExtResource("1_tmlh5")]
+[node name="CollectableA11" parent="CollectableHolder/CollectableACloud2" unique_id=321686884 instance=ExtResource("1_tmlh5")]
 texture_filter = 1
 position = Vector2(-155, 87)
 finished_spawning = true
 
-[node name="CollectableA12" parent="CollectableHolder/CollectableCloud2" unique_id=1147182863 instance=ExtResource("1_tmlh5")]
+[node name="CollectableA12" parent="CollectableHolder/CollectableACloud2" unique_id=1147182863 instance=ExtResource("1_tmlh5")]
 texture_filter = 1
 position = Vector2(-263, -144)
 finished_spawning = true
 
-[node name="CollectableA13" parent="CollectableHolder/CollectableCloud2" unique_id=2086485393 instance=ExtResource("1_tmlh5")]
+[node name="CollectableA13" parent="CollectableHolder/CollectableACloud2" unique_id=2086485393 instance=ExtResource("1_tmlh5")]
 texture_filter = 1
 position = Vector2(195, -234)
 finished_spawning = true
 
-[node name="CollectableA14" parent="CollectableHolder/CollectableCloud2" unique_id=297339924 instance=ExtResource("1_tmlh5")]
+[node name="CollectableA14" parent="CollectableHolder/CollectableACloud2" unique_id=297339924 instance=ExtResource("1_tmlh5")]
 texture_filter = 1
 position = Vector2(261, 133)
 finished_spawning = true
 
-[node name="CollectableA15" parent="CollectableHolder/CollectableCloud2" unique_id=2139203386 instance=ExtResource("1_tmlh5")]
+[node name="CollectableA15" parent="CollectableHolder/CollectableACloud2" unique_id=2139203386 instance=ExtResource("1_tmlh5")]
 texture_filter = 1
 position = Vector2(151, 196)
 finished_spawning = true
 
-[node name="CollectableA16" parent="CollectableHolder/CollectableCloud2" unique_id=1546676102 instance=ExtResource("1_tmlh5")]
+[node name="CollectableA16" parent="CollectableHolder/CollectableACloud2" unique_id=1546676102 instance=ExtResource("1_tmlh5")]
 texture_filter = 1
 position = Vector2(271, 300)
 finished_spawning = true
 
-[node name="CollectableA17" parent="CollectableHolder/CollectableCloud2" unique_id=1547669849 instance=ExtResource("1_tmlh5")]
+[node name="CollectableA17" parent="CollectableHolder/CollectableACloud2" unique_id=1547669849 instance=ExtResource("1_tmlh5")]
 texture_filter = 1
 position = Vector2(34, 56)
 finished_spawning = true
 
-[node name="CollectableA18" parent="CollectableHolder/CollectableCloud2" unique_id=543496504 instance=ExtResource("1_tmlh5")]
-texture_filter = 1
-position = Vector2(-86, -244)
-finished_spawning = true
-
-[node name="CollectableCloud4" type="Node2D" parent="CollectableHolder" unique_id=1067136793]
-position = Vector2(-584, 372)
-
-[node name="CollectableA" parent="CollectableHolder/CollectableCloud4" unique_id=1114914014 instance=ExtResource("1_tmlh5")]
-texture_filter = 1
-position = Vector2(-96, -11)
-finished_spawning = true
-
-[node name="CollectableA2" parent="CollectableHolder/CollectableCloud4" unique_id=169008826 instance=ExtResource("1_tmlh5")]
-texture_filter = 1
-position = Vector2(-173, -66)
-finished_spawning = true
-
-[node name="CollectableA3" parent="CollectableHolder/CollectableCloud4" unique_id=1267354298 instance=ExtResource("1_tmlh5")]
-texture_filter = 1
-position = Vector2(-183, -182)
-finished_spawning = true
-
-[node name="CollectableA4" parent="CollectableHolder/CollectableCloud4" unique_id=107816746 instance=ExtResource("1_tmlh5")]
-texture_filter = 1
-position = Vector2(18, -182)
-finished_spawning = true
-
-[node name="CollectableA5" parent="CollectableHolder/CollectableCloud4" unique_id=435331756 instance=ExtResource("1_tmlh5")]
-texture_filter = 1
-position = Vector2(8, -33)
-finished_spawning = true
-
-[node name="CollectableA6" parent="CollectableHolder/CollectableCloud4" unique_id=630445610 instance=ExtResource("1_tmlh5")]
-texture_filter = 1
-position = Vector2(205, -103)
-finished_spawning = true
-
-[node name="CollectableA7" parent="CollectableHolder/CollectableCloud4" unique_id=649669789 instance=ExtResource("1_tmlh5")]
-texture_filter = 1
-position = Vector2(151, 56)
-finished_spawning = true
-
-[node name="CollectableA8" parent="CollectableHolder/CollectableCloud4" unique_id=646257644 instance=ExtResource("1_tmlh5")]
-texture_filter = 1
-position = Vector2(-44, 133)
-finished_spawning = true
-
-[node name="CollectableA9" parent="CollectableHolder/CollectableCloud4" unique_id=390601049 instance=ExtResource("1_tmlh5")]
-texture_filter = 1
-position = Vector2(-263, 111)
-finished_spawning = true
-
-[node name="CollectableA10" parent="CollectableHolder/CollectableCloud4" unique_id=2144027508 instance=ExtResource("1_tmlh5")]
-texture_filter = 1
-position = Vector2(-193, 223)
-finished_spawning = true
-
-[node name="CollectableA11" parent="CollectableHolder/CollectableCloud4" unique_id=1815918599 instance=ExtResource("1_tmlh5")]
-texture_filter = 1
-position = Vector2(-155, 87)
-finished_spawning = true
-
-[node name="CollectableA12" parent="CollectableHolder/CollectableCloud4" unique_id=2103764061 instance=ExtResource("1_tmlh5")]
-texture_filter = 1
-position = Vector2(-263, -144)
-finished_spawning = true
-
-[node name="CollectableA13" parent="CollectableHolder/CollectableCloud4" unique_id=497207022 instance=ExtResource("1_tmlh5")]
-texture_filter = 1
-position = Vector2(195, -234)
-finished_spawning = true
-
-[node name="CollectableA14" parent="CollectableHolder/CollectableCloud4" unique_id=642201190 instance=ExtResource("1_tmlh5")]
-texture_filter = 1
-position = Vector2(261, 133)
-finished_spawning = true
-
-[node name="CollectableA15" parent="CollectableHolder/CollectableCloud4" unique_id=140047009 instance=ExtResource("1_tmlh5")]
-texture_filter = 1
-position = Vector2(151, 196)
-finished_spawning = true
-
-[node name="CollectableA16" parent="CollectableHolder/CollectableCloud4" unique_id=2018536830 instance=ExtResource("1_tmlh5")]
-texture_filter = 1
-position = Vector2(271, 300)
-finished_spawning = true
-
-[node name="CollectableA17" parent="CollectableHolder/CollectableCloud4" unique_id=477472421 instance=ExtResource("1_tmlh5")]
-texture_filter = 1
-position = Vector2(34, 56)
-finished_spawning = true
-
-[node name="CollectableA18" parent="CollectableHolder/CollectableCloud4" unique_id=1420123869 instance=ExtResource("1_tmlh5")]
+[node name="CollectableA18" parent="CollectableHolder/CollectableACloud2" unique_id=543496504 instance=ExtResource("1_tmlh5")]
 texture_filter = 1
 position = Vector2(-86, -244)
 finished_spawning = true
 
 [node name="CollecatableBCloud" type="Node2D" parent="CollectableHolder" unique_id=125719132]
-position = Vector2(368, 806)
+position = Vector2(253, 741)
 
 [node name="CollectableB" parent="CollectableHolder/CollecatableBCloud" unique_id=1843489661 instance=ExtResource("2_7asov")]
 position = Vector2(-55, -79)
@@ -615,124 +959,52 @@ finished_spawning = true
 position = Vector2(-206, -62)
 finished_spawning = true
 
-[node name="Building2" type="Sprite2D" parent="." unique_id=463885866]
-texture_filter = 1
-position = Vector2(-771, -132)
-texture = ExtResource("2_vx186")
+[node name="CollectableCCloud" type="Node2D" parent="CollectableHolder" unique_id=1067136793]
+position = Vector2(-426, 411)
 
-[node name="Building3" type="Sprite2D" parent="." unique_id=857632545]
-texture_filter = 1
-position = Vector2(-24, -687)
-texture = ExtResource("2_vx186")
+[node name="CollectableC" parent="CollectableHolder/CollectableCCloud" unique_id=1779961238 instance=ExtResource("8_rx4sy")]
+position = Vector2(57, -74)
 
-[node name="Building4" type="Sprite2D" parent="." unique_id=749652249]
-texture_filter = 1
-position = Vector2(641, -430)
-texture = ExtResource("2_vx186")
+[node name="CollectableC2" parent="CollectableHolder/CollectableCCloud" unique_id=1925361499 instance=ExtResource("8_rx4sy")]
+position = Vector2(-35, -90)
 
-[node name="Building5" type="Sprite2D" parent="." unique_id=1858462902]
-texture_filter = 1
-position = Vector2(783, 453)
-texture = ExtResource("2_vx186")
+[node name="CollectableC3" parent="CollectableHolder/CollectableCCloud" unique_id=2114766873 instance=ExtResource("8_rx4sy")]
+position = Vector2(-99, -31)
 
-[node name="Building41" type="Sprite2D" parent="." unique_id=40788786]
-texture_filter = 1
-position = Vector2(801, 388)
-texture = ExtResource("3_7asov")
+[node name="CollectableC4" parent="CollectableHolder/CollectableCCloud" unique_id=985257525 instance=ExtResource("8_rx4sy")]
+position = Vector2(-99, 87)
 
-[node name="Background6" type="ColorRect" parent="." unique_id=479782307]
-z_index = -2
-texture_filter = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 701.0
-offset_top = 453.0
-offset_right = 733.0
-offset_bottom = 465.0
-grow_horizontal = 2
-grow_vertical = 2
-pivot_offset_ratio = Vector2(1, 0)
-color = Color(0.2901961, 0.47843137, 0.5882353, 1)
+[node name="CollectableC5" parent="CollectableHolder/CollectableCCloud" unique_id=1105513593 instance=ExtResource("8_rx4sy")]
+position = Vector2(135, 84)
 
-[node name="Background8" type="ColorRect" parent="." unique_id=93585657]
-z_index = -2
-texture_filter = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 701.0
-offset_top = 451.0
-offset_right = 733.0
-offset_bottom = 467.0
-grow_horizontal = 2
-grow_vertical = 2
-pivot_offset_ratio = Vector2(1, 0)
-color = Color(0.2, 0.24705882, 0.34509805, 1)
+[node name="CollectableC6" parent="CollectableHolder/CollectableCCloud" unique_id=350977787 instance=ExtResource("8_rx4sy")]
+position = Vector2(44, 39)
 
-[node name="Background9" type="ColorRect" parent="." unique_id=463481367]
-z_index = -2
-texture_filter = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 701.0
-offset_top = 453.0
-offset_right = 733.0
-offset_bottom = 465.0
-grow_horizontal = 2
-grow_vertical = 2
-pivot_offset_ratio = Vector2(1, 0)
-color = Color(0.2901961, 0.47843137, 0.5882353, 1)
+[node name="CollectableC7" parent="CollectableHolder/CollectableCCloud" unique_id=1949587799 instance=ExtResource("8_rx4sy")]
+position = Vector2(-134, -125)
 
-[node name="Background10" type="ColorRect" parent="." unique_id=1591966682]
-z_index = -2
-texture_filter = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 642.0
-offset_top = 478.0
-offset_right = 674.0
-offset_bottom = 494.0
-grow_horizontal = 2
-grow_vertical = 2
-rotation = -1.5707964
-pivot_offset_ratio = Vector2(1, 0)
-color = Color(0.2, 0.24705882, 0.34509805, 1)
+[node name="CollectableC8" parent="CollectableHolder/CollectableCCloud" unique_id=1041229570 instance=ExtResource("8_rx4sy")]
+position = Vector2(65, -209)
 
-[node name="Background11" type="ColorRect" parent="." unique_id=66352284]
-z_index = -2
-texture_filter = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 644.0
-offset_top = 478.0
-offset_right = 676.0
-offset_bottom = 490.0
-grow_horizontal = 2
-grow_vertical = 2
-rotation = -1.5707964
-pivot_offset_ratio = Vector2(1, 0)
-color = Color(0.2901961, 0.47843137, 0.5882353, 1)
+[node name="CollectableC9" parent="CollectableHolder/CollectableCCloud" unique_id=740595348 instance=ExtResource("8_rx4sy")]
+position = Vector2(186, 28)
 
-[node name="Building65" type="Sprite2D" parent="." unique_id=1483348009]
-texture_filter = 1
-position = Vector2(844, 388)
-texture = ExtResource("4_80ic5")
+[node name="CollectableC10" parent="CollectableHolder/CollectableCCloud" unique_id=430407669 instance=ExtResource("8_rx4sy")]
+position = Vector2(157, -90)
 
-[node name="Building42" type="Sprite2D" parent="." unique_id=332272658]
-texture_filter = 1
-position = Vector2(783, 535)
-texture = ExtResource("3_7asov")
+[node name="CollectableC11" parent="CollectableHolder/CollectableCCloud" unique_id=1516242835 instance=ExtResource("8_rx4sy")]
+position = Vector2(33, 165)
 
-[node name="Building43" type="Sprite2D" parent="." unique_id=1822636379]
-texture_filter = 1
-position = Vector2(682, 515)
-texture = ExtResource("3_7asov")
+[node name="CollectableC12" parent="CollectableHolder/CollectableCCloud" unique_id=2062487045 instance=ExtResource("8_rx4sy")]
+position = Vector2(-71, -219)
 
-[node name="Building66" type="Sprite2D" parent="." unique_id=1457264726]
-texture_filter = 1
-position = Vector2(681, 459)
-texture = ExtResource("4_80ic5")
+[node name="CollectableC13" parent="CollectableHolder/CollectableCCloud" unique_id=1968952627 instance=ExtResource("8_rx4sy")]
+position = Vector2(167, -182)
+
+[node name="CollectableC14" parent="CollectableHolder/CollectableCCloud" unique_id=1796364244 instance=ExtResource("8_rx4sy")]
+position = Vector2(270, -48)
+
+[connection signal="area_entered" from="Station" to="Station" method="_on_area_entered"]
+[connection signal="area_entered" from="Station2" to="Station2" method="_on_area_entered"]
+[connection signal="area_entered" from="Station3" to="Station3" method="_on_area_entered"]
+[connection signal="area_entered" from="Station4" to="Station4" method="_on_area_entered"]
