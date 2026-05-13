@@ -1,11 +1,12 @@
 [gd_scene format=3 uid="uid://be2frk3ryyebk"]
 
-[ext_resource type="Script" uid="uid://b0o8xyki30gi8" path="res://Scripts/Item.gd" id="1_fmd6j"]
+[ext_resource type="Script" uid="uid://b0o8xyki30gi8" path="res://Scripts/Item.gd" id="1_rjuqm"]
+[ext_resource type="Texture2D" uid="uid://danx500npa3uq" path="res://Assets/Images/Resources/Long/Pipe_Long.png" id="2_uctbt"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yvbue"]
-size = Vector2(200, 30)
+size = Vector2(190, 12)
 
-[node name="ItemC" type="RigidBody2D" unique_id=1291223074]
+[node name="ItemPipe" type="RigidBody2D" unique_id=1291223074]
 texture_filter = 1
 collision_layer = 256
 collision_mask = 768
@@ -13,17 +14,12 @@ input_pickable = true
 mass = 0.5
 can_sleep = false
 linear_damp = 0.05
-script = ExtResource("1_fmd6j")
+script = ExtResource("1_rjuqm")
 type = 2
 metadata/_custom_type_script = "uid://b0o8xyki30gi8"
 
-[node name="ColorRect" type="ColorRect" parent="." unique_id=1558959491]
-offset_left = -100.0
-offset_top = -15.0
-offset_right = 100.0
-offset_bottom = 15.0
-mouse_filter = 2
-color = Color(1, 1, 0, 1)
+[node name="PipeLong" type="Sprite2D" parent="." unique_id=519294592]
+texture = ExtResource("2_uctbt")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1138340637]
 shape = SubResource("RectangleShape2D_yvbue")

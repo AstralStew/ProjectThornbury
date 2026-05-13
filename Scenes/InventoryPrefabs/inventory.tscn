@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://d23b7v703vw2y" path="res://Scenes/InventoryPrefabs/item_rock.tscn" id="3_0n8tc"]
 [ext_resource type="PackedScene" uid="uid://3vsdr16ipou2" path="res://Scenes/InventoryPrefabs/item_crate.tscn" id="3_03ybr"]
 [ext_resource type="Script" uid="uid://de381ep43a5bi" path="res://Scripts/Chute.gd" id="3_k1vlg"]
-[ext_resource type="PackedScene" uid="uid://be2frk3ryyebk" path="res://Scenes/InventoryPrefabs/item_c.tscn" id="4_aco8w"]
+[ext_resource type="PackedScene" uid="uid://be2frk3ryyebk" path="res://Scenes/InventoryPrefabs/item_pipe.tscn" id="4_aco8w"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_51e2h"]
 
@@ -26,7 +26,7 @@ mouse_filter = 2
 script = ExtResource("1_5v8l0")
 item_rock_prefab = ExtResource("3_0n8tc")
 item_crate_prefab = ExtResource("3_03ybr")
-item_C_prefab = ExtResource("4_aco8w")
+item_pipe_prefab = ExtResource("4_aco8w")
 metadata/_custom_type_script = "uid://bf773hla6ca55"
 
 [node name="DebugLine" type="Line2D" parent="." unique_id=1064474407]

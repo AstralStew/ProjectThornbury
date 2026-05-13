@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://bilt7cu3ivxxr" path="res://Assets/Images/City/Building40.png" id="3_7asov"]
 [ext_resource type="Texture2D" uid="uid://c0sl1u4dvsqni" path="res://Assets/Images/City/Building64.png" id="4_80ic5"]
 [ext_resource type="Script" uid="uid://dj133dg4r65on" path="res://Scripts/Station.gd" id="5_65i52"]
-[ext_resource type="PackedScene" uid="uid://cbf7m3hmnto6d" path="res://Scenes/OutsidePrefabs/collectable_c.tscn" id="8_rx4sy"]
+[ext_resource type="PackedScene" uid="uid://cbf7m3hmnto6d" path="res://Scenes/OutsidePrefabs/collectable_pipe.tscn" id="8_rx4sy"]
 
 [sub_resource type="Gradient" id="Gradient_slk23"]
 interpolation_mode = 2
@@ -1093,135 +1093,177 @@ position = Vector2(-50, 1859)
 
 [node name="CollectableC" parent="CollectableHolder/CollectableCCloud" unique_id=1779961238 instance=ExtResource("8_rx4sy")]
 position = Vector2(57, -74)
+type = 0
 
 [node name="CollectableC2" parent="CollectableHolder/CollectableCCloud" unique_id=1925361499 instance=ExtResource("8_rx4sy")]
 position = Vector2(-35, -90)
+type = 0
 
 [node name="CollectableC3" parent="CollectableHolder/CollectableCCloud" unique_id=2114766873 instance=ExtResource("8_rx4sy")]
 position = Vector2(-99, -31)
+type = 0
 
 [node name="CollectableC4" parent="CollectableHolder/CollectableCCloud" unique_id=985257525 instance=ExtResource("8_rx4sy")]
 position = Vector2(-99, 87)
+type = 0
 
 [node name="CollectableC5" parent="CollectableHolder/CollectableCCloud" unique_id=1105513593 instance=ExtResource("8_rx4sy")]
 position = Vector2(135, 84)
+type = 0
 
 [node name="CollectableC6" parent="CollectableHolder/CollectableCCloud" unique_id=350977787 instance=ExtResource("8_rx4sy")]
 position = Vector2(44, 39)
+type = 0
 
 [node name="CollectableC7" parent="CollectableHolder/CollectableCCloud" unique_id=1949587799 instance=ExtResource("8_rx4sy")]
 position = Vector2(-134, -125)
+type = 0
 
 [node name="CollectableC8" parent="CollectableHolder/CollectableCCloud" unique_id=1041229570 instance=ExtResource("8_rx4sy")]
 position = Vector2(65, -209)
+type = 0
 
 [node name="CollectableC9" parent="CollectableHolder/CollectableCCloud" unique_id=740595348 instance=ExtResource("8_rx4sy")]
 position = Vector2(186, 28)
+type = 0
 
 [node name="CollectableC10" parent="CollectableHolder/CollectableCCloud" unique_id=430407669 instance=ExtResource("8_rx4sy")]
 position = Vector2(157, -90)
+type = 0
 
 [node name="CollectableC11" parent="CollectableHolder/CollectableCCloud" unique_id=1516242835 instance=ExtResource("8_rx4sy")]
 position = Vector2(33, 165)
+type = 0
 
 [node name="CollectableC12" parent="CollectableHolder/CollectableCCloud" unique_id=2062487045 instance=ExtResource("8_rx4sy")]
 position = Vector2(-71, -219)
+type = 0
 
 [node name="CollectableC13" parent="CollectableHolder/CollectableCCloud" unique_id=1968952627 instance=ExtResource("8_rx4sy")]
 position = Vector2(167, -182)
+type = 0
 
 [node name="CollectableC14" parent="CollectableHolder/CollectableCCloud" unique_id=1796364244 instance=ExtResource("8_rx4sy")]
 position = Vector2(270, -48)
+type = 0
 
 [node name="CollectableCCloud2" type="Node2D" parent="CollectableHolder" unique_id=1976148933]
 position = Vector2(-2069, 289)
 
 [node name="CollectableC" parent="CollectableHolder/CollectableCCloud2" unique_id=1029002952 instance=ExtResource("8_rx4sy")]
 position = Vector2(57, -74)
+type = 0
 
 [node name="CollectableC2" parent="CollectableHolder/CollectableCCloud2" unique_id=423682026 instance=ExtResource("8_rx4sy")]
 position = Vector2(-35, -90)
+type = 0
 
 [node name="CollectableC3" parent="CollectableHolder/CollectableCCloud2" unique_id=2004046870 instance=ExtResource("8_rx4sy")]
 position = Vector2(-99, -31)
+type = 0
 
 [node name="CollectableC4" parent="CollectableHolder/CollectableCCloud2" unique_id=1011395638 instance=ExtResource("8_rx4sy")]
 position = Vector2(-99, 87)
+type = 0
 
 [node name="CollectableC5" parent="CollectableHolder/CollectableCCloud2" unique_id=942875373 instance=ExtResource("8_rx4sy")]
 position = Vector2(135, 84)
+type = 0
 
 [node name="CollectableC6" parent="CollectableHolder/CollectableCCloud2" unique_id=342368491 instance=ExtResource("8_rx4sy")]
 position = Vector2(44, 39)
+type = 0
 
 [node name="CollectableC7" parent="CollectableHolder/CollectableCCloud2" unique_id=86767664 instance=ExtResource("8_rx4sy")]
 position = Vector2(-134, -125)
+type = 0
 
 [node name="CollectableC8" parent="CollectableHolder/CollectableCCloud2" unique_id=1837656380 instance=ExtResource("8_rx4sy")]
 position = Vector2(65, -209)
+type = 0
 
 [node name="CollectableC9" parent="CollectableHolder/CollectableCCloud2" unique_id=142086721 instance=ExtResource("8_rx4sy")]
 position = Vector2(186, 28)
+type = 0
 
 [node name="CollectableC10" parent="CollectableHolder/CollectableCCloud2" unique_id=90738309 instance=ExtResource("8_rx4sy")]
 position = Vector2(157, -90)
+type = 0
 
 [node name="CollectableC11" parent="CollectableHolder/CollectableCCloud2" unique_id=1671471817 instance=ExtResource("8_rx4sy")]
 position = Vector2(33, 165)
+type = 0
 
 [node name="CollectableC12" parent="CollectableHolder/CollectableCCloud2" unique_id=1940085935 instance=ExtResource("8_rx4sy")]
 position = Vector2(-71, -219)
+type = 0
 
 [node name="CollectableC13" parent="CollectableHolder/CollectableCCloud2" unique_id=581391621 instance=ExtResource("8_rx4sy")]
 position = Vector2(167, -182)
+type = 0
 
 [node name="CollectableC14" parent="CollectableHolder/CollectableCCloud2" unique_id=1254424395 instance=ExtResource("8_rx4sy")]
 position = Vector2(270, -48)
+type = 0
 
 [node name="CollectableCCloud3" type="Node2D" parent="CollectableHolder" unique_id=141582095]
 position = Vector2(2086, 2338)
 
 [node name="CollectableC" parent="CollectableHolder/CollectableCCloud3" unique_id=1464262566 instance=ExtResource("8_rx4sy")]
 position = Vector2(57, -74)
+type = 0
 
 [node name="CollectableC2" parent="CollectableHolder/CollectableCCloud3" unique_id=609743845 instance=ExtResource("8_rx4sy")]
 position = Vector2(-35, -90)
+type = 0
 
 [node name="CollectableC3" parent="CollectableHolder/CollectableCCloud3" unique_id=19828185 instance=ExtResource("8_rx4sy")]
 position = Vector2(-99, -31)
+type = 0
 
 [node name="CollectableC4" parent="CollectableHolder/CollectableCCloud3" unique_id=354562799 instance=ExtResource("8_rx4sy")]
 position = Vector2(-99, 87)
+type = 0
 
 [node name="CollectableC5" parent="CollectableHolder/CollectableCCloud3" unique_id=1473987545 instance=ExtResource("8_rx4sy")]
 position = Vector2(135, 84)
+type = 0
 
 [node name="CollectableC6" parent="CollectableHolder/CollectableCCloud3" unique_id=1527251783 instance=ExtResource("8_rx4sy")]
 position = Vector2(44, 39)
+type = 0
 
 [node name="CollectableC7" parent="CollectableHolder/CollectableCCloud3" unique_id=891047514 instance=ExtResource("8_rx4sy")]
 position = Vector2(-134, -125)
+type = 0
 
 [node name="CollectableC8" parent="CollectableHolder/CollectableCCloud3" unique_id=858846298 instance=ExtResource("8_rx4sy")]
 position = Vector2(65, -209)
+type = 0
 
 [node name="CollectableC9" parent="CollectableHolder/CollectableCCloud3" unique_id=1538756572 instance=ExtResource("8_rx4sy")]
 position = Vector2(186, 28)
+type = 0
 
 [node name="CollectableC10" parent="CollectableHolder/CollectableCCloud3" unique_id=361388705 instance=ExtResource("8_rx4sy")]
 position = Vector2(157, -90)
+type = 0
 
 [node name="CollectableC11" parent="CollectableHolder/CollectableCCloud3" unique_id=1190304360 instance=ExtResource("8_rx4sy")]
 position = Vector2(33, 165)
+type = 0
 
 [node name="CollectableC12" parent="CollectableHolder/CollectableCCloud3" unique_id=1912778747 instance=ExtResource("8_rx4sy")]
 position = Vector2(-71, -219)
+type = 0
 
 [node name="CollectableC13" parent="CollectableHolder/CollectableCCloud3" unique_id=960173618 instance=ExtResource("8_rx4sy")]
 position = Vector2(167, -182)
+type = 0
 
 [node name="CollectableC14" parent="CollectableHolder/CollectableCCloud3" unique_id=860509739 instance=ExtResource("8_rx4sy")]
 position = Vector2(270, -48)
+type = 0
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=1670817654]
 offset_left = -1842.0001
@@ -1295,18 +1337,75 @@ offset_bottom = -1447.0
 rotation = -1.2855718
 color = Color(0.9843137, 0.73333335, 0.6784314, 1)
 
-[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=586166663]
+[node name="Obstacle" type="StaticBody2D" parent="." unique_id=586166663]
+position = Vector2(34, 76)
+rotation = -0.7853982
 collision_layer = 16
 collision_mask = 0
 
-[node name="ColorRect" type="ColorRect" parent="StaticBody2D" unique_id=304746912]
+[node name="ColorRect" type="ColorRect" parent="Obstacle" unique_id=304746912]
 offset_left = -50.0
 offset_top = -15.0
 offset_right = 50.0
 offset_bottom = 15.0
+scale = Vector2(1.8109853, 1.8109853)
 pivot_offset_ratio = Vector2(0.5, 0.5)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1308901821]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Obstacle" unique_id=1308901821]
+scale = Vector2(1.8109853, 1.8109853)
+shape = SubResource("RectangleShape2D_rx4sy")
+
+[node name="Obstacle2" type="StaticBody2D" parent="." unique_id=2116697495]
+position = Vector2(777, -17.999992)
+collision_layer = 16
+collision_mask = 0
+
+[node name="ColorRect" type="ColorRect" parent="Obstacle2" unique_id=1850855946]
+offset_left = -50.0
+offset_top = -15.0
+offset_right = 50.0
+offset_bottom = 15.0
+scale = Vector2(1.8109853, 1.8109853)
+pivot_offset_ratio = Vector2(0.5, 0.5)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Obstacle2" unique_id=1294827892]
+scale = Vector2(1.8109853, 1.8109853)
+shape = SubResource("RectangleShape2D_rx4sy")
+
+[node name="Obstacle3" type="StaticBody2D" parent="." unique_id=1531753499]
+position = Vector2(130, 602)
+rotation = -1.8325958
+collision_layer = 16
+collision_mask = 0
+
+[node name="ColorRect" type="ColorRect" parent="Obstacle3" unique_id=1327606740]
+offset_left = -50.0
+offset_top = -15.0
+offset_right = 50.0
+offset_bottom = 15.0
+scale = Vector2(1.8109853, 1.8109853)
+pivot_offset_ratio = Vector2(0.5, 0.5)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Obstacle3" unique_id=1498485771]
+scale = Vector2(1.8109853, 1.8109853)
+shape = SubResource("RectangleShape2D_rx4sy")
+
+[node name="Obstacle4" type="StaticBody2D" parent="." unique_id=1801126969]
+position = Vector2(873, 508)
+rotation = -1.0471976
+collision_layer = 16
+collision_mask = 0
+
+[node name="ColorRect" type="ColorRect" parent="Obstacle4" unique_id=1968101168]
+offset_left = -50.0
+offset_top = -15.0
+offset_right = 50.0
+offset_bottom = 15.0
+scale = Vector2(1.8109853, 1.8109853)
+pivot_offset_ratio = Vector2(0.5, 0.5)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Obstacle4" unique_id=19911293]
+scale = Vector2(1.8109853, 1.8109853)
 shape = SubResource("RectangleShape2D_rx4sy")
 
 [connection signal="area_entered" from="Station" to="Station" method="_on_area_entered"]

@@ -6,7 +6,7 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_2vrau"]
 radius = 31.97
 
-[node name="ItemA" type="RigidBody2D" unique_id=1291223074]
+[node name="ItemRock" type="RigidBody2D" unique_id=1291223074]
 texture_filter = 1
 collision_layer = 256
 collision_mask = 768

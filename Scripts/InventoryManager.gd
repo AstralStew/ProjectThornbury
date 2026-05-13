@@ -2,11 +2,11 @@ class_name InventoryManager extends MarginContainer
 const DEBUG_NAME = "[b][InventoryManager][/b] "
 static var instance : InventoryManager = null
 
-enum ItemType {Rock,Crate,ItemC}
+enum ItemType {Rock,Crate,Pipe}
 
 @export var item_rock_prefab : PackedScene = null
 @export var item_crate_prefab : PackedScene = null
-@export var item_C_prefab : PackedScene = null
+@export var item_pipe_prefab : PackedScene = null
 
 @onready var debug_line : Line2D = $DebugLine
 @onready var item_holder : Node2D = $SubViewportContainer/SubViewport/ItemHolder
@@ -34,9 +34,9 @@ func _add_item(_type:ItemType) -> void:
 		ItemType.Crate:
 			_prefab = item_crate_prefab
 			_name = "<ItemCrate>"
-		ItemType.ItemC:
-			_prefab = item_C_prefab
-			_name = "<ItemC>"
+		ItemType.Pipe:
+			_prefab = item_pipe_prefab
+			_name = "<ItemPipe>"
 	
 	await get_tree().physics_frame
 	var _new_scene = _prefab.instantiate() as Item

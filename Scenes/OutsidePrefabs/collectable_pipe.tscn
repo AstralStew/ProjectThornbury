@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://cbf7m3hmnto6d"]
+
+[ext_resource type="Script" uid="uid://bu7nan430podd" path="res://Scripts/Collectable.gd" id="1_g1orq"]
+[ext_resource type="Texture2D" uid="uid://ct1mlw7mplya7" path="res://Assets/Images/Resources/Long_Map/Pipe_Long_Map.png" id="2_bfdce"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dxilr"]
+size = Vector2(48, 6)
+
+[node name="CollectablePipe" type="Area2D" unique_id=1843489661]
+script = ExtResource("1_g1orq")
+type = 2
+metadata/_custom_type_script = "uid://bu7nan430podd"
+
+[node name="PipeLongMap" type="Sprite2D" parent="." unique_id=994004803]
+texture = ExtResource("2_bfdce")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=634640248]
+shape = SubResource("RectangleShape2D_dxilr")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -4,7 +4,7 @@ static var instance : OutsideManager = null
 
 @export var collectable_rock_prefab : PackedScene = null
 @export var collectable_crate_prefab : PackedScene = null
-@export var collectable_C_prefab : PackedScene = null
+@export var collectable_pipe_prefab : PackedScene = null
 
 var collectable_holder : Node2D = null
 
@@ -28,9 +28,9 @@ func _add_collectable(_type:InventoryManager.ItemType) -> void:
 		InventoryManager.ItemType.Crate:
 			_prefab = collectable_crate_prefab
 			_name = "<CollectableCrate>"
-		InventoryManager.ItemType.ItemC:
-			_prefab = collectable_C_prefab
-			_name = "<CollectableC>"
+		InventoryManager.ItemType.Pipe:
+			_prefab = collectable_pipe_prefab
+			_name = "<CollectablePipe>"
 	
 	await get_tree().physics_frame
 	var _new_scene = _prefab.instantiate() as Collectable

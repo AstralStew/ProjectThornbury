@@ -6,7 +6,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yvbue"]
 size = Vector2(156, 152)
 
-[node name="ItemB" type="RigidBody2D" unique_id=1291223074]
+[node name="ItemCrate" type="RigidBody2D" unique_id=1291223074]
 texture_filter = 1
 collision_layer = 256
 collision_mask = 768
