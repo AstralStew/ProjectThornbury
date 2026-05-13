@@ -5,10 +5,12 @@ static var instance : Station = null
 
 @export var cooldown_duration : Vector2 = Vector2(5.0,20.0)
 
+
 @export_category("READ ONLY")
 
-@export var order_type : InventoryManager.ItemType = InventoryManager.ItemType.ItemA
 @export var has_order : bool = false
+@export var order_type : InventoryManager.ItemType = InventoryManager.ItemType.Rock
+@export var order_number : int = -1
 
 @onready var _label : Label = $Label
 
@@ -20,17 +22,26 @@ func make_order() -> void:
 	if has_order: return
 	
 	order_type = (randi() % 3) as InventoryManager.ItemType
-	_label.text = "I need 1 " + str(InventoryManager.ItemType.keys()[order_type])
-	_label.visible = true
+	order_number = 1 + (randi() % 6)
 	has_order = true
+	update_text()
 
+func update_text() -> void:
+	if has_order:
+		_label.text = "We need " + str(order_number) + " " + str(InventoryManager.ItemType.keys()[order_type])
+		_label.visible = true
+	else:
+		_label.text = ""
+		_label.visible = false
 
 func collect(collectable: Collectable) -> void:
-	
+	collectable.collected = true
 	print_rich(DEBUG_NAME,"Collect > Item matches, taking it for myself <|:)")
 	
-	if check_order(collectable):
-		complete_order()
+	if collectable.type == order_type:
+		order_number -= 1
+		if check_order(): complete_order()
+		update_text()
 	
 	var _tween : Tween = create_tween().set_parallel().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUAD)
 	_tween.tween_property(collectable,"modulate",Color(0,0,0,0),0.75)
@@ -39,14 +50,13 @@ func collect(collectable: Collectable) -> void:
 	await get_tree().create_timer(0.75).timeout
 	
 
-func check_order(collectable: Collectable) -> bool:
+func check_order() -> bool:
 	if !has_order: return false
-	if collectable.type != order_type: return false
+	if order_number > 0: return false
 	return true
 
 func complete_order() -> void:
 	print_rich(DEBUG_NAME,"CheckOrder > Order complete! Starting cooldown and returning true...")
-	_label.visible = false
 	has_order = false
 	cooldown()
 
@@ -61,7 +71,7 @@ func _physics_process(delta: float) -> void:
 	
 	for _area:Area2D in get_overlapping_areas():
 		if _area is Collectable:
-			if _area.finished_spawning:
+			if _area.finished_spawning && !_area.collected:
 				collect(_area)
 
 #func _on_area_entered(area: Area2D) -> void:

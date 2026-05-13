@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://bquo8wgijs6u3"]
 
 [ext_resource type="Script" uid="uid://10uhfrtyfet1" path="res://Scripts/LevelManager.gd" id="1_80ic5"]
-[ext_resource type="PackedScene" uid="uid://c14fl8nyl0y11" path="res://Scenes/OutsidePrefabs/collectable_a.tscn" id="1_tmlh5"]
-[ext_resource type="PackedScene" uid="uid://dtkur4468wq5q" path="res://Scenes/OutsidePrefabs/collectable_b.tscn" id="2_7asov"]
+[ext_resource type="PackedScene" uid="uid://c14fl8nyl0y11" path="res://Scenes/OutsidePrefabs/collectable_rock.tscn" id="1_tmlh5"]
+[ext_resource type="PackedScene" uid="uid://dtkur4468wq5q" path="res://Scenes/OutsidePrefabs/collectable_crate.tscn" id="2_7asov"]
 [ext_resource type="Texture2D" uid="uid://rpi66dfpi25r" path="res://Assets/Images/City/Building1.png" id="2_vx186"]
 [ext_resource type="Texture2D" uid="uid://bilt7cu3ivxxr" path="res://Assets/Images/City/Building40.png" id="3_7asov"]
 [ext_resource type="Texture2D" uid="uid://c0sl1u4dvsqni" path="res://Assets/Images/City/Building64.png" id="4_80ic5"]
@@ -655,307 +655,307 @@ offset_bottom = -40.0
 
 [node name="CollectableHolder" type="Node2D" parent="." unique_id=9974128]
 
-[node name="CollectableACloud" type="Node2D" parent="CollectableHolder" unique_id=227923729]
+[node name="CollectableRockCloud" type="Node2D" parent="CollectableHolder" unique_id=227923729]
 position = Vector2(1101, -43)
 
-[node name="CollectableA" parent="CollectableHolder/CollectableACloud" unique_id=454040788 instance=ExtResource("1_tmlh5")]
+[node name="CollectableA" parent="CollectableHolder/CollectableRockCloud" unique_id=454040788 instance=ExtResource("1_tmlh5")]
 texture_filter = 1
 position = Vector2(-96, -11)
 finished_spawning = true
 
-[node name="CollectableA2" parent="CollectableHolder/CollectableACloud" unique_id=49464330 instance=ExtResource("1_tmlh5")]
+[node name="CollectableA2" parent="CollectableHolder/CollectableRockCloud" unique_id=49464330 instance=ExtResource("1_tmlh5")]
 texture_filter = 1
 position = Vector2(-173, -66)
 finished_spawning = true
 
-[node name="CollectableA3" parent="CollectableHolder/CollectableACloud" unique_id=1692000857 instance=ExtResource("1_tmlh5")]
+[node name="CollectableA3" parent="CollectableHolder/CollectableRockCloud" unique_id=1692000857 instance=ExtResource("1_tmlh5")]
 texture_filter = 1
 position = Vector2(-183, -182)
 finished_spawning = true
 
-[node name="CollectableA4" parent="CollectableHolder/CollectableACloud" unique_id=901198666 instance=ExtResource("1_tmlh5")]
+[node name="CollectableA4" parent="CollectableHolder/CollectableRockCloud" unique_id=901198666 instance=ExtResource("1_tmlh5")]
 texture_filter = 1
 position = Vector2(18, -182)
 finished_spawning = true
 
-[node name="CollectableA5" parent="CollectableHolder/CollectableACloud" unique_id=1172708884 instance=ExtResource("1_tmlh5")]
+[node name="CollectableA5" parent="CollectableHolder/CollectableRockCloud" unique_id=1172708884 instance=ExtResource("1_tmlh5")]
 texture_filter = 1
 position = Vector2(8, -33)
 finished_spawning = true
 
-[node name="CollectableA6" parent="CollectableHolder/CollectableACloud" unique_id=2141476614 instance=ExtResource("1_tmlh5")]
+[node name="CollectableA6" parent="CollectableHolder/CollectableRockCloud" unique_id=2141476614 instance=ExtResource("1_tmlh5")]
 texture_filter = 1
 position = Vector2(205, -103)
 finished_spawning = true
 
-[node name="CollectableA7" parent="CollectableHolder/CollectableACloud" unique_id=1836460842 instance=ExtResource("1_tmlh5")]
+[node name="CollectableA7" parent="CollectableHolder/CollectableRockCloud" unique_id=1836460842 instance=ExtResource("1_tmlh5")]
 texture_filter = 1
 position = Vector2(151, 56)
 finished_spawning = true
 
-[node name="CollectableA8" parent="CollectableHolder/CollectableACloud" unique_id=60675736 instance=ExtResource("1_tmlh5")]
+[node name="CollectableA8" parent="CollectableHolder/CollectableRockCloud" unique_id=60675736 instance=ExtResource("1_tmlh5")]
 texture_filter = 1
 position = Vector2(-44, 133)
 finished_spawning = true
 
-[node name="CollectableA9" parent="CollectableHolder/CollectableACloud" unique_id=84520690 instance=ExtResource("1_tmlh5")]
+[node name="CollectableA9" parent="CollectableHolder/CollectableRockCloud" unique_id=84520690 instance=ExtResource("1_tmlh5")]
 texture_filter = 1
 position = Vector2(-263, 111)
 finished_spawning = true
 
-[node name="CollectableA10" parent="CollectableHolder/CollectableACloud" unique_id=1865495323 instance=ExtResource("1_tmlh5")]
+[node name="CollectableA10" parent="CollectableHolder/CollectableRockCloud" unique_id=1865495323 instance=ExtResource("1_tmlh5")]
 texture_filter = 1
 position = Vector2(-193, 223)
 finished_spawning = true
 
-[node name="CollectableA11" parent="CollectableHolder/CollectableACloud" unique_id=1371368969 instance=ExtResource("1_tmlh5")]
+[node name="CollectableA11" parent="CollectableHolder/CollectableRockCloud" unique_id=1371368969 instance=ExtResource("1_tmlh5")]
 texture_filter = 1
 position = Vector2(-155, 87)
 finished_spawning = true
 
-[node name="CollectableA12" parent="CollectableHolder/CollectableACloud" unique_id=2035964398 instance=ExtResource("1_tmlh5")]
+[node name="CollectableA12" parent="CollectableHolder/CollectableRockCloud" unique_id=2035964398 instance=ExtResource("1_tmlh5")]
 texture_filter = 1
 position = Vector2(-263, -144)
 finished_spawning = true
 
-[node name="CollectableA13" parent="CollectableHolder/CollectableACloud" unique_id=1961842409 instance=ExtResource("1_tmlh5")]
+[node name="CollectableA13" parent="CollectableHolder/CollectableRockCloud" unique_id=1961842409 instance=ExtResource("1_tmlh5")]
 texture_filter = 1
 position = Vector2(195, -234)
 finished_spawning = true
 
-[node name="CollectableA14" parent="CollectableHolder/CollectableACloud" unique_id=441734093 instance=ExtResource("1_tmlh5")]
+[node name="CollectableA14" parent="CollectableHolder/CollectableRockCloud" unique_id=441734093 instance=ExtResource("1_tmlh5")]
 texture_filter = 1
 position = Vector2(261, 133)
 finished_spawning = true
 
-[node name="CollectableA15" parent="CollectableHolder/CollectableACloud" unique_id=581351745 instance=ExtResource("1_tmlh5")]
+[node name="CollectableA15" parent="CollectableHolder/CollectableRockCloud" unique_id=581351745 instance=ExtResource("1_tmlh5")]
 texture_filter = 1
 position = Vector2(151, 196)
 finished_spawning = true
 
-[node name="CollectableA16" parent="CollectableHolder/CollectableACloud" unique_id=1591863578 instance=ExtResource("1_tmlh5")]
+[node name="CollectableA16" parent="CollectableHolder/CollectableRockCloud" unique_id=1591863578 instance=ExtResource("1_tmlh5")]
 texture_filter = 1
 position = Vector2(271, 300)
 finished_spawning = true
 
-[node name="CollectableA17" parent="CollectableHolder/CollectableACloud" unique_id=2147123719 instance=ExtResource("1_tmlh5")]
+[node name="CollectableA17" parent="CollectableHolder/CollectableRockCloud" unique_id=2147123719 instance=ExtResource("1_tmlh5")]
 texture_filter = 1
 position = Vector2(34, 56)
 finished_spawning = true
 
-[node name="CollectableA18" parent="CollectableHolder/CollectableACloud" unique_id=529696675 instance=ExtResource("1_tmlh5")]
+[node name="CollectableA18" parent="CollectableHolder/CollectableRockCloud" unique_id=529696675 instance=ExtResource("1_tmlh5")]
 texture_filter = 1
 position = Vector2(-86, -244)
 finished_spawning = true
 
-[node name="CollectableACloud2" type="Node2D" parent="CollectableHolder" unique_id=1246567609]
+[node name="CollectableRockCloud2" type="Node2D" parent="CollectableHolder" unique_id=1246567609]
 position = Vector2(554, -788)
 
-[node name="CollectableA" parent="CollectableHolder/CollectableACloud2" unique_id=1363189793 instance=ExtResource("1_tmlh5")]
+[node name="CollectableA" parent="CollectableHolder/CollectableRockCloud2" unique_id=1363189793 instance=ExtResource("1_tmlh5")]
 texture_filter = 1
 position = Vector2(-96, -11)
 finished_spawning = true
 
-[node name="CollectableA2" parent="CollectableHolder/CollectableACloud2" unique_id=1010731291 instance=ExtResource("1_tmlh5")]
+[node name="CollectableA2" parent="CollectableHolder/CollectableRockCloud2" unique_id=1010731291 instance=ExtResource("1_tmlh5")]
 texture_filter = 1
 position = Vector2(-173, -66)
 finished_spawning = true
 
-[node name="CollectableA3" parent="CollectableHolder/CollectableACloud2" unique_id=1276828133 instance=ExtResource("1_tmlh5")]
+[node name="CollectableA3" parent="CollectableHolder/CollectableRockCloud2" unique_id=1276828133 instance=ExtResource("1_tmlh5")]
 texture_filter = 1
 position = Vector2(-183, -182)
 finished_spawning = true
 
-[node name="CollectableA4" parent="CollectableHolder/CollectableACloud2" unique_id=506351245 instance=ExtResource("1_tmlh5")]
+[node name="CollectableA4" parent="CollectableHolder/CollectableRockCloud2" unique_id=506351245 instance=ExtResource("1_tmlh5")]
 texture_filter = 1
 position = Vector2(18, -182)
 finished_spawning = true
 
-[node name="CollectableA5" parent="CollectableHolder/CollectableACloud2" unique_id=1915079097 instance=ExtResource("1_tmlh5")]
+[node name="CollectableA5" parent="CollectableHolder/CollectableRockCloud2" unique_id=1915079097 instance=ExtResource("1_tmlh5")]
 texture_filter = 1
 position = Vector2(8, -33)
 finished_spawning = true
 
-[node name="CollectableA6" parent="CollectableHolder/CollectableACloud2" unique_id=1390032610 instance=ExtResource("1_tmlh5")]
+[node name="CollectableA6" parent="CollectableHolder/CollectableRockCloud2" unique_id=1390032610 instance=ExtResource("1_tmlh5")]
 texture_filter = 1
 position = Vector2(205, -103)
 finished_spawning = true
 
-[node name="CollectableA7" parent="CollectableHolder/CollectableACloud2" unique_id=512483888 instance=ExtResource("1_tmlh5")]
+[node name="CollectableA7" parent="CollectableHolder/CollectableRockCloud2" unique_id=512483888 instance=ExtResource("1_tmlh5")]
 texture_filter = 1
 position = Vector2(151, 56)
 finished_spawning = true
 
-[node name="CollectableA8" parent="CollectableHolder/CollectableACloud2" unique_id=2015305420 instance=ExtResource("1_tmlh5")]
+[node name="CollectableA8" parent="CollectableHolder/CollectableRockCloud2" unique_id=2015305420 instance=ExtResource("1_tmlh5")]
 texture_filter = 1
 position = Vector2(-44, 133)
 finished_spawning = true
 
-[node name="CollectableA9" parent="CollectableHolder/CollectableACloud2" unique_id=658718551 instance=ExtResource("1_tmlh5")]
+[node name="CollectableA9" parent="CollectableHolder/CollectableRockCloud2" unique_id=658718551 instance=ExtResource("1_tmlh5")]
 texture_filter = 1
 position = Vector2(-263, 111)
 finished_spawning = true
 
-[node name="CollectableA10" parent="CollectableHolder/CollectableACloud2" unique_id=266069443 instance=ExtResource("1_tmlh5")]
+[node name="CollectableA10" parent="CollectableHolder/CollectableRockCloud2" unique_id=266069443 instance=ExtResource("1_tmlh5")]
 texture_filter = 1
 position = Vector2(-193, 223)
 finished_spawning = true
 
-[node name="CollectableA11" parent="CollectableHolder/CollectableACloud2" unique_id=321686884 instance=ExtResource("1_tmlh5")]
+[node name="CollectableA11" parent="CollectableHolder/CollectableRockCloud2" unique_id=321686884 instance=ExtResource("1_tmlh5")]
 texture_filter = 1
 position = Vector2(-155, 87)
 finished_spawning = true
 
-[node name="CollectableA12" parent="CollectableHolder/CollectableACloud2" unique_id=1147182863 instance=ExtResource("1_tmlh5")]
+[node name="CollectableA12" parent="CollectableHolder/CollectableRockCloud2" unique_id=1147182863 instance=ExtResource("1_tmlh5")]
 texture_filter = 1
 position = Vector2(-263, -144)
 finished_spawning = true
 
-[node name="CollectableA13" parent="CollectableHolder/CollectableACloud2" unique_id=2086485393 instance=ExtResource("1_tmlh5")]
+[node name="CollectableA13" parent="CollectableHolder/CollectableRockCloud2" unique_id=2086485393 instance=ExtResource("1_tmlh5")]
 texture_filter = 1
 position = Vector2(195, -234)
 finished_spawning = true
 
-[node name="CollectableA14" parent="CollectableHolder/CollectableACloud2" unique_id=297339924 instance=ExtResource("1_tmlh5")]
+[node name="CollectableA14" parent="CollectableHolder/CollectableRockCloud2" unique_id=297339924 instance=ExtResource("1_tmlh5")]
 texture_filter = 1
 position = Vector2(261, 133)
 finished_spawning = true
 
-[node name="CollectableA15" parent="CollectableHolder/CollectableACloud2" unique_id=2139203386 instance=ExtResource("1_tmlh5")]
+[node name="CollectableA15" parent="CollectableHolder/CollectableRockCloud2" unique_id=2139203386 instance=ExtResource("1_tmlh5")]
 texture_filter = 1
 position = Vector2(151, 196)
 finished_spawning = true
 
-[node name="CollectableA16" parent="CollectableHolder/CollectableACloud2" unique_id=1546676102 instance=ExtResource("1_tmlh5")]
+[node name="CollectableA16" parent="CollectableHolder/CollectableRockCloud2" unique_id=1546676102 instance=ExtResource("1_tmlh5")]
 texture_filter = 1
 position = Vector2(271, 300)
 finished_spawning = true
 
-[node name="CollectableA17" parent="CollectableHolder/CollectableACloud2" unique_id=1547669849 instance=ExtResource("1_tmlh5")]
+[node name="CollectableA17" parent="CollectableHolder/CollectableRockCloud2" unique_id=1547669849 instance=ExtResource("1_tmlh5")]
 texture_filter = 1
 position = Vector2(34, 56)
 finished_spawning = true
 
-[node name="CollectableA18" parent="CollectableHolder/CollectableACloud2" unique_id=543496504 instance=ExtResource("1_tmlh5")]
+[node name="CollectableA18" parent="CollectableHolder/CollectableRockCloud2" unique_id=543496504 instance=ExtResource("1_tmlh5")]
 texture_filter = 1
 position = Vector2(-86, -244)
 finished_spawning = true
 
-[node name="CollecatableBCloud" type="Node2D" parent="CollectableHolder" unique_id=125719132]
+[node name="CollectableCrateCloud" type="Node2D" parent="CollectableHolder" unique_id=125719132]
 position = Vector2(253, 741)
 
-[node name="CollectableB" parent="CollectableHolder/CollecatableBCloud" unique_id=1843489661 instance=ExtResource("2_7asov")]
+[node name="CollectableB" parent="CollectableHolder/CollectableCrateCloud" unique_id=1843489661 instance=ExtResource("2_7asov")]
 position = Vector2(-55, -79)
 finished_spawning = true
 
-[node name="CollectableB2" parent="CollectableHolder/CollecatableBCloud" unique_id=561791787 instance=ExtResource("2_7asov")]
+[node name="CollectableB2" parent="CollectableHolder/CollectableCrateCloud" unique_id=561791787 instance=ExtResource("2_7asov")]
 position = Vector2(23, -152)
 finished_spawning = true
 
-[node name="CollectableB3" parent="CollectableHolder/CollecatableBCloud" unique_id=1494600443 instance=ExtResource("2_7asov")]
+[node name="CollectableB3" parent="CollectableHolder/CollectableCrateCloud" unique_id=1494600443 instance=ExtResource("2_7asov")]
 position = Vector2(87, -79)
 finished_spawning = true
 
-[node name="CollectableB4" parent="CollectableHolder/CollecatableBCloud" unique_id=1354402973 instance=ExtResource("2_7asov")]
+[node name="CollectableB4" parent="CollectableHolder/CollectableCrateCloud" unique_id=1354402973 instance=ExtResource("2_7asov")]
 position = Vector2(-15, -38)
 finished_spawning = true
 
-[node name="CollectableB5" parent="CollectableHolder/CollecatableBCloud" unique_id=543892373 instance=ExtResource("2_7asov")]
+[node name="CollectableB5" parent="CollectableHolder/CollectableCrateCloud" unique_id=543892373 instance=ExtResource("2_7asov")]
 position = Vector2(-110, 19)
 finished_spawning = true
 
-[node name="CollectableB6" parent="CollectableHolder/CollecatableBCloud" unique_id=398445465 instance=ExtResource("2_7asov")]
+[node name="CollectableB6" parent="CollectableHolder/CollectableCrateCloud" unique_id=398445465 instance=ExtResource("2_7asov")]
 position = Vector2(-55, 105)
 finished_spawning = true
 
-[node name="CollectableB7" parent="CollectableHolder/CollecatableBCloud" unique_id=2103231925 instance=ExtResource("2_7asov")]
+[node name="CollectableB7" parent="CollectableHolder/CollectableCrateCloud" unique_id=2103231925 instance=ExtResource("2_7asov")]
 position = Vector2(31, 41)
 finished_spawning = true
 
-[node name="CollectableB8" parent="CollectableHolder/CollecatableBCloud" unique_id=1665985083 instance=ExtResource("2_7asov")]
+[node name="CollectableB8" parent="CollectableHolder/CollectableCrateCloud" unique_id=1665985083 instance=ExtResource("2_7asov")]
 position = Vector2(110, -14)
 finished_spawning = true
 
-[node name="CollectableB9" parent="CollectableHolder/CollecatableBCloud" unique_id=2120800861 instance=ExtResource("2_7asov")]
+[node name="CollectableB9" parent="CollectableHolder/CollectableCrateCloud" unique_id=2120800861 instance=ExtResource("2_7asov")]
 position = Vector2(128, 104)
 finished_spawning = true
 
-[node name="CollectableB10" parent="CollectableHolder/CollecatableBCloud" unique_id=1738869550 instance=ExtResource("2_7asov")]
+[node name="CollectableB10" parent="CollectableHolder/CollectableCrateCloud" unique_id=1738869550 instance=ExtResource("2_7asov")]
 position = Vector2(15, 164)
 finished_spawning = true
 
-[node name="CollectableB11" parent="CollectableHolder/CollecatableBCloud" unique_id=1262620913 instance=ExtResource("2_7asov")]
+[node name="CollectableB11" parent="CollectableHolder/CollectableCrateCloud" unique_id=1262620913 instance=ExtResource("2_7asov")]
 position = Vector2(-87, -149)
 finished_spawning = true
 
-[node name="CollectableB12" parent="CollectableHolder/CollecatableBCloud" unique_id=723142318 instance=ExtResource("2_7asov")]
+[node name="CollectableB12" parent="CollectableHolder/CollectableCrateCloud" unique_id=723142318 instance=ExtResource("2_7asov")]
 position = Vector2(-179, 60)
 finished_spawning = true
 
-[node name="CollectableB13" parent="CollectableHolder/CollecatableBCloud" unique_id=2063367881 instance=ExtResource("2_7asov")]
+[node name="CollectableB13" parent="CollectableHolder/CollectableCrateCloud" unique_id=2063367881 instance=ExtResource("2_7asov")]
 position = Vector2(183, -95)
 finished_spawning = true
 
-[node name="CollectableB14" parent="CollectableHolder/CollecatableBCloud" unique_id=173900831 instance=ExtResource("2_7asov")]
+[node name="CollectableB14" parent="CollectableHolder/CollectableCrateCloud" unique_id=173900831 instance=ExtResource("2_7asov")]
 position = Vector2(-206, -62)
 finished_spawning = true
 
-[node name="CollecatableBCloud2" type="Node2D" parent="CollectableHolder" unique_id=1442563892]
+[node name="CollectableCrateCloud2" type="Node2D" parent="CollectableHolder" unique_id=1442563892]
 position = Vector2(-453, -500)
 
-[node name="CollectableB" parent="CollectableHolder/CollecatableBCloud2" unique_id=61305001 instance=ExtResource("2_7asov")]
+[node name="CollectableB" parent="CollectableHolder/CollectableCrateCloud2" unique_id=61305001 instance=ExtResource("2_7asov")]
 position = Vector2(-55, -79)
 finished_spawning = true
 
-[node name="CollectableB2" parent="CollectableHolder/CollecatableBCloud2" unique_id=915976667 instance=ExtResource("2_7asov")]
+[node name="CollectableB2" parent="CollectableHolder/CollectableCrateCloud2" unique_id=915976667 instance=ExtResource("2_7asov")]
 position = Vector2(23, -152)
 finished_spawning = true
 
-[node name="CollectableB3" parent="CollectableHolder/CollecatableBCloud2" unique_id=166517048 instance=ExtResource("2_7asov")]
+[node name="CollectableB3" parent="CollectableHolder/CollectableCrateCloud2" unique_id=166517048 instance=ExtResource("2_7asov")]
 position = Vector2(87, -79)
 finished_spawning = true
 
-[node name="CollectableB4" parent="CollectableHolder/CollecatableBCloud2" unique_id=2042020467 instance=ExtResource("2_7asov")]
+[node name="CollectableB4" parent="CollectableHolder/CollectableCrateCloud2" unique_id=2042020467 instance=ExtResource("2_7asov")]
 position = Vector2(-15, -38)
 finished_spawning = true
 
-[node name="CollectableB5" parent="CollectableHolder/CollecatableBCloud2" unique_id=328405620 instance=ExtResource("2_7asov")]
+[node name="CollectableB5" parent="CollectableHolder/CollectableCrateCloud2" unique_id=328405620 instance=ExtResource("2_7asov")]
 position = Vector2(-110, 19)
 finished_spawning = true
 
-[node name="CollectableB6" parent="CollectableHolder/CollecatableBCloud2" unique_id=512673086 instance=ExtResource("2_7asov")]
+[node name="CollectableB6" parent="CollectableHolder/CollectableCrateCloud2" unique_id=512673086 instance=ExtResource("2_7asov")]
 position = Vector2(-55, 105)
 finished_spawning = true
 
-[node name="CollectableB7" parent="CollectableHolder/CollecatableBCloud2" unique_id=1907668270 instance=ExtResource("2_7asov")]
+[node name="CollectableB7" parent="CollectableHolder/CollectableCrateCloud2" unique_id=1907668270 instance=ExtResource("2_7asov")]
 position = Vector2(31, 41)
 finished_spawning = true
 
-[node name="CollectableB8" parent="CollectableHolder/CollecatableBCloud2" unique_id=1047192708 instance=ExtResource("2_7asov")]
+[node name="CollectableB8" parent="CollectableHolder/CollectableCrateCloud2" unique_id=1047192708 instance=ExtResource("2_7asov")]
 position = Vector2(110, -14)
 finished_spawning = true
 
-[node name="CollectableB9" parent="CollectableHolder/CollecatableBCloud2" unique_id=587819523 instance=ExtResource("2_7asov")]
+[node name="CollectableB9" parent="CollectableHolder/CollectableCrateCloud2" unique_id=587819523 instance=ExtResource("2_7asov")]
 position = Vector2(128, 104)
 finished_spawning = true
 
-[node name="CollectableB10" parent="CollectableHolder/CollecatableBCloud2" unique_id=1642395262 instance=ExtResource("2_7asov")]
+[node name="CollectableB10" parent="CollectableHolder/CollectableCrateCloud2" unique_id=1642395262 instance=ExtResource("2_7asov")]
 position = Vector2(15, 164)
 finished_spawning = true
 
-[node name="CollectableB11" parent="CollectableHolder/CollecatableBCloud2" unique_id=1407820873 instance=ExtResource("2_7asov")]
+[node name="CollectableB11" parent="CollectableHolder/CollectableCrateCloud2" unique_id=1407820873 instance=ExtResource("2_7asov")]
 position = Vector2(-87, -149)
 finished_spawning = true
 
-[node name="CollectableB12" parent="CollectableHolder/CollecatableBCloud2" unique_id=315600210 instance=ExtResource("2_7asov")]
+[node name="CollectableB12" parent="CollectableHolder/CollectableCrateCloud2" unique_id=315600210 instance=ExtResource("2_7asov")]
 position = Vector2(-179, 60)
 finished_spawning = true
 
-[node name="CollectableB13" parent="CollectableHolder/CollecatableBCloud2" unique_id=1435578222 instance=ExtResource("2_7asov")]
+[node name="CollectableB13" parent="CollectableHolder/CollectableCrateCloud2" unique_id=1435578222 instance=ExtResource("2_7asov")]
 position = Vector2(183, -95)
 finished_spawning = true
 
-[node name="CollectableB14" parent="CollectableHolder/CollecatableBCloud2" unique_id=231858239 instance=ExtResource("2_7asov")]
+[node name="CollectableB14" parent="CollectableHolder/CollectableCrateCloud2" unique_id=231858239 instance=ExtResource("2_7asov")]
 position = Vector2(-206, -62)
 finished_spawning = true
 

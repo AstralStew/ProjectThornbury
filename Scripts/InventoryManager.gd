@@ -2,10 +2,10 @@ class_name InventoryManager extends MarginContainer
 const DEBUG_NAME = "[b][InventoryManager][/b] "
 static var instance : InventoryManager = null
 
-enum ItemType {ItemA,ItemB,ItemC}
+enum ItemType {Rock,Crate,ItemC}
 
-@export var item_A_prefab : PackedScene = null
-@export var item_B_prefab : PackedScene = null
+@export var item_rock_prefab : PackedScene = null
+@export var item_crate_prefab : PackedScene = null
 @export var item_C_prefab : PackedScene = null
 
 @onready var debug_line : Line2D = $DebugLine
@@ -28,12 +28,12 @@ func _add_item(_type:ItemType) -> void:
 	var _prefab : PackedScene = null
 	var _name : String 
 	match _type:
-		ItemType.ItemA:
-			_prefab = item_A_prefab
-			_name = "<ItemA>"
-		ItemType.ItemB:
-			_prefab = item_B_prefab
-			_name = "<ItemB>"
+		ItemType.Rock:
+			_prefab = item_rock_prefab
+			_name = "<ItemRock>"
+		ItemType.Crate:
+			_prefab = item_crate_prefab
+			_name = "<ItemCrate>"
 		ItemType.ItemC:
 			_prefab = item_C_prefab
 			_name = "<ItemC>"

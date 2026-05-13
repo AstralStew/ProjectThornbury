@@ -1,17 +1,17 @@
 [gd_scene format=3 uid="uid://c14fl8nyl0y11"]
 
-[ext_resource type="Script" uid="uid://bu7nan430podd" path="res://Scripts/Collectable.gd" id="1_88onb"]
-[ext_resource type="Texture2D" uid="uid://bpgchkri1h4x8" path="res://Assets/Images/Resources/Small_Map/RockResouce_Small_Map.png" id="2_m7lml"]
+[ext_resource type="Script" uid="uid://bu7nan430podd" path="res://Scripts/Collectable.gd" id="1_1objw"]
+[ext_resource type="Texture2D" uid="uid://bpgchkri1h4x8" path="res://Assets/Images/Resources/Small_Map/RockResouce_Small_Map.png" id="2_glfwy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dxilr"]
 size = Vector2(12, 12)
 
-[node name="CollectableA" type="Area2D" unique_id=1843489661]
-script = ExtResource("1_88onb")
+[node name="CollectableRock" type="Area2D" unique_id=1843489661]
+script = ExtResource("1_1objw")
 metadata/_custom_type_script = "uid://bu7nan430podd"
 
 [node name="RockResouceSmallMap" type="Sprite2D" parent="." unique_id=201365052]
-texture = ExtResource("2_m7lml")
+texture = ExtResource("2_glfwy")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=634640248]
 shape = SubResource("RectangleShape2D_dxilr")

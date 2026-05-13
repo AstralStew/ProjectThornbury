@@ -3,9 +3,9 @@
 [ext_resource type="Script" uid="uid://ch5c3b445iqyr" path="res://Scripts/Ship.gd" id="1_a5lob"]
 [ext_resource type="Script" uid="uid://di153cmafhifq" path="res://Scripts/OutsideManager.gd" id="1_dxilr"]
 [ext_resource type="PackedScene" uid="uid://bquo8wgijs6u3" path="res://Scenes/OutsidePrefabs/level_1.tscn" id="2_0luta"]
-[ext_resource type="PackedScene" uid="uid://c14fl8nyl0y11" path="res://Scenes/OutsidePrefabs/collectable_a.tscn" id="2_pma3d"]
+[ext_resource type="PackedScene" uid="uid://c14fl8nyl0y11" path="res://Scenes/OutsidePrefabs/collectable_rock.tscn" id="2_y5stx"]
+[ext_resource type="PackedScene" uid="uid://dtkur4468wq5q" path="res://Scenes/OutsidePrefabs/collectable_crate.tscn" id="3_dw31t"]
 [ext_resource type="Texture2D" uid="uid://bs8wppq8ctccy" path="res://Assets/Images/Ships/Ships_Sheet.png" id="3_slk23"]
-[ext_resource type="PackedScene" uid="uid://dtkur4468wq5q" path="res://Scenes/OutsidePrefabs/collectable_b.tscn" id="3_y5stx"]
 [ext_resource type="PackedScene" uid="uid://cbf7m3hmnto6d" path="res://Scenes/OutsidePrefabs/collectable_c.tscn" id="4_y5stx"]
 [ext_resource type="Script" uid="uid://c7fg3jgojxubh" path="res://Scripts/ship_trail.gd" id="5_hhqqv"]
 
@@ -31,8 +31,8 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 script = ExtResource("1_dxilr")
-collectable_A_prefab = ExtResource("2_pma3d")
-collectable_B_prefab = ExtResource("3_y5stx")
+collectable_rock_prefab = ExtResource("2_y5stx")
+collectable_crate_prefab = ExtResource("3_dw31t")
 collectable_C_prefab = ExtResource("4_y5stx")
 metadata/_custom_type_script = "uid://di153cmafhifq"
 

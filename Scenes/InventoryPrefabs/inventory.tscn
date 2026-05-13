@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" uid="uid://bf773hla6ca55" path="res://Scripts/InventoryManager.gd" id="1_5v8l0"]
 [ext_resource type="Script" uid="uid://cjl56v6vxytii" path="res://Scripts/Boot.gd" id="1_i2tdg"]
-[ext_resource type="PackedScene" uid="uid://d23b7v703vw2y" path="res://Scenes/InventoryPrefabs/item_a.tscn" id="3_0n8tc"]
-[ext_resource type="PackedScene" uid="uid://3vsdr16ipou2" path="res://Scenes/InventoryPrefabs/item_b.tscn" id="3_03ybr"]
+[ext_resource type="PackedScene" uid="uid://d23b7v703vw2y" path="res://Scenes/InventoryPrefabs/item_rock.tscn" id="3_0n8tc"]
+[ext_resource type="PackedScene" uid="uid://3vsdr16ipou2" path="res://Scenes/InventoryPrefabs/item_crate.tscn" id="3_03ybr"]
 [ext_resource type="Script" uid="uid://de381ep43a5bi" path="res://Scripts/Chute.gd" id="3_k1vlg"]
 [ext_resource type="PackedScene" uid="uid://be2frk3ryyebk" path="res://Scenes/InventoryPrefabs/item_c.tscn" id="4_aco8w"]
 
@@ -24,8 +24,8 @@ grow_vertical = 2
 size_flags_horizontal = 3
 mouse_filter = 2
 script = ExtResource("1_5v8l0")
-item_A_prefab = ExtResource("3_0n8tc")
-item_B_prefab = ExtResource("3_03ybr")
+item_rock_prefab = ExtResource("3_0n8tc")
+item_crate_prefab = ExtResource("3_03ybr")
 item_C_prefab = ExtResource("4_aco8w")
 metadata/_custom_type_script = "uid://bf773hla6ca55"
 

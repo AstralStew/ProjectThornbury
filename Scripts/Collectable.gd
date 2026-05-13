@@ -2,9 +2,10 @@ class_name Collectable extends Area2D
 var DEBUG_NAME : String :
 	get: return "[b][Collectable("+name+")][/b] "
 
-@export var type : InventoryManager.ItemType = InventoryManager.ItemType.ItemA
+@export var type : InventoryManager.ItemType = InventoryManager.ItemType.Rock
 
 @export var finished_spawning := false
+@export var collected := false
 
 func _ready() -> void:
 	if !finished_spawning: _spawn_countdown()
@@ -21,7 +22,7 @@ func _spawn_countdown() -> void:
 	
 
 func collect() -> void:
-	if !finished_spawning || !InventoryManager.chute_open: return
+	if collected || !finished_spawning || !InventoryManager.chute_open: return
 	
 	print_rich(DEBUG_NAME,"Collect > Chute is open! Telling InventoryManager what I am...")
 	

@@ -28,7 +28,7 @@ static var instance : Ship = null
 
 @export var acceleration: Vector2 = Vector2.ZERO :
 	get:
-		print("acceleration" + str(previous_speed - speed))
+		#print("acceleration" + str(previous_speed - speed))
 		return previous_speed - speed
 
 @export var proportional_speed : Vector2 = Vector2.ZERO :

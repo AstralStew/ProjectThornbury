@@ -2,7 +2,7 @@ class_name Item extends RigidBody2D
 var DEBUG_NAME : String :
 	get: return "[b][Item("+name+")][/b] "
 
-@export var type : InventoryManager.ItemType = InventoryManager.ItemType.ItemA
+@export var type : InventoryManager.ItemType = InventoryManager.ItemType.Rock
 
 var finished_spawning := false
 

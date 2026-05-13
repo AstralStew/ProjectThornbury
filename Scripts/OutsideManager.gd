@@ -2,8 +2,8 @@ class_name OutsideManager extends MarginContainer
 const DEBUG_NAME = "[b][OutsideManager][/b] "
 static var instance : OutsideManager = null
 
-@export var collectable_A_prefab : PackedScene = null
-@export var collectable_B_prefab : PackedScene = null
+@export var collectable_rock_prefab : PackedScene = null
+@export var collectable_crate_prefab : PackedScene = null
 @export var collectable_C_prefab : PackedScene = null
 
 var collectable_holder : Node2D = null
@@ -22,12 +22,12 @@ func _add_collectable(_type:InventoryManager.ItemType) -> void:
 	var _prefab : PackedScene = null
 	var _name : String 
 	match _type:
-		InventoryManager.ItemType.ItemA:
-			_prefab = collectable_A_prefab
-			_name = "<CollectableA>"
-		InventoryManager.ItemType.ItemB:
-			_prefab = collectable_B_prefab
-			_name = "<CollectableB>"
+		InventoryManager.ItemType.Rock:
+			_prefab = collectable_rock_prefab
+			_name = "<CollectableRock>"
+		InventoryManager.ItemType.Crate:
+			_prefab = collectable_crate_prefab
+			_name = "<CollectableCrate>"
 		InventoryManager.ItemType.ItemC:
 			_prefab = collectable_C_prefab
 			_name = "<CollectableC>"
