@@ -150,6 +150,7 @@ theme_override_constants/separation = 15
 alignment = 1
 
 [node name="RTL_Message" type="RichTextLabel" parent="UIHolder/MessageBox/VBoxContainer" unique_id=1987009389]
+process_mode = 3
 layout_mode = 2
 bbcode_enabled = true
 text = "d"
@@ -159,6 +160,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="RTL_Button" type="Button" parent="UIHolder/MessageBox/VBoxContainer" unique_id=1415378375]
+process_mode = 3
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
 size_flags_horizontal = 4

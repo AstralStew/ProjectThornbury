@@ -4,6 +4,7 @@ var DEBUG_NAME : String :
 
 @export var type : InventoryManager.ItemType = InventoryManager.ItemType.Rock
 
+@export var is_dragged : bool = false
 @export var finished_spawning : bool = false
 
 func _ready() -> void:
@@ -49,5 +50,5 @@ func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 	
 	if event is InputEventMouseButton && Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
 		print_rich(DEBUG_NAME,"OnInputEvent > Clicked! Telling InventoryManager to start drag force...")
-		InventoryManager.dragging(self,get_viewport().get_mouse_position())
+		InventoryManager.dragging(self,get_local_mouse_position())
 		

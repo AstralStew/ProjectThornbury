@@ -14,13 +14,15 @@ enum ItemType {Rock,Crate,Pipe}
 @export var drag_force : float = 2.5
 @export var release_force : float = 0.5
 
+var _active_debug_line : Line2D = null
+
 static var chute_open : bool = false
 
 func _enter_tree() -> void:
 	instance = self
 	chute_open = false
-
-
+	
+	GLOBALS.on_health_changed().connect(cancel_dragging)
 
 
 func _physics_process(delta: float) -> void:
@@ -54,18 +56,22 @@ func _add_item(_type:ItemType) -> void:
 	_new_scene.set_deferred("linear_velocity", Vector2(remap(randf(),0,1,-1,1), remap(randf(),0,1,1,3)).normalized() * 800)
 
 
-static func dragging(_object:RigidBody2D,_click_pos:Vector2) -> void:
-	if _object == null:
-		pass
-		
+func cancel_dragging() -> void:
+	if _active_debug_line != null:
+		_active_debug_line.queue_free()
+
+
+static func dragging(_object:Item,_click_pos:Vector2) -> void:
 	instance._dragging(_object,_click_pos)
-func _dragging(_object:RigidBody2D,_click_pos:Vector2) -> void:
+func _dragging(_object:Item,_click_pos:Vector2) -> void:
 	print_rich(DEBUG_NAME,"Dragging > Object '"+_object.name+"' initialised dragging! Waiting for mouse release...")
 	
-	var _new_debug_line = debug_line.duplicate()
-	_object.add_child(_new_debug_line) #.reparent(_object)
-	_new_debug_line.position = _object.get_local_mouse_position()
-	_new_debug_line.visible = true
+	_object.is_dragged = true
+	
+	_active_debug_line = debug_line.duplicate()
+	_object.add_child(_active_debug_line) #.reparent(_object)
+	_active_debug_line.position = _click_pos
+	_active_debug_line.visible = true
 	
 	var _move_vector : Vector2
 	var _old_damp = _object.linear_damp
@@ -73,14 +79,15 @@ func _dragging(_object:RigidBody2D,_click_pos:Vector2) -> void:
 	_object.linear_damp_mode = RigidBody2D.DAMP_MODE_REPLACE
 	
 	while Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
-		_new_debug_line.set_point_position(1,_new_debug_line.get_local_mouse_position())
-		_move_vector = _new_debug_line.to_global(_new_debug_line.get_point_position(1)) - _new_debug_line.to_global(_new_debug_line.get_point_position(0)) 
+		_active_debug_line.set_point_position(1,_active_debug_line.get_local_mouse_position())
+		_move_vector = _active_debug_line.to_global(_active_debug_line.get_point_position(1)) - _active_debug_line.to_global(_active_debug_line.get_point_position(0)) 
 		_object.apply_central_force(_move_vector * drag_force)
 		await get_tree().physics_frame
-		if !is_instance_valid(_object): break
+		if !is_instance_valid(_object) || _active_debug_line == null || _active_debug_line.is_queued_for_deletion(): break
 	
 	if is_instance_valid(_object): 
-		_new_debug_line.queue_free()
+		_object.is_dragged = false
+		if _active_debug_line != null: _active_debug_line.queue_free()
 		_object.linear_damp_mode = RigidBody2D.DAMP_MODE_COMBINE
 		_object.linear_damp = _old_damp
 		_object.apply_central_impulse(_move_vector * release_force)

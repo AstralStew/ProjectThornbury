@@ -71,8 +71,20 @@ func jolt() -> void:
 
 
 func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
+	#print_rich(DEBUG_NAME,"OnInputEvent > Clicked!")
 	
-	if event is InputEventMouseButton && Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
+	if has_overlapping_bodies() && event is InputEventMouseButton && Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
 		print_rich(DEBUG_NAME,"OnInputEvent > Clicked! Telling InventoryManager to start drag force on nearest object...")
-		InventoryManager.dragging(null,get_viewport().get_mouse_position())
+		
+		var _closest : RigidBody2D = null
+		var _dist : float = 50000
+		var _mouse_pos = viewport.get_mouse_position()
+		for _object in get_overlapping_bodies():
+			var _new_dist = _mouse_pos.distance_squared_to(_object.global_position)
+			if _new_dist < _dist:
+				_dist = _new_dist
+				_closest = _object
+		
+		if _closest != null: 
+			InventoryManager.dragging(_closest,Vector2.ZERO)
 		

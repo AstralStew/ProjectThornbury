@@ -11,6 +11,9 @@
 [ext_resource type="Texture2D" uid="uid://bs8wppq8ctccy" path="res://Assets/Images/Ships/Ships_Sheet.png" id="8_2ju8y"]
 [ext_resource type="Script" uid="uid://ba0ppdfg70y3g" path="res://Scripts/HangerCamera.gd" id="10_v7qpt"]
 
+[sub_resource type="Gradient" id="Gradient_v7qpt"]
+colors = PackedColorArray(0.93333334, 0.5254902, 0.58431375, 1, 0.9843137, 0.73333335, 0.6784314, 1)
+
 [sub_resource type="Gradient" id="Gradient_03ybr"]
 interpolation_mode = 2
 offsets = PackedFloat32Array(0.6201172, 0.6577909)
@@ -84,6 +87,7 @@ position = Vector2(720, 161)
 points = PackedVector2Array(0, 0, 0, 34.955)
 width = 5.0
 default_color = Color(1, 0, 1, 1)
+gradient = SubResource("Gradient_v7qpt")
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="." unique_id=63514708]
 layout_mode = 2
@@ -92,6 +96,8 @@ stretch = true
 [node name="SubViewport" type="SubViewport" parent="SubViewportContainer" unique_id=682189103]
 handle_input_locally = false
 physics_object_picking = true
+physics_object_picking_sort = true
+physics_object_picking_first_only = true
 gui_snap_controls_to_pixels = false
 size = Vector2i(540, 640)
 render_target_update_mode = 4
@@ -301,11 +307,9 @@ collision_mask = 0
 shape = SubResource("WorldBoundaryShape2D_51e2h")
 
 [node name="BootArea" type="Area2D" parent="SubViewportContainer/SubViewport" unique_id=1927072519]
-visible = false
 position = Vector2(270, 340)
-collision_layer = 0
+collision_layer = 524288
 collision_mask = 256
-monitoring = false
 monitorable = false
 gravity_space_override = 1
 gravity_point_center = Vector2(0, 0)
@@ -322,18 +326,17 @@ position = Vector2(2, -20)
 shape = SubResource("RectangleShape2D_tumq0")
 
 [node name="ItemHolder" type="Node2D" parent="SubViewportContainer/SubViewport" unique_id=1815584380]
-position = Vector2(271, 340)
 
-[node name="ItemCrate" parent="SubViewportContainer/SubViewport/ItemHolder" unique_id=1291223074 groups=["Item"] instance=ExtResource("3_03ybr")]
-position = Vector2(-116, -80)
+[node name="ItemCrate" parent="SubViewportContainer/SubViewport/ItemHolder" unique_id=1291223074 instance=ExtResource("3_03ybr")]
+position = Vector2(155, 260)
 finished_spawning = true
 
-[node name="ItemPipe" parent="SubViewportContainer/SubViewport/ItemHolder" unique_id=708575499 groups=["Item"] instance=ExtResource("4_aco8w")]
-position = Vector2(120, 2)
+[node name="ItemPipe" parent="SubViewportContainer/SubViewport/ItemHolder" unique_id=708575499 instance=ExtResource("4_aco8w")]
+position = Vector2(391, 342)
 finished_spawning = true
 
-[node name="ItemRock" parent="SubViewportContainer/SubViewport/ItemHolder" unique_id=600246382 groups=["Item"] instance=ExtResource("3_0n8tc")]
-position = Vector2(-8, 100)
+[node name="ItemRock" parent="SubViewportContainer/SubViewport/ItemHolder" unique_id=600246382 instance=ExtResource("3_0n8tc")]
+position = Vector2(263, 440)
 finished_spawning = true
 
 [node name="Camera2D" type="Camera2D" parent="SubViewportContainer/SubViewport" unique_id=1942357245]

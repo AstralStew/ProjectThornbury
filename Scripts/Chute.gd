@@ -34,7 +34,7 @@ func _physics_process(delta: float) -> void:
 			open()
 		if has_overlapping_bodies():
 			for _body:Item in get_overlapping_bodies():
-				if _body.finished_spawning:
+				if _body.finished_spawning && !_body.is_dragged:
 					_body.jettison()
 	elif _open:
 		_open = false

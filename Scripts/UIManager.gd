@@ -24,8 +24,9 @@ func start_time(fade:=0.0) -> void:
 	if fade:
 		Engine.time_scale = 0.0
 		var _tween:Tween = create_tween().set_ignore_time_scale().set_pause_mode(Tween.TWEEN_PAUSE_PROCESS)
-		_tween.tween_property(Engine,"time_scale",1,fade).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUAD)
+		_tween.tween_property(Engine,"time_scale",1,fade).set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_QUAD)
 		await get_tree().create_timer(fade,true,false,true).timeout
+		await get_tree().process_frame
 		Engine.time_scale = 1.0
 
 	
@@ -34,9 +35,10 @@ func stop_time(fade:=0.0) -> void:
 	if fade:
 		Engine.time_scale = 1.0
 		var _tween:Tween = create_tween().set_ignore_time_scale().set_pause_mode(Tween.TWEEN_PAUSE_PROCESS)
-		_tween.tween_property(Engine,"time_scale",0,fade).set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_QUAD)
+		_tween.tween_property(Engine,"time_scale",0,fade).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUAD)
 		await get_tree().create_timer(fade,true,false,true).timeout
-		Engine.time_scale = 0.0
+		await get_tree().process_frame
+		Engine.time_scale = 1.0
 	
 	get_tree().paused = true
 
@@ -51,7 +53,8 @@ func took_damage() -> void:
 
 func took_damage_first_time() -> void:
 	has_taken_damage = true
-	await stop_time(0.5)
+	await get_tree().create_timer(0.5,true,false,true).timeout
+	await stop_time(1)
 	await display_message_box(
 		"""Well well, looks like [wave amp=50.0 freq=5.0 connected=1]someone[/wave] took some [shake rate=20.0 level=5 connected=1]damage[/shake] for the first time!
 
@@ -59,21 +62,22 @@ func took_damage_first_time() -> void:
 
 Good luck out there, baka desu.""",
 	"wow okay :(",
-	0.5
+	1
 	)
-	await start_time(0.5)
+	await get_tree().create_timer(0.35,true,false,true).timeout
+	await start_time(1)
 
 func dead() -> void:
 	has_taken_damage = true
-	await stop_time(0.5)
+	await stop_time(1)
 	await display_message_box(
 		"Dead hours
 washed gang gang
 no health? :/",
 	"damn, guess I'll try again",
-	0.5
+	1
 	)
-	await start_time(0.5)
+	await start_time(1)
 	_on_restart_game.emit()
 	get_tree().reload_current_scene()
 	
