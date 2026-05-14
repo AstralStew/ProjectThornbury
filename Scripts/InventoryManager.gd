@@ -55,6 +55,9 @@ func _add_item(_type:ItemType) -> void:
 
 
 static func dragging(_object:RigidBody2D,_click_pos:Vector2) -> void:
+	if _object == null:
+		pass
+		
 	instance._dragging(_object,_click_pos)
 func _dragging(_object:RigidBody2D,_click_pos:Vector2) -> void:
 	print_rich(DEBUG_NAME,"Dragging > Object '"+_object.name+"' initialised dragging! Waiting for mouse release...")

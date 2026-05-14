@@ -89,11 +89,30 @@ layout_mode = 2
 size_flags_vertical = 3
 collectable_pipe_prefab = ExtResource("2_6phgx")
 
-[node name="Label" type="Label" parent="UIHolder/MarginContainer/HBoxContainer/VBoxContainer" unique_id=1931130112]
+[node name="HBoxContainer3" type="HBoxContainer" parent="UIHolder/MarginContainer/HBoxContainer/VBoxContainer" unique_id=408115628]
 layout_mode = 2
+
+[node name="Label2" type="Label" parent="UIHolder/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer3" unique_id=1195613248]
+layout_mode = 2
+size_flags_horizontal = 3
 theme_override_styles/normal = SubResource("StyleBoxFlat_wqkje")
-text = "BOUNTY: 46290 credits"
+text = "BOUNTY: 46290"
 vertical_alignment = 1
+
+[node name="Label3" type="Label" parent="UIHolder/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer3" unique_id=886410127]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_wqkje")
+text = "PROSPERITY: "
+vertical_alignment = 1
+
+[node name="ProgressBar" type="ProgressBar" parent="UIHolder/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer3" unique_id=346931455]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.5
+theme_override_styles/background = SubResource("StyleBoxFlat_wqkje")
+value = 38.33
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="UIHolder/MarginContainer/HBoxContainer" unique_id=1162533289]
 layout_mode = 2
@@ -104,8 +123,14 @@ layout_mode = 2
 size_flags_vertical = 3
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="UIHolder/MarginContainer/HBoxContainer/VBoxContainer2" unique_id=1300402169]
-visible = false
 layout_mode = 2
+
+[node name="Label2" type="Label" parent="UIHolder/MarginContainer/HBoxContainer/VBoxContainer2/HBoxContainer2" unique_id=1523903993]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/normal = SubResource("StyleBoxFlat_wqkje")
+text = "CRATE: Used to hold things, obviously"
+vertical_alignment = 1
 
 [node name="MessageBox" type="PanelContainer" parent="UIHolder" unique_id=258760470]
 visible = false
