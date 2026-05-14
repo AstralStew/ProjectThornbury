@@ -8,7 +8,6 @@
 [ext_resource type="PackedScene" uid="uid://be2frk3ryyebk" path="res://Scenes/InventoryPrefabs/item_pipe.tscn" id="4_aco8w"]
 [ext_resource type="Script" uid="uid://dw1ch6u6ctwe8" path="res://Scripts/damage_texture.gd" id="5_aco8w"]
 [ext_resource type="Texture2D" uid="uid://c8uceqq350won" path="res://Assets/Images/Hanger/HangerDoor_Frame.png" id="7_toeaj"]
-[ext_resource type="Texture2D" uid="uid://bs8wppq8ctccy" path="res://Assets/Images/Ships/Ships_Sheet.png" id="8_2ju8y"]
 [ext_resource type="Script" uid="uid://ba0ppdfg70y3g" path="res://Scripts/HangerCamera.gd" id="10_v7qpt"]
 
 [sub_resource type="Gradient" id="Gradient_v7qpt"]
@@ -137,9 +136,9 @@ anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = -120.0
-offset_top = 619.0
+offset_top = -17.0
 offset_right = 120.0
-offset_bottom = 659.0
+offset_bottom = 23.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
@@ -162,8 +161,8 @@ stretch_mode = 1
 script = ExtResource("5_aco8w")
 
 [node name="Chute" type="Area2D" parent="SubViewportContainer/SubViewport/BackgroundElements" unique_id=1174495063]
-position = Vector2(0, 211)
-rotation = 3.1415927
+position = Vector2(0, 180)
+rotation = 4.712389
 collision_layer = 1024
 collision_mask = 256
 monitorable = false
@@ -171,11 +170,11 @@ linear_damp = 100.0
 script = ExtResource("3_k1vlg")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SubViewportContainer/SubViewport/BackgroundElements/Chute" unique_id=1113201749]
-position = Vector2(0, -65.5)
+position = Vector2(-74.99999, -0.49999237)
 shape = SubResource("RectangleShape2D_0n8tc")
 
 [node name="HangerDoorFrame" type="Sprite2D" parent="SubViewportContainer/SubViewport/BackgroundElements/Chute" unique_id=1122355408]
-position = Vector2(-1.2239188e-05, -109)
+position = Vector2(-75.00001, -43.999992)
 texture = ExtResource("7_toeaj")
 
 [node name="Outside" type="ColorRect" parent="SubViewportContainer/SubViewport/BackgroundElements/Chute/HangerDoorFrame" unique_id=2032913877]
@@ -211,7 +210,7 @@ mouse_filter = 2
 color = Color(0.2, 0.2, 0.2, 1)
 
 [node name="HangerDoorFrame2" type="Sprite2D" parent="SubViewportContainer/SubViewport/BackgroundElements/Chute" unique_id=984879146]
-position = Vector2(-4.6334067e-06, -22)
+position = Vector2(-75, 43.000008)
 rotation = -3.1415927
 texture = ExtResource("7_toeaj")
 
@@ -247,24 +246,14 @@ pivot_offset_ratio = Vector2(0.5, 1)
 mouse_filter = 2
 color = Color(0.2, 0.2, 0.2, 1)
 
-[node name="ShipsSheet" type="Sprite2D" parent="SubViewportContainer/SubViewport/BackgroundElements/Chute" unique_id=2076729597]
-visible = false
-modulate = Color(1, 1, 1, 0.16078432)
-texture_filter = 1
-position = Vector2(-3, 165)
-scale = Vector2(25.984552, 25.984552)
-texture = ExtResource("8_2ju8y")
-region_enabled = true
-region_rect = Rect2(90, 5, 40, 33)
-
 [node name="Outside2" type="ColorRect" parent="SubViewportContainer/SubViewport/BackgroundElements/Chute" unique_id=21236288]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -92.0
-offset_top = -69.0
-offset_right = 91.0
-offset_bottom = -63.0
+offset_left = -167.0
+offset_top = -3.9999924
+offset_right = 16.0
+offset_bottom = 2.0000076
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset_ratio = Vector2(0.5, 0.5)
@@ -346,8 +335,7 @@ limit_enabled = false
 script = ExtResource("10_v7qpt")
 
 [node name="Noise" type="TextureRect" parent="SubViewportContainer/SubViewport/Camera2D" unique_id=742442821]
-modulate = Color(1, 1, 1, 0.1254902)
-self_modulate = Color(1, 1, 1, 0.06666667)
+modulate = Color(1, 1, 1, 0)
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -359,7 +347,9 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("NoiseTexture2D_v7qpt")
 stretch_mode = 1
-script = ExtResource("5_aco8w")
+
+[node name="Node2D" type="Node2D" parent="SubViewportContainer/SubViewport" unique_id=923990642]
+position = Vector2(263, 0)
 
 [connection signal="body_entered" from="SubViewportContainer/SubViewport/BackgroundElements/Chute" to="SubViewportContainer/SubViewport/BackgroundElements/Chute" method="_on_body_entered"]
 [connection signal="input_event" from="SubViewportContainer/SubViewport/BootArea" to="SubViewportContainer/SubViewport/BootArea" method="_on_input_event"]

@@ -13,6 +13,7 @@ enum ItemType {Rock,Crate,Pipe}
 
 @export var drag_force : float = 2.5
 @export var release_force : float = 0.5
+@export_range(0,1) var chance_to_open_chute_on_damage : float = 0.5
 
 var _active_debug_line : Line2D = null
 
@@ -23,12 +24,15 @@ func _enter_tree() -> void:
 	chute_open = false
 	
 	GLOBALS.on_health_changed().connect(cancel_dragging)
+	GLOBALS.on_health_changed().connect(maybe_open_chute)
+
+
+func maybe_open_chute() -> void:
+	if randf() < chance_to_open_chute_on_damage: chute_open = true
 
 
 func _physics_process(delta: float) -> void:
-	if !Ship.instance.has_control:
-		chute_open = true
-	else:
+	if Ship.instance.has_control:
 		chute_open = Input.is_action_pressed("OpenChute")
 
 static func add_item(_type:ItemType) -> void:

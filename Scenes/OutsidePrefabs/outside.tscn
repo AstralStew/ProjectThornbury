@@ -16,8 +16,8 @@ point_count = 2
 colors = PackedColorArray(1, 1, 0, 0, 1, 1, 1, 1)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tumq0"]
-radius = 9.0
-height = 36.0
+radius = 5.0
+height = 32.0
 
 [node name="OutsideManager" type="MarginContainer" unique_id=1854772268]
 process_mode = 1
@@ -90,7 +90,7 @@ script = ExtResource("5_hhqqv")
 number_of_points = 10
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SubViewportContainer/SubViewport/Ship" unique_id=470645661]
-position = Vector2(0, -3)
+position = Vector2(0, -4)
 rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_tumq0")
 

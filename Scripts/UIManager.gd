@@ -64,7 +64,7 @@ Good luck out there, baka desu.""",
 	"wow okay :(",
 	1
 	)
-	await get_tree().create_timer(0.35,true,false,true).timeout
+	await get_tree().create_timer(0.25,true,false,true).timeout
 	await start_time(1)
 
 func dead() -> void:
