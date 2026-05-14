@@ -1,13 +1,15 @@
 class_name Ship extends CharacterBody2D
+const DEBUG_NAME = "[b][Ship][/b] "
 static var instance : Ship = null
+
+
+@export var minimum_bounce_speed_sqr : float = 50
 
 @export_category("Turning Controls")
 
 @export var rotation_speed : float = 0.25
 @export var rotation_change_rate : float = 50.0
 @export var boost_rotation_change_rate : float = 100.0
-
-
 @export var rotation_acc : float = 0.1
 
 @export_category("Speed Controls")
@@ -28,7 +30,6 @@ static var instance : Ship = null
 
 @export var acceleration: Vector2 = Vector2.ZERO :
 	get:
-		#print("acceleration" + str(previous_speed - speed))
 		return previous_speed - speed
 
 @export var proportional_speed : Vector2 = Vector2.ZERO :
@@ -61,8 +62,9 @@ func _physics_process(delta: float) -> void:
 		speed = Vector2(0,move_toward(speed.y,-down_speed, neutral_change_rate * 0.5 * delta))
 	velocity = speed.y * transform.y
 	
+	
 	var collision = move_and_collide(velocity * delta)
-	if has_control && collision:
+	if collision && has_control && speed.y < -minimum_bounce_speed_sqr:
 		velocity = velocity.bounce(collision.get_normal())
 		speed.x = 0
 		#speed.y = speed.y /2 
@@ -70,12 +72,17 @@ func _physics_process(delta: float) -> void:
 		#rotation = lerp_angle(rotation, collision.get + GLOBALS.random_rotation(15), rotation_acc)
 		#look_at(velocity)
 		rotation = collision.get_normal().angle() + deg_to_rad(90) + GLOBALS.random_rotation(30)
-		lose_control()
+		take_damage()
 		#if collision.get_collider().has_method("hit"):
 			#collision.get_collider().hit()
 
 	
 	#move_and_slide()
+
+func take_damage() -> void:
+	print_rich(DEBUG_NAME,"TakeDamage > Reducing health and losing control!")
+	GLOBALS.health -= 1
+	lose_control()
 
 var has_control := true
 var _tween:Tween = null
@@ -83,7 +90,6 @@ func lose_control() -> void:
 	has_control = false
 	modulate = Color.RED
 	for _trail in trails: _trail.deactivate()
-	print("A")
 	if _tween: _tween.kill()
 	_tween = create_tween().set_parallel().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_SPRING)
 	_tween.tween_property(self,"rotation",rotation + GLOBALS.random_rotation(50),0.25)
@@ -94,7 +100,6 @@ func lose_control() -> void:
 	Boot.instance.jolt()
 	
 	await get_tree().create_timer(0.25).timeout
-	print("B")
 	$ShipsSheet.rotation_degrees = 180
 	for _trail in trails: _trail.activate()
 	modulate = Color.WHITE

@@ -1,4 +1,40 @@
-class_name GLOBALS
+class_name GLOBALS extends Node
+static var instance : GLOBALS
+
+static var MAX_HEALTH : int = 6
+
+
+
+
+
+static var health : int = 0 : 
+	set(value):
+		if health != value:
+			health = value
+			instance._on_health_changed.emit()
+
+static var proportional_health : float :
+	get: return health as float / MAX_HEALTH as float
+
+signal _on_health_changed
+static func on_health_changed() -> Signal:
+	return instance._on_health_changed
+
+func _init() -> void:
+	instance = self
+	restart_game()
+
+func _ready() -> void:
+	UIManager.on_restart_game().connect(restart_game)
+
+func restart_game() -> void:
+	health = MAX_HEALTH
+
+
+
+
+
+
 
 
 static func random_color(randr:=Vector2(0,1),randg:=Vector2(0,1),randb:=Vector2(0,1),randa:=Vector2(1,1)) -> Color:

@@ -1,7 +1,7 @@
 class_name Station extends Area2D
 var DEBUG_NAME : String :
 	get: return "[b][Station("+name+")][/b] "
-static var instance : Station = null
+#static var instance : Station = null
 
 @export var cooldown_duration : Vector2 = Vector2(5.0,20.0)
 

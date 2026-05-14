@@ -5,10 +5,32 @@
 [ext_resource type="PackedScene" uid="uid://l0cg84jp4bre" path="res://Scenes/OutsidePrefabs/outside.tscn" id="2_81xng"]
 [ext_resource type="PackedScene" uid="uid://dfbi3x303ug65" path="res://Scenes/InventoryPrefabs/inventory.tscn" id="3_6phgx"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_81xng"]
+content_margin_left = 20.0
+content_margin_top = 20.0
+content_margin_right = 20.0
+content_margin_bottom = 20.0
+bg_color = Color(0.16007765, 0.15594886, 0.1931151, 0.85700005)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_blend = true
+corner_radius_top_left = 24
+corner_radius_top_right = 24
+corner_radius_bottom_right = 24
+corner_radius_bottom_left = 24
+corner_detail = 9
+shadow_size = 9
+shadow_offset = Vector2(0, 2)
+anti_aliasing = false
+
 [node name="UIManager" type="CanvasLayer" unique_id=785319097]
+process_mode = 3
 script = ExtResource("1_81xng")
 
 [node name="UIHolder" type="Control" parent="." unique_id=314585851]
+process_mode = 3
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -50,3 +72,35 @@ collectable_pipe_prefab = ExtResource("2_6phgx")
 
 [node name="InventoryManager" parent="UIHolder/MarginContainer/HBoxContainer" unique_id=1086248823 instance=ExtResource("3_6phgx")]
 layout_mode = 2
+
+[node name="MessageBox" type="PanelContainer" parent="UIHolder" unique_id=258760470]
+visible = false
+custom_minimum_size = Vector2(400, 100)
+layout_mode = 0
+offset_left = 440.0
+offset_top = 248.0
+offset_right = 840.0
+offset_bottom = 472.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_81xng")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UIHolder/MessageBox" unique_id=1716209200]
+layout_mode = 2
+theme_override_constants/separation = 15
+alignment = 1
+
+[node name="RTL_Message" type="RichTextLabel" parent="UIHolder/MessageBox/VBoxContainer" unique_id=1987009389]
+layout_mode = 2
+bbcode_enabled = true
+text = "d"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RTL_Button" type="Button" parent="UIHolder/MessageBox/VBoxContainer" unique_id=1415378375]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "d"

@@ -18,6 +18,9 @@ static var chute_open : bool = false
 
 func _enter_tree() -> void:
 	instance = self
+	chute_open = false
+
+
 
 
 func _physics_process(delta: float) -> void:
