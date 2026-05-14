@@ -12,6 +12,8 @@ static func on_restart_game() -> Signal: return instance._on_restart_game
 
 func _enter_tree() -> void:
 	instance = self
+	
+	on_restart_game().connect(GLOBALS.restart_game)
 
 func _ready() -> void:
 	GLOBALS.on_health_changed().connect(took_damage)

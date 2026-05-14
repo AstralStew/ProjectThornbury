@@ -26,7 +26,7 @@ anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_right = -600.0
-offset_bottom = -40.0
+offset_bottom = -80.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
@@ -41,7 +41,7 @@ stretch = true
 
 [node name="SubViewport" type="SubViewport" parent="SubViewportContainer" unique_id=238183413]
 handle_input_locally = false
-size = Vector2i(680, 680)
+size = Vector2i(680, 640)
 render_target_update_mode = 4
 
 [node name="Level1" parent="SubViewportContainer/SubViewport" unique_id=647410072 instance=ExtResource("2_0luta")]
@@ -51,14 +51,10 @@ position = Vector2(331, 558)
 collision_mask = 16
 motion_mode = 1
 script = ExtResource("1_a5lob")
-rotation_speed = 30.0
-rotation_acc = 0.05
-up_change_rate = 100.0
-down_change_rate = 100.0
-neutral_change_rate = 30.0
-up_speed = 100.0
-down_speed = 10.0
-boost_speed = 200.0
+previous_speed = null
+speed = null
+acceleration = null
+proportional_speed = null
 
 [node name="ShipsSheet" type="Sprite2D" parent="SubViewportContainer/SubViewport/Ship" unique_id=295043400]
 texture_filter = 1

@@ -5,8 +5,17 @@ var DEBUG_NAME : String :
 
 @export var cooldown_duration : Vector2 = Vector2(5.0,20.0)
 
+@export var prosperity_target : int = 2
 
 @export_category("READ ONLY")
+
+@export var prosperity : int = 0 :
+	set(value):
+		prosperity = value
+		get_child(0).modulate = Color.WHITE.lerp(Color(0.3, 0.217, 0.1), 1 - (prosperity as float / prosperity_target as float))
+
+@export var is_prosperous : bool = false :
+	get: return prosperity >= prosperity_target
 
 @export var has_order : bool = false
 @export var order_type : InventoryManager.ItemType = InventoryManager.ItemType.Rock
@@ -16,19 +25,30 @@ var DEBUG_NAME : String :
 
 
 func _ready() -> void:
+	prosperity = 0
 	make_order()
 
 func make_order() -> void:
-	if has_order: return
+	if has_order || is_prosperous: return
 	
 	order_type = (randi() % 3) as InventoryManager.ItemType
-	order_number = 1 + (randi() % 6)
+	match order_type:
+		InventoryManager.ItemType.Rock:
+			order_number = randi_range(3,6)
+		InventoryManager.ItemType.Crate:
+			order_number = randi_range(2,4)
+		InventoryManager.ItemType.Pipe:
+			order_number = randi_range(4,8)
+	
 	has_order = true
 	update_text()
 
 func update_text() -> void:
 	if has_order:
 		_label.text = "We need " + str(order_number) + " " + str(InventoryManager.ItemType.keys()[order_type])
+		_label.visible = true
+	elif is_prosperous:
+		_label.text = "We are prosperous!\nThank you fam!"
 		_label.visible = true
 	else:
 		_label.text = ""
@@ -58,7 +78,8 @@ func check_order() -> bool:
 func complete_order() -> void:
 	print_rich(DEBUG_NAME,"CheckOrder > Order complete! Starting cooldown and returning true...")
 	has_order = false
-	cooldown()
+	prosperity += 1
+	if !is_prosperous: cooldown()
 
 func cooldown() -> void:
 	await get_tree().create_timer(randf_range(cooldown_duration.x,cooldown_duration.y)).timeout

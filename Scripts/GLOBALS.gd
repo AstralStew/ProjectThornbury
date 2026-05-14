@@ -1,9 +1,31 @@
 class_name GLOBALS extends Node
 static var instance : GLOBALS
 
-static var MAX_HEALTH : int = 6
+static var game_config_manager : GameConfigManager = null
 
+#region Ship Variables
 
+static var SHIP_MAX_HEALTH : int = 1
+static var SHIP_MINIMUM_BOUNCE_SPEED : float = 1
+
+#@EXPORT_CATEGORY("TURNING CONTROLS")
+
+static var SHIP_ROTATION_SPEED : float = 1
+static var SHIP_ROTATION_CHANGE_RATE : float = 1
+static var SHIP_BOOST_ROTATION_CHANGE_RATE : float = 1
+static var SHIP_ROTATION_ACCELERATION : float = 1
+
+#@EXPORT_CATEGORY("SPEED CONTROLS")
+
+static var SHIP_FORWARD_SPEED : float = 1
+static var SHIP_FORWARD_CHANGE_RATE : float = 1
+static var SHIP_BACK_SPEED : float = 1
+static var SHIP_BACK_CHANGE_RATE : float = 1
+static var SHIP_NEUTRAL_CHANGE_RATE : float = 1
+static var SHIP_BOOST_SPEED : float = 1
+static var SHIP_BOOST_CHANGE_RATE : float = 1
+
+#endregion
 
 
 
@@ -14,21 +36,27 @@ static var health : int = 0 :
 			instance._on_health_changed.emit()
 
 static var proportional_health : float :
-	get: return health as float / MAX_HEALTH as float
+	get: return health as float / SHIP_MAX_HEALTH as float
+
 
 signal _on_health_changed
-static func on_health_changed() -> Signal:
-	return instance._on_health_changed
+static func on_health_changed() -> Signal: return instance._on_health_changed
 
 func _init() -> void:
 	instance = self
+	game_config_manager = preload("res://Configs/GameConfigManager.tres")
 	restart_game()
 
-func _ready() -> void:
-	UIManager.on_restart_game().connect(restart_game)
+#func _ready() -> void:
 
-func restart_game() -> void:
-	health = MAX_HEALTH
+
+
+static func restart_game() -> void:
+	game_config_manager.apply_game_config()
+	
+	health = SHIP_MAX_HEALTH
+	#apply_game_config()
+
 
 
 

@@ -34,13 +34,15 @@ seamless_blend_skirt = 0.464
 size = Vector2(198, 75)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tumq0"]
-size = Vector2(540, 680)
+size = Vector2(540, 640)
 
 [node name="InventoryManager" type="MarginContainer" unique_id=1086248823]
 process_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_right = -740.0
+offset_bottom = -80.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
@@ -67,7 +69,7 @@ stretch = true
 handle_input_locally = false
 physics_object_picking = true
 gui_snap_controls_to_pixels = false
-size = Vector2i(1280, 720)
+size = Vector2i(540, 640)
 render_target_update_mode = 4
 
 [node name="Background" type="ColorRect" parent="SubViewportContainer/SubViewport" unique_id=676433382]
@@ -105,7 +107,7 @@ collision_mask = 0
 shape = SubResource("WorldBoundaryShape2D_51e2h")
 
 [node name="BoundaryBottom" type="StaticBody2D" parent="SubViewportContainer/SubViewport" unique_id=881463654]
-position = Vector2(265, 680)
+position = Vector2(265, 640)
 collision_layer = 512
 collision_mask = 0
 
@@ -187,6 +189,7 @@ random_force = 0.25
 force = 100.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SubViewportContainer/SubViewport/BootArea" unique_id=163712967]
+position = Vector2(0, -20)
 shape = SubResource("RectangleShape2D_tumq0")
 
 [node name="ItemHolder" type="Node2D" parent="SubViewportContainer/SubViewport" unique_id=1815584380]
