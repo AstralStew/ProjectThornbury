@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://de381ep43a5bi" path="res://Scripts/Chute.gd" id="3_k1vlg"]
 [ext_resource type="PackedScene" uid="uid://be2frk3ryyebk" path="res://Scenes/InventoryPrefabs/item_pipe.tscn" id="4_aco8w"]
 [ext_resource type="Script" uid="uid://dw1ch6u6ctwe8" path="res://Scripts/damage_texture.gd" id="5_aco8w"]
+[ext_resource type="Texture2D" uid="uid://c8uceqq350won" path="res://Assets/Images/Hanger/HangerDoor_Frame.png" id="7_toeaj"]
 
 [sub_resource type="Gradient" id="Gradient_03ybr"]
 interpolation_mode = 2
@@ -144,7 +145,43 @@ script = ExtResource("3_k1vlg")
 position = Vector2(0, 5.5)
 shape = SubResource("RectangleShape2D_0n8tc")
 
+[node name="HangerDoorFrame" type="Sprite2D" parent="SubViewportContainer/SubViewport/Chute" unique_id=1122355408]
+position = Vector2(0, 3)
+texture = ExtResource("7_toeaj")
+
+[node name="Outside" type="ColorRect" parent="SubViewportContainer/SubViewport/Chute/HangerDoorFrame" unique_id=2032913877]
+show_behind_parent = true
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -92.0
+offset_top = -42.0
+offset_right = -98.0
+offset_bottom = -48.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset_ratio = Vector2(0.5, 0.5)
+mouse_filter = 2
+color = Color(0.93333334, 0.5254902, 0.58431375, 1)
+
+[node name="Chute" type="ColorRect" parent="SubViewportContainer/SubViewport/Chute/HangerDoorFrame" unique_id=1497257672]
+show_behind_parent = true
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -92.0
+offset_top = -132.0
+offset_right = -98.0
+offset_bottom = -45.0
+grow_horizontal = 2
+grow_vertical = 0
+pivot_offset_ratio = Vector2(0.5, 1)
+mouse_filter = 2
+color = Color(0.2, 0.2, 0.2, 1)
+
 [node name="Border" type="ColorRect" parent="SubViewportContainer/SubViewport/Chute" unique_id=1482982605]
+visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -157,20 +194,6 @@ grow_vertical = 2
 pivot_offset_ratio = Vector2(0.5, 0.5)
 mouse_filter = 2
 color = Color(0.16, 0.16, 0.16, 1)
-
-[node name="Chute" type="ColorRect" parent="SubViewportContainer/SubViewport/Chute" unique_id=1497257672]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -80.0
-offset_top = -14.0
-offset_right = 80.0
-offset_bottom = 26.0
-grow_horizontal = 2
-grow_vertical = 2
-pivot_offset_ratio = Vector2(0.5, 0.5)
-mouse_filter = 2
-color = Color(0.2, 0.2, 0.2, 1)
 
 [node name="BootArea" type="Area2D" parent="SubViewportContainer/SubViewport" unique_id=1927072519]
 position = Vector2(270, 340)
