@@ -6,6 +6,8 @@ static var instance : Chute = null
 
 var _open := false
 
+var testvariable : String
+
 func _enter_tree() -> void:
 	instance = self
 
