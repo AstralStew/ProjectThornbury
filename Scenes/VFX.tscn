@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://ch5c3b445iqyr" path="res://Scripts/Ship.gd" id="1_v7a8s"]
 [ext_resource type="Texture2D" uid="uid://bs8wppq8ctccy" path="res://Assets/Images/Ships/Ships_Sheet.png" id="2_bc7up"]
 [ext_resource type="Script" uid="uid://c7fg3jgojxubh" path="res://Scripts/ship_trail.gd" id="3_bc7up"]
+[ext_resource type="PackedScene" uid="uid://jcnlsaxu7mak" path="res://Scenes/level.tscn" id="4_0s5yq"]
 
 [sub_resource type="Curve" id="Curve_bc7up"]
 _data = [Vector2(0, 0), 0.0, 1.0, 0, 1, Vector2(1, 1), 1.0, 0.0, 1, 0]
@@ -36,3 +37,5 @@ script = ExtResource("3_bc7up")
 position = Vector2(0, 4)
 rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_0s5yq")
+
+[node name="UIManager" parent="." unique_id=785319097 instance=ExtResource("4_0s5yq")]
