@@ -29,7 +29,7 @@ signal on_become_prosperous(station_ref)
 
 func _ready() -> void:
 	prosperity = 0
-	cooldown()
+	#cooldown()
 
 func make_order() -> void:
 	if has_order || is_prosperous: return
