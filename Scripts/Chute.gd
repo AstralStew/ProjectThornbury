@@ -17,7 +17,7 @@ func open() -> void:
 	#chute_gfx.color = Color(0.933, 0.525, 0.584)
 	if _tween: _tween.kill()
 	_tween = create_tween().set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_QUAD).set_parallel()
-	_tween.tween_property(chute_gfx1,"scale",Vector2(1,0),0.25)
+	_tween.tween_property(chute_gfx1,"position",Vector2(1,0),0.25)
 	_tween.tween_property(chute_gfx2,"scale",Vector2(1,0),0.25)
 
 func close() -> void:
