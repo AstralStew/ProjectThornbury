@@ -1,7 +1,9 @@
 [gd_resource type="Resource" script_class="GameConfig" format=3 uid="uid://dou77b04qk6xu"]
 
-[ext_resource type="Script" uid="uid://cjyohqwij1yd1" path="res://Scripts/GameConfig.gd" id="1_d0ll4"]
+[ext_resource type="Script" path="res://Scripts/GameConfig.gd" id="1_d0ll4"]
 
 [resource]
 script = ExtResource("1_d0ll4")
-metadata/_custom_type_script = "uid://cjyohqwij1yd1"
+SHIP_ROTATION_SPEED = 35.0
+SHIP_ROTATION_CHANGE_RATE = 55.0
+SHIP_FORWARD_SPEED = 105.0
