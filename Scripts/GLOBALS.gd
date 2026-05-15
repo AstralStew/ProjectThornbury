@@ -28,6 +28,13 @@ static var SHIP_BOOST_CHANGE_RATE : float = 1
 #endregion
 
 
+#region Level Variables
+
+static var LEVEL_SECS_BEFORE_AUTHORITIES_ARRIVE : int = 600
+
+#endregion
+
+
 
 static var health : int = 0 : 
 	set(value):
@@ -42,6 +49,9 @@ static var proportional_health : float :
 signal _on_health_changed
 static func on_health_changed() -> Signal: return instance._on_health_changed
 
+
+
+
 func _init() -> void:
 	instance = self
 	game_config_manager = preload("res://Configs/GameConfigManager.tres")
@@ -55,7 +65,6 @@ static func restart_game() -> void:
 	game_config_manager.apply_game_config()
 	
 	health = SHIP_MAX_HEALTH
-	#apply_game_config()
 
 
 

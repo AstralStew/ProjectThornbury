@@ -304,16 +304,16 @@ offset_bottom = -1447.0
 rotation = -1.2855718
 color = Color(0.9843137, 0.73333335, 0.6784314, 1)
 
-[node name="Station" parent="." unique_id=1439882274 instance=ExtResource("2_80ic5")]
+[node name="Station" parent="." unique_id=1439882274 groups=["Stations"] instance=ExtResource("2_80ic5")]
 position = Vector2(1518, 1459)
 
-[node name="Station2" parent="." unique_id=352694730 instance=ExtResource("2_80ic5")]
+[node name="Station2" parent="." unique_id=352694730 groups=["Stations"] instance=ExtResource("2_80ic5")]
 position = Vector2(-1886, -1954)
 
-[node name="Station3" parent="." unique_id=1875856237 instance=ExtResource("2_80ic5")]
+[node name="Station3" parent="." unique_id=1875856237 groups=["Stations"] instance=ExtResource("2_80ic5")]
 position = Vector2(1590, -939)
 
-[node name="Station4" parent="." unique_id=387573631 instance=ExtResource("2_80ic5")]
+[node name="Station4" parent="." unique_id=387573631 groups=["Stations"] instance=ExtResource("2_80ic5")]
 position = Vector2(-1446, 1708)
 
 [node name="CollectableHolder" type="Node2D" parent="." unique_id=9974128]

@@ -40,7 +40,7 @@ func jettison() -> void:
 	
 	var _tween = create_tween().set_parallel().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUAD)
 	_tween.tween_property(self,"modulate",Color(0,0,0,0),0.6)
-	_tween.tween_property(self,"global_position",Chute.instance.global_position + Vector2(remap(randf(),0,1,-30,30),remap(randf(),0,1,-30,30)),0.66)
+	_tween.tween_property(self,"global_position",Chute.instance.exit_point.global_position + Vector2(remap(randf(),0,1,-30,30),remap(randf(),0,1,-5,5)),0.66)
 	_tween.tween_property(self,"scale",Vector2(0.25,0.25),0.66)
 	await get_tree().create_timer(0.66).timeout
 	
@@ -48,7 +48,7 @@ func jettison() -> void:
 
 func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 	
-	if event is InputEventMouseButton && Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
+	if !InventoryManager.is_dragging && event is InputEventMouseButton && Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
 		print_rich(DEBUG_NAME,"OnInputEvent > Clicked! Telling InventoryManager to start drag force...")
 		InventoryManager.dragging(self,get_local_mouse_position())
 		
