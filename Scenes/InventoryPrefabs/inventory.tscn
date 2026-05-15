@@ -248,53 +248,139 @@ color = Color(0.2, 0.24705882, 0.34509805, 1)
 [node name="Greebles" type="Node2D" parent="SubViewportContainer/SubViewport" unique_id=1687082410]
 position = Vector2(270, 0)
 
-[node name="Rectangle" type="Sprite2D" parent="SubViewportContainer/SubViewport/Greebles" unique_id=73881646]
-position = Vector2(-222, 54)
-rotation = 1.5707964
+[node name="Warning" type="Sprite2D" parent="SubViewportContainer/SubViewport/Greebles" unique_id=54922364]
+position = Vector2(101, 174)
 texture = ExtResource("10_lnm75")
 region_enabled = true
-region_rect = Rect2(171, 172, 58, 39)
-
-[node name="Rectangle2" type="Sprite2D" parent="SubViewportContainer/SubViewport/Greebles" unique_id=54922364]
-position = Vector2(222, 54)
-rotation = 4.712389
-texture = ExtResource("10_lnm75")
-region_enabled = true
-region_rect = Rect2(171, 172, 58, 39)
+region_rect = Rect2(169.17738, 7.0868387, 56.464905, 55.339058)
 
 [node name="Circle" type="Sprite2D" parent="SubViewportContainer/SubViewport/Greebles" unique_id=677246406]
-position = Vector2(-200, 582)
+position = Vector2(142, 581)
+texture = ExtResource("10_lnm75")
+region_enabled = true
+region_rect = Rect2(159.06815, 70.43367, 79.935974, 86.87575)
+
+[node name="Circle2" type="Sprite2D" parent="SubViewportContainer/SubViewport/Greebles" unique_id=1045348872]
+position = Vector2(218, 582)
 texture = ExtResource("10_lnm75")
 region_enabled = true
 region_rect = Rect2(4, 154, 72, 72)
 
-[node name="Circle2" type="Sprite2D" parent="SubViewportContainer/SubViewport/Greebles" unique_id=1045348872]
-position = Vector2(200, 582)
+[node name="Circle3" type="Sprite2D" parent="SubViewportContainer/SubViewport/Greebles" unique_id=427789043]
+position = Vector2(67, 582)
 texture = ExtResource("10_lnm75")
 region_enabled = true
 region_rect = Rect2(4, 154, 72, 72)
 
 [node name="Square" type="Sprite2D" parent="SubViewportContainer/SubViewport/Greebles" unique_id=682753416]
-position = Vector2(112, 461.5)
+position = Vector2(231, 87)
+rotation = -3.1415927
 texture = ExtResource("10_lnm75")
 region_enabled = true
 region_rect = Rect2(17, 16, 46, 45)
 
 [node name="Square2" type="Sprite2D" parent="SubViewportContainer/SubViewport/Greebles" unique_id=1819492994]
-position = Vector2(-112, 461.5)
+position = Vector2(231, 41)
 texture = ExtResource("10_lnm75")
 region_enabled = true
 region_rect = Rect2(17, 16, 46, 45)
 
 [node name="Rectangle3" type="Sprite2D" parent="SubViewportContainer/SubViewport/Greebles" unique_id=1821495713]
-position = Vector2(2, 538)
+position = Vector2(108, 431)
+rotation = -1.5707964
 texture = ExtResource("10_lnm75")
 region_enabled = true
 region_rect = Rect2(84, 95, 72, 39)
 
+[node name="Rectangle4" type="Sprite2D" parent="SubViewportContainer/SubViewport/Greebles" unique_id=1820881791]
+position = Vector2(-215, 79.5)
+texture = ExtResource("10_lnm75")
+region_enabled = true
+region_rect = Rect2(84, 95, 72, 39)
+
+[node name="Rectangle5" type="Sprite2D" parent="SubViewportContainer/SubViewport/Greebles" unique_id=142461168]
+position = Vector2(-215, 38)
+texture = ExtResource("10_lnm75")
+region_enabled = true
+region_rect = Rect2(84, 95, 72, 39)
+
+[node name="Rectangle6" type="Sprite2D" parent="SubViewportContainer/SubViewport/Greebles" unique_id=2009469753]
+position = Vector2(-106, 429)
+rotation = 1.5707964
+texture = ExtResource("10_lnm75")
+region_enabled = true
+region_rect = Rect2(166.00793, 168.10463, 67.85559, 48.578445)
+
+[node name="Rectangle7" type="Sprite2D" parent="SubViewportContainer/SubViewport/Greebles" unique_id=882296370]
+position = Vector2(-57, 429)
+rotation = 1.5707964
+texture = ExtResource("10_lnm75")
+region_enabled = true
+region_rect = Rect2(166.00793, 168.10463, 67.85559, 48.578445)
+
+[node name="Rectangle8" type="Sprite2D" parent="SubViewportContainer/SubViewport/Greebles" unique_id=838340629]
+position = Vector2(101, 110)
+texture = ExtResource("10_lnm75")
+region_enabled = true
+region_rect = Rect2(166.00793, 168.10463, 67.85559, 48.578445)
+
+[node name="TriangleWarning" type="Sprite2D" parent="SubViewportContainer/SubViewport/Greebles" unique_id=1237637529]
+position = Vector2(217, 513)
+texture = ExtResource("10_lnm75")
+region_enabled = true
+region_rect = Rect2(5.8789673, 79.42967, 63.74315, 66.05641)
+
+[node name="Triangle" type="Sprite2D" parent="SubViewportContainer/SubViewport/Greebles" unique_id=8288332]
+position = Vector2(-212.5, 586)
+texture = ExtResource("10_lnm75")
+region_enabled = true
+region_rect = Rect2(78.87515, 149.08449, 83.79141, 74.53836)
+
+[node name="Triangle3" type="Sprite2D" parent="SubViewportContainer/SubViewport/Greebles" unique_id=1662465645]
+position = Vector2(-168.5, 594)
+rotation = 3.1415927
+texture = ExtResource("10_lnm75")
+region_enabled = true
+region_rect = Rect2(78.87515, 149.08449, 83.79141, 74.53836)
+
+[node name="Triangle2" type="Sprite2D" parent="SubViewportContainer/SubViewport/Greebles" unique_id=1081247131]
+position = Vector2(-121.5, 586)
+texture = ExtResource("10_lnm75")
+region_enabled = true
+region_rect = Rect2(78.87515, 149.08449, 83.79141, 74.53836)
+
+[node name="Triangle4" type="Sprite2D" parent="SubViewportContainer/SubViewport/Greebles" unique_id=1747222815]
+position = Vector2(-212.5, 586)
+texture = ExtResource("10_lnm75")
+region_enabled = true
+region_rect = Rect2(78.87515, 149.08449, 83.79141, 74.53836)
+
+[node name="Triangle5" type="Sprite2D" parent="SubViewportContainer/SubViewport/Greebles" unique_id=931091346]
+position = Vector2(-168.5, 594)
+rotation = 3.1415927
+texture = ExtResource("10_lnm75")
+region_enabled = true
+region_rect = Rect2(78.87515, 149.08449, 83.79141, 74.53836)
+
+[node name="Triangle6" type="Sprite2D" parent="SubViewportContainer/SubViewport/Greebles" unique_id=1185801696]
+position = Vector2(-121.5, 586)
+texture = ExtResource("10_lnm75")
+region_enabled = true
+region_rect = Rect2(78.87515, 149.08449, 83.79141, 74.53836)
+
 [node name="Panel" type="Sprite2D" parent="SubViewportContainer/SubViewport/Greebles" unique_id=268236817]
 position = Vector2(2, 262)
 texture = ExtResource("6_lnm75")
+
+[node name="Panel2" type="Sprite2D" parent="SubViewportContainer/SubViewport/Greebles" unique_id=1398715194]
+position = Vector2(2, 262)
+texture = ExtResource("6_lnm75")
+
+[node name="TriangleWarning2" type="Sprite2D" parent="SubViewportContainer/SubViewport/Greebles" unique_id=240547515]
+position = Vector2(230, 148)
+texture = ExtResource("10_lnm75")
+region_enabled = true
+region_rect = Rect2(73.477554, 9.003778, 91.75929, 66.82749)
 
 [node name="DamageTexture" type="TextureRect" parent="SubViewportContainer/SubViewport" unique_id=665973928]
 self_modulate = Color(1, 1, 1, 0)
