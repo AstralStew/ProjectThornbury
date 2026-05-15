@@ -1,7 +1,5 @@
 class_name HangerCamera extends Camera2D
 
-#@export var tilt_strength := 30
-
 func _ready() -> void:
 	GLOBALS.on_health_changed().connect(jolt)
 	$Noise.modulate = Color.WHITE.lerp(Color.TRANSPARENT,0.96)
