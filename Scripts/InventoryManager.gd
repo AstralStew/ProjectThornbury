@@ -54,7 +54,7 @@ func _add_item(_type:ItemType) -> void:
 	await get_tree().physics_frame
 	var _new_scene = _prefab.instantiate() as Item
 	item_holder.add_child(_new_scene)
-	_new_scene.global_position = Chute.instance.global_position
+	_new_scene.global_position = Chute.instance.entrance_point.global_position + Vector2(remap(randf(),0,1,-30,30),remap(randf(),0,1,0,15))
 	_new_scene.reset_physics_interpolation()
 	_new_scene.name = _name
 	_new_scene.set_deferred("linear_velocity", Vector2(remap(randf(),0,1,-1,1), remap(randf(),0,1,1,3)).normalized() * 800)

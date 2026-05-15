@@ -46,7 +46,7 @@ func stop_time(fade:=0.0) -> void:
 		await get_tree().create_timer(fade,true,false,true).timeout
 		await get_tree().process_frame
 		Engine.time_scale = 1.0
-	msg_bg_overlay.modulate = Color(1,1,1,1)
+	msg_bg_overlay.modulate = Color(1,1,1,0.25)
 	get_tree().paused = true
 
 
@@ -60,7 +60,7 @@ func took_damage() -> void:
 
 func took_damage_first_time() -> void:
 	has_taken_damage = true
-	await get_tree().create_timer(0.5,true,false,true).timeout
+	await get_tree().create_timer(0.35,true,false,true).timeout
 	await stop_time(1)
 	await display_message_box(
 		"""Well well, looks like [wave amp=50.0 freq=5.0 connected=1]someone[/wave] took some [shake rate=20.0 level=5 connected=1]damage[/shake] for the first time!
@@ -71,7 +71,7 @@ Good luck out there, baka desu.""",
 	"wow okay :(",
 	1
 	)
-	await get_tree().create_timer(0.25,true,false,true).timeout
+	#await get_tree().create_timer(0.25,true,false,true).timeout
 	await start_time(1)
 
 func dead() -> void:
