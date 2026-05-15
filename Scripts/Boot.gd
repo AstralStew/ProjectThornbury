@@ -37,8 +37,9 @@ func _physics_process(delta: float) -> void:
 func _get_ship_speed() -> void:
 	
 	ship_direction = Vector2(
-		(Ship.instance.acceleration.x * (ship_force.x/3)) + (Ship.instance.proportional_speed.x * ship_force.x),
-		(Ship.instance.acceleration.y + abs(Ship.instance.proportional_speed.x)) * ship_force.y
+		(Ship.instance.acceleration.x * (ship_force.x/2)) + (Ship.instance.proportional_speed.x * ship_force.x),
+		#(Ship.instance.acceleration.y + abs(Ship.instance.proportional_speed.x)) * ship_force.y
+		(Ship.instance.acceleration.y + Ship.instance.proportional_speed.y) * ship_force.y
 	) 
 	
 	#ship_direction = Vector2(
@@ -66,3 +67,24 @@ func _apply_forces() -> void:
 
 func jolt() -> void:
 	_jolt_force = jolt_force
+
+
+
+func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
+	#print_rich(DEBUG_NAME,"OnInputEvent > Clicked!")
+	
+	if has_overlapping_bodies() && event is InputEventMouseButton && Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
+		print_rich(DEBUG_NAME,"OnInputEvent > Clicked! Telling InventoryManager to start drag force on nearest object...")
+		
+		var _closest : RigidBody2D = null
+		var _dist : float = 50000
+		var _mouse_pos = viewport.get_mouse_position()
+		for _object in get_overlapping_bodies():
+			var _new_dist = _mouse_pos.distance_squared_to(_object.global_position)
+			if _new_dist < _dist:
+				_dist = _new_dist
+				_closest = _object
+		
+		if _closest != null: 
+			InventoryManager.dragging(_closest,Vector2.ZERO)
+		

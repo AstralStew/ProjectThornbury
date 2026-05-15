@@ -5,6 +5,19 @@
 [ext_resource type="PackedScene" uid="uid://l0cg84jp4bre" path="res://Scenes/OutsidePrefabs/outside.tscn" id="2_81xng"]
 [ext_resource type="PackedScene" uid="uid://dfbi3x303ug65" path="res://Scenes/InventoryPrefabs/inventory.tscn" id="3_6phgx"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wqkje"]
+content_margin_left = 8.0
+content_margin_top = 0.0
+content_margin_right = 8.0
+content_margin_bottom = 0.0
+bg_color = Color(0.2, 0.24705882, 0.34509805, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+expand_margin_top = 2.0
+expand_margin_bottom = 2.0
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_81xng"]
 content_margin_left = 20.0
 content_margin_top = 20.0
@@ -62,16 +75,62 @@ theme_override_constants/margin_bottom = 20
 
 [node name="HBoxContainer" type="HBoxContainer" parent="UIHolder/MarginContainer" unique_id=1013108697]
 layout_mode = 2
+size_flags_vertical = 3
 theme_override_constants/separation = 20
 alignment = 1
 
-[node name="OutsideManager" parent="UIHolder/MarginContainer/HBoxContainer" unique_id=1854772268 instance=ExtResource("2_81xng")]
+[node name="VBoxContainer" type="VBoxContainer" parent="UIHolder/MarginContainer/HBoxContainer" unique_id=1706203829]
 layout_mode = 2
-size_flags_stretch_ratio = 1.26
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 1.25
+
+[node name="OutsideManager" parent="UIHolder/MarginContainer/HBoxContainer/VBoxContainer" unique_id=1854772268 instance=ExtResource("2_81xng")]
+layout_mode = 2
+size_flags_vertical = 3
 collectable_pipe_prefab = ExtResource("2_6phgx")
 
-[node name="InventoryManager" parent="UIHolder/MarginContainer/HBoxContainer" unique_id=1086248823 instance=ExtResource("3_6phgx")]
+[node name="HBoxContainer3" type="HBoxContainer" parent="UIHolder/MarginContainer/HBoxContainer/VBoxContainer" unique_id=408115628]
 layout_mode = 2
+
+[node name="Label2" type="Label" parent="UIHolder/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer3" unique_id=1195613248]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/normal = SubResource("StyleBoxFlat_wqkje")
+text = "BOUNTY: 46290"
+vertical_alignment = 1
+
+[node name="Label3" type="Label" parent="UIHolder/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer3" unique_id=886410127]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_wqkje")
+text = "PROSPERITY: "
+vertical_alignment = 1
+
+[node name="ProgressBar" type="ProgressBar" parent="UIHolder/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer3" unique_id=346931455]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.5
+theme_override_styles/background = SubResource("StyleBoxFlat_wqkje")
+value = 38.33
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="UIHolder/MarginContainer/HBoxContainer" unique_id=1162533289]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="InventoryManager" parent="UIHolder/MarginContainer/HBoxContainer/VBoxContainer2" unique_id=1086248823 instance=ExtResource("3_6phgx")]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="UIHolder/MarginContainer/HBoxContainer/VBoxContainer2" unique_id=1300402169]
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="UIHolder/MarginContainer/HBoxContainer/VBoxContainer2/HBoxContainer2" unique_id=1523903993]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/normal = SubResource("StyleBoxFlat_wqkje")
+text = "CRATE: Used to hold things, obviously"
+vertical_alignment = 1
 
 [node name="MessageBox" type="PanelContainer" parent="UIHolder" unique_id=258760470]
 visible = false
@@ -91,6 +150,7 @@ theme_override_constants/separation = 15
 alignment = 1
 
 [node name="RTL_Message" type="RichTextLabel" parent="UIHolder/MessageBox/VBoxContainer" unique_id=1987009389]
+process_mode = 3
 layout_mode = 2
 bbcode_enabled = true
 text = "d"
@@ -100,6 +160,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="RTL_Button" type="Button" parent="UIHolder/MessageBox/VBoxContainer" unique_id=1415378375]
+process_mode = 3
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
 size_flags_horizontal = 4

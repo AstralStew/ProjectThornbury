@@ -2,26 +2,52 @@ class_name Ship extends CharacterBody2D
 const DEBUG_NAME = "[b][Ship][/b] "
 static var instance : Ship = null
 
+#
+#@export var minimum_bounce_speed : float = 50
+#
+#@export_category("Turning Controls")
+#
+#@export var rotation_speed : float = 30.0
+#@export var rotation_change_rate : float = 50.0
+#@export var boost_rotation_change_rate : float = 100.0
+#@export var rotation_acceleration : float = 0.05
+#
+#@export_category("Speed Controls")
+#
+#@export var forward_change_rate : float = 100.0
+#@export var back_change_rate : float = 100.0
+#@export var neutral_change_rate : float = 30.0
+#@export var forward_speed : float = 100.0
+#@export var back_speed : float = 10.0
+#
+#@export var boost_speed : float = 200.0
+#@export var boost_change_rate : float = 100.0
 
-@export var minimum_bounce_speed_sqr : float = 50
 
-@export_category("Turning Controls")
 
-@export var rotation_speed : float = 0.25
-@export var rotation_change_rate : float = 50.0
-@export var boost_rotation_change_rate : float = 100.0
-@export var rotation_acc : float = 0.1
+static var SHIP_ROTATION_SPEED : float = 30.0
+static var SHIP_ROTATION_CHANGE_RATE : float = 50.0
+static var SHIP_BOOST_ROTATION_CHANGE_RATE : float = 100.0
+static var SHIP_ROTATION_ACC : float = 0.05
 
-@export_category("Speed Controls")
+#@EXPORT_CATEGORY("SPEED CONTROLS")
 
-@export var up_change_rate : float = 1.0
-@export var down_change_rate : float = 1.0
-@export var neutral_change_rate : float = 1.0
-@export var up_speed : float = 1.0
-@export var down_speed : float = 1.0
+static var SHIP_FORWARD_SPEED : float = 100.0
+static var SHIP_FORWARD_CHANGE_RATE : float = 100.0
+static var SHIP_BACK_SPEED : float = 10.0
+static var SHIP_BACK_CHANGE_RATE : float = 100.0
+static var SHIP_NEUTRAL_CHANGE_RATE : float = 30.0
+static var SHIP_BOOST_SPEED : float = 200.0
+static var SHIP_BOOST_CHANGE_RATE : float = 100.0
 
-@export var boost_speed : float = 100.0
-@export var boost_change_rate : float = 100.0
+
+
+
+
+
+
+
+
 
 @export_category("READ ONLY")
 
@@ -40,7 +66,7 @@ static var instance : Ship = null
 		)
 		#return Vector2(
 			#speed.x / left_speed if speed.x < 0 else speed.x / right_speed,
-			#speed.y / down_speed if speed.y < 0 else speed.y / up_speed
+			#speed.y / back_speed if speed.y < 0 else speed.y / forward_speed
 		#)
 
 var trails : Array[ShipTrail] = []
@@ -57,17 +83,17 @@ func _physics_process(delta: float) -> void:
 	
 	if has_control:
 		get_input(delta)
-		rotation = lerp_angle(rotation, rotation + deg_to_rad(speed.x), rotation_acc)
+		rotation = lerp_angle(rotation, rotation + deg_to_rad(speed.x), GLOBALS.SHIP_ROTATION_ACCELERATION)
 	else:
-		speed = Vector2(0,move_toward(speed.y,-down_speed, neutral_change_rate * 0.5 * delta))
+		speed = Vector2(0,move_toward(speed.y,-GLOBALS.SHIP_BACK_SPEED, GLOBALS.SHIP_BACK_CHANGE_RATE * 0.5 * delta))
 	velocity = speed.y * transform.y
 	
 	
 	var collision = move_and_collide(velocity * delta)
-	if collision && has_control && speed.y < -minimum_bounce_speed_sqr:
+	if collision && has_control && speed.y < -GLOBALS.SHIP_MINIMUM_BOUNCE_SPEED:
 		velocity = velocity.bounce(collision.get_normal())
 		speed.x = 0
-		#speed.y = speed.y /2 
+		speed.y = speed.y * 0.69
 		
 		#rotation = lerp_angle(rotation, collision.get + GLOBALS.random_rotation(15), rotation_acc)
 		#look_at(velocity)
@@ -110,22 +136,22 @@ func get_input(delta: float) -> void:
 	var _new_speed : float
 	
 	if Input.is_action_pressed("Boost"):
-		_target_rotation = move_toward(speed.x, 0, boost_rotation_change_rate * delta)
-		_new_speed = move_toward(speed.y, -boost_speed, boost_change_rate  * delta)
+		_target_rotation = move_toward(speed.x, 0, GLOBALS.SHIP_BOOST_ROTATION_CHANGE_RATE * delta)
+		_new_speed = move_toward(speed.y, -GLOBALS.SHIP_BOOST_SPEED, GLOBALS.SHIP_BOOST_CHANGE_RATE  * delta)
 	else:
 		if Input.is_action_pressed("MoveLeft"):
-			_target_rotation = move_toward(speed.x, -rotation_speed, rotation_change_rate * delta)
+			_target_rotation = move_toward(speed.x, -GLOBALS.SHIP_ROTATION_SPEED, GLOBALS.SHIP_ROTATION_CHANGE_RATE * delta)
 		elif Input.is_action_pressed("MoveRight"):
-			_target_rotation = move_toward(speed.x, rotation_speed, rotation_change_rate * delta)
+			_target_rotation = move_toward(speed.x, GLOBALS.SHIP_ROTATION_SPEED, GLOBALS.SHIP_ROTATION_CHANGE_RATE * delta)
 		else:
-			_target_rotation = move_toward(speed.x, 0, rotation_change_rate * delta)
+			_target_rotation = move_toward(speed.x, 0, GLOBALS.SHIP_ROTATION_CHANGE_RATE * delta)
 		
 		if Input.is_action_pressed("MoveDown"):
-			_new_speed = move_toward(speed.y, -down_speed, down_change_rate * delta)
+			_new_speed = move_toward(speed.y, -GLOBALS.SHIP_BACK_SPEED, GLOBALS.SHIP_BACK_CHANGE_RATE * delta)
 		elif Input.is_action_pressed("MoveUp"):
-			_new_speed = move_toward(speed.y, -up_speed, up_change_rate * delta)
+			_new_speed = move_toward(speed.y, -GLOBALS.SHIP_FORWARD_SPEED, GLOBALS.SHIP_FORWARD_CHANGE_RATE * delta)
 		else:
-			_new_speed = move_toward(speed.y,-down_speed, neutral_change_rate * delta)
+			_new_speed = move_toward(speed.y,-GLOBALS.SHIP_BACK_SPEED, GLOBALS.SHIP_NEUTRAL_CHANGE_RATE * delta)
 	
 	speed = Vector2(_target_rotation,_new_speed)
 	
@@ -144,9 +170,9 @@ func get_input(delta: float) -> void:
 		#_new_x_speed = move_toward(speed.x,0, change_rate * 2)
 	#
 	#if Input.is_action_pressed("MoveUp"):
-		#_new_y_speed = move_toward(speed.y, down_speed, change_rate)
+		#_new_y_speed = move_toward(speed.y, back_speed, change_rate)
 	#elif Input.is_action_pressed("MoveDown"):
-		#_new_y_speed = move_toward(speed.y, -up_speed, change_rate)
+		#_new_y_speed = move_toward(speed.y, -forward_speed, change_rate)
 	#else:
 		#_new_y_speed = move_toward(speed.y,0, change_rate * 2)
 	#
