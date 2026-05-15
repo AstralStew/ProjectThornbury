@@ -7,6 +7,8 @@
 [ext_resource type="PackedScene" uid="uid://dtkur4468wq5q" path="res://Scenes/OutsidePrefabs/collectable_crate.tscn" id="3_dw31t"]
 [ext_resource type="Texture2D" uid="uid://bs8wppq8ctccy" path="res://Assets/Images/Ships/Ships_Sheet.png" id="3_slk23"]
 [ext_resource type="Script" uid="uid://c7fg3jgojxubh" path="res://Scripts/ship_trail.gd" id="5_hhqqv"]
+[ext_resource type="Texture2D" uid="uid://c0sl1u4dvsqni" path="res://Assets/Images/City/Building64.png" id="8_dw31t"]
+[ext_resource type="Texture2D" uid="uid://i1g58vh6a4qg" path="res://Assets/Images/Inventory/Greebles.png" id="9_7c3hi"]
 
 [sub_resource type="Curve" id="Curve_mf7ev"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 1.4, 0.0, 0, 0]
@@ -19,6 +21,10 @@ colors = PackedColorArray(1, 1, 0, 0, 1, 1, 1, 1)
 radius = 5.0
 height = 32.0
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_lksva"]
+atlas = ExtResource("9_7c3hi")
+region = Rect2(175, 12, 46, 46)
+
 [node name="OutsideManager" type="MarginContainer" unique_id=1854772268]
 process_mode = 1
 texture_filter = 1
@@ -26,7 +32,7 @@ anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_right = -600.0
-offset_bottom = -80.0
+offset_bottom = -120.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
@@ -41,7 +47,7 @@ stretch = true
 
 [node name="SubViewport" type="SubViewport" parent="SubViewportContainer" unique_id=238183413]
 handle_input_locally = false
-size = Vector2i(680, 640)
+size = Vector2i(680, 600)
 render_target_update_mode = 4
 
 [node name="Level1" parent="SubViewportContainer/SubViewport" unique_id=647410072 instance=ExtResource("2_0luta")]
@@ -98,3 +104,79 @@ rotation_smoothing_enabled = true
 rotation_smoothing_speed = 3.185
 
 [node name="Line2D" type="Line2D" parent="SubViewportContainer/SubViewport/Ship" unique_id=223409123]
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1849995848]
+layout_mode = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="Control" type="Control" parent="MarginContainer" unique_id=1444279778]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Sprite2D" type="Sprite2D" parent="MarginContainer/Control" unique_id=2036232746]
+position = Vector2(-305, -262)
+texture = ExtResource("8_dw31t")
+
+[node name="Sprite2D2" type="Sprite2D" parent="MarginContainer/Control" unique_id=647090024]
+position = Vector2(-304, -262)
+texture = SubResource("AtlasTexture_lksva")
+
+[node name="Sprite2D3" type="Sprite2D" parent="MarginContainer/Control" unique_id=1906257120]
+position = Vector2(302, -264)
+texture = ExtResource("8_dw31t")
+
+[node name="Sprite2D4" type="Sprite2D" parent="MarginContainer/Control" unique_id=523633246]
+position = Vector2(303, -264)
+texture = SubResource("AtlasTexture_lksva")
+
+[node name="Sprite2D5" type="Sprite2D" parent="MarginContainer/Control" unique_id=172983081]
+position = Vector2(304, 270)
+texture = ExtResource("8_dw31t")
+
+[node name="Sprite2D6" type="Sprite2D" parent="MarginContainer/Control" unique_id=988182282]
+position = Vector2(305, 270)
+texture = SubResource("AtlasTexture_lksva")
+
+[node name="Sprite2D7" type="Sprite2D" parent="MarginContainer/Control" unique_id=1507427108]
+position = Vector2(-305, 268)
+texture = ExtResource("8_dw31t")
+
+[node name="Sprite2D8" type="Sprite2D" parent="MarginContainer/Control" unique_id=2003311014]
+position = Vector2(-304, 268)
+texture = SubResource("AtlasTexture_lksva")
+
+[node name="Sprite2D9" type="Sprite2D" parent="MarginContainer/Control" unique_id=1086851719]
+position = Vector2(-306, -13)
+texture = ExtResource("8_dw31t")
+
+[node name="Sprite2D10" type="Sprite2D" parent="MarginContainer/Control" unique_id=687591551]
+position = Vector2(-305, -13)
+texture = SubResource("AtlasTexture_lksva")
+
+[node name="Sprite2D11" type="Sprite2D" parent="MarginContainer/Control" unique_id=844504913]
+position = Vector2(0, -267)
+texture = ExtResource("8_dw31t")
+
+[node name="Sprite2D12" type="Sprite2D" parent="MarginContainer/Control" unique_id=850221501]
+position = Vector2(1, -267)
+texture = SubResource("AtlasTexture_lksva")
+
+[node name="Sprite2D13" type="Sprite2D" parent="MarginContainer/Control" unique_id=1437238479]
+position = Vector2(307, -19)
+texture = ExtResource("8_dw31t")
+
+[node name="Sprite2D14" type="Sprite2D" parent="MarginContainer/Control" unique_id=890348790]
+position = Vector2(308, -19)
+texture = SubResource("AtlasTexture_lksva")
+
+[node name="Sprite2D15" type="Sprite2D" parent="MarginContainer/Control" unique_id=1387916508]
+position = Vector2(-3, 269)
+texture = ExtResource("8_dw31t")
+
+[node name="Sprite2D16" type="Sprite2D" parent="MarginContainer/Control" unique_id=1614605509]
+position = Vector2(-2, 269)
+texture = SubResource("AtlasTexture_lksva")
