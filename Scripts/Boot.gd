@@ -2,12 +2,15 @@ class_name Boot extends Area2D
 const DEBUG_NAME = "[b][Boot][/b] "
 static var instance : Boot = null
 
-@export var ship_force : Vector2 = Vector2(1,1)
 
-@export var random_force : float = 1.0
-
-@export var jolt_force : float = 200.0
-@export var jolt_reduction : float = 1000.0
+#@export var minimum_grab_distance : float = 100
+#
+#@export var ship_force : Vector2 = Vector2(1.5,1.5)
+#
+#@export var random_force : float = 0.25
+#
+#@export var jolt_force : float = 200.0
+#@export var jolt_reduction : float = 1000.0
 
 @export_category("READ ONLY")
 
@@ -28,18 +31,22 @@ var _jolt_force : float = 0
 func _enter_tree() -> void:
 	instance = self
 
+func _ready() -> void:
+	ProjectSettings.set_setting("physics/2d/default_linear_damp", GLOBALS.INVENTORY_ITEM_MOVE_DRAG)
+	ProjectSettings.set_setting("physics/2d/default_angular_damp", GLOBALS.INVENTORY_ITEM_ROTATION_DRAG)
+
 func _physics_process(delta: float) -> void:
 	_get_ship_speed()
 	_add_random()
-	if _jolt_force > 0: _jolt_force = move_toward(_jolt_force, 0, jolt_reduction * delta)
+	if _jolt_force > 0: _jolt_force = move_toward(_jolt_force, 0, GLOBALS.INVENTORY_JOLT_FORCE_REDUCTION * delta)
 	_apply_forces()
 
 func _get_ship_speed() -> void:
 	
 	ship_direction = Vector2(
-		(Ship.instance.acceleration.x * (ship_force.x/2)) + (Ship.instance.proportional_speed.x * ship_force.x),
+		(Ship.instance.acceleration.x * (GLOBALS.INVENTORY_SHIP_FORCE.x/2)) + (Ship.instance.proportional_speed.x * GLOBALS.INVENTORY_SHIP_FORCE.x),
 		#(Ship.instance.acceleration.y + abs(Ship.instance.proportional_speed.x)) * ship_force.y
-		(Ship.instance.acceleration.y + Ship.instance.proportional_speed.y) * ship_force.y
+		(Ship.instance.acceleration.y + Ship.instance.proportional_speed.y) * GLOBALS.INVENTORY_SHIP_FORCE.y
 	) 
 	
 	#ship_direction = Vector2(
@@ -53,9 +60,9 @@ func _add_random() -> void:
 func _apply_forces() -> void:
 	
 	if ship_direction:
-		gravity_direction = ship_direction + (_random_direction * random_force * _jolt_force)
+		gravity_direction = ship_direction + (_random_direction * GLOBALS.INVENTORY_RANDOM_FORCE * _jolt_force)
 	else:		
-		gravity_direction = _direction + (_random_direction * random_force * _jolt_force)
+		gravity_direction = _direction + (_random_direction * GLOBALS.INVENTORY_RANDOM_FORCE * _jolt_force)
 	
 	if _jolt_force > 0:
 		gravity_direction += GLOBALS.random_vector2_normalised() * _jolt_force
@@ -66,7 +73,7 @@ func _apply_forces() -> void:
 
 
 func jolt() -> void:
-	_jolt_force = jolt_force
+	_jolt_force = GLOBALS.INVENTORY_JOLT_FORCE
 
 
 
@@ -77,7 +84,7 @@ func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 		print_rich(DEBUG_NAME,"OnInputEvent > Clicked! Telling InventoryManager to start drag force on nearest object...")
 		
 		var _closest : RigidBody2D = null
-		var _dist : float = 50000
+		var _dist : float = GLOBALS.INVENTORY_MINIMUM_GRAB_DISTANCE * GLOBALS.INVENTORY_MINIMUM_GRAB_DISTANCE
 		var _mouse_pos = viewport.get_mouse_position()
 		for _object in get_overlapping_bodies():
 			var _new_dist = _mouse_pos.distance_squared_to(_object.global_position)

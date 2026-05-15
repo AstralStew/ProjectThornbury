@@ -4,4 +4,7 @@
 
 [resource]
 script = ExtResource("1_03jql")
+INVENTORY_ITEM_MOVE_DRAG = 500.0
+INVENTORY_ITEM_ROTATION_DRAG = 500.0
+INVENTORY_CAMERA_TILT_STRENGTH = 2.5
 metadata/_custom_type_script = "uid://cjyohqwij1yd1"

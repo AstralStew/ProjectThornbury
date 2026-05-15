@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://jcnlsaxu7mak"]
 
-[ext_resource type="Script" uid="uid://d20p3gscbndy2" path="res://Scripts/UIManager.gd" id="1_81xng"]
-[ext_resource type="PackedScene" uid="uid://cbf7m3hmnto6d" path="res://Scenes/OutsidePrefabs/collectable_pipe.tscn" id="2_6phgx"]
-[ext_resource type="PackedScene" uid="uid://l0cg84jp4bre" path="res://Scenes/OutsidePrefabs/outside.tscn" id="2_81xng"]
-[ext_resource type="PackedScene" uid="uid://dfbi3x303ug65" path="res://Scenes/InventoryPrefabs/inventory.tscn" id="3_6phgx"]
+[ext_resource type="Script" uid="uid://d20p3gscbndy2" path="res://Scripts/UIManager.gd" id="1_7rqgy"]
+[ext_resource type="PackedScene" uid="uid://l0cg84jp4bre" path="res://Scenes/OutsidePrefabs/outside.tscn" id="2_qxria"]
+[ext_resource type="PackedScene" uid="uid://cbf7m3hmnto6d" path="res://Scenes/OutsidePrefabs/collectable_pipe.tscn" id="3_y4jh7"]
+[ext_resource type="PackedScene" uid="uid://dfbi3x303ug65" path="res://Scenes/InventoryPrefabs/inventory.tscn" id="4_q68mp"]
 
 [sub_resource type="Gradient" id="Gradient_81xng"]
 offsets = PackedFloat32Array(0, 0.50641024, 1)
@@ -96,7 +96,7 @@ anti_aliasing = false
 
 [node name="UIManager" type="CanvasLayer" unique_id=785319097]
 process_mode = 3
-script = ExtResource("1_81xng")
+script = ExtResource("1_7rqgy")
 progress_colour = SubResource("Gradient_81xng")
 
 [node name="UIHolder" type="Control" parent="." unique_id=314585851]
@@ -170,10 +170,10 @@ theme_override_font_sizes/font_size = 20
 theme_override_styles/background = SubResource("StyleBoxFlat_0f350")
 theme_override_styles/fill = SubResource("StyleBoxFlat_8c0lf")
 
-[node name="OutsideManager" parent="UIHolder/MC_ScreenHolders/HB_ScreenHolders/LeftScreen" unique_id=1854772268 instance=ExtResource("2_81xng")]
+[node name="OutsideManager" parent="UIHolder/MC_ScreenHolders/HB_ScreenHolders/LeftScreen" unique_id=1854772268 instance=ExtResource("2_qxria")]
 custom_minimum_size = Vector2(680, 600)
 layout_mode = 2
-collectable_pipe_prefab = ExtResource("2_6phgx")
+collectable_pipe_prefab = ExtResource("3_y4jh7")
 
 [node name="BottomBar" type="HBoxContainer" parent="UIHolder/MC_ScreenHolders/HB_ScreenHolders/LeftScreen" unique_id=1771191263]
 custom_minimum_size = Vector2(0, 27)
@@ -230,7 +230,7 @@ autostart = true
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="InventoryManager" parent="UIHolder/MC_ScreenHolders/HB_ScreenHolders/RightScreen" unique_id=1086248823 instance=ExtResource("3_6phgx")]
+[node name="InventoryManager" parent="UIHolder/MC_ScreenHolders/HB_ScreenHolders/RightScreen" unique_id=1086248823 instance=ExtResource("4_q68mp")]
 custom_minimum_size = Vector2(0, 640)
 layout_mode = 2
 
@@ -287,6 +287,7 @@ vertical_alignment = 1
 
 [node name="RTL_Button" type="Button" parent="UIHolder/MessageBox/VBoxContainer" unique_id=1415378375]
 process_mode = 3
+self_modulate = Color(1, 1, 1, 0)
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
 size_flags_horizontal = 4

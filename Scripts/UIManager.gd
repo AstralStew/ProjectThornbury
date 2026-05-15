@@ -104,7 +104,7 @@ func took_damage_first_time() -> void:
 
 Good luck out there, baka desu.""",
 	"wow okay :(",
-	1
+	2
 	)
 	#await get_tree().create_timer(0.25,true,false,true).timeout
 	await start_time(1)
@@ -116,7 +116,7 @@ func dead() -> void:
 washed gang gang
 no health? :/",
 	"damn, guess I'll try again",
-	1
+	2
 	)
 	await start_time(1)
 	_on_restart_game.emit()
@@ -131,7 +131,7 @@ func win() -> void:
 Take this into your life
 no gods, no masters",
 	"please sir, may I have another?",
-	1
+	2
 	)
 	await start_time(1)
 	_on_restart_game.emit()
@@ -143,7 +143,7 @@ func lose() -> void:
 	await display_message_box(
 		"You ran out of time like a dingus! Authorities blasted you away from orbit.",
 	"scoop me up and try again",
-	1
+	2
 	)
 	await start_time(1)
 	_on_restart_game.emit()
@@ -162,7 +162,9 @@ func display_message_box(message_text:="",button_text:="OK",min_time:=0.0,box_si
 	$UIHolder/MessageBox/VBoxContainer/RTL_Button.text = button_text
 	
 	await get_tree().create_timer(min_time,true,false,true).timeout
+	$UIHolder/MessageBox/VBoxContainer/RTL_Button.self_modulate = Color.WHITE
 	await $UIHolder/MessageBox/VBoxContainer/RTL_Button.pressed
+	$UIHolder/MessageBox/VBoxContainer/RTL_Button.self_modulate = Color.TRANSPARENT
 	$UIHolder/MessageBox.visible = false
 
 func jolt() -> void:
