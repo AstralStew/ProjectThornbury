@@ -7,7 +7,6 @@
 [ext_resource type="PackedScene" uid="uid://dtkur4468wq5q" path="res://Scenes/OutsidePrefabs/collectable_crate.tscn" id="3_dw31t"]
 [ext_resource type="Texture2D" uid="uid://bs8wppq8ctccy" path="res://Assets/Images/Ships/Ships_Sheet.png" id="3_slk23"]
 [ext_resource type="Script" uid="uid://c7fg3jgojxubh" path="res://Scripts/ship_trail.gd" id="5_hhqqv"]
-[ext_resource type="Texture2D" uid="uid://culse33bfkhrh" path="res://icon.svg" id="8_lksva"]
 [ext_resource type="Script" uid="uid://dvgg4pi46sf3l" path="res://Scripts/NotificationManager.gd" id="9_2x00p"]
 
 [sub_resource type="Curve" id="Curve_mf7ev"]
@@ -100,16 +99,6 @@ rotation_smoothing_enabled = true
 rotation_smoothing_speed = 3.185
 
 [node name="Line2D" type="Line2D" parent="SubViewportContainer/SubViewport/Ship" unique_id=223409123]
-
-[node name="ColorRect" type="ColorRect" parent="SubViewportContainer/SubViewport" unique_id=1648102866]
-offset_left = 31.0
-offset_top = 66.0
-offset_right = 70.99997
-offset_bottom = 106.0
-
-[node name="Sprite2D" type="Sprite2D" parent="SubViewportContainer/SubViewport" unique_id=1740866263]
-position = Vector2(242, 219)
-texture = ExtResource("8_lksva")
 
 [node name="NotificationManager" type="Node2D" parent="SubViewportContainer/SubViewport" unique_id=1939579723]
 script = ExtResource("9_2x00p")
