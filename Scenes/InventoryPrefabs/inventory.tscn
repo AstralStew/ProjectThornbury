@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://be2frk3ryyebk" path="res://Scenes/InventoryPrefabs/item_pipe.tscn" id="4_aco8w"]
 [ext_resource type="Script" uid="uid://dw1ch6u6ctwe8" path="res://Scripts/damage_texture.gd" id="5_aco8w"]
 [ext_resource type="Texture2D" uid="uid://056n6uoorop6" path="res://Assets/Images/Hanger/HangerDoor.png" id="7_v7qpt"]
+[ext_resource type="Texture2D" uid="uid://i1g58vh6a4qg" path="res://Assets/Images/Inventory/Greebles.png" id="10_lnm75"]
 [ext_resource type="Script" uid="uid://ba0ppdfg70y3g" path="res://Scripts/HangerCamera.gd" id="10_v7qpt"]
 
 [sub_resource type="Gradient" id="Gradient_v7qpt"]
@@ -318,6 +319,10 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("NoiseTexture2D_v7qpt")
 stretch_mode = 1
+
+[node name="Greebles" type="Sprite2D" parent="SubViewportContainer/SubViewport" unique_id=73881646]
+position = Vector2(150, 141)
+texture = ExtResource("10_lnm75")
 
 [connection signal="body_entered" from="SubViewportContainer/SubViewport/BackgroundElements/Chute" to="SubViewportContainer/SubViewport/BackgroundElements/Chute" method="_on_body_entered"]
 [connection signal="input_event" from="SubViewportContainer/SubViewport/BootArea" to="SubViewportContainer/SubViewport/BootArea" method="_on_input_event"]

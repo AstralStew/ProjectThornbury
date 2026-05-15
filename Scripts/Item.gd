@@ -7,7 +7,35 @@ var DEBUG_NAME : String :
 @export var is_dragged : bool = false
 @export var finished_spawning : bool = false
 
+## How heavy the item is in kilograms
+@export var ROCK_MASS : float = 1.0
+## How much the item is affected by the forces (1.0 = 100%)
+@export var ROCK_FORCE_SCALE : float = 1.0
+## How much more the item's movement is reduced over time to bring it to a stop (on top of the 0.5 that all items have by default)
+@export var ROCK_EXTRA_MOVE_DRAG : float = 0.0
+## How much more the item's rotation is reduced over time to bring it to a stop (on top of the 1.0 that all items have by default)
+@export var ROCK_EXTRA_ROTATION_DRAG : float = 0.0
+
+
 func _ready() -> void:
+	
+	match type:
+		InventoryManager.ItemType.Rock:
+			mass = GLOBALS.ROCK_MASS
+			gravity_scale = GLOBALS.ROCK_FORCE_SCALE
+			linear_damp = GLOBALS.ROCK_EXTRA_MOVE_DRAG
+			angular_damp = GLOBALS.ROCK_EXTRA_ROTATION_DRAG
+		InventoryManager.ItemType.Crate:
+			mass = GLOBALS.CRATE_MASS
+			gravity_scale = GLOBALS.CRATE_FORCE_SCALE
+			linear_damp = GLOBALS.CRATE_EXTRA_MOVE_DRAG
+			angular_damp = GLOBALS.CRATE_EXTRA_ROTATION_DRAG
+		InventoryManager.ItemType.Pipe:
+			mass = GLOBALS.PIPE_MASS
+			gravity_scale = GLOBALS.PIPE_FORCE_SCALE
+			linear_damp = GLOBALS.PIPE_EXTRA_MOVE_DRAG
+			angular_damp = GLOBALS.PIPE_EXTRA_ROTATION_DRAG
+	
 	if !finished_spawning: _spawn_countdown()
 	_spawn_countdown()
 

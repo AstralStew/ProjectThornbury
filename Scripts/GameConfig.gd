@@ -51,7 +51,7 @@ class_name GameConfig extends Resource
 ## Chance (0.0 > 1.0) to open the chute when the ship takes damage
 @export var INVENTORY_CHANCE_TO_OPEN_ON_DAMAGE : float = 0.5
 
-@export_group("INVENTORY ITEMS")
+@export_group("ALL ITEMS")
 ## How far an item can be from where you clicked and still get grabbed
 @export var INVENTORY_MINIMUM_GRAB_DISTANCE : float = 100
 ## Amount of force the ship movement exerts on items
@@ -66,6 +66,36 @@ class_name GameConfig extends Resource
 @export var INVENTORY_DRAG_FORCE : float  = 2.5
 ## Amount of force exerted on items in direction of mouse when released
 @export var INVENTORY_RELEASE_FORCE : float  = 0.5
+
+@export_group("ROCK ITEM")
+## How heavy the item is in kilograms
+@export var ROCK_MASS : float = 1.0
+## How much the item is affected by the forces (1.0 = 100%)
+@export var ROCK_FORCE_SCALE : float = 1.0
+## How much more the item's movement is reduced over time to bring it to a stop (on top of the 0.5 that all items have by default)
+@export var ROCK_EXTRA_MOVE_DRAG : float = 0.0
+## How much more the item's rotation is reduced over time to bring it to a stop (on top of the 1.0 that all items have by default)
+@export var ROCK_EXTRA_ROTATION_DRAG : float = 0.0
+
+@export_group("CRATE ITEM")
+## How heavy the item is in kilograms
+@export var CRATE_MASS : float = 2.0
+## How much the item is affected by the forces (1.0 = 100%)
+@export var CRATE_FORCE_SCALE : float = 0.69
+## How much more the item's movement is reduced over time to bring it to a stop (on top of the 0.5 that all items have by default)
+@export var CRATE_EXTRA_MOVE_DRAG : float = 0.05
+## How much more the item's rotation is reduced over time to bring it to a stop (on top of the 1.0 that all items have by default)
+@export var CRATE_EXTRA_ROTATION_DRAG : float = 0.0
+
+@export_group("PIPE ITEM")
+## How heavy the item is in kilograms
+@export var PIPE_MASS : float = 0.5
+## How much the item is affected by the forces (1.0 = 100%)
+@export var PIPE_FORCE_SCALE : float = 1.0
+## How much more the item's movement is reduced over time to bring it to a stop (on top of the 0.5 that all items have by default)
+@export var PIPE_EXTRA_MOVE_DRAG : float = 0.05
+## How much more the item's rotation is reduced over time to bring it to a stop (on top of the 1.0 that all items have by default)
+@export var PIPE_EXTRA_ROTATION_DRAG : float = 0.0
 
 @export_group("CAMERA SETTINGS")
 ## How much the inventory camera rotates in the direction the ship is flying

@@ -31,9 +31,7 @@ static var SHIP_BOOST_CHANGE_RATE : float = 1
 #endregion
 
 
-
 #region Inventory Variables
-
 
 static var INVENTORY_CHANCE_TO_OPEN_ON_DAMAGE : float = 1
 
@@ -50,10 +48,29 @@ static var INVENTORY_CAMERA_TILT_SPEED : float = 1
 static var INVENTORY_CAMERA_PAN_STRENGTH : Vector2 = Vector2.ONE
 static var INVENTORY_CAMERA_PAN_SPEED : float = 1
 
+#endregion
 
 
+#region Item Variables
+
+static var ROCK_MASS : float = 1
+static var ROCK_FORCE_SCALE : float = 1
+static var ROCK_EXTRA_MOVE_DRAG : float = 1
+static var ROCK_EXTRA_ROTATION_DRAG : float = 1
+
+static var CRATE_MASS : float = 1
+static var CRATE_FORCE_SCALE : float = 1
+static var CRATE_EXTRA_MOVE_DRAG : float = 1
+static var CRATE_EXTRA_ROTATION_DRAG : float = 1
+
+static var PIPE_MASS : float = 1
+static var PIPE_FORCE_SCALE : float = 1
+static var PIPE_EXTRA_MOVE_DRAG : float = 1
+static var PIPE_EXTRA_ROTATION_DRAG : float = 1
 
 #endregion
+
+
 
 
 
