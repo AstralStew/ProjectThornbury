@@ -5,6 +5,63 @@
 [ext_resource type="PackedScene" uid="uid://l0cg84jp4bre" path="res://Scenes/OutsidePrefabs/outside.tscn" id="2_81xng"]
 [ext_resource type="PackedScene" uid="uid://dfbi3x303ug65" path="res://Scenes/InventoryPrefabs/inventory.tscn" id="3_6phgx"]
 
+[sub_resource type="Gradient" id="Gradient_81xng"]
+offsets = PackedFloat32Array(0, 0.50641024, 1)
+colors = PackedColorArray(1, 0, 0, 1, 1, 0.98333335, 0, 1, 0, 1, 0.049999952, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oqgf2"]
+content_margin_left = 2.0
+content_margin_top = 2.0
+content_margin_right = 2.0
+content_margin_bottom = 2.0
+bg_color = Color(0.2, 0.24705882, 0.34509805, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_blend = true
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_81xng"]
+content_margin_left = 8.0
+content_margin_right = 8.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0f350"]
+content_margin_left = 8.0
+content_margin_right = 8.0
+bg_color = Color(0.33, 0.33, 0.33, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_blend = true
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8c0lf"]
+bg_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_754fn"]
+content_margin_left = 8.0
+content_margin_top = 0.0
+content_margin_right = 8.0
+content_margin_bottom = 2.0
+bg_color = Color(0.2, 0.24705882, 0.34509805, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_blend = true
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bvt00"]
+content_margin_left = 8.0
+content_margin_top = 0.0
+content_margin_right = 8.0
+content_margin_bottom = 0.0
+bg_color = Color(0.2, 0.24705882, 0.34509805, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_blend = true
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wqkje"]
 content_margin_left = 8.0
 content_margin_top = 2.0
@@ -15,13 +72,7 @@ border_width_left = 2
 border_width_top = 2
 border_width_right = 2
 border_width_bottom = 2
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0f350"]
-content_margin_left = 8.0
-content_margin_top = 2.0
-content_margin_right = 8.0
-content_margin_bottom = 2.0
-bg_color = Color(0.2, 0.24705882, 0.34509805, 1)
+border_blend = true
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_81xng"]
 content_margin_left = 20.0
@@ -46,6 +97,7 @@ anti_aliasing = false
 [node name="UIManager" type="CanvasLayer" unique_id=785319097]
 process_mode = 3
 script = ExtResource("1_81xng")
+progress_colour = SubResource("Gradient_81xng")
 
 [node name="UIHolder" type="Control" parent="." unique_id=314585851]
 process_mode = 3
@@ -66,7 +118,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.16078432, 0.15686275, 0.19215687, 1)
 
-[node name="MarginContainer" type="MarginContainer" parent="UIHolder" unique_id=1516043746]
+[node name="MC_ScreenHolders" type="MarginContainer" parent="UIHolder" unique_id=1516043746]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -78,102 +130,121 @@ theme_override_constants/margin_top = 20
 theme_override_constants/margin_right = 20
 theme_override_constants/margin_bottom = 20
 
-[node name="HBoxContainer" type="HBoxContainer" parent="UIHolder/MarginContainer" unique_id=1013108697]
+[node name="HB_ScreenHolders" type="HBoxContainer" parent="UIHolder/MC_ScreenHolders" unique_id=1013108697]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_constants/separation = 20
 alignment = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="UIHolder/MarginContainer/HBoxContainer" unique_id=1706203829]
+[node name="LeftScreen" type="VBoxContainer" parent="UIHolder/MC_ScreenHolders/HB_ScreenHolders" unique_id=1706203829]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 1.26
 
-[node name="HBoxContainer3" type="HBoxContainer" parent="UIHolder/MarginContainer/HBoxContainer/VBoxContainer" unique_id=408115628]
-layout_mode = 2
-
-[node name="Label2" type="RichTextLabel" parent="UIHolder/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer3" unique_id=2122871635]
-visible = false
+[node name="PanelContainer" type="PanelContainer" parent="UIHolder/MC_ScreenHolders/HB_ScreenHolders/LeftScreen" unique_id=1521003445]
 layout_mode = 2
 size_flags_horizontal = 3
-size_flags_stretch_ratio = 0.54
-theme_override_font_sizes/normal_font_size = 14
-theme_override_styles/normal = SubResource("StyleBoxFlat_wqkje")
-bbcode_enabled = true
-text = "BOUNTY:  [font_size=18]46290"
-scroll_active = false
-vertical_alignment = 1
+theme_override_styles/panel = SubResource("StyleBoxFlat_oqgf2")
 
-[node name="Label4" type="RichTextLabel" parent="UIHolder/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer3" unique_id=1611190539]
-visible = false
+[node name="TopBar" type="HBoxContainer" parent="UIHolder/MC_ScreenHolders/HB_ScreenHolders/LeftScreen/PanelContainer" unique_id=408115628]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="UIHolder/MC_ScreenHolders/HB_ScreenHolders/LeftScreen/PanelContainer/TopBar" unique_id=886410127]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_styles/normal = SubResource("StyleBoxFlat_wqkje")
-bbcode_enabled = true
-text = "[i]authorities arrive in 10:00"
-scroll_active = false
-vertical_alignment = 1
-
-[node name="Label3" type="Label" parent="UIHolder/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer3" unique_id=886410127]
-layout_mode = 2
-size_flags_horizontal = 3
+size_flags_vertical = 1
 size_flags_stretch_ratio = 0.0
-theme_override_styles/normal = SubResource("StyleBoxFlat_0f350")
+theme_override_font_sizes/font_size = 18
+theme_override_styles/normal = SubResource("StyleBoxEmpty_81xng")
 text = "PROSPERITY: "
 vertical_alignment = 1
 
-[node name="ProgressBar" type="ProgressBar" parent="UIHolder/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer3" unique_id=346931455]
+[node name="ProsperityBar" type="ProgressBar" parent="UIHolder/MC_ScreenHolders/HB_ScreenHolders/LeftScreen/PanelContainer/TopBar" unique_id=346931455]
+modulate = Color(1, 0, 0, 1)
 layout_mode = 2
 size_flags_horizontal = 3
+size_flags_vertical = 1
 size_flags_stretch_ratio = 0.5
-theme_override_styles/background = SubResource("StyleBoxFlat_wqkje")
-value = 38.33
+theme_override_font_sizes/font_size = 20
+theme_override_styles/background = SubResource("StyleBoxFlat_0f350")
+theme_override_styles/fill = SubResource("StyleBoxFlat_8c0lf")
 
-[node name="OutsideManager" parent="UIHolder/MarginContainer/HBoxContainer/VBoxContainer" unique_id=1854772268 instance=ExtResource("2_81xng")]
+[node name="OutsideManager" parent="UIHolder/MC_ScreenHolders/HB_ScreenHolders/LeftScreen" unique_id=1854772268 instance=ExtResource("2_81xng")]
+custom_minimum_size = Vector2(680, 600)
 layout_mode = 2
-size_flags_vertical = 3
 collectable_pipe_prefab = ExtResource("2_6phgx")
 
-[node name="HBoxContainer4" type="HBoxContainer" parent="UIHolder/MarginContainer/HBoxContainer/VBoxContainer" unique_id=1771191263]
+[node name="BottomBar" type="HBoxContainer" parent="UIHolder/MC_ScreenHolders/HB_ScreenHolders/LeftScreen" unique_id=1771191263]
 custom_minimum_size = Vector2(0, 27)
-layout_mode = 2
-
-[node name="Label2" type="RichTextLabel" parent="UIHolder/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer4" unique_id=1357896985]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_stretch_ratio = 0.54
-theme_override_font_sizes/normal_font_size = 14
-theme_override_styles/normal = SubResource("StyleBoxFlat_wqkje")
-bbcode_enabled = true
-text = "BOUNTY:  [font_size=18]46290"
-scroll_active = false
-vertical_alignment = 1
-
-[node name="Label4" type="RichTextLabel" parent="UIHolder/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer4" unique_id=1370415613]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_styles/normal = SubResource("StyleBoxFlat_wqkje")
-bbcode_enabled = true
-text = "[i]authorities arrive in 10:00"
-scroll_active = false
-vertical_alignment = 1
-
-[node name="VBoxContainer2" type="VBoxContainer" parent="UIHolder/MarginContainer/HBoxContainer" unique_id=1162533289]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="InventoryManager" parent="UIHolder/MarginContainer/HBoxContainer/VBoxContainer2" unique_id=1086248823 instance=ExtResource("3_6phgx")]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="UIHolder/MarginContainer/HBoxContainer/VBoxContainer2" unique_id=1300402169]
+[node name="BountyLabel" type="RichTextLabel" parent="UIHolder/MC_ScreenHolders/HB_ScreenHolders/LeftScreen/BottomBar" unique_id=1357896985]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.51
+theme_override_font_sizes/normal_font_size = 17
+theme_override_styles/normal = SubResource("StyleBoxFlat_754fn")
+bbcode_enabled = true
+text = "BOUNTY:"
+scroll_active = false
+vertical_alignment = 1
+
+[node name="Creds" type="RichTextLabel" parent="UIHolder/MC_ScreenHolders/HB_ScreenHolders/LeftScreen/BottomBar" unique_id=45906415]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/normal_font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxFlat_754fn")
+bbcode_enabled = true
+text = "0 [font_size=15]CREDS"
+scroll_active = false
+vertical_alignment = 1
+
+[node name="EtaLabel" type="RichTextLabel" parent="UIHolder/MC_ScreenHolders/HB_ScreenHolders/LeftScreen/BottomBar" unique_id=1370415613]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.8
+theme_override_font_sizes/normal_font_size = 16
+theme_override_styles/normal = SubResource("StyleBoxFlat_bvt00")
+bbcode_enabled = true
+text = "AUTHORITIES ETA:"
+scroll_active = false
+vertical_alignment = 1
+
+[node name="TimeRemaining" type="RichTextLabel" parent="UIHolder/MC_ScreenHolders/HB_ScreenHolders/LeftScreen/BottomBar" unique_id=352028060]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/normal_font_size = 22
+theme_override_styles/normal = SubResource("StyleBoxFlat_bvt00")
+bbcode_enabled = true
+text = "10:00"
+scroll_active = false
+vertical_alignment = 1
+
+[node name="Timer" type="Timer" parent="UIHolder/MC_ScreenHolders/HB_ScreenHolders/LeftScreen/BottomBar/TimeRemaining" unique_id=1480961910]
+process_callback = 0
+autostart = true
+
+[node name="RightScreen" type="VBoxContainer" parent="UIHolder/MC_ScreenHolders/HB_ScreenHolders" unique_id=1162533289]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="InventoryManager" parent="UIHolder/MC_ScreenHolders/HB_ScreenHolders/RightScreen" unique_id=1086248823 instance=ExtResource("3_6phgx")]
+custom_minimum_size = Vector2(0, 640)
 layout_mode = 2
 
-[node name="Label2" type="Label" parent="UIHolder/MarginContainer/HBoxContainer/VBoxContainer2/HBoxContainer2" unique_id=1523903993]
+[node name="BottomBar" type="HBoxContainer" parent="UIHolder/MC_ScreenHolders/HB_ScreenHolders/RightScreen" unique_id=1300402169]
+custom_minimum_size = Vector2(0, 27)
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Description" type="RichTextLabel" parent="UIHolder/MC_ScreenHolders/HB_ScreenHolders/RightScreen/BottomBar" unique_id=476131508]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_styles/normal = SubResource("StyleBoxFlat_wqkje")
-text = "CRATE: Used to hold things, obviously"
+bbcode_enabled = true
+text = "[font_size=22]CRATE:[/font_size]  Used to hold things, obviously"
 vertical_alignment = 1
 
 [node name="MessageBgOverlay" type="ColorRect" parent="UIHolder" unique_id=6450553]

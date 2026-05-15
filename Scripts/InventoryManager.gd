@@ -15,6 +15,13 @@ enum ItemType {Rock,Crate,Pipe}
 @export var release_force : float = 0.5
 @export_range(0,1) var chance_to_open_chute_on_damage : float = 0.5
 
+@export_category("READ ONLY")
+@export var _is_dragging : bool = false
+static var is_dragging : bool :
+	get: return instance._is_dragging
+	set(value):
+		instance._is_dragging = value
+
 var _active_debug_line : Line2D = null
 
 static var chute_open : bool = false
@@ -68,8 +75,14 @@ func cancel_dragging() -> void:
 static func dragging(_object:Item,_click_pos:Vector2) -> void:
 	instance._dragging(_object,_click_pos)
 func _dragging(_object:Item,_click_pos:Vector2) -> void:
+	if is_dragging:
+		print_rich(DEBUG_NAME,"[color=orange]Dragging > Already dragging an object, ignoring.")
+		return
+	
+	
 	print_rich(DEBUG_NAME,"Dragging > Object '"+_object.name+"' initialised dragging! Waiting for mouse release...")
 	
+	is_dragging = true
 	_object.is_dragged = true
 	
 	_active_debug_line = debug_line.duplicate()
@@ -97,4 +110,4 @@ func _dragging(_object:Item,_click_pos:Vector2) -> void:
 		_object.apply_central_impulse(_move_vector * release_force)
 		print_rich(DEBUG_NAME,"Dragging > Mouse released! Releasing '"+_object.name+"' with force of "+str(_move_vector)+" * "+str(release_force))
 	print_rich(DEBUG_NAME,"Dragging > Oops, objects been freed! Cancelling.")
-	
+	is_dragging = false

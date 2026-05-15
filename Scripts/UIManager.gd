@@ -5,6 +5,13 @@ static var instance : UIManager = null
 @onready var ui_holder : Control = $UIHolder
 @onready var border : Control = $UIHolder/Border
 @onready var msg_bg_overlay : Control = $UIHolder/MessageBgOverlay
+@onready var prosperity_bar : ProgressBar = $UIHolder/MC_ScreenHolders/HB_ScreenHolders/LeftScreen/PanelContainer/TopBar/ProsperityBar
+@onready var time_remaining_label : RichTextLabel = $UIHolder/MC_ScreenHolders/HB_ScreenHolders/LeftScreen/BottomBar/TimeRemaining
+
+@export var progress_colour : Gradient
+
+@export_category("READ ONLY")
+@export var time_remaining : int = -1
 
 static var has_taken_damage : bool = false # don't reset this on restart!
 
@@ -18,6 +25,34 @@ func _enter_tree() -> void:
 
 func _ready() -> void:
 	GLOBALS.on_health_changed().connect(took_damage)
+	LevelManager.on_prosperity_updated().connect(update_prosperity)
+	time_remaining = GLOBALS.LEVEL_SECS_BEFORE_AUTHORITIES_ARRIVE
+	
+	ticking_time()
+
+
+func ticking_time() -> void:
+	var _minutes : int = floori(time_remaining / 60.0)
+	var _seconds : int = time_remaining - (_minutes * 60) 
+	time_remaining_label.text = "%02d : %02d" % [_minutes, _seconds]
+	while (time_remaining > 0):	
+		_minutes = floor(time_remaining / 60.0)
+		_seconds = time_remaining - (_minutes * 60) 
+		time_remaining_label.text = "%02d : %02d" % [_minutes, _seconds]
+		await (time_remaining_label.get_child(0) as Timer).timeout
+		time_remaining -= 1
+	lose()
+
+
+func update_prosperity(value:float) -> void:
+	
+	print_rich(DEBUG_NAME,"Ready > Updating prosperity to " + str(value * 100))
+	prosperity_bar.value = value * 100
+	prosperity_bar.modulate = progress_colour.sample(value)
+	
+	if value >= 1:
+		await get_tree().create_timer(0.5,true,false,true).timeout
+		win()
 
 func start_time(fade:=0.0) -> void:
 	get_tree().paused = false
@@ -75,13 +110,39 @@ Good luck out there, baka desu.""",
 	await start_time(1)
 
 func dead() -> void:
-	has_taken_damage = true
 	await stop_time(1)
 	await display_message_box(
 		"Dead hours
 washed gang gang
 no health? :/",
 	"damn, guess I'll try again",
+	1
+	)
+	await start_time(1)
+	_on_restart_game.emit()
+	get_tree().reload_current_scene()
+	
+
+
+func win() -> void:
+	await stop_time(1)
+	await display_message_box(
+		"A winner is you!
+Take this into your life
+no gods, no masters",
+	"please sir, may I have another?",
+	1
+	)
+	await start_time(1)
+	_on_restart_game.emit()
+	get_tree().reload_current_scene()
+
+
+func lose() -> void:
+	await stop_time(1)
+	await display_message_box(
+		"You ran out of time like a dingus! Authorities blasted you away from orbit.",
+	"scoop me up and try again",
 	1
 	)
 	await start_time(1)
@@ -105,7 +166,6 @@ func display_message_box(message_text:="",button_text:="OK",min_time:=0.0,box_si
 	$UIHolder/MessageBox.visible = false
 
 func jolt() -> void:
-
 	
 	border.color = Color.DARK_RED
 	

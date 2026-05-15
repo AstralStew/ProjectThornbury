@@ -48,7 +48,7 @@ func jettison() -> void:
 
 func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 	
-	if event is InputEventMouseButton && Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
+	if !InventoryManager.is_dragging && event is InputEventMouseButton && Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
 		print_rich(DEBUG_NAME,"OnInputEvent > Clicked! Telling InventoryManager to start drag force...")
 		InventoryManager.dragging(self,get_local_mouse_position())
 		

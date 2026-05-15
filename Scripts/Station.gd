@@ -23,6 +23,8 @@ var DEBUG_NAME : String :
 
 @onready var _label : Label = $PanelContainer/Label
 
+signal on_complete_order(station_ref)
+signal on_become_prosperous(station_ref)
 
 func _ready() -> void:
 	prosperity = 0
@@ -79,7 +81,9 @@ func complete_order() -> void:
 	print_rich(DEBUG_NAME,"CheckOrder > Order complete! Starting cooldown and returning true...")
 	has_order = false
 	prosperity += 1
+	on_complete_order.emit(self)
 	if !is_prosperous: cooldown()
+	else: on_become_prosperous.emit(self)
 
 func cooldown() -> void:
 	await get_tree().create_timer(randf_range(cooldown_duration.x,cooldown_duration.y)).timeout
