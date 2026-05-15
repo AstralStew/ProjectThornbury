@@ -3,7 +3,7 @@ var DEBUG_NAME : String :
 	get: return "[b][Station("+name+")][/b] "
 #static var instance : Station = null
 
-@export var cooldown_duration : Vector2 = Vector2(5.0,20.0)
+@export var cooldown_duration : Vector2 = Vector2(10.0,30.0)
 
 @export var prosperity_target : int = 2
 
@@ -23,12 +23,13 @@ var DEBUG_NAME : String :
 
 @onready var _label : Label = $PanelContainer/Label
 
+signal on_make_order(station_ref)
 signal on_complete_order(station_ref)
 signal on_become_prosperous(station_ref)
 
 func _ready() -> void:
 	prosperity = 0
-	make_order()
+	cooldown()
 
 func make_order() -> void:
 	if has_order || is_prosperous: return
@@ -44,6 +45,7 @@ func make_order() -> void:
 	
 	has_order = true
 	update_text()
+	on_make_order.emit(self)
 
 func update_text() -> void:
 	if has_order:
@@ -86,7 +88,8 @@ func complete_order() -> void:
 	else: on_become_prosperous.emit(self)
 
 func cooldown() -> void:
-	await get_tree().create_timer(randf_range(cooldown_duration.x,cooldown_duration.y)).timeout
+	for i in prosperity+1:
+		await get_tree().create_timer(randf_range(cooldown_duration.x,cooldown_duration.y)).timeout
 	print_rich(DEBUG_NAME,"Cooldown > Cooldown finished! Making a new order...")
 	make_order()
 

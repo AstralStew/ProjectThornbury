@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://ibwgeq3nkflt"]
+
+[ext_resource type="Script" uid="uid://h4wwr486ejuw" path="res://Scripts/Notification.gd" id="1_sruue"]
+[ext_resource type="Texture2D" uid="uid://c0sl1u4dvsqni" path="res://Assets/Images/City/Building64.png" id="2_3fx4b"]
+[ext_resource type="Texture2D" uid="uid://i1g58vh6a4qg" path="res://Assets/Images/Inventory/Greebles.png" id="3_68ugo"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sruue"]
+atlas = ExtResource("3_68ugo")
+region = Rect2(175, 12, 46, 46)
+
+[node name="Notification" type="Node2D" unique_id=2025579434]
+script = ExtResource("1_sruue")
+minimum_alpha_distance = 4000.0
+maximum_alpha_distance = 2000.0
+maximum_scale_distance = 300.0
+disappear_distance = 300.0
+
+[node name="SpriteBG" type="Sprite2D" parent="." unique_id=1388421572]
+position = Vector2(-1, 0)
+texture = ExtResource("2_3fx4b")
+
+[node name="SpriteIcon" type="TextureRect" parent="." unique_id=10505829]
+offset_left = -23.0
+offset_top = -23.0
+offset_right = 23.0
+offset_bottom = 23.0
+mouse_filter = 0
+texture = SubResource("AtlasTexture_sruue")
+
+[connection signal="mouse_entered" from="SpriteIcon" to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="SpriteIcon" to="." method="_mouse_exited"]

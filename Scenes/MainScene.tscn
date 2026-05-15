@@ -223,6 +223,7 @@ scroll_active = false
 vertical_alignment = 1
 
 [node name="Timer" type="Timer" parent="UIHolder/MC_ScreenHolders/HB_ScreenHolders/LeftScreen/BottomBar/TimeRemaining" unique_id=1480961910]
+process_mode = 1
 process_callback = 0
 autostart = true
 

@@ -541,6 +541,7 @@ finished_spawning = true
 position = Vector2(429, 461)
 
 [node name="Camera2D" type="Camera2D" parent="SubViewportContainer/SubViewport" unique_id=1942357245]
+z_index = 1
 position = Vector2(270, 320)
 ignore_rotation = false
 limit_enabled = false
