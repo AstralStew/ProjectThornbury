@@ -7,12 +7,16 @@
 [ext_resource type="Script" uid="uid://de381ep43a5bi" path="res://Scripts/Chute.gd" id="3_k1vlg"]
 [ext_resource type="PackedScene" uid="uid://be2frk3ryyebk" path="res://Scenes/InventoryPrefabs/item_pipe.tscn" id="4_aco8w"]
 [ext_resource type="Script" uid="uid://dw1ch6u6ctwe8" path="res://Scripts/damage_texture.gd" id="5_aco8w"]
+[ext_resource type="Texture2D" uid="uid://bqlsoecnfovaq" path="res://Assets/Images/Inventory/Panel.png" id="6_lnm75"]
 [ext_resource type="Texture2D" uid="uid://056n6uoorop6" path="res://Assets/Images/Hanger/HangerDoor.png" id="7_v7qpt"]
 [ext_resource type="Texture2D" uid="uid://i1g58vh6a4qg" path="res://Assets/Images/Inventory/Greebles.png" id="10_lnm75"]
 [ext_resource type="Script" uid="uid://ba0ppdfg70y3g" path="res://Scripts/HangerCamera.gd" id="10_v7qpt"]
 
 [sub_resource type="Gradient" id="Gradient_v7qpt"]
 colors = PackedColorArray(0.93333334, 0.5254902, 0.58431375, 1, 0.9843137, 0.73333335, 0.6784314, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0n8tc"]
+size = Vector2(116, 72)
 
 [sub_resource type="Gradient" id="Gradient_03ybr"]
 interpolation_mode = 2
@@ -33,9 +37,6 @@ color_ramp = SubResource("Gradient_03ybr")
 seamless = true
 normalize = false
 seamless_blend_skirt = 0.464
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_0n8tc"]
-size = Vector2(116, 72)
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_51e2h"]
 
@@ -102,11 +103,11 @@ gui_snap_controls_to_pixels = false
 size = Vector2i(540, 640)
 render_target_update_mode = 4
 
-[node name="BackgroundElements" type="Node2D" parent="SubViewportContainer/SubViewport" unique_id=1687082410]
-z_index = -1
+[node name="Colours" type="Node2D" parent="SubViewportContainer/SubViewport" unique_id=346356498]
+z_index = -2
 position = Vector2(265, 0)
 
-[node name="BackgroundWall" type="ColorRect" parent="SubViewportContainer/SubViewport/BackgroundElements" unique_id=2010464744]
+[node name="BackgroundWall" type="ColorRect" parent="SubViewportContainer/SubViewport/Colours" unique_id=2010464744]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -119,7 +120,7 @@ grow_vertical = 2
 mouse_filter = 2
 color = Color(0.20483068, 0.25032598, 0.3507662, 1)
 
-[node name="BackgroundFloor1" type="ColorRect" parent="SubViewportContainer/SubViewport/BackgroundElements" unique_id=676433382]
+[node name="BackgroundFloor1" type="ColorRect" parent="SubViewportContainer/SubViewport/Colours" unique_id=676433382]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -130,35 +131,9 @@ offset_bottom = 629.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-color = Color(0.2969033, 0.3585674, 0.48664355, 1)
+color = Color(0.29803923, 0.35686275, 0.4862745, 1)
 
-[node name="BackgroundFloorL" type="ColorRect" parent="SubViewportContainer/SubViewport/BackgroundElements" unique_id=972572487]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -254.0
-offset_top = 163.0
-offset_right = -86.685
-offset_bottom = 348.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-color = Color(0.2969033, 0.3585674, 0.48664355, 1)
-
-[node name="BackgroundFloorR" type="ColorRect" parent="SubViewportContainer/SubViewport/BackgroundElements" unique_id=812382015]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 85.0
-offset_top = 163.0
-offset_right = 252.315
-offset_bottom = 348.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-color = Color(0.2969033, 0.3585674, 0.48664355, 1)
-
-[node name="BackgroundDoor" type="ColorRect" parent="SubViewportContainer/SubViewport/BackgroundElements" unique_id=969965782]
+[node name="BackgroundDoor" type="ColorRect" parent="SubViewportContainer/SubViewport/Colours" unique_id=969965782]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -171,35 +146,19 @@ grow_vertical = 2
 mouse_filter = 2
 color = Color(0.25, 0.25, 0.25, 1)
 
-[node name="DamageTexture" type="TextureRect" parent="SubViewportContainer/SubViewport/BackgroundElements" unique_id=665973928]
-self_modulate = Color(1, 1, 1, 0)
-texture_filter = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -331.0
-offset_top = -66.0
-offset_right = 361.0
-offset_bottom = 722.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = SubResource("NoiseTexture2D_toeaj")
-stretch_mode = 1
-script = ExtResource("5_aco8w")
-
-[node name="Chute" type="Area2D" parent="SubViewportContainer/SubViewport/BackgroundElements" unique_id=1174495063]
-position = Vector2(0, 256)
+[node name="Chute" type="Area2D" parent="SubViewportContainer/SubViewport" unique_id=1174495063]
+position = Vector2(271, 256)
 collision_layer = 1024
 collision_mask = 256
 monitorable = false
 linear_damp = 100.0
 script = ExtResource("3_k1vlg")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="SubViewportContainer/SubViewport/BackgroundElements/Chute" unique_id=1113201749]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SubViewportContainer/SubViewport/Chute" unique_id=1113201749]
 rotation = -1.5707964
 shape = SubResource("RectangleShape2D_0n8tc")
 
-[node name="Outside" type="ColorRect" parent="SubViewportContainer/SubViewport/BackgroundElements/Chute" unique_id=2032913877]
+[node name="Outside" type="ColorRect" parent="SubViewportContainer/SubViewport/Chute" unique_id=2032913877]
 show_behind_parent = true
 anchors_preset = 15
 anchor_right = 1.0
@@ -214,25 +173,192 @@ pivot_offset_ratio = Vector2(0.5, 0.5)
 mouse_filter = 2
 color = Color(0.93, 0.6138, 0.66122985, 1)
 
-[node name="HangerDoorLeft" type="Sprite2D" parent="SubViewportContainer/SubViewport/BackgroundElements/Chute" unique_id=870151413]
+[node name="HangerDoorLeft" type="Sprite2D" parent="SubViewportContainer/SubViewport/Chute" unique_id=870151413]
 position = Vector2(-33, 0)
 rotation = -1.5707964
 texture = ExtResource("7_v7qpt")
 region_enabled = true
 region_rect = Rect2(4, 95, 182, 83)
 
-[node name="HangerDoorRight" type="Sprite2D" parent="SubViewportContainer/SubViewport/BackgroundElements/Chute" unique_id=1064261200]
+[node name="HangerDoorRight" type="Sprite2D" parent="SubViewportContainer/SubViewport/Chute" unique_id=1064261200]
 position = Vector2(33, 0)
 rotation = -1.5707963
 texture = ExtResource("7_v7qpt")
 region_enabled = true
 region_rect = Rect2(4, 12, 182, 81)
 
-[node name="EntrancePoint" type="Marker2D" parent="SubViewportContainer/SubViewport/BackgroundElements/Chute" unique_id=1808015914]
+[node name="EntrancePoint" type="Marker2D" parent="SubViewportContainer/SubViewport/Chute" unique_id=1808015914]
 position = Vector2(0, -90)
 
-[node name="ExitPoint" type="Marker2D" parent="SubViewportContainer/SubViewport/BackgroundElements/Chute" unique_id=1178400924]
+[node name="ExitPoint" type="Marker2D" parent="SubViewportContainer/SubViewport/Chute" unique_id=1178400924]
 position = Vector2(0, 75)
+
+[node name="DoorCoverL" type="ColorRect" parent="SubViewportContainer/SubViewport" unique_id=972572487]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 11.0
+offset_top = 164.0
+offset_right = -344.0
+offset_bottom = -291.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.29803923, 0.35686275, 0.4862745, 1)
+
+[node name="Border" type="ColorRect" parent="SubViewportContainer/SubViewport/DoorCoverL" unique_id=619863449]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 177.0
+offset_right = 2.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.2, 0.24705882, 0.34509805, 1)
+
+[node name="DoorCoverR" type="ColorRect" parent="SubViewportContainer/SubViewport" unique_id=812382015]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 345.0
+offset_top = 164.0
+offset_right = -10.0
+offset_bottom = -291.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.29803923, 0.35686275, 0.4862745, 1)
+
+[node name="Border" type="ColorRect" parent="SubViewportContainer/SubViewport/DoorCoverR" unique_id=1152409331]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -2.0
+offset_right = -176.9999
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.2, 0.24705882, 0.34509805, 1)
+
+[node name="Greebles" type="Node2D" parent="SubViewportContainer/SubViewport" unique_id=1687082410]
+position = Vector2(270, 0)
+
+[node name="Rectangle" type="Sprite2D" parent="SubViewportContainer/SubViewport/Greebles" unique_id=73881646]
+position = Vector2(-222, 54)
+rotation = 1.5707964
+texture = ExtResource("10_lnm75")
+region_enabled = true
+region_rect = Rect2(171, 172, 58, 39)
+
+[node name="Rectangle2" type="Sprite2D" parent="SubViewportContainer/SubViewport/Greebles" unique_id=54922364]
+position = Vector2(222, 54)
+rotation = 4.712389
+texture = ExtResource("10_lnm75")
+region_enabled = true
+region_rect = Rect2(171, 172, 58, 39)
+
+[node name="Circle" type="Sprite2D" parent="SubViewportContainer/SubViewport/Greebles" unique_id=677246406]
+position = Vector2(-200, 582)
+texture = ExtResource("10_lnm75")
+region_enabled = true
+region_rect = Rect2(4, 154, 72, 72)
+
+[node name="Circle2" type="Sprite2D" parent="SubViewportContainer/SubViewport/Greebles" unique_id=1045348872]
+position = Vector2(200, 582)
+texture = ExtResource("10_lnm75")
+region_enabled = true
+region_rect = Rect2(4, 154, 72, 72)
+
+[node name="Square" type="Sprite2D" parent="SubViewportContainer/SubViewport/Greebles" unique_id=682753416]
+position = Vector2(112, 461.5)
+texture = ExtResource("10_lnm75")
+region_enabled = true
+region_rect = Rect2(17, 16, 46, 45)
+
+[node name="Square2" type="Sprite2D" parent="SubViewportContainer/SubViewport/Greebles" unique_id=1819492994]
+position = Vector2(-112, 461.5)
+texture = ExtResource("10_lnm75")
+region_enabled = true
+region_rect = Rect2(17, 16, 46, 45)
+
+[node name="Rectangle3" type="Sprite2D" parent="SubViewportContainer/SubViewport/Greebles" unique_id=1821495713]
+position = Vector2(2, 538)
+texture = ExtResource("10_lnm75")
+region_enabled = true
+region_rect = Rect2(84, 95, 72, 39)
+
+[node name="Panel" type="Sprite2D" parent="SubViewportContainer/SubViewport/Greebles" unique_id=268236817]
+position = Vector2(2, 262)
+texture = ExtResource("6_lnm75")
+
+[node name="DamageTexture" type="TextureRect" parent="SubViewportContainer/SubViewport" unique_id=665973928]
+self_modulate = Color(1, 1, 1, 0)
+texture_filter = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 339.0
+offset_top = -2.0
+offset_right = 311.0
+offset_bottom = -130.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("NoiseTexture2D_toeaj")
+stretch_mode = 1
+script = ExtResource("5_aco8w")
+
+[node name="DamageTexture2" type="TextureRect" parent="SubViewportContainer/SubViewport" unique_id=1586552641]
+self_modulate = Color(1, 1, 1, 0)
+texture_filter = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -175.0
+offset_top = -351.0
+offset_right = -203.0
+offset_bottom = -479.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("NoiseTexture2D_toeaj")
+stretch_mode = 1
+script = ExtResource("5_aco8w")
+
+[node name="DamageTexture3" type="TextureRect" parent="SubViewportContainer/SubViewport" unique_id=728344731]
+self_modulate = Color(1, 1, 1, 0)
+texture_filter = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -322.0
+offset_top = 165.0
+offset_right = -350.0
+offset_bottom = 37.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("NoiseTexture2D_toeaj")
+stretch_mode = 1
+script = ExtResource("5_aco8w")
+
+[node name="DamageTexture4" type="TextureRect" parent="SubViewportContainer/SubViewport" unique_id=2116039705]
+self_modulate = Color(1, 1, 1, 0)
+texture_filter = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 191.0
+offset_top = 352.0
+offset_right = 163.0
+offset_bottom = 224.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("NoiseTexture2D_toeaj")
+stretch_mode = 1
+script = ExtResource("5_aco8w")
 
 [node name="BoundaryTop" type="StaticBody2D" parent="SubViewportContainer/SubViewport" unique_id=799551523]
 position = Vector2(265, 0)
@@ -320,9 +446,5 @@ grow_vertical = 2
 texture = SubResource("NoiseTexture2D_v7qpt")
 stretch_mode = 1
 
-[node name="Greebles" type="Sprite2D" parent="SubViewportContainer/SubViewport" unique_id=73881646]
-position = Vector2(150, 141)
-texture = ExtResource("10_lnm75")
-
-[connection signal="body_entered" from="SubViewportContainer/SubViewport/BackgroundElements/Chute" to="SubViewportContainer/SubViewport/BackgroundElements/Chute" method="_on_body_entered"]
+[connection signal="body_entered" from="SubViewportContainer/SubViewport/Chute" to="SubViewportContainer/SubViewport/Chute" method="_on_body_entered"]
 [connection signal="input_event" from="SubViewportContainer/SubViewport/BootArea" to="SubViewportContainer/SubViewport/BootArea" method="_on_input_event"]
