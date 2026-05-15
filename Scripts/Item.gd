@@ -16,8 +16,10 @@ var DEBUG_NAME : String :
 ## How much more the item's rotation is reduced over time to bring it to a stop (on top of the 1.0 that all items have by default)
 @export var ROCK_EXTRA_ROTATION_DRAG : float = 0.0
 
+var final_child_scale : Vector2 
 
 func _ready() -> void:
+	final_child_scale = get_child(0).scale
 	
 	match type:
 		InventoryManager.ItemType.Rock:
@@ -44,16 +46,23 @@ func _spawn_countdown() -> void:
 	
 	modulate = Color.TRANSPARENT
 	#global_position = Chute.instance.global_position
+	
 	get_child(0).scale = Vector2(0.25,0.25)
+	
+	#get_child(1).visible = false
 	
 	var _tween = create_tween().set_parallel().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUAD)
 	_tween.tween_property(self,"modulate",Color.WHITE,0.33)
 	#_tween.tween_property(self,"global_position",Chute.instance.global_position + Vector2(remap(randf(),0,1,-30,30),remap(randf(),0,1,-30,30)),0.75)
-	_tween.tween_property(get_child(0),"scale",Vector2(1,1),0.66)
+	_tween.tween_property(get_child(0),"scale",final_child_scale,0.66)
 	#await get_tree().create_timer(0.75).timeout
+		
+	await get_tree().create_timer(0.5).timeout
 	
+	#get_child(1).visible = true
 	
-	await get_tree().create_timer(1.0).timeout
+	await get_tree().create_timer(0.33).timeout
+	
 	finished_spawning = true
 
 
@@ -65,6 +74,8 @@ func jettison() -> void:
 			child.visible = false
 	
 	OutsideManager.add_collectable(type)
+	
+	#get_child(1).visible = false
 	
 	var _tween = create_tween().set_parallel().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUAD)
 	_tween.tween_property(self,"modulate",Color(0,0,0,0),0.6)

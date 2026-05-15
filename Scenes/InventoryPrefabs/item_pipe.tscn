@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://danx500npa3uq" path="res://Assets/Images/Resources/Long/Pipe_Long.png" id="2_uctbt"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yvbue"]
-size = Vector2(190, 12)
+size = Vector2(218, 22)
 
 [node name="ItemPipe" type="RigidBody2D" unique_id=1291223074]
 texture_filter = 1
@@ -19,9 +19,18 @@ type = 2
 metadata/_custom_type_script = "uid://b0o8xyki30gi8"
 
 [node name="PipeLong" type="Sprite2D" parent="." unique_id=519294592]
+scale = Vector2(1.15, 1.65)
+texture = ExtResource("2_uctbt")
+
+[node name="Shadow" type="Sprite2D" parent="PipeLong" unique_id=1347326499]
+modulate = Color(0, 0, 0, 0.40300003)
+z_index = -1
+position = Vector2(-0.8695653, 0)
+scale = Vector2(1.008, 1.212)
 texture = ExtResource("2_uctbt")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1138340637]
+position = Vector2(-1, 0)
 shape = SubResource("RectangleShape2D_yvbue")
 
 [connection signal="input_event" from="." to="." method="_on_input_event"]

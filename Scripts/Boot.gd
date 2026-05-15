@@ -31,6 +31,10 @@ var _jolt_force : float = 0
 func _enter_tree() -> void:
 	instance = self
 
+func _ready() -> void:
+	ProjectSettings.set_setting("physics/2d/default_linear_damp", GLOBALS.INVENTORY_ITEM_MOVE_DRAG)
+	ProjectSettings.set_setting("physics/2d/default_angular_damp", GLOBALS.INVENTORY_ITEM_ROTATION_DRAG)
+
 func _physics_process(delta: float) -> void:
 	_get_ship_speed()
 	_add_random()

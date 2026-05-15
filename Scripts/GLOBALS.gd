@@ -53,6 +53,9 @@ static var INVENTORY_CAMERA_PAN_SPEED : float = 1
 
 #region Item Variables
 
+static var INVENTORY_ITEM_MOVE_DRAG : float = 1
+static var INVENTORY_ITEM_ROTATION_DRAG : float = 1
+
 static var ROCK_MASS : float = 1
 static var ROCK_FORCE_SCALE : float = 1
 static var ROCK_EXTRA_MOVE_DRAG : float = 1

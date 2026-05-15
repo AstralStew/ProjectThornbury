@@ -3,9 +3,6 @@
 [ext_resource type="Script" uid="uid://b0o8xyki30gi8" path="res://Scripts/Item.gd" id="1_7gq8s"]
 [ext_resource type="Texture2D" uid="uid://dmq57wu6w20cl" path="res://Assets/Images/Resources/Small/RockResource_Small.png" id="2_8py4i"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_2vrau"]
-radius = 31.97
-
 [node name="ItemRock" type="RigidBody2D" unique_id=1291223074]
 texture_filter = 1
 collision_layer = 256
@@ -18,7 +15,14 @@ metadata/_custom_type_script = "uid://b0o8xyki30gi8"
 [node name="RockResourceSmall" type="Sprite2D" parent="." unique_id=1882922353]
 texture = ExtResource("2_8py4i")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1138340637]
-shape = SubResource("CircleShape2D_2vrau")
+[node name="Shadow" type="Sprite2D" parent="RockResourceSmall" unique_id=1339193852]
+modulate = Color(0, 0, 0, 0.485)
+z_index = -1
+texture_filter = 2
+scale = Vector2(1.05, 1.05)
+texture = ExtResource("2_8py4i")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=1986714377]
+polygon = PackedVector2Array(24, -22, 27, -14, 28, -3, 36, 5, 34, 25, 22, 36, 17, 35, 14, 30, -4, 34, -23, 26, -33, 4, -29, -15, -23, -19, -7, -23, 4, -29, 13, -29)
 
 [connection signal="input_event" from="." to="." method="_on_input_event"]
