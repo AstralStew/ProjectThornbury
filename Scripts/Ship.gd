@@ -3,23 +3,23 @@ const DEBUG_NAME = "[b][Ship][/b] "
 static var instance : Ship = null
 
 
-
-
-static var SHIP_ROTATION_SPEED : float = 30.0
-static var SHIP_ROTATION_CHANGE_RATE : float = 50.0
-static var SHIP_BOOST_ROTATION_CHANGE_RATE : float = 100.0
-static var SHIP_ROTATION_ACC : float = 0.05
-
-#@EXPORT_CATEGORY("SPEED CONTROLS")
-
-static var SHIP_FORWARD_SPEED : float = 100.0
-static var SHIP_FORWARD_CHANGE_RATE : float = 100.0
-static var SHIP_BACK_SPEED : float = 10.0
-static var SHIP_BACK_CHANGE_RATE : float = 100.0
-static var SHIP_NEUTRAL_CHANGE_RATE : float = 30.0
-static var SHIP_BOOST_SPEED : float = 200.0
-static var SHIP_BOOST_CHANGE_RATE : float = 100.0
-
+#
+#
+#static var SHIP_ROTATION_SPEED : float = 30.0
+#static var SHIP_ROTATION_CHANGE_RATE : float = 50.0
+#static var SHIP_BOOST_ROTATION_CHANGE_RATE : float = 100.0
+#static var SHIP_ROTATION_ACC : float = 0.05
+#
+##@EXPORT_CATEGORY("SPEED CONTROLS")
+#
+#static var SHIP_FORWARD_SPEED : float = 100.0
+#static var SHIP_FORWARD_CHANGE_RATE : float = 100.0
+#static var SHIP_BACK_SPEED : float = 10.0
+#static var SHIP_BACK_CHANGE_RATE : float = 100.0
+#static var SHIP_NEUTRAL_CHANGE_RATE : float = 30.0
+#static var SHIP_BOOST_SPEED : float = 200.0
+#static var SHIP_BOOST_CHANGE_RATE : float = 100.0
+#
 
 
 

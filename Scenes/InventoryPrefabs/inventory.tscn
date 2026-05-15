@@ -279,8 +279,6 @@ gravity_direction = Vector2(0, 0)
 gravity = 0.0
 linear_damp = 0.0
 script = ExtResource("1_i2tdg")
-ship_force = Vector2(1.5, 1.5)
-random_force = 0.25
 force = 100.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SubViewportContainer/SubViewport/BootArea" unique_id=163712967]

@@ -1,37 +1,78 @@
 class_name GameConfig extends Resource
 
-@export_category("PLAYER SHIP")
+@export_category("LEFT SCREEN")
 
-@export_group("STATS")
-## How many hits the ship can take before its game over (pinky default = 10)
+@export_group("LEVEL OPTIONS")
+## How many seconds before the authorities arrive (i.e. game over via time)
+@export var LEVEL_SECS_BEFORE_AUTHORITIES_ARRIVE : int = 600
+
+@export_group("SHIP STATS")
+## How many hits the ship can take before its game over 
 @export var SHIP_MAX_HEALTH : int = 10
-## The minimum velocity the player is travelling before taking damage from hitting an obstacles (pinky default = 65)
+## The minimum velocity the player is travelling before taking damage from hitting an obstacles 
 @export var SHIP_MINIMUM_BOUNCE_SPEED : float = 65
 
-@export_group("TURNING CONTROLS")
+@export_group("SHIP TURNING CONTROLS")
 
-## The maximum rotation speed the ship can take at (pinky default = 30)
+## The maximum rotation speed the ship can take at 
 @export var SHIP_ROTATION_SPEED : float = 30.0
-## How quickly the target rotation changes as you hold the left/right button down (pinky default = 50)
+## How quickly the target rotation changes as you hold the left/right button down 
 @export var SHIP_ROTATION_CHANGE_RATE : float = 50.0
-## How quickly the target rotation changes while boosting as you hold the left/right button down (pinky default = 50)
+## How quickly the target rotation changes while boosting as you hold the left/right button down
 @export var SHIP_BOOST_ROTATION_CHANGE_RATE : float = 100.0
-## How quickly the ship rotates towards the target rotation (pinky default = 0.05)
+## How quickly the ship rotates towards the target rotation 
 @export var SHIP_ROTATION_ACCELERATION : float = 0.05
 
-@export_group("SPEED CONTROLS")
+@export_group("SHIP SPEED CONTROLS")
 
-## The maximum speed the ship moves when holding Up (pinky default = 100)
+## The maximum speed the ship moves when holding Up
 @export var SHIP_FORWARD_SPEED : float = 100.0
-## How quickly the speed transitions to the max speed as you hold Forward (pinky default = 100)
+## How quickly the speed transitions to the max speed as you hold Forward 
 @export var SHIP_FORWARD_CHANGE_RATE : float = 100.0
-## The minimum speed the ship moves when holding Back (pinky default = 10)
+## The minimum speed the ship moves when holding Back
 @export var SHIP_BACK_SPEED : float = 10.0
-## How quickly the speed transitions to the min speed as you hold Back (pinky default = 100)
+## How quickly the speed transitions to the min speed as you hold Back
 @export var SHIP_BACK_CHANGE_RATE : float = 100.0
-## How quickly the target speed transitions to min speed when holding nothing (pinky default = 30)
+## How quickly the target speed transitions to min speed when holding nothing
 @export var SHIP_NEUTRAL_CHANGE_RATE : float = 30.0
-## The speed the ship moves when holding Boost (pinky default = 200)
+## The speed the ship moves when holding Boost 
 @export var SHIP_BOOST_SPEED : float = 200.0
-## How quickly the target speed transitions as you hold Boost (pinky default = 100)
+## How quickly the target speed transitions as you hold Boost 
 @export var SHIP_BOOST_CHANGE_RATE : float = 100.0
+
+
+
+
+
+@export_category("RIGHT SCREEN")
+
+@export_group("CHUTE")
+
+## Chance (0.0 > 1.0) to open the chute when the ship takes damage
+@export var INVENTORY_CHANCE_TO_OPEN_ON_DAMAGE : float = 0.5
+
+@export_group("INVENTORY ITEMS")
+## How far an item can be from where you clicked and still get grabbed
+@export var INVENTORY_MINIMUM_GRAB_DISTANCE : float = 100
+## Amount of force the ship movement exerts on items
+@export var INVENTORY_SHIP_FORCE : Vector2  = Vector2(1.5,1.5)
+## Amount of force exerted on items in small random directions at all times
+@export var INVENTORY_RANDOM_FORCE : float = 0.25
+## Amount of force exerted on items when the ship is jolted by hitting something
+@export var INVENTORY_JOLT_FORCE : float  = 200.0
+## How quickly the jolt force aubsides after hitting something
+@export var INVENTORY_JOLT_FORCE_REDUCTION : float  = 1000.0
+## Amount of force exerted on items in direction of mouse when being dragged
+@export var INVENTORY_DRAG_FORCE : float  = 2.5
+## Amount of force exerted on items in direction of mouse when released
+@export var INVENTORY_RELEASE_FORCE : float  = 0.5
+
+@export_group("CAMERA SETTINGS")
+## How much the inventory camera rotates in the direction the ship is flying
+@export var INVENTORY_CAMERA_TILT_STRENGTH : float = 25.0
+## How quickly the inventory camera rotates in the direction the ship is flying
+@export var INVENTORY_CAMERA_TILT_SPEED : float = 0.5
+## How much the inventory camera moves in the direction the ship is flying
+@export var INVENTORY_CAMERA_PAN_STRENGTH : Vector2 = Vector2(0.25,5)
+## How quickly the inventory camera moves in the direction the ship is flying
+@export var INVENTORY_CAMERA_PAN_SPEED : float = 1.0

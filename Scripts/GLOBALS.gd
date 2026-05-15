@@ -3,19 +3,22 @@ static var instance : GLOBALS
 
 static var game_config_manager : GameConfigManager = null
 
+
+#region Level Variables
+
+static var LEVEL_SECS_BEFORE_AUTHORITIES_ARRIVE : int = 1
+
+#endregion
+
 #region Ship Variables
 
 static var SHIP_MAX_HEALTH : int = 1
 static var SHIP_MINIMUM_BOUNCE_SPEED : float = 1
 
-#@EXPORT_CATEGORY("TURNING CONTROLS")
-
 static var SHIP_ROTATION_SPEED : float = 1
 static var SHIP_ROTATION_CHANGE_RATE : float = 1
 static var SHIP_BOOST_ROTATION_CHANGE_RATE : float = 1
 static var SHIP_ROTATION_ACCELERATION : float = 1
-
-#@EXPORT_CATEGORY("SPEED CONTROLS")
 
 static var SHIP_FORWARD_SPEED : float = 1
 static var SHIP_FORWARD_CHANGE_RATE : float = 1
@@ -28,11 +31,30 @@ static var SHIP_BOOST_CHANGE_RATE : float = 1
 #endregion
 
 
-#region Level Variables
 
-static var LEVEL_SECS_BEFORE_AUTHORITIES_ARRIVE : int = 600
+#region Inventory Variables
+
+
+static var INVENTORY_CHANCE_TO_OPEN_ON_DAMAGE : float = 1
+
+static var INVENTORY_MINIMUM_GRAB_DISTANCE : float = 1
+static var INVENTORY_SHIP_FORCE : Vector2 = Vector2.ONE
+static var INVENTORY_RANDOM_FORCE : float = 1
+static var INVENTORY_JOLT_FORCE : float = 1
+static var INVENTORY_JOLT_FORCE_REDUCTION : float = 1
+static var INVENTORY_DRAG_FORCE : float = 1
+static var INVENTORY_RELEASE_FORCE : float = 1
+
+static var INVENTORY_CAMERA_TILT_STRENGTH : float = 1
+static var INVENTORY_CAMERA_TILT_SPEED : float = 1
+static var INVENTORY_CAMERA_PAN_STRENGTH : Vector2 = Vector2.ONE
+static var INVENTORY_CAMERA_PAN_SPEED : float = 1
+
+
+
 
 #endregion
+
 
 
 

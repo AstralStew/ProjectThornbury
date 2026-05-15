@@ -4,4 +4,5 @@
 
 [resource]
 script = ExtResource("1_03jql")
+INVENTORY_CAMERA_TILT_STRENGTH = 2.5
 metadata/_custom_type_script = "uid://cjyohqwij1yd1"

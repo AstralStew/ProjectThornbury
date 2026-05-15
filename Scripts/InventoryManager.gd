@@ -11,9 +11,9 @@ enum ItemType {Rock,Crate,Pipe}
 @onready var debug_line : Line2D = $DebugLine
 @onready var item_holder : Node2D = $SubViewportContainer/SubViewport/ItemHolder
 
-@export var drag_force : float = 2.5
-@export var release_force : float = 0.5
-@export_range(0,1) var chance_to_open_chute_on_damage : float = 0.5
+#@export var drag_force : float = 2.5
+#@export var release_force : float = 0.5
+#@export_range(0,1) var chance_to_open_chute_on_damage : float = 0.5
 
 @export_category("READ ONLY")
 @export var _is_dragging : bool = false
@@ -35,7 +35,7 @@ func _enter_tree() -> void:
 
 
 func maybe_open_chute() -> void:
-	if randf() < chance_to_open_chute_on_damage: chute_open = true
+	if randf() < GLOBALS.INVENTORY_CHANCE_TO_OPEN_ON_DAMAGE: chute_open = true
 
 
 func _physics_process(delta: float) -> void:
@@ -98,7 +98,7 @@ func _dragging(_object:Item,_click_pos:Vector2) -> void:
 	while Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
 		_active_debug_line.set_point_position(1,_active_debug_line.get_local_mouse_position())
 		_move_vector = _active_debug_line.to_global(_active_debug_line.get_point_position(1)) - _active_debug_line.to_global(_active_debug_line.get_point_position(0)) 
-		_object.apply_central_force(_move_vector * drag_force)
+		_object.apply_central_force(_move_vector * GLOBALS.INVENTORY_DRAG_FORCE)
 		await get_tree().physics_frame
 		if !is_instance_valid(_object) || _active_debug_line == null || _active_debug_line.is_queued_for_deletion(): break
 	
@@ -107,7 +107,7 @@ func _dragging(_object:Item,_click_pos:Vector2) -> void:
 		if _active_debug_line != null: _active_debug_line.queue_free()
 		_object.linear_damp_mode = RigidBody2D.DAMP_MODE_COMBINE
 		_object.linear_damp = _old_damp
-		_object.apply_central_impulse(_move_vector * release_force)
-		print_rich(DEBUG_NAME,"Dragging > Mouse released! Releasing '"+_object.name+"' with force of "+str(_move_vector)+" * "+str(release_force))
+		_object.apply_central_impulse(_move_vector * GLOBALS.INVENTORY_RELEASE_FORCE)
+		print_rich(DEBUG_NAME,"Dragging > Mouse released! Releasing '"+_object.name+"' with force of "+str(_move_vector)+" * "+str(GLOBALS.INVENTORY_RELEASE_FORCE))
 	print_rich(DEBUG_NAME,"Dragging > Oops, objects been freed! Cancelling.")
 	is_dragging = false
