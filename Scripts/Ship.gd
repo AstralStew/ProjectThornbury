@@ -2,26 +2,6 @@ class_name Ship extends CharacterBody2D
 const DEBUG_NAME = "[b][Ship][/b] "
 static var instance : Ship = null
 
-#
-#@export var minimum_bounce_speed : float = 50
-#
-#@export_category("Turning Controls")
-#
-#@export var rotation_speed : float = 30.0
-#@export var rotation_change_rate : float = 50.0
-#@export var boost_rotation_change_rate : float = 100.0
-#@export var rotation_acceleration : float = 0.05
-#
-#@export_category("Speed Controls")
-#
-#@export var forward_change_rate : float = 100.0
-#@export var back_change_rate : float = 100.0
-#@export var neutral_change_rate : float = 30.0
-#@export var forward_speed : float = 100.0
-#@export var back_speed : float = 10.0
-#
-#@export var boost_speed : float = 200.0
-#@export var boost_change_rate : float = 100.0
 
 
 
@@ -64,10 +44,6 @@ static var SHIP_BOOST_CHANGE_RATE : float = 100.0
 			1 if Input.is_action_pressed("MoveLeft") else -1 if Input.is_action_pressed("MoveRight") else 0,
 			1 if (Input.is_action_pressed("MoveUp")) else -1 if (Input.is_action_pressed("MoveDown")) else 0,
 		)
-		#return Vector2(
-			#speed.x / left_speed if speed.x < 0 else speed.x / right_speed,
-			#speed.y / back_speed if speed.y < 0 else speed.y / forward_speed
-		#)
 
 var trails : Array[ShipTrail] = []
 
@@ -95,15 +71,10 @@ func _physics_process(delta: float) -> void:
 		speed.x = 0
 		speed.y = speed.y * 0.69
 		
-		#rotation = lerp_angle(rotation, collision.get + GLOBALS.random_rotation(15), rotation_acc)
-		#look_at(velocity)
 		rotation = collision.get_normal().angle() + deg_to_rad(90) + GLOBALS.random_rotation(30)
 		take_damage()
-		#if collision.get_collider().has_method("hit"):
-			#collision.get_collider().hit()
 
-	
-	#move_and_slide()
+
 
 func take_damage() -> void:
 	print_rich(DEBUG_NAME,"TakeDamage > Reducing health and losing control!")
@@ -121,9 +92,8 @@ func lose_control() -> void:
 	_tween.tween_property(self,"rotation",rotation + GLOBALS.random_rotation(50),0.25)
 	_tween.tween_property($ShipsSheet,"rotation_degrees",$ShipsSheet.rotation_degrees+360,0.25)
 	
-	#await get_tree().physics_frame
-	UIManager.instance.jolt()
-	Boot.instance.jolt()
+	if UIManager.instance != null: UIManager.instance.jolt()
+	if Boot.instance != null: Boot.instance.jolt()
 	
 	await get_tree().create_timer(0.25).timeout
 	$ShipsSheet.rotation_degrees = 180
@@ -154,28 +124,4 @@ func get_input(delta: float) -> void:
 			_new_speed = move_toward(speed.y,-GLOBALS.SHIP_BACK_SPEED, GLOBALS.SHIP_NEUTRAL_CHANGE_RATE * delta)
 	
 	speed = Vector2(_target_rotation,_new_speed)
-	
-	#speed = Vector2(0,_new_speed)
-
-#
-#func td_input() -> void:
-	#var _new_x_speed : float
-	#var _new_y_speed : float
-	#
-	#if Input.is_action_pressed("MoveLeft"):
-		#_new_x_speed = move_toward(speed.x,-left_speed, change_rate)
-	#elif Input.is_action_pressed("MoveRight"):
-		#_new_x_speed = move_toward(speed.x,right_speed, change_rate)
-	#else:
-		#_new_x_speed = move_toward(speed.x,0, change_rate * 2)
-	#
-	#if Input.is_action_pressed("MoveUp"):
-		#_new_y_speed = move_toward(speed.y, back_speed, change_rate)
-	#elif Input.is_action_pressed("MoveDown"):
-		#_new_y_speed = move_toward(speed.y, -forward_speed, change_rate)
-	#else:
-		#_new_y_speed = move_toward(speed.y,0, change_rate * 2)
-	#
-	#speed = Vector2(_new_x_speed,_new_y_speed)
-	#
 	

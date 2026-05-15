@@ -4,6 +4,7 @@ static var instance : UIManager = null
 
 @onready var ui_holder : Control = $UIHolder
 @onready var border : Control = $UIHolder/Border
+@onready var msg_bg_overlay : Control = $UIHolder/MessageBgOverlay
 
 static var has_taken_damage : bool = false # don't reset this on restart!
 
@@ -20,26 +21,32 @@ func _ready() -> void:
 
 func start_time(fade:=0.0) -> void:
 	get_tree().paused = false
-	
 	if fade:
+		msg_bg_overlay.visible = true
+		msg_bg_overlay.modulate = Color(1,1,1,0.25)
 		Engine.time_scale = 0.0
-		var _tween:Tween = create_tween().set_ignore_time_scale().set_pause_mode(Tween.TWEEN_PAUSE_PROCESS)
-		_tween.tween_property(Engine,"time_scale",1,fade).set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_QUAD)
+		var _tween:Tween = create_tween().set_ignore_time_scale().set_pause_mode(Tween.TWEEN_PAUSE_PROCESS).set_parallel().set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_QUAD)
+		_tween.tween_property(Engine,"time_scale",1,fade)
+		_tween.tween_property(msg_bg_overlay,"modulate", Color(1,1,1,0),fade)
 		await get_tree().create_timer(fade,true,false,true).timeout
 		await get_tree().process_frame
 		Engine.time_scale = 1.0
+	msg_bg_overlay.visible = false
 
 	
 
 func stop_time(fade:=0.0) -> void:
+	msg_bg_overlay.visible = true
 	if fade:
+		msg_bg_overlay.modulate = Color(1,1,1,0)
 		Engine.time_scale = 1.0
-		var _tween:Tween = create_tween().set_ignore_time_scale().set_pause_mode(Tween.TWEEN_PAUSE_PROCESS)
-		_tween.tween_property(Engine,"time_scale",0,fade).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUAD)
+		var _tween:Tween = create_tween().set_ignore_time_scale().set_pause_mode(Tween.TWEEN_PAUSE_PROCESS).set_parallel().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUAD)
+		_tween.tween_property(Engine,"time_scale",0,fade)
+		_tween.tween_property(msg_bg_overlay,"modulate", Color(1,1,1,0.25),fade)
 		await get_tree().create_timer(fade,true,false,true).timeout
 		await get_tree().process_frame
 		Engine.time_scale = 1.0
-	
+	msg_bg_overlay.modulate = Color(1,1,1,1)
 	get_tree().paused = true
 
 

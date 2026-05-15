@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://be2frk3ryyebk" path="res://Scenes/InventoryPrefabs/item_pipe.tscn" id="4_aco8w"]
 [ext_resource type="Script" uid="uid://dw1ch6u6ctwe8" path="res://Scripts/damage_texture.gd" id="5_aco8w"]
 [ext_resource type="Texture2D" uid="uid://c8uceqq350won" path="res://Assets/Images/Hanger/HangerDoor_Frame.png" id="7_toeaj"]
+[ext_resource type="Texture2D" uid="uid://056n6uoorop6" path="res://Assets/Images/Hanger/HangerDoor.png" id="7_v7qpt"]
 [ext_resource type="Script" uid="uid://ba0ppdfg70y3g" path="res://Scripts/HangerCamera.gd" id="10_v7qpt"]
 
 [sub_resource type="Gradient" id="Gradient_v7qpt"]
@@ -105,7 +106,7 @@ render_target_update_mode = 4
 z_index = -1
 position = Vector2(265, 0)
 
-[node name="Background2" type="ColorRect" parent="SubViewportContainer/SubViewport/BackgroundElements" unique_id=2010464744]
+[node name="BackgroundWall" type="ColorRect" parent="SubViewportContainer/SubViewport/BackgroundElements" unique_id=2010464744]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -118,7 +119,7 @@ grow_vertical = 2
 mouse_filter = 2
 color = Color(0.20483068, 0.25032598, 0.3507662, 1)
 
-[node name="Background" type="ColorRect" parent="SubViewportContainer/SubViewport/BackgroundElements" unique_id=676433382]
+[node name="BackgroundFloor1" type="ColorRect" parent="SubViewportContainer/SubViewport/BackgroundElements" unique_id=676433382]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -131,7 +132,33 @@ grow_vertical = 2
 mouse_filter = 2
 color = Color(0.2969033, 0.3585674, 0.48664355, 1)
 
-[node name="Background3" type="ColorRect" parent="SubViewportContainer/SubViewport/BackgroundElements" unique_id=969965782]
+[node name="BackgroundFloorL" type="ColorRect" parent="SubViewportContainer/SubViewport/BackgroundElements" unique_id=972572487]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -254.0
+offset_top = 163.0
+offset_right = -86.685
+offset_bottom = 348.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.2969033, 0.3585674, 0.48664355, 1)
+
+[node name="BackgroundFloorR" type="ColorRect" parent="SubViewportContainer/SubViewport/BackgroundElements" unique_id=812382015]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 85.0
+offset_top = 163.0
+offset_right = 252.315
+offset_bottom = 348.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.2969033, 0.3585674, 0.48664355, 1)
+
+[node name="BackgroundDoor" type="ColorRect" parent="SubViewportContainer/SubViewport/BackgroundElements" unique_id=969965782]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -162,7 +189,7 @@ script = ExtResource("5_aco8w")
 
 [node name="Chute" type="Area2D" parent="SubViewportContainer/SubViewport/BackgroundElements" unique_id=1174495063]
 position = Vector2(0, 180)
-rotation = 4.712389
+rotation = -1.5707964
 collision_layer = 1024
 collision_mask = 256
 monitorable = false
@@ -173,24 +200,39 @@ script = ExtResource("3_k1vlg")
 position = Vector2(-74.99999, -0.49999237)
 shape = SubResource("RectangleShape2D_0n8tc")
 
-[node name="HangerDoorFrame" type="Sprite2D" parent="SubViewportContainer/SubViewport/BackgroundElements/Chute" unique_id=1122355408]
-position = Vector2(-75.00001, -43.999992)
-texture = ExtResource("7_toeaj")
-
-[node name="Outside" type="ColorRect" parent="SubViewportContainer/SubViewport/BackgroundElements/Chute/HangerDoorFrame" unique_id=2032913877]
+[node name="Outside" type="ColorRect" parent="SubViewportContainer/SubViewport/BackgroundElements/Chute" unique_id=2032913877]
 show_behind_parent = true
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -92.0
-offset_top = -42.0
-offset_right = -98.0
-offset_bottom = -48.0
+offset_left = -167.0
+offset_top = -86.0
+offset_right = 16.882767
+offset_bottom = 85.242676
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset_ratio = Vector2(0.5, 0.5)
 mouse_filter = 2
-color = Color(0.93333334, 0.5254902, 0.58431375, 1)
+color = Color(0.93, 0.6138, 0.66122985, 1)
+
+[node name="HangerDoorLeft" type="Sprite2D" parent="SubViewportContainer/SubViewport/BackgroundElements/Chute" unique_id=870151413]
+texture_filter = 1
+position = Vector2(-75, -33)
+texture = ExtResource("7_v7qpt")
+region_enabled = true
+region_rect = Rect2(4, 95, 182, 83)
+
+[node name="HangerDoorRight" type="Sprite2D" parent="SubViewportContainer/SubViewport/BackgroundElements/Chute" unique_id=1064261200]
+texture_filter = 1
+position = Vector2(-75, 33)
+texture = ExtResource("7_v7qpt")
+region_enabled = true
+region_rect = Rect2(4, 12, 182, 81)
+
+[node name="HangerDoorFrame" type="Sprite2D" parent="SubViewportContainer/SubViewport/BackgroundElements/Chute" unique_id=1122355408]
+visible = false
+position = Vector2(-75.00001, -43.999992)
+texture = ExtResource("7_toeaj")
 
 [node name="Chute" type="ColorRect" parent="SubViewportContainer/SubViewport/BackgroundElements/Chute/HangerDoorFrame" unique_id=1497257672]
 show_behind_parent = true
@@ -210,6 +252,7 @@ mouse_filter = 2
 color = Color(0.2, 0.2, 0.2, 1)
 
 [node name="HangerDoorFrame2" type="Sprite2D" parent="SubViewportContainer/SubViewport/BackgroundElements/Chute" unique_id=984879146]
+visible = false
 position = Vector2(-75, 43.000008)
 rotation = -3.1415927
 texture = ExtResource("7_toeaj")
@@ -247,6 +290,7 @@ mouse_filter = 2
 color = Color(0.2, 0.2, 0.2, 1)
 
 [node name="Outside2" type="ColorRect" parent="SubViewportContainer/SubViewport/BackgroundElements/Chute" unique_id=21236288]
+visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -296,6 +340,7 @@ collision_mask = 0
 shape = SubResource("WorldBoundaryShape2D_51e2h")
 
 [node name="BootArea" type="Area2D" parent="SubViewportContainer/SubViewport" unique_id=1927072519]
+visible = false
 position = Vector2(270, 340)
 collision_layer = 524288
 collision_mask = 256
@@ -315,6 +360,7 @@ position = Vector2(2, -20)
 shape = SubResource("RectangleShape2D_tumq0")
 
 [node name="ItemHolder" type="Node2D" parent="SubViewportContainer/SubViewport" unique_id=1815584380]
+visible = false
 
 [node name="ItemCrate" parent="SubViewportContainer/SubViewport/ItemHolder" unique_id=1291223074 instance=ExtResource("3_03ybr")]
 position = Vector2(155, 260)
@@ -329,6 +375,7 @@ position = Vector2(263, 440)
 finished_spawning = true
 
 [node name="Camera2D" type="Camera2D" parent="SubViewportContainer/SubViewport" unique_id=1942357245]
+visible = false
 position = Vector2(270, 320)
 ignore_rotation = false
 limit_enabled = false
@@ -347,9 +394,6 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("NoiseTexture2D_v7qpt")
 stretch_mode = 1
-
-[node name="Node2D" type="Node2D" parent="SubViewportContainer/SubViewport" unique_id=923990642]
-position = Vector2(263, 0)
 
 [connection signal="body_entered" from="SubViewportContainer/SubViewport/BackgroundElements/Chute" to="SubViewportContainer/SubViewport/BackgroundElements/Chute" method="_on_body_entered"]
 [connection signal="input_event" from="SubViewportContainer/SubViewport/BootArea" to="SubViewportContainer/SubViewport/BootArea" method="_on_input_event"]
