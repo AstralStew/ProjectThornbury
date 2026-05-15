@@ -23,7 +23,7 @@ metadata/_custom_type_script = "uid://b0o8xyki30gi8"
 texture = ExtResource("2_c3fgt")
 
 [node name="Shadow" type="Sprite2D" parent="CrateBig" unique_id=1081923213]
-modulate = Color(0, 0, 0, 0.48800004)
+modulate = Color(0, 0, 0, 0.40300003)
 z_index = -1
 scale = Vector2(1.03, 1.03)
 texture = ExtResource("2_c3fgt")

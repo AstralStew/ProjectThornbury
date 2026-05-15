@@ -16,7 +16,7 @@ metadata/_custom_type_script = "uid://b0o8xyki30gi8"
 texture = ExtResource("2_8py4i")
 
 [node name="Shadow" type="Sprite2D" parent="RockResourceSmall" unique_id=1339193852]
-modulate = Color(0, 0, 0, 0.485)
+modulate = Color(0, 0, 0, 0.40300003)
 z_index = -1
 texture_filter = 2
 scale = Vector2(1.05, 1.05)
