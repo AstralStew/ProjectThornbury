@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://cyoh81v318bq0"]
+
+[ext_resource type="Script" uid="uid://dv5g3it2i83re" path="res://Scripts/Road.gd" id="1_4hmke"]
+
+[node name="RoadLine" type="Line2D" unique_id=1009893303]
+points = PackedVector2Array(0, 0, 100, 100)
+width = 20.0
+default_color = Color(0.9843137, 0.73333335, 0.6784314, 1)
+joint_mode = 1
+script = ExtResource("1_4hmke")
+number_of_followers = 3
+follower_speed = 80.0
+metadata/_custom_type_script = "uid://dv5g3it2i83re"
+
+[node name="RoadPath" type="Path2D" parent="." unique_id=1763522874]

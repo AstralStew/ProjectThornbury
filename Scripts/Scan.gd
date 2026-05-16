@@ -61,11 +61,11 @@ func scanning() -> void:
 	var _number_of_scan_attempts = 20
 	while (_number_of_scan_attempts > 0):
 		_tween = create_tween().set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_QUAD)
-		_tween.tween_property(self,"modulate",Color(1,1,0,0),scan_time * _number_of_scan_attempts)
-		await get_tree().create_timer(scan_time * _number_of_scan_attempts,false).timeout
+		_tween.tween_property(self,"modulate",Color(1,1,0,0),scan_time * _number_of_scan_attempts * 0.5)
+		await get_tree().create_timer(scan_time * _number_of_scan_attempts * 0.5,false).timeout
 		_tween = create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUAD)
-		_tween.tween_property(self,"modulate",Color(1,1,0,1),scan_time * _number_of_scan_attempts)
-		await get_tree().create_timer(2 * scan_time * _number_of_scan_attempts,false).timeout
+		_tween.tween_property(self,"modulate",Color(1,1,0,1),scan_time * _number_of_scan_attempts * 0.5)
+		await get_tree().create_timer(scan_time * _number_of_scan_attempts,false).timeout
 		_number_of_scan_attempts -= 1
 	
 	await get_tree().create_timer(0.5,false).timeout

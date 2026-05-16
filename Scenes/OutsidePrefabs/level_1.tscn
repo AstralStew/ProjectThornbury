@@ -4,8 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://c14fl8nyl0y11" path="res://Scenes/OutsidePrefabs/collectable_rock.tscn" id="1_tmlh5"]
 [ext_resource type="PackedScene" uid="uid://dtkur4468wq5q" path="res://Scenes/OutsidePrefabs/collectable_crate.tscn" id="2_7asov"]
 [ext_resource type="PackedScene" uid="uid://bjd7rlg5ulwgy" path="res://Scenes/OutsidePrefabs/station.tscn" id="2_80ic5"]
-[ext_resource type="Script" uid="uid://du2cjhuyvairt" path="res://Scripts/Hoverscanner.gd" id="6_65i52"]
-[ext_resource type="Texture2D" uid="uid://bs8wppq8ctccy" path="res://Assets/Images/Ships/Ships_Sheet.png" id="6_80ic5"]
+[ext_resource type="PackedScene" uid="uid://cyoh81v318bq0" path="res://Scenes/OutsidePrefabs/road.tscn" id="6_80ic5"]
 [ext_resource type="PackedScene" uid="uid://cbf7m3hmnto6d" path="res://Scenes/OutsidePrefabs/collectable_pipe.tscn" id="8_rx4sy"]
 
 [sub_resource type="Gradient" id="Gradient_rx4sy"]
@@ -36,38 +35,6 @@ size = Vector2(100, 30)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i458n"]
 size = Vector2(60, 60)
-
-[sub_resource type="Curve2D" id="Curve2D_65i52"]
-_data = {
-"points": PackedVector2Array(0, 0, 0.9, 0, 1491, 1479, 0, 0, 0, 0, -1880, -1952)
-}
-point_count = 2
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_65i52"]
-radius = 150.0
-
-[sub_resource type="Curve" id="Curve_65i52"]
-_data = [Vector2(0, 0.15162319), 0.0, 0.84837687, 0, 1, Vector2(1, 1), 0.84837687, 0.0, 1, 0]
-point_count = 2
-
-[sub_resource type="Gradient" id="Gradient_i458n"]
-offsets = PackedFloat32Array(0.59119105, 1)
-colors = PackedColorArray(0.9289499, 0.8403465, 1, 1, 1, 1, 0, 0)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_65i52"]
-bg_color = Color(1, 1, 0, 1)
-draw_center = false
-border_width_left = 1
-border_width_top = 1
-border_width_right = 1
-border_width_bottom = 1
-border_color = Color(1, 1, 0.5592148, 1)
-border_blend = true
-corner_radius_top_left = 48
-corner_radius_top_right = 48
-corner_radius_bottom_right = 48
-corner_radius_bottom_left = 48
-corner_detail = 10
 
 [node name="Level1" type="Node2D" unique_id=1392275605]
 z_index = -2
@@ -106,6 +73,7 @@ texture = SubResource("NoiseTexture2D_81xng")
 stretch_mode = 1
 
 [node name="BoundaryTop" type="StaticBody2D" parent="." unique_id=1002903861]
+z_index = 10
 position = Vector2(0, -2960)
 rotation = -3.1415925
 collision_layer = 16
@@ -145,6 +113,7 @@ color = Color(0.38560182, 0.22376983, 0, 1)
 shape = SubResource("WorldBoundaryShape2D_51e2h")
 
 [node name="BoundaryBottom" type="StaticBody2D" parent="." unique_id=540079174]
+z_index = 10
 position = Vector2(0, 2960)
 collision_layer = 16
 collision_mask = 0
@@ -182,6 +151,7 @@ color = Color(0, 0.77396834, 0.6492011, 1)
 shape = SubResource("WorldBoundaryShape2D_51e2h")
 
 [node name="BoundaryLeft" type="StaticBody2D" parent="." unique_id=1109677079]
+z_index = 10
 position = Vector2(-2960, 0)
 rotation = 1.5707964
 collision_layer = 16
@@ -223,6 +193,7 @@ color = Color(0, 0.77396834, 0.6492011, 1)
 shape = SubResource("WorldBoundaryShape2D_51e2h")
 
 [node name="BoundaryRight" type="StaticBody2D" parent="." unique_id=1975964168]
+z_index = 10
 position = Vector2(2960, 0)
 rotation = -1.5707964
 collision_layer = 16
@@ -262,95 +233,6 @@ grow_vertical = 2
 rotation = 1.5707964
 pivot_offset_ratio = Vector2(1, 0)
 color = Color(0, 0.77396834, 0.6492011, 1)
-
-[node name="Roads" type="Node2D" parent="." unique_id=453060106]
-z_index = -4
-
-[node name="ColorRect" type="ColorRect" parent="Roads" unique_id=1670817654]
-visible = false
-offset_left = -1842.0001
-offset_top = -1939.0001
-offset_right = 2938.9019
-offset_bottom = -1919.0001
-rotation = 0.79761547
-color = Color(0.9843137, 0.73333335, 0.6784314, 1)
-
-[node name="ColorRect2" type="ColorRect" parent="Roads" unique_id=689535622]
-offset_left = -1842.0001
-offset_top = -1939.0001
-offset_right = 1702.3182
-offset_bottom = -1919.0001
-rotation = 0.27707958
-color = Color(0.9843137, 0.73333335, 0.6784314, 1)
-
-[node name="ColorRect3" type="ColorRect" parent="Roads" unique_id=669650117]
-offset_left = -1403.9998
-offset_top = 1698.0004
-offset_right = 1514.1741
-offset_bottom = 1718.0004
-rotation = -0.09294641
-color = Color(0.9843137, 0.73333335, 0.6784314, 1)
-
-[node name="ColorRect4" type="ColorRect" parent="Roads" unique_id=351300742]
-offset_left = -1435.9999
-offset_top = 1720.9999
-offset_right = 271.6576
-offset_bottom = 1740.9999
-rotation = -1.7581046
-color = Color(0.9843137, 0.73333335, 0.6784314, 1)
-
-[node name="ColorRect5" type="ColorRect" parent="Roads" unique_id=688154909]
-offset_left = 1753.0001
-offset_top = -55.0
-offset_right = 3460.6577
-offset_bottom = -35.0
-rotation = -1.7581046
-color = Color(0.9843137, 0.73333335, 0.6784314, 1)
-
-[node name="ColorRect6" type="ColorRect" parent="Roads" unique_id=2102659400]
-offset_left = -1920.0
-offset_top = -1911.0
-offset_right = -1242.7175
-offset_bottom = -1891.0
-rotation = -3.2014792
-color = Color(0.9843137, 0.73333335, 0.6784314, 1)
-
-[node name="ColorRect7" type="ColorRect" parent="Roads" unique_id=333164982]
-offset_left = 1519.0
-offset_top = 1433.0002
-offset_right = 2196.2825
-offset_bottom = 1453.0002
-rotation = -0.56103873
-color = Color(0.9843137, 0.73333335, 0.6784314, 1)
-
-[node name="ColorRect8" type="ColorRect" parent="Roads" unique_id=298007735]
-offset_left = -2109.0
-offset_top = 604.9999
-offset_right = -1431.7175
-offset_bottom = 624.9999
-rotation = -0.56103873
-color = Color(0.9843137, 0.73333335, 0.6784314, 1)
-
-[node name="ColorRect9" type="ColorRect" parent="Roads" unique_id=1210444166]
-offset_left = -191.0
-offset_top = -1467.0
-offset_right = 486.28247
-offset_bottom = -1447.0
-rotation = -1.2855718
-color = Color(0.9843137, 0.73333335, 0.6784314, 1)
-
-[node name="Station" parent="." unique_id=1439882274 groups=["Stations"] instance=ExtResource("2_80ic5")]
-position = Vector2(1518, 1459)
-cooldown_duration = Vector2(25, 45)
-
-[node name="Station2" parent="." unique_id=352694730 groups=["Stations"] instance=ExtResource("2_80ic5")]
-position = Vector2(-1886, -1954)
-
-[node name="Station3" parent="." unique_id=1875856237 groups=["Stations"] instance=ExtResource("2_80ic5")]
-position = Vector2(1590, -939)
-
-[node name="Station4" parent="." unique_id=387573631 groups=["Stations"] instance=ExtResource("2_80ic5")]
-position = Vector2(-1446, 1708)
 
 [node name="CollectableHolder" type="Node2D" parent="." unique_id=9974128]
 
@@ -1046,7 +928,7 @@ position = Vector2(-35, -90)
 position = Vector2(-99, -31)
 
 [node name="CollectablePipe4" parent="CollectableHolder/CollectablePipeCloud2" unique_id=1011395638 instance=ExtResource("8_rx4sy")]
-position = Vector2(-99, 87)
+position = Vector2(-168, 32)
 
 [node name="CollectablePipe5" parent="CollectableHolder/CollectablePipeCloud2" unique_id=942875373 instance=ExtResource("8_rx4sy")]
 position = Vector2(135, 84)
@@ -1067,7 +949,7 @@ position = Vector2(186, 28)
 position = Vector2(157, -90)
 
 [node name="CollectablePipe11" parent="CollectableHolder/CollectablePipeCloud2" unique_id=1671471817 instance=ExtResource("8_rx4sy")]
-position = Vector2(33, 165)
+position = Vector2(-84, 163)
 
 [node name="CollectablePipe12" parent="CollectableHolder/CollectablePipeCloud2" unique_id=1940085935 instance=ExtResource("8_rx4sy")]
 position = Vector2(-71, -219)
@@ -1356,8 +1238,8 @@ scale = Vector2(1.8109853, 1.8109853)
 shape = SubResource("RectangleShape2D_rx4sy")
 
 [node name="ObstacleWall32" type="StaticBody2D" parent="ObstacleHolder/Wall" unique_id=540881554]
-position = Vector2(-2087, 357)
-rotation = 0.66642404
+position = Vector2(-2157.0002, 327.99994)
+rotation = 2.5827963
 scale = Vector2(0.9999999, 0.9999999)
 collision_layer = 16
 collision_mask = 0
@@ -1375,8 +1257,8 @@ scale = Vector2(1.8109853, 1.8109853)
 shape = SubResource("RectangleShape2D_rx4sy")
 
 [node name="ObstacleWall33" type="StaticBody2D" parent="ObstacleHolder/Wall" unique_id=450090828]
-position = Vector2(-1766.0001, 167.00002)
-rotation = 0.09749788
+position = Vector2(-1748, 88.00004)
+rotation = 1.1703789
 scale = Vector2(0.9999999, 0.9999999)
 collision_layer = 16
 collision_mask = 0
@@ -1432,8 +1314,8 @@ scale = Vector2(1.8109853, 1.8109853)
 shape = SubResource("RectangleShape2D_rx4sy")
 
 [node name="ObstacleWall36" type="StaticBody2D" parent="ObstacleHolder/Wall" unique_id=177133015]
-position = Vector2(-2263, 275.00006)
-rotation = -0.90892255
+position = Vector2(-2293, 269)
+rotation = 2.154662
 scale = Vector2(0.9999999, 0.9999999)
 collision_layer = 16
 collision_mask = 0
@@ -1451,7 +1333,7 @@ scale = Vector2(1.8109853, 1.8109853)
 shape = SubResource("RectangleShape2D_rx4sy")
 
 [node name="ObstacleWall37" type="StaticBody2D" parent="ObstacleHolder/Wall" unique_id=1576776808]
-position = Vector2(-1963, 528.99994)
+position = Vector2(-2007.9999, 446)
 rotation = 0.03796047
 scale = Vector2(0.9999999, 0.9999999)
 collision_layer = 16
@@ -8667,56 +8549,46 @@ rotation = 0.7853982
 scale = Vector2(1.8109853, 1.8109853)
 shape = SubResource("RectangleShape2D_i458n")
 
-[node name="Path2D" type="Path2D" parent="." unique_id=1395366629]
-curve = SubResource("Curve2D_65i52")
+[node name="RoadHolder" type="Node2D" parent="." unique_id=596469565]
 
-[node name="Line2D" type="Line2D" parent="Path2D" unique_id=2052009287]
-points = PackedVector2Array(1491, 1479, -1880, -1952)
-width = 20.0
-default_color = Color(0.9843137, 0.73333335, 0.6784314, 1)
+[node name="Road" parent="RoadHolder" unique_id=1763522874 instance=ExtResource("6_80ic5")]
+position = Vector2(-1908, -1943)
+points = PackedVector2Array(-1089, -1139, -888, -701, -799, -466, -750.8699, -250.79312, -763, 31, -413, 64, -1, 1, 3427, 3401)
 
-[node name="PathFollow2D" type="PathFollow2D" parent="Path2D" unique_id=175744795]
-position = Vector2(1491, 1479)
-loop = false
+[node name="Road4" parent="RoadHolder" unique_id=1009893303 instance=ExtResource("6_80ic5")]
+position = Vector2(-1880.9999, -1950.9998)
+rotation = 0.009041475
+points = PackedVector2Array(-1.388794, -42.989502, 795.2333, 132.81519, 1695, 485, 1923.7152, -261.40405, 1695, 485, 2505.502, 818.3801, 3475, 1013)
+number_of_followers = 2
 
-[node name="Hoverscanner" type="Area2D" parent="Path2D/PathFollow2D" unique_id=611481183]
-rotation = -1.5707964
-scale = Vector2(2.145, 2.145)
-collision_layer = 0
-input_pickable = false
-monitorable = false
-script = ExtResource("6_65i52")
-speed = 75.0
-metadata/_custom_type_script = "uid://du2cjhuyvairt"
+[node name="Road5" parent="RoadHolder" unique_id=615065004 instance=ExtResource("6_80ic5")]
+position = Vector2(-1886, -1947)
+points = PackedVector2Array(3083, 1698, 4239, -421, 3977, 3042, 3455, 3376)
+number_of_followers = 1
+loop_path = false
 
-[node name="Hoverscanner" type="Sprite2D" parent="Path2D/PathFollow2D/Hoverscanner" unique_id=644963130]
-texture_filter = 1
-texture = ExtResource("6_80ic5")
-region_enabled = true
-region_rect = Rect2(8, 50, 28, 25)
+[node name="Road2" parent="RoadHolder" unique_id=1561659084 instance=ExtResource("6_80ic5")]
+position = Vector2(-1886, -1947)
+points = PackedVector2Array(-1136, 1761, -551, 2472, 259, 2146, -549, 2473, 417, 3698, 3404, 3423, 4476, 4379, 3311, 4993)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Path2D/PathFollow2D/Hoverscanner" unique_id=2095740398]
-shape = SubResource("CircleShape2D_65i52")
+[node name="ColorRect8" type="ColorRect" parent="RoadHolder" unique_id=298007735]
+z_index = 1
+offset_left = -1583.9999
+offset_top = 388.00012
+offset_right = -1183.9999
+offset_bottom = 408.00012
+rotation = -2.4529006
+color = Color(0.9843137, 0.73333335, 0.6784314, 1)
 
-[node name="Line2D" type="Line2D" parent="Path2D/PathFollow2D/Hoverscanner" unique_id=68875065]
-modulate = Color(1, 1, 1, 0)
-self_modulate = Color(1, 1, 1, 0.77254903)
-rotation = -0.40221027
-points = PackedVector2Array(0, 0, 0, 0, 0, 0)
-width = 69.0
-width_curve = SubResource("Curve_65i52")
-gradient = SubResource("Gradient_i458n")
-begin_cap_mode = 2
-round_precision = 11
+[node name="Station" parent="." unique_id=1439882274 groups=["Stations"] instance=ExtResource("2_80ic5")]
+position = Vector2(1518, 1459)
+cooldown_duration = Vector2(25, 45)
 
-[node name="Panel" type="Panel" parent="Path2D/PathFollow2D/Hoverscanner" unique_id=1002277367]
-modulate = Color(1, 1, 1, 0.12200001)
-offset_left = -50.0
-offset_top = -50.0
-offset_right = 50.0
-offset_bottom = 50.0
-scale = Vector2(3.25, 3.25)
-pivot_offset_ratio = Vector2(0.5, 0.5)
-theme_override_styles/panel = SubResource("StyleBoxFlat_65i52")
+[node name="Station2" parent="." unique_id=352694730 groups=["Stations"] instance=ExtResource("2_80ic5")]
+position = Vector2(-1886, -1954)
 
-[connection signal="body_entered" from="Path2D/PathFollow2D/Hoverscanner" to="Path2D/PathFollow2D/Hoverscanner" method="_on_body_entered"]
+[node name="Station3" parent="." unique_id=1875856237 groups=["Stations"] instance=ExtResource("2_80ic5")]
+position = Vector2(1590, -939)
+
+[node name="Station4" parent="." unique_id=387573631 groups=["Stations"] instance=ExtResource("2_80ic5")]
+position = Vector2(-1446, 1708)

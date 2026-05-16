@@ -6,12 +6,9 @@ static var instance : UIManager = null
 @onready var border : Control = $UIHolder/Border
 @onready var msg_bg_overlay : Control = $UIHolder/MessageBgOverlay
 @onready var prosperity_bar : ProgressBar = $UIHolder/MC_ScreenHolders/HB_ScreenHolders/LeftScreen/PanelContainer/TopBar/ProsperityBar
-@onready var time_remaining_label : RichTextLabel = $UIHolder/MC_ScreenHolders/HB_ScreenHolders/LeftScreen/BottomBar/TimeRemaining
 
 @export var progress_colour : Gradient
 
-@export_category("READ ONLY")
-@export var time_remaining : int = -1
 
 static var has_taken_damage : bool = false # don't reset this on restart!
 
@@ -28,31 +25,15 @@ func _enter_tree() -> void:
 func _ready() -> void:
 	GLOBALS.on_health_changed().connect(took_damage)
 	LevelManager.on_prosperity_updated().connect(update_prosperity)
-	time_remaining = GLOBALS.LEVEL_SECS_BEFORE_AUTHORITIES_ARRIVE
 	
 	if _first_run: first_run()
 	
-	ticking_time()
 
 func first_run() -> void:
 	_first_run = false
 	await get_tree().create_timer(0.5).timeout
 	_on_restart_game.emit()
 	get_tree().reload_current_scene()
-
-func ticking_time() -> void:
-	
-	var _timer = (time_remaining_label.get_child(0) as Timer)
-	var _minutes : int = floori(time_remaining / 60.0)
-	var _seconds : int = time_remaining - (_minutes * 60) 
-	time_remaining_label.text = "%02d : %02d" % [_minutes, _seconds]
-	while (time_remaining > 0):	
-		_minutes = floor(time_remaining / 60.0)
-		_seconds = time_remaining - (_minutes * 60) 
-		time_remaining_label.text = "%02d : %02d" % [_minutes, _seconds]
-		await _timer.timeout
-		time_remaining -= 1
-	lose()
 
 
 
@@ -65,6 +46,9 @@ func update_prosperity(value:float) -> void:
 	if value >= 1:
 		await get_tree().create_timer(0.5,true,false,true).timeout
 		win()
+
+
+
 
 func start_time(fade:=0.0) -> void:
 	get_tree().paused = false

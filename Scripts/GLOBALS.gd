@@ -6,7 +6,10 @@ static var game_config_manager : GameConfigManager = null
 
 #region Level Variables
 
-static var LEVEL_SECS_BEFORE_AUTHORITIES_ARRIVE : int = 1
+static var COUNTDOWN_BEFORE_AUTHORITIES_ARRIVE : int = 1
+static var COUNTDOWN_ROCK_REDUCTION : int = 1
+static var COUNTDOWN_CRATE_REDUCTION : int = 1
+static var COUNTDOWN_PIPE_REDUCTION : int = 1
 
 #endregion
 
@@ -75,16 +78,14 @@ static var PIPE_EXTRA_ROTATION_DRAG : float = 1
 
 
 
-#region Bounty variables
-
+#region Scanning variables
 
 static var BOUNTY_ROCK_FINE_AMOUNT : int = 1
 static var BOUNTY_CRATE_FINE_AMOUNT : int = 1
 static var BOUNTY_PIPE_FINE_AMOUNT : int = 1
 static var BOUNTY_BRAZEN_FINE_MULTIPLIER : float = 1
 
-
-
+#endregion
 
 
 static var health : int = 0 : 

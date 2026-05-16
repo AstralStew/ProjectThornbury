@@ -75,7 +75,7 @@ func collect(collectable: Collectable) -> void:
 	if collectable.type == order_type:
 		order_number -= 1
 		if check_order(): complete_order()
-		update_text()
+		else: update_text()
 	
 	var _tween : Tween = create_tween().set_parallel().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUAD)
 	_tween.tween_property(collectable,"modulate",Color(0,0,0,0),0.75)
@@ -105,6 +105,7 @@ func complete_order() -> void:
 	else: on_become_prosperous.emit(self)
 
 func cooldown() -> void:
+	update_text()
 	for i in prosperity+1:
 		await get_tree().create_timer(randf_range(cooldown_duration.x,cooldown_duration.y)).timeout
 	print_rich(DEBUG_NAME,"Cooldown > Cooldown finished! Making a new order...")

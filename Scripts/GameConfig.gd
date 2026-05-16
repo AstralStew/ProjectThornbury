@@ -2,9 +2,17 @@ class_name GameConfig extends Resource
 
 @export_category("LEFT SCREEN")
 
-@export_group("LEVEL OPTIONS")
+@export_group("COUNTDOWN")
 ## How many seconds before the authorities arrive (i.e. game over via time)
-@export var LEVEL_SECS_BEFORE_AUTHORITIES_ARRIVE : int = 600
+@export var COUNTDOWN_BEFORE_AUTHORITIES_ARRIVE : int = 600
+## How many seconds are deducted per rock scanned by enemies
+@export var COUNTDOWN_ROCK_REDUCTION : int = 20
+## How many seconds are deducted per crate scanned by enemies
+@export var COUNTDOWN_CRATE_REDUCTION : int = 60
+## How many seconds are deducted per pipe scanned by enemies
+@export var COUNTDOWN_PIPE_REDUCTION : int = 40
+
+
 
 @export_group("SHIP STATS")
 ## How many hits the ship can take before its game over 

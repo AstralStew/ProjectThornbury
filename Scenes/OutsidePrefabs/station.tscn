@@ -37,7 +37,6 @@ outline_size = 5
 outline_color = Color(0.2, 0.24705882, 0.34509805, 1)
 
 [node name="Station" type="Area2D" unique_id=1439882274]
-z_index = -3
 script = ExtResource("1_ytpb5")
 metadata/_custom_type_script = "uid://dj133dg4r65on"
 
