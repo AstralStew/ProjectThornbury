@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="GameConfigManager" format=3 uid="uid://cxkwxle5m5om8"]
 
 [ext_resource type="Resource" uid="uid://b14y6n5kds88t" path="res://Configs/game_config_pinky.tres" id="1_jx6hi"]
-[ext_resource type="Script" path="res://Scripts/GameBalanceManager.gd" id="1_l5rvo"]
+[ext_resource type="Script" uid="uid://dr5xy0rlokmav" path="res://Scripts/GameBalanceManager.gd" id="1_l5rvo"]
 
 [resource]
 script = ExtResource("1_l5rvo")

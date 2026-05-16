@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://l0cg84jp4bre" path="res://Scenes/OutsidePrefabs/outside.tscn" id="2_qxria"]
 [ext_resource type="PackedScene" uid="uid://cbf7m3hmnto6d" path="res://Scenes/OutsidePrefabs/collectable_pipe.tscn" id="3_y4jh7"]
 [ext_resource type="PackedScene" uid="uid://dfbi3x303ug65" path="res://Scenes/InventoryPrefabs/inventory.tscn" id="4_q68mp"]
+[ext_resource type="Script" uid="uid://cncokyrrq0buv" path="res://Scripts/BountyManager.gd" id="4_qxria"]
 
 [sub_resource type="Gradient" id="Gradient_81xng"]
 offsets = PackedFloat32Array(0, 0.50641024, 1)
@@ -191,7 +192,43 @@ text = "BOUNTY:"
 scroll_active = false
 vertical_alignment = 1
 
+[node name="BountyBox" type="PanelContainer" parent="UIHolder/MC_ScreenHolders/HB_ScreenHolders/LeftScreen/BottomBar" unique_id=1284918690]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_bvt00")
+
+[node name="BountyBox" type="HBoxContainer" parent="UIHolder/MC_ScreenHolders/HB_ScreenHolders/LeftScreen/BottomBar/BountyBox" unique_id=687468187]
+custom_minimum_size = Vector2(0, 27)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 0
+script = ExtResource("4_qxria")
+
+[node name="BountyTotalLabel" type="RichTextLabel" parent="UIHolder/MC_ScreenHolders/HB_ScreenHolders/LeftScreen/BottomBar/BountyBox/BountyBox" unique_id=1672441783]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
+theme_override_colors/default_color = Color(1, 1, 0, 1)
+theme_override_font_sizes/normal_font_size = 24
+bbcode_enabled = true
+text = "0 [font_size=15]CREDS"
+scroll_active = false
+vertical_alignment = 1
+
+[node name="BountyChangeLabel" type="RichTextLabel" parent="UIHolder/MC_ScreenHolders/HB_ScreenHolders/LeftScreen/BottomBar/BountyBox/BountyBox" unique_id=41076911]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/normal_font_size = 20
+theme_override_font_sizes/italics_font_size = 20
+bbcode_enabled = true
+text = "[color=green]+[i]0"
+scroll_active = false
+vertical_alignment = 1
+
 [node name="Creds" type="RichTextLabel" parent="UIHolder/MC_ScreenHolders/HB_ScreenHolders/LeftScreen/BottomBar" unique_id=45906415]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/normal_font_size = 24

@@ -91,3 +91,7 @@ func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 		print_rich(DEBUG_NAME,"OnInputEvent > Clicked! Telling InventoryManager to start drag force...")
 		InventoryManager.dragging(self,get_local_mouse_position())
 		
+
+
+func set_outline_glow(_color:Color) -> void:
+	get_child(0).get_child(0).modulate = _color

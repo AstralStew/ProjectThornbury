@@ -137,15 +137,6 @@ offset = Vector2(0, 7.775)
 region_enabled = true
 region_rect = Rect2(10, 5, 24, 34)
 
-[node name="ShipsSheet4" type="Sprite2D" parent="SubViewportContainer/SubViewport" unique_id=171900258]
-texture_filter = 1
-position = Vector2(278, 250)
-rotation = -0.702096
-scale = Vector2(2.145, 2.145)
-texture = ExtResource("3_slk23")
-region_enabled = true
-region_rect = Rect2(8, 50, 28, 25)
-
 [node name="ShipsSheet5" type="Sprite2D" parent="SubViewportContainer/SubViewport" unique_id=546533371]
 visible = false
 texture_filter = 1

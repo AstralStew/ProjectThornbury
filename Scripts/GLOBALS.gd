@@ -75,6 +75,15 @@ static var PIPE_EXTRA_ROTATION_DRAG : float = 1
 
 
 
+#region Bounty variables
+
+
+static var BOUNTY_ROCK_FINE_AMOUNT : int = 1
+static var BOUNTY_CRATE_FINE_AMOUNT : int = 1
+static var BOUNTY_PIPE_FINE_AMOUNT : int = 1
+static var BOUNTY_BRAZEN_FINE_MULTIPLIER : float = 1
+
+
 
 
 

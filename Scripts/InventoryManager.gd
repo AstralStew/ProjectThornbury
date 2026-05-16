@@ -7,6 +7,7 @@ enum ItemType {Rock,Crate,Pipe}
 @export var item_rock_prefab : PackedScene = null
 @export var item_crate_prefab : PackedScene = null
 @export var item_pipe_prefab : PackedScene = null
+@export var scan_prefab : PackedScene = null
 
 @onready var debug_line : Line2D = $DebugLine
 @onready var item_holder : Node2D = $SubViewportContainer/SubViewport/ItemHolder
@@ -111,3 +112,12 @@ func _dragging(_object:Item,_click_pos:Vector2) -> void:
 		print_rich(DEBUG_NAME,"Dragging > Mouse released! Releasing '"+_object.name+"' with force of "+str(_move_vector)+" * "+str(GLOBALS.INVENTORY_RELEASE_FORCE))
 	print_rich(DEBUG_NAME,"Dragging > Oops, objects been freed! Cancelling.")
 	is_dragging = false
+
+static func create_new_scan() -> Scan:
+	return instance._create_new_scan()
+func _create_new_scan() -> Scan:
+	var _new_scan = scan_prefab.instantiate() as Scan
+	item_holder.add_child(_new_scan)
+	_new_scan.name = "New Scan"
+	print_rich(DEBUG_NAME,"StartNewScan > New scan created!")
+	return _new_scan

@@ -40,7 +40,15 @@ class_name GameConfig extends Resource
 ## How quickly the target speed transitions as you hold Boost 
 @export var SHIP_BOOST_CHANGE_RATE : float = 100.0
 
-
+@export_group("BOUNTY")
+## How much rocks are worth to the players bounty
+@export var BOUNTY_ROCK_FINE_AMOUNT : int = 50
+## How much crates are worth to the players bounty
+@export var BOUNTY_CRATE_FINE_AMOUNT : int = 300
+## How much pipes are worth to the players bounty
+@export var BOUNTY_PIPE_FINE_AMOUNT : int = 100
+## How much bonus bounty is added for each object the player was caught with at once (e.g 1.0 = result of 3 rocks are multiplied by 3, 0.5 = result of 3 rocks are multiplied by 1.5)
+@export var BOUNTY_BRAZEN_FINE_MULTIPLIER : float = 1.0
 
 
 

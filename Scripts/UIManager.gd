@@ -55,6 +55,7 @@ func ticking_time() -> void:
 	lose()
 
 
+
 func update_prosperity(value:float) -> void:
 	
 	print_rich(DEBUG_NAME,"Ready > Updating prosperity to " + str(value * 100))

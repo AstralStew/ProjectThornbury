@@ -11,7 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://056n6uoorop6" path="res://Assets/Images/Hanger/HangerDoor.png" id="7_v7qpt"]
 [ext_resource type="Texture2D" uid="uid://i1g58vh6a4qg" path="res://Assets/Images/Inventory/Greebles.png" id="10_lnm75"]
 [ext_resource type="Script" uid="uid://ba0ppdfg70y3g" path="res://Scripts/HangerCamera.gd" id="10_v7qpt"]
-[ext_resource type="Script" uid="uid://blyqo3acyv4gq" path="res://Scripts/Scan.gd" id="11_4pvd7"]
+[ext_resource type="PackedScene" uid="uid://cxmonnf8anrq8" path="res://Scenes/InventoryPrefabs/scan.tscn" id="11_4pvd7"]
 
 [sub_resource type="Gradient" id="Gradient_v7qpt"]
 colors = PackedColorArray(0.93333334, 0.5254902, 0.58431375, 1, 0.9843137, 0.73333335, 0.6784314, 1)
@@ -55,26 +55,6 @@ fill_to = Vector2(0.843209, 0.16971917)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tumq0"]
 size = Vector2(540, 640)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4pvd7"]
-bg_color = Color(1, 1, 1, 0.078431375)
-border_width_left = 6
-border_width_top = 6
-border_width_right = 6
-border_width_bottom = 6
-border_color = Color(1, 1, 1, 1)
-corner_radius_top_left = 18
-corner_radius_top_right = 18
-corner_radius_bottom_right = 18
-corner_radius_bottom_left = 18
-corner_detail = 3
-expand_margin_left = 10.0
-expand_margin_top = 10.0
-expand_margin_right = 10.0
-expand_margin_bottom = 10.0
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_lnm75"]
-size = Vector2(1, 1)
-
 [sub_resource type="Gradient" id="Gradient_rx4sy"]
 interpolation_mode = 2
 offsets = PackedFloat32Array(0.6201172, 0.66308594)
@@ -111,6 +91,7 @@ script = ExtResource("1_5v8l0")
 item_rock_prefab = ExtResource("3_0n8tc")
 item_crate_prefab = ExtResource("3_03ybr")
 item_pipe_prefab = ExtResource("4_aco8w")
+scan_prefab = ExtResource("11_4pvd7")
 metadata/_custom_type_script = "uid://bf773hla6ca55"
 
 [node name="DebugLine" type="Line2D" parent="." unique_id=1064474407]
@@ -529,7 +510,6 @@ collision_mask = 0
 shape = SubResource("WorldBoundaryShape2D_51e2h")
 
 [node name="BootArea" type="Area2D" parent="SubViewportContainer/SubViewport" unique_id=1927072519]
-visible = false
 position = Vector2(270, 340)
 collision_layer = 524288
 collision_mask = 256
@@ -563,47 +543,6 @@ finished_spawning = true
 
 [node name="ItemPipe2" parent="SubViewportContainer/SubViewport/ItemHolder" unique_id=221875185 instance=ExtResource("4_aco8w")]
 position = Vector2(429, 461)
-
-[node name="Scan" type="Area2D" parent="SubViewportContainer/SubViewport/ItemHolder" unique_id=1354655807]
-z_index = 15
-position = Vector2(276, 253)
-rotation = -1.5707964
-collision_layer = 4096
-collision_mask = 256
-input_pickable = false
-monitorable = false
-script = ExtResource("11_4pvd7")
-metadata/_custom_type_script = "uid://blyqo3acyv4gq"
-
-[node name="Panel" type="Panel" parent="SubViewportContainer/SubViewport/ItemHolder/Scan" unique_id=804636084]
-texture_filter = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -125.0
-offset_top = -75.0
-offset_right = -125.0
-offset_bottom = -75.0
-grow_horizontal = 2
-grow_vertical = 2
-rotation = -0.006329894
-pivot_offset_ratio = Vector2(0.5, 0.5)
-theme_override_styles/panel = SubResource("StyleBoxFlat_4pvd7")
-
-[node name="Rectangle3" type="Sprite2D" parent="SubViewportContainer/SubViewport/ItemHolder/Scan" unique_id=1991256298]
-visible = false
-modulate = Color(18.892157, 18.892157, 18.892157, 1)
-texture_filter = 1
-scale = Vector2(3, 3)
-texture = ExtResource("10_lnm75")
-region_enabled = true
-region_rect = Rect2(171, 172, 58, 39)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="SubViewportContainer/SubViewport/ItemHolder/Scan" unique_id=441901706]
-scale = Vector2(250, 150)
-shape = SubResource("RectangleShape2D_lnm75")
 
 [node name="Camera2D" type="Camera2D" parent="SubViewportContainer/SubViewport" unique_id=1942357245]
 z_index = 1

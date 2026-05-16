@@ -4,6 +4,8 @@
 [ext_resource type="PackedScene" uid="uid://c14fl8nyl0y11" path="res://Scenes/OutsidePrefabs/collectable_rock.tscn" id="1_tmlh5"]
 [ext_resource type="PackedScene" uid="uid://dtkur4468wq5q" path="res://Scenes/OutsidePrefabs/collectable_crate.tscn" id="2_7asov"]
 [ext_resource type="PackedScene" uid="uid://bjd7rlg5ulwgy" path="res://Scenes/OutsidePrefabs/station.tscn" id="2_80ic5"]
+[ext_resource type="Script" uid="uid://du2cjhuyvairt" path="res://Scripts/Hoverscanner.gd" id="6_65i52"]
+[ext_resource type="Texture2D" uid="uid://bs8wppq8ctccy" path="res://Assets/Images/Ships/Ships_Sheet.png" id="6_80ic5"]
 [ext_resource type="PackedScene" uid="uid://cbf7m3hmnto6d" path="res://Scenes/OutsidePrefabs/collectable_pipe.tscn" id="8_rx4sy"]
 
 [sub_resource type="Gradient" id="Gradient_rx4sy"]
@@ -34,6 +36,38 @@ size = Vector2(100, 30)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i458n"]
 size = Vector2(60, 60)
+
+[sub_resource type="Curve2D" id="Curve2D_65i52"]
+_data = {
+"points": PackedVector2Array(0, 0, 0.9, 0, 1491, 1479, 0, 0, 0, 0, -1880, -1952)
+}
+point_count = 2
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_65i52"]
+radius = 150.0
+
+[sub_resource type="Curve" id="Curve_65i52"]
+_data = [Vector2(0, 0), 0.0, 1.0, 0, 1, Vector2(1, 1), 1.0, 0.0, 1, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_i458n"]
+offsets = PackedFloat32Array(0.5674505, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_65i52"]
+bg_color = Color(1, 1, 0, 1)
+draw_center = false
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 1, 0.5592148, 1)
+border_blend = true
+corner_radius_top_left = 48
+corner_radius_top_right = 48
+corner_radius_bottom_right = 48
+corner_radius_bottom_left = 48
+corner_detail = 10
 
 [node name="Level1" type="Node2D" unique_id=1392275605]
 z_index = -2
@@ -233,6 +267,7 @@ color = Color(0, 0.77396834, 0.6492011, 1)
 z_index = -4
 
 [node name="ColorRect" type="ColorRect" parent="Roads" unique_id=1670817654]
+visible = false
 offset_left = -1842.0001
 offset_top = -1939.0001
 offset_right = 2938.9019
@@ -8631,3 +8666,55 @@ shape = SubResource("RectangleShape2D_i458n")
 rotation = 0.7853982
 scale = Vector2(1.8109853, 1.8109853)
 shape = SubResource("RectangleShape2D_i458n")
+
+[node name="Path2D" type="Path2D" parent="." unique_id=1395366629]
+curve = SubResource("Curve2D_65i52")
+
+[node name="Line2D" type="Line2D" parent="Path2D" unique_id=2052009287]
+points = PackedVector2Array(1491, 1479, -1880, -1952)
+width = 20.0
+default_color = Color(0.9843137, 0.73333335, 0.6784314, 1)
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D" unique_id=175744795]
+position = Vector2(1491, 1479)
+loop = false
+
+[node name="Hoverscanner" type="Area2D" parent="Path2D/PathFollow2D" unique_id=611481183]
+rotation = -1.5707964
+scale = Vector2(2.145, 2.145)
+collision_layer = 0
+input_pickable = false
+monitorable = false
+script = ExtResource("6_65i52")
+speed = 75.0
+metadata/_custom_type_script = "uid://du2cjhuyvairt"
+
+[node name="Hoverscanner" type="Sprite2D" parent="Path2D/PathFollow2D/Hoverscanner" unique_id=644963130]
+texture_filter = 1
+texture = ExtResource("6_80ic5")
+region_enabled = true
+region_rect = Rect2(8, 50, 28, 25)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Path2D/PathFollow2D/Hoverscanner" unique_id=2095740398]
+shape = SubResource("CircleShape2D_65i52")
+
+[node name="Line2D" type="Line2D" parent="Path2D/PathFollow2D/Hoverscanner" unique_id=68875065]
+modulate = Color(1, 1, 1, 0)
+rotation = -0.40221027
+points = PackedVector2Array(0, 0, 0, 0, 0, 0)
+width = 69.0
+width_curve = SubResource("Curve_65i52")
+gradient = SubResource("Gradient_i458n")
+round_precision = 11
+
+[node name="Panel" type="Panel" parent="Path2D/PathFollow2D/Hoverscanner" unique_id=1002277367]
+modulate = Color(1, 1, 1, 0.12200001)
+offset_left = -50.0
+offset_top = -50.0
+offset_right = 50.0
+offset_bottom = 50.0
+scale = Vector2(3.25, 3.25)
+pivot_offset_ratio = Vector2(0.5, 0.5)
+theme_override_styles/panel = SubResource("StyleBoxFlat_65i52")
+
+[connection signal="body_entered" from="Path2D/PathFollow2D/Hoverscanner" to="Path2D/PathFollow2D/Hoverscanner" method="_on_body_entered"]
