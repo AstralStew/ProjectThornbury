@@ -10,6 +10,7 @@ class_name Hoverscanner extends Area2D
 
 var _line : Line2D = null
 var _path_follow : PathFollow2D = null
+var _path_reversed : bool = false
 
 func _ready() -> void:
 	_line = $Line2D
@@ -17,7 +18,9 @@ func _ready() -> void:
 
 
 func _physics_process(delta: float) -> void:
-	_path_follow.progress += speed * delta
+	if (!_path_reversed && _path_follow.progress_ratio == 1.0) || (_path_reversed && _path_follow.progress_ratio == 0.0):
+		_path_reversed = !_path_reversed
+	_path_follow.progress += speed * delta * (-1 if _path_reversed else 1)
 
 var _tween : Tween
 func start_scan() -> void:
@@ -29,12 +32,12 @@ func start_scan() -> void:
 	_new_scan.scanning()
 	
 	_line.width = 69
-	_line.modulate = Color(1.0, 1.0, 0.0, 0.0)
+	_line.modulate = Color(1.0, 1.0, 0.5, 0.0)
 	_line.visible = true
 	
 	if _tween: _tween.kill()
 	_tween = create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUAD).set_parallel()
-	_tween.tween_property(_line,"modulate",Color(1.0, 1.0, 0.0, 1.0),3)
+	_tween.tween_property(_line,"modulate",Color(1.0, 1.0, 0.5, 1.0),3)
 	_tween.tween_property(_line,"width",2,10)
 	
 	while (is_scanning):

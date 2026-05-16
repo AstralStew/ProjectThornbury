@@ -47,12 +47,12 @@ point_count = 2
 radius = 150.0
 
 [sub_resource type="Curve" id="Curve_65i52"]
-_data = [Vector2(0, 0), 0.0, 1.0, 0, 1, Vector2(1, 1), 1.0, 0.0, 1, 0]
+_data = [Vector2(0, 0.15162319), 0.0, 0.84837687, 0, 1, Vector2(1, 1), 0.84837687, 0.0, 1, 0]
 point_count = 2
 
 [sub_resource type="Gradient" id="Gradient_i458n"]
-offsets = PackedFloat32Array(0.5674505, 1)
-colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+offsets = PackedFloat32Array(0.59119105, 1)
+colors = PackedColorArray(0.9289499, 0.8403465, 1, 1, 1, 1, 0, 0)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_65i52"]
 bg_color = Color(1, 1, 0, 1)
@@ -8700,11 +8700,13 @@ shape = SubResource("CircleShape2D_65i52")
 
 [node name="Line2D" type="Line2D" parent="Path2D/PathFollow2D/Hoverscanner" unique_id=68875065]
 modulate = Color(1, 1, 1, 0)
+self_modulate = Color(1, 1, 1, 0.77254903)
 rotation = -0.40221027
 points = PackedVector2Array(0, 0, 0, 0, 0, 0)
 width = 69.0
 width_curve = SubResource("Curve_65i52")
 gradient = SubResource("Gradient_i458n")
+begin_cap_mode = 2
 round_precision = 11
 
 [node name="Panel" type="Panel" parent="Path2D/PathFollow2D/Hoverscanner" unique_id=1002277367]

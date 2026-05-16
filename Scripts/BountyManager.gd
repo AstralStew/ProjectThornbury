@@ -40,13 +40,13 @@ func _add_to_bounty(amount:int) -> void:
 	bounty_total_label.text = str(current_bounty) + " [font_size=15]CREDS"
 	bounty_change_label.text = "[color=green]+[i]" + str(amount)
 	bounty_change_label.visible = true
-	#bounty_change_label.modulate = Color(Color.WHITE,0)
-	
-	#if _bounty_tween: _bounty_tween.kill()
-	#_bounty_tween = create_tween().set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_QUAD).set
-	#_bounty_tween.tween_property(bounty_change_label,"modulate", Color.WHITE,1.0)
-	await get_tree().create_timer(1.0,false)
-	bounty_change_label.visible = false
+	bounty_change_label.modulate = Color.WHITE
+		
+	if _bounty_tween: _bounty_tween.kill()
+	_bounty_tween = create_tween().set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_QUAD)
+	_bounty_tween.tween_property(bounty_change_label,"modulate", Color(Color.WHITE,0.0),4.0)
+	_bounty_tween.tween_property(bounty_change_label,"visible",false,0.0).set_delay(4.0)
+
 	
 	#_bounty_tween = create_tween().set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_QUAD)
 	#_bounty_tween.tween_property(bounty_change_label,"modulate", Color.WHITE,1.0)
