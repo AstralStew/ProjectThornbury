@@ -42,6 +42,9 @@ stretch = true
 
 [node name="SubViewport" type="SubViewport" parent="SubViewportContainer" unique_id=238183413]
 handle_input_locally = false
+physics_object_picking = true
+physics_object_picking_sort = true
+physics_object_picking_first_only = true
 size = Vector2i(680, 600)
 render_target_update_mode = 4
 
