@@ -5,6 +5,8 @@ class_name GameConfigManager extends Resource
 
 func apply_game_config() -> void:
 	
+	
+	print("got here")
 	GLOBALS.LEVEL_SECS_BEFORE_AUTHORITIES_ARRIVE = game_config.LEVEL_SECS_BEFORE_AUTHORITIES_ARRIVE
 	
 	GLOBALS.SHIP_MAX_HEALTH = game_config.SHIP_MAX_HEALTH

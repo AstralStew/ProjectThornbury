@@ -306,6 +306,7 @@ color = Color(0.9843137, 0.73333335, 0.6784314, 1)
 
 [node name="Station" parent="." unique_id=1439882274 groups=["Stations"] instance=ExtResource("2_80ic5")]
 position = Vector2(1518, 1459)
+cooldown_duration = Vector2(25, 45)
 
 [node name="Station2" parent="." unique_id=352694730 groups=["Stations"] instance=ExtResource("2_80ic5")]
 position = Vector2(-1886, -1954)

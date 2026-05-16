@@ -25,7 +25,7 @@ var _direction : Vector2 = Vector2.ZERO
 
 var _random_direction : Vector2 = Vector2.ZERO
 
-var _jolt_force : float = 0
+var _jolt_force : float = 1
 
 
 func _enter_tree() -> void:
@@ -38,7 +38,7 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	_get_ship_speed()
 	_add_random()
-	if _jolt_force > 0: _jolt_force = move_toward(_jolt_force, 0, GLOBALS.INVENTORY_JOLT_FORCE_REDUCTION * delta)
+	if _jolt_force > 1: _jolt_force = move_toward(_jolt_force, 1, GLOBALS.INVENTORY_JOLT_FORCE_REDUCTION * delta)
 	_apply_forces()
 
 func _get_ship_speed() -> void:
@@ -64,7 +64,7 @@ func _apply_forces() -> void:
 	else:		
 		gravity_direction = _direction + (_random_direction * GLOBALS.INVENTORY_RANDOM_FORCE * _jolt_force)
 	
-	if _jolt_force > 0:
+	if _jolt_force > 1:
 		gravity_direction += GLOBALS.random_vector2_normalised() * _jolt_force
 	
 	

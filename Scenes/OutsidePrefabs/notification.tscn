@@ -1,0 +1,52 @@
+[gd_scene format=3 uid="uid://ibwgeq3nkflt"]
+
+[ext_resource type="Script" uid="uid://h4wwr486ejuw" path="res://Scripts/Notification.gd" id="1_sruue"]
+[ext_resource type="Texture2D" uid="uid://c0sl1u4dvsqni" path="res://Assets/Images/City/Building64.png" id="2_3fx4b"]
+[ext_resource type="Texture2D" uid="uid://i1g58vh6a4qg" path="res://Assets/Images/Inventory/Greebles.png" id="3_68ugo"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sruue"]
+atlas = ExtResource("3_68ugo")
+region = Rect2(175, 12, 46, 46)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_sruue"]
+radius = 42.66
+
+[node name="Notification" type="Area2D" unique_id=1937379457]
+collision_layer = 65536
+collision_mask = 0
+monitoring = false
+monitorable = false
+script = ExtResource("1_sruue")
+screen_edge = Vector2(334, 294)
+minimum_alpha_distance = 4000.0
+maximum_alpha_distance = 500.0
+maximum_scale_distance = 300.0
+disappear_start_distance = 300.0
+metadata/_custom_type_script = "uid://h4wwr486ejuw"
+
+[node name="Arrow" type="Node2D" parent="." unique_id=93638010]
+
+[node name="SpriteArrow" type="Sprite2D" parent="Arrow" unique_id=57675543]
+position = Vector2(32, 0)
+rotation = 1.5707964
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("3_68ugo")
+region_enabled = true
+region_rect = Rect2(91, 16, 58, 45)
+
+[node name="SpriteBG" type="Sprite2D" parent="." unique_id=1388421572]
+position = Vector2(-1, 0)
+texture = ExtResource("2_3fx4b")
+
+[node name="SpriteIcon" type="TextureRect" parent="." unique_id=10505829]
+offset_left = -23.0
+offset_top = -23.0
+offset_right = 23.0
+offset_bottom = 23.0
+texture = SubResource("AtlasTexture_sruue")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=66726932]
+shape = SubResource("CircleShape2D_sruue")
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

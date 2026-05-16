@@ -17,6 +17,16 @@ func _enter_tree() -> void:
 	instance = self
 	target_prosperity = 0
 	current_prosperity = 0
+	
+
+func activate_stations_over_time() -> void:
+	await get_tree().create_timer(10).timeout
+	var _first : bool = false
+	for _station:Station in get_tree().get_nodes_in_group("Stations"):
+		if !_first: _station.make_order()
+		else: _station.cooldown()
+		
+		await get_tree().create_timer(20).timeout
 
 func _ready() -> void:
 	for _station:Station in get_tree().get_nodes_in_group("Stations"):
@@ -25,6 +35,8 @@ func _ready() -> void:
 		target_prosperity += _station.prosperity_target
 		_station.on_complete_order.connect(increase_prosperity)
 		_station.on_become_prosperous.connect(station_became_prosperous)
+	activate_stations_over_time()
+	
 	_on_prosperity_updated.emit(current_prosperity as float / target_prosperity as float)
 
 func increase_prosperity(_station:Station) -> void:

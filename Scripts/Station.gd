@@ -3,7 +3,7 @@ var DEBUG_NAME : String :
 	get: return "[b][Station("+name+")][/b] "
 #static var instance : Station = null
 
-@export var cooldown_duration : Vector2 = Vector2(5.0,20.0)
+@export var cooldown_duration : Vector2 = Vector2(10.0,30.0)
 
 @export var prosperity_target : int = 2
 
@@ -12,7 +12,7 @@ var DEBUG_NAME : String :
 @export var prosperity : int = 0 :
 	set(value):
 		prosperity = value
-		get_child(0).modulate = Color.WHITE.lerp(Color(0.3, 0.217, 0.1), 1 - (prosperity as float / prosperity_target as float))
+		get_child(0).modulate = Color.WHITE.lerp(Color(0.65, 0.599, 0.396, 1.0), 1 - (prosperity as float / prosperity_target as float))
 
 @export var is_prosperous : bool = false :
 	get: return prosperity >= prosperity_target
@@ -23,12 +23,23 @@ var DEBUG_NAME : String :
 
 @onready var _label : Label = $PanelContainer/Label
 
+signal on_make_order(station_ref)
 signal on_complete_order(station_ref)
 signal on_become_prosperous(station_ref)
 
+var _expansions : Array[Node2D]
+
 func _ready() -> void:
+	
+	get_child(0).get_child(0).rotation = GLOBALS.random_rotation(180)
+	for _child:Node2D in get_child(0).get_children():
+		if "Expansion" in _child.name:
+			_expansions.append(_child)
+			_child.rotation = GLOBALS.random_rotation(180)
+	_expansions.pick_random().visible = true
+	
 	prosperity = 0
-	make_order()
+	#cooldown()
 
 func make_order() -> void:
 	if has_order || is_prosperous: return
@@ -44,6 +55,7 @@ func make_order() -> void:
 	
 	has_order = true
 	update_text()
+	on_make_order.emit(self)
 
 func update_text() -> void:
 	if has_order:
@@ -80,13 +92,21 @@ func check_order() -> bool:
 func complete_order() -> void:
 	print_rich(DEBUG_NAME,"CheckOrder > Order complete! Starting cooldown and returning true...")
 	has_order = false
-	prosperity += 1
+	
+	prosperity += 1	
+	var _chosen:Node2D=null
+	while _chosen == null:
+		_chosen = _expansions.pick_random()
+		if _chosen.visible: _chosen=null
+	_chosen.visible = true
+	
 	on_complete_order.emit(self)
 	if !is_prosperous: cooldown()
 	else: on_become_prosperous.emit(self)
 
 func cooldown() -> void:
-	await get_tree().create_timer(randf_range(cooldown_duration.x,cooldown_duration.y)).timeout
+	for i in prosperity+1:
+		await get_tree().create_timer(randf_range(cooldown_duration.x,cooldown_duration.y)).timeout
 	print_rich(DEBUG_NAME,"Cooldown > Cooldown finished! Making a new order...")
 	make_order()
 

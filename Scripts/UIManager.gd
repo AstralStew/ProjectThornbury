@@ -18,6 +18,8 @@ static var has_taken_damage : bool = false # don't reset this on restart!
 signal _on_restart_game
 static func on_restart_game() -> Signal: return instance._on_restart_game
 
+static var _first_run : bool = true
+
 func _enter_tree() -> void:
 	instance = self
 	
@@ -28,10 +30,19 @@ func _ready() -> void:
 	LevelManager.on_prosperity_updated().connect(update_prosperity)
 	time_remaining = GLOBALS.LEVEL_SECS_BEFORE_AUTHORITIES_ARRIVE
 	
+	if _first_run: first_run()
+	
 	ticking_time()
 
+func first_run() -> void:
+	_first_run = false
+	await get_tree().create_timer(0.5).timeout
+	_on_restart_game.emit()
+	get_tree().reload_current_scene()
 
 func ticking_time() -> void:
+	
+	var _timer = (time_remaining_label.get_child(0) as Timer)
 	var _minutes : int = floori(time_remaining / 60.0)
 	var _seconds : int = time_remaining - (_minutes * 60) 
 	time_remaining_label.text = "%02d : %02d" % [_minutes, _seconds]
@@ -39,7 +50,7 @@ func ticking_time() -> void:
 		_minutes = floor(time_remaining / 60.0)
 		_seconds = time_remaining - (_minutes * 60) 
 		time_remaining_label.text = "%02d : %02d" % [_minutes, _seconds]
-		await (time_remaining_label.get_child(0) as Timer).timeout
+		await _timer.timeout
 		time_remaining -= 1
 	lose()
 
