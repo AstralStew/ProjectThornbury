@@ -105,3 +105,54 @@ rotation_smoothing_speed = 3.185
 
 [node name="NotificationManager" type="Node2D" parent="SubViewportContainer/SubViewport" unique_id=1939579723]
 script = ExtResource("9_2x00p")
+
+[node name="ShipsSheet3" type="Sprite2D" parent="SubViewportContainer/SubViewport" unique_id=870030565]
+visible = false
+texture_filter = 1
+position = Vector2(422, 257)
+rotation = 0.5235985
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("3_slk23")
+region_enabled = true
+region_rect = Rect2(48, 2, 36, 33)
+
+[node name="ShipsSheet6" type="Sprite2D" parent="SubViewportContainer/SubViewport" unique_id=641131462]
+visible = false
+texture_filter = 1
+position = Vector2(307, 216.99998)
+rotation = 3.403392
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("3_slk23")
+region_enabled = true
+region_rect = Rect2(96, 46, 28, 35)
+
+[node name="ShipsSheet2" type="Sprite2D" parent="SubViewportContainer/SubViewport" unique_id=1179019076]
+visible = false
+texture_filter = 1
+position = Vector2(308, 75.999954)
+rotation = 0.804899
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("3_slk23")
+offset = Vector2(0, 7.775)
+region_enabled = true
+region_rect = Rect2(10, 5, 24, 34)
+
+[node name="ShipsSheet4" type="Sprite2D" parent="SubViewportContainer/SubViewport" unique_id=171900258]
+texture_filter = 1
+position = Vector2(278, 250)
+rotation = -0.702096
+scale = Vector2(2.145, 2.145)
+texture = ExtResource("3_slk23")
+region_enabled = true
+region_rect = Rect2(8, 50, 28, 25)
+
+[node name="ShipsSheet5" type="Sprite2D" parent="SubViewportContainer/SubViewport" unique_id=546533371]
+visible = false
+texture_filter = 1
+position = Vector2(385.00003, 121)
+rotation = -3.043507
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("3_slk23")
+offset = Vector2(0, -2.655)
+region_enabled = true
+region_rect = Rect2(54, 44, 24, 31)
