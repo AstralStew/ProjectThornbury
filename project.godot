@@ -34,6 +34,11 @@ folder_colors={
 "res://Scripts/": "orange"
 }
 
+[gui]
+
+theme/default_font_multichannel_signed_distance_field=true
+theme/custom="uid://c821lqjowgop7"
+
 [input]
 
 MoveLeft={

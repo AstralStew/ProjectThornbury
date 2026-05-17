@@ -1,0 +1,6 @@
+[gd_resource type="Theme" format=3 uid="uid://c821lqjowgop7"]
+
+[ext_resource type="FontFile" uid="uid://b0mosoc3g47mc" path="res://Assets/Fonts/BebasNeue-Regular.ttf" id="1_17goi"]
+
+[resource]
+default_font = ExtResource("1_17goi")

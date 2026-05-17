@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://dfbi3x303ug65" path="res://Scenes/InventoryPrefabs/inventory.tscn" id="4_q68mp"]
 [ext_resource type="Script" uid="uid://cncokyrrq0buv" path="res://Scripts/BountyManager.gd" id="4_qxria"]
 [ext_resource type="Script" uid="uid://ck5g8xe0ginh2" path="res://Scripts/CountdownManager.gd" id="5_y4jh7"]
+[ext_resource type="Texture2D" uid="uid://cl68y0cwjkauc" path="res://Assets/Images/UI/Potrait1.png" id="7_f140w"]
 [ext_resource type="AudioStream" uid="uid://ccanrxdhcjibq" path="res://Assets/Audio/Music/845153__glorytothemachine__unkown_entity-113bpm-melodic_data_stream-seamless-loop-glorytothemachine.mp3" id="7_q68mp"]
 
 [sub_resource type="Gradient" id="Gradient_81xng"]
@@ -96,6 +97,31 @@ corner_detail = 9
 shadow_size = 9
 shadow_offset = Vector2(0, 2)
 anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f140w"]
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+bg_color = Color(0.20300001, 0.24955001, 0.35, 0.90588236)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_blend = true
+expand_margin_left = 4.0
+expand_margin_top = 4.0
+expand_margin_right = 4.0
+expand_margin_bottom = 4.0
+
+[sub_resource type="Gradient" id="Gradient_0iob3"]
+colors = PackedColorArray(0, 0, 0, 0, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_4b75m"]
+gradient = SubResource("Gradient_0iob3")
+width = 8
+height = 7
+fill_to = Vector2(0, 1)
 
 [node name="UIManager" type="CanvasLayer" unique_id=785319097]
 process_mode = 3
@@ -286,6 +312,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 
 [node name="InventoryManager" parent="UIHolder/MC_ScreenHolders/HB_ScreenHolders/RightScreen" unique_id=1086248823 instance=ExtResource("4_q68mp")]
+texture_filter = 1
 custom_minimum_size = Vector2(0, 640)
 layout_mode = 2
 
@@ -334,7 +361,7 @@ alignment = 1
 process_mode = 3
 layout_mode = 2
 bbcode_enabled = true
-text = "d"
+text = "a"
 fit_content = true
 scroll_active = false
 horizontal_alignment = 1
@@ -347,6 +374,66 @@ custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
 size_flags_horizontal = 4
 text = "d"
+
+[node name="DialogueBox" type="PanelContainer" parent="UIHolder" unique_id=1871352225]
+custom_minimum_size = Vector2(400, 100)
+layout_mode = 0
+offset_left = 57.0
+offset_top = 417.0
+offset_right = 477.0
+offset_bottom = 630.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_f140w")
+
+[node name="MarginContainer" type="MarginContainer" parent="UIHolder/DialogueBox" unique_id=974129575]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UIHolder/DialogueBox/MarginContainer" unique_id=424586139]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UIHolder/DialogueBox/MarginContainer/VBoxContainer" unique_id=759766579]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="UIHolder/DialogueBox/MarginContainer/VBoxContainer/HBoxContainer" unique_id=231442264]
+texture_filter = 1
+custom_minimum_size = Vector2(0, 121.44)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+texture = ExtResource("7_f140w")
+expand_mode = 3
+
+[node name="RTL_Message" type="RichTextLabel" parent="UIHolder/DialogueBox/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1197499702]
+process_mode = 3
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+theme_override_colors/default_color = Color(0.343, 0.5691, 0.7, 1)
+theme_override_font_sizes/normal_font_size = 26
+bbcode_enabled = true
+text = "The old planet is dying, and a new one struggles to be born.
+
+Give me 5 pipe."
+fit_content = true
+scroll_active = false
+
+[node name="RTL_Button" type="Button" parent="UIHolder/DialogueBox/MarginContainer/VBoxContainer" unique_id=2028214528]
+process_mode = 3
+self_modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "d"
+
+[node name="TextureRect" type="TextureRect" parent="UIHolder/DialogueBox" unique_id=600688116]
+modulate = Color(0.2891, 0.47967002, 0.59, 0.47058824)
+texture_repeat = 2
+layout_mode = 2
+texture = SubResource("GradientTexture2D_4b75m")
+expand_mode = 3
+stretch_mode = 1
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=481155692]
 stream = ExtResource("7_q68mp")
