@@ -19,16 +19,17 @@ collision_mask = 0
 monitoring = false
 monitorable = false
 script = ExtResource("1_sruue")
-screen_edge = Vector2(334, 294)
+screen_edge = Vector2(344.725, 299)
 minimum_alpha_distance = 4000.0
 maximum_alpha_distance = 500.0
 maximum_scale_distance = 300.0
-disappear_start_distance = 300.0
+disappear_start_distance = 475.0
 metadata/_custom_type_script = "uid://h4wwr486ejuw"
 
 [node name="Arrow" type="Node2D" parent="." unique_id=93638010]
 
 [node name="GuideIconBackground" type="Sprite2D" parent="Arrow" unique_id=603216855]
+modulate = Color(0.0333333, 1, 0, 1)
 rotation = -1.5707964
 texture = ExtResource("2_68ugo")
 offset = Vector2(0, 1.2)
@@ -48,6 +49,7 @@ position = Vector2(-1, 0)
 texture = ExtResource("2_3fx4b")
 
 [node name="SpriteIcon" type="Sprite2D" parent="." unique_id=1684078043]
+modulate = Color(0.0333333, 1, 0, 1)
 rotation = -1.5707964
 texture = ExtResource("3_1j0aa")
 offset = Vector2(0, 1.2)

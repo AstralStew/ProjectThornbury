@@ -1,7 +1,7 @@
 class_name Notification extends Area2D
 
 
-@export var screen_edge : Vector2 = Vector2(310,263)
+@export var screen_edge : Vector2 = Vector2(310,260)
 
 @export var minimum_alpha_distance : float = 6000
 @export var maximum_alpha_distance : float = 4000
@@ -44,35 +44,38 @@ func tracking(_node:Node2D) -> void:
 		
 		$Arrow.look_at(target_position)
 		
-		if is_hovered:
-			$SpriteIcon.modulate = Color(1,1,1,1)
-			scale = Vector2(1.312,1.312)
-			if _distance < _disappear_start_sqr_distance:
-				global_position = target_position
-			else:
-				global_position = target_position.clamp(_camera_pos-screen_edge + (scale * 40), _camera_pos+screen_edge - (scale * 40))
+		#if is_hovered:
+			##$SpriteIcon.modulate = Color(1,1,1,1)
+			##scale = Vector2(1.312,1.312)
+			#if _distance < _disappear_start_sqr_distance:
+				#global_position = target_position
+			#else:
+				#global_position = target_position.clamp(_camera_pos-screen_edge + (scale * 40), _camera_pos+screen_edge - (scale * 40))
+		#
+		#else:
+		_distance = _camera_pos.distance_squared_to(target_position)
 		
+		if _distance < _disappear_start_sqr_distance:
+			$Arrow.visible = false
+			$SpriteIcon.modulate = Color(0,1,0,0.9) if !is_hovered else Color(0,1,0,1)
+			scale = Vector2.ONE * 1.2 * (1.312 if is_hovered else 1.0)
+			global_position = target_position
 		else:
-			_distance = _camera_pos.distance_squared_to(target_position)
-			
-			if _distance < _disappear_start_sqr_distance:
-				$Arrow.visible = false
-				$SpriteIcon.modulate = Color(1,1,1,0.9) #$SpriteIcon.modulate = Color(1,1,1,remap(_distance,_disappear_start_sqr_distance,_disappear_end_sqr_distance,0.9,0.5))
-				scale = Vector2.ONE * 1.2
-				global_position = target_position
+			$Arrow.visible = true
+			if _distance > _minimum_alpha_sqr_distance:
+				$SpriteIcon.modulate = Color(0,1,0,0.25) if !is_hovered else Color(0,1,0,1)
 			else:
-				$Arrow.visible = true
-				if _distance > _minimum_alpha_sqr_distance:
-					$SpriteIcon.modulate = Color(1,1,1,0.25)
-				else:
-					$SpriteIcon.modulate = Color(1,1,1,clamp(remap(_distance,_minimum_alpha_sqr_distance,_maximum_alpha_sqr_distance,0.25,0.9),0.25,0.9))
-				
-				if _distance > _minimum_scale_sqr_distance:
-					scale = Vector2(0.69,0.69)
-				else:
-					scale = Vector2.ONE * clamp(remap(_distance,_maximum_scale_sqr_distance,_minimum_scale_sqr_distance,1.2,0.69),0.69,1.2)
-				
-				global_position = target_position.clamp(_camera_pos-screen_edge + (scale * 40), _camera_pos+screen_edge - (scale * 40))
+				$SpriteIcon.modulate = Color(1,1,1,clamp(remap(_distance,_minimum_alpha_sqr_distance,_maximum_alpha_sqr_distance,0.25,0.9),0.25,0.9)) if !is_hovered else Color(0,1,0,1)
+			
+			if _distance > _minimum_scale_sqr_distance:
+				scale = Vector2(0.69,0.69) * (1.312 if is_hovered else 1.0)
+			else:
+				scale = Vector2.ONE * clamp(remap(_distance,_maximum_scale_sqr_distance,_minimum_scale_sqr_distance,1.2,0.69),0.69,1.2) * (1.312 if is_hovered else 1.0)
+			
+			var clamped : Vector2 = (_camera_pos + (target_position - _camera_pos)) #  .direction_to(target_position) * 500)
+			clamped = Vector2(clamp(clamped.x,_camera_pos.x - screen_edge.x + (scale.x * 40),_camera_pos.x + screen_edge.x - (scale.x * 40)),clamp(clamped.y,_camera_pos.y - screen_edge.y + (scale.x * 40),_camera_pos.y + screen_edge.y - (scale.y * 40)))
+			
+			global_position = clamped # (_camera_pos + _camera_pos.direction_to(target_position) * 400) #.clamp(_camera_pos-screen_edge + (scale * 40), _camera_pos+screen_edge - (scale * 40))  # target_position.clamp(_camera_pos-screen_edge + (scale * 40), _camera_pos+screen_edge - (scale * 40))
 		
 		
 		await get_tree().physics_frame

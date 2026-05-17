@@ -57,7 +57,7 @@ func _physics_process(delta: float) -> void:
 		take_damage()
 	
 	engine_audio_player.volume_linear = lerp(engine_audio_volume_scale.x,engine_audio_volume_scale.y,abs(speed.y / GLOBALS.SHIP_BOOST_SPEED))
-	print("acceleration = " + str(acceleration))
+	#print("acceleration = " + str(acceleration))
 	engine_audio_player.pitch_scale = lerp(engine_audio_pitch_scale.x,engine_audio_pitch_scale.y,abs(speed.y / GLOBALS.SHIP_BOOST_SPEED))
 
 
@@ -87,18 +87,17 @@ func lose_control() -> void:
 	modulate = Color.WHITE
 	has_control = true
 
+
 func get_input(delta: float) -> void:
 	var _target_rotation : float
 	var _new_speed : float
-	#
-	#if Input.is_action_just_pressed("Boost"):
-		#boost_audio_player
-		#$BoostAudioPlayer.play()
 	
-	if Input.is_action_pressed("Boost"):
-		if !boost_audio_player.playing:
+	
+	if Input.is_action_just_pressed("Boost"):
+		if !boost_audio_player.playing || boost_audio_player.get_playback_position() > 2.5:
 			boost_audio_player.play()
 	
+	if Input.is_action_pressed("Boost"):
 		_target_rotation = move_toward(speed.x, 0, GLOBALS.SHIP_BOOST_ROTATION_CHANGE_RATE * delta)
 		_new_speed = move_toward(speed.y, -GLOBALS.SHIP_BOOST_SPEED, GLOBALS.SHIP_BOOST_CHANGE_RATE  * delta)
 	else:

@@ -63,6 +63,7 @@ offset_right = 50.0
 offset_bottom = 50.0
 scale = Vector2(3.25, 3.25)
 pivot_offset_ratio = Vector2(0.5, 0.5)
+mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_65i52")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1245731728]
