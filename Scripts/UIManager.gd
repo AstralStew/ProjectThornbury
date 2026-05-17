@@ -16,6 +16,8 @@ signal _on_restart_game
 static func on_restart_game() -> Signal: return instance._on_restart_game
 
 static var _first_run : bool = true
+static var seen_opening_tutorial : bool = false
+
 
 func _enter_tree() -> void:
 	instance = self
@@ -30,9 +32,21 @@ func _ready() -> void:
 	$UIHolder/DialogueBox.visible = true
 	await get_tree().process_frame
 	$UIHolder/DialogueBox.visible = false
+	await get_tree().process_frame
+	$UIHolder/DialogueBox.modulate = Color.WHITE
+	
+	stop_time()
 	
 	if _first_run: first_run()
-	
+	elif !GLOBALS.game_started:
+		opening()
+	else:
+		IntroManager.remove()
+		msg_bg_overlay.visible = false
+		msg_bg_overlay.modulate = Color(1,1,1,0)
+		start_time()
+		
+		
 	
 
 func first_run() -> void:
@@ -40,6 +54,13 @@ func first_run() -> void:
 	await get_tree().create_timer(0.5).timeout
 	_on_restart_game.emit()
 	get_tree().reload_current_scene()
+
+func opening() -> void:
+	stop_time()
+	await GLOBALS.on_game_started()
+	start_time(2)
+	
+	if !seen_opening_tutorial: opening_tutorial()
 
 
 
@@ -60,7 +81,7 @@ func start_time(fade:=0.0) -> void:
 	get_tree().paused = false
 	if fade:
 		msg_bg_overlay.visible = true
-		msg_bg_overlay.modulate = Color(1,1,1,0.3)
+		#msg_bg_overlay.modulate = Color(1,1,1,0.3)
 		Engine.time_scale = 0.0
 		var _tween:Tween = create_tween().set_ignore_time_scale().set_pause_mode(Tween.TWEEN_PAUSE_PROCESS).set_parallel().set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_QUAD)
 		_tween.tween_property(Engine,"time_scale",1,fade)
@@ -75,15 +96,15 @@ func start_time(fade:=0.0) -> void:
 func stop_time(fade:=0.0) -> void:
 	msg_bg_overlay.visible = true
 	if fade:
-		msg_bg_overlay.modulate = Color(1,1,1,0)
+		#msg_bg_overlay.modulate = Color(1,1,1,0)
 		Engine.time_scale = 1.0
 		var _tween:Tween = create_tween().set_ignore_time_scale().set_pause_mode(Tween.TWEEN_PAUSE_PROCESS).set_parallel().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUAD)
 		_tween.tween_property(Engine,"time_scale",0,fade)
-		_tween.tween_property(msg_bg_overlay,"modulate", Color(1,1,1,0.25),fade)
+		_tween.tween_property(msg_bg_overlay,"modulate", Color(1,1,1,0.3),fade)
 		await get_tree().create_timer(fade,true,false,true).timeout
 		await get_tree().process_frame
 		Engine.time_scale = 1.0
-	msg_bg_overlay.modulate = Color(1,1,1,0.3)
+		msg_bg_overlay.modulate = Color(1,1,1,0.3)
 	get_tree().paused = true
 
 
@@ -91,6 +112,30 @@ func stop_time(fade:=0.0) -> void:
 
 #[wave amp=50.0 freq=5.0 connected=1]someone[/wave]
 #[tornado radius=5.0 freq=1.0 connected=1]You must be bad at video games.[/tornado]
+
+
+
+func opening_tutorial() -> void:
+	seen_opening_tutorial = true
+	await get_tree().create_timer(0.35,true,false,true).timeout
+	await stop_time(1)
+	await display_message_box(
+		"""wasd to fly
+hold spacebar to take/drop items you pass over
+
+click the [color=cyan]station icons[/color] to find out what they need
+click + drag items in cargo bay to move them around
+
+drop the right items on stations to raise community
+you have 10 mins until the capital ships arrive""",
+	"Let's get to work!",
+	4
+	)
+	#await get_tree().create_timer(0.25,true,false,true).timeout
+	await start_time(1)
+
+
+
 
 func took_damage() -> void:
 	if !has_taken_damage:
@@ -116,7 +161,6 @@ Good luck & fly safe!""" % GLOBALS.SHIP_MAX_HEALTH,
 
 
 func was_scanned_first_time() -> void:
-	has_taken_damage = true
 	await get_tree().create_timer(0.35,true,false,true).timeout
 	await stop_time(1)
 	await display_message_box(
@@ -137,11 +181,9 @@ Keep it secret! Keep it safe!""",
 func dead() -> void:
 	await stop_time(1)
 	await display_message_box(
-		"Dead hours
-washed gang gang
-no health? :/",
-	"damn, guess I'll try again",
-	2
+		"[tornado radius=3.0 freq=1.0 connected=1]Although the skimmer was destroyed, the people hold your sacrifice in their memories.[/tornado]\n\nYour final bounty on this planet was [color=yellow]%s credits![/color]" % BountyManager.current_bounty,
+	"We can do better!",
+	4
 	)
 	await start_time(1)
 	_on_restart_game.emit()
@@ -152,11 +194,9 @@ no health? :/",
 func win() -> void:
 	await stop_time(1)
 	await display_message_box(
-		"A winner is you!
-Take this into your life
-no gods, no masters",
-	"please sir, may I have another?",
-	2
+		"[font_size=50][rainbow freq=0.1 sat=0.69 val=1 speed=0.5]C o n g r a t u l a t i o n s ![/rainbow][/font_size]\n\nYour community pulled together against all odds to\nthrow off the yoke of those Capital ships once and for all!\n\nYour final bounty at time of freedom was [color=yellow]%s credits![/color]" % BountyManager.current_bounty,
+	"Can you beat your score?",
+	4
 	)
 	await start_time(1)
 	_on_restart_game.emit()
@@ -166,8 +206,8 @@ no gods, no masters",
 func lose() -> void:
 	await stop_time(1)
 	await display_message_box(
-		"You ran out of time like a dingus! Authorities blasted you away from orbit.",
-	"scoop me up and try again",
+		"[shake rate=10.0 level=3 connected=1]The capital ship arrived to obliterate your skimmer and your community from the safety of orbit.[/shake]\n\nYour final bounty on this planet was [color=yellow]%s credits![/color]" % BountyManager.current_bounty,
+	"They can't keep getting away with this!",
 	2
 	)
 	await start_time(1)

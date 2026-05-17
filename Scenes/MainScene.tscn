@@ -7,7 +7,7 @@
 [ext_resource type="Script" uid="uid://cncokyrrq0buv" path="res://Scripts/BountyManager.gd" id="4_qxria"]
 [ext_resource type="Script" uid="uid://ck5g8xe0ginh2" path="res://Scripts/CountdownManager.gd" id="5_y4jh7"]
 [ext_resource type="Texture2D" uid="uid://cl68y0cwjkauc" path="res://Assets/Images/UI/Potrait1.png" id="7_f140w"]
-[ext_resource type="AudioStream" uid="uid://ccanrxdhcjibq" path="res://Assets/Audio/Music/845153__glorytothemachine__unkown_entity-113bpm-melodic_data_stream-seamless-loop-glorytothemachine.mp3" id="7_q68mp"]
+[ext_resource type="Script" uid="uid://jlo8v3v54a6g" path="res://Scripts/IntroManager.gd" id="8_f140w"]
 
 [sub_resource type="Gradient" id="Gradient_81xng"]
 offsets = PackedFloat32Array(0, 0.50641024, 1)
@@ -94,6 +94,32 @@ border_width_bottom = 4
 border_color = Color(0.3675, 0.60975003, 0.75, 1)
 border_blend = true
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6t1o7"]
+content_margin_left = 50.0
+content_margin_top = 12.0
+content_margin_right = 50.0
+content_margin_bottom = 12.0
+bg_color = Color(0.19140002, 0.23529004, 0.33, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.3675, 0.60975003, 0.75, 1)
+border_blend = true
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5qxwa"]
+content_margin_left = 50.0
+content_margin_top = 12.0
+content_margin_right = 50.0
+content_margin_bottom = 12.0
+bg_color = Color(0.25520003, 0.31372002, 0.44, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.3675, 0.60975003, 0.75, 1)
+border_blend = true
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f140w"]
 bg_color = Color(0.20300001, 0.24955001, 0.35, 0.90588236)
 border_width_left = 4
@@ -114,6 +140,19 @@ gradient = SubResource("Gradient_0iob3")
 width = 8
 height = 7
 fill_to = Vector2(0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xb4mg"]
+content_margin_left = 50.0
+content_margin_top = 12.0
+content_margin_right = 50.0
+content_margin_bottom = 12.0
+bg_color = Color(0.21460001, 0.26381004, 0.37, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.3675, 0.60975003, 0.75, 1)
+border_blend = true
 
 [node name="UIManager" type="CanvasLayer" unique_id=785319097]
 process_mode = 3
@@ -342,8 +381,7 @@ text = "[font_size=22]CRATE:[/font_size]  Used to hold things, obviously"
 vertical_alignment = 1
 
 [node name="MessageBgOverlay" type="ColorRect" parent="UIHolder" unique_id=6450553]
-visible = false
-modulate = Color(1, 1, 1, 0)
+z_index = 10
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -354,7 +392,8 @@ color = Color(0.16078432, 0.15686275, 0.19215687, 1)
 
 [node name="MessageBox" type="PanelContainer" parent="UIHolder" unique_id=258760470]
 visible = false
-custom_minimum_size = Vector2(400, 100)
+z_index = 15
+custom_minimum_size = Vector2(700, 300)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -395,10 +434,14 @@ layout_mode = 2
 size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 26
 theme_override_styles/normal = SubResource("StyleBoxFlat_8ju71")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_6t1o7")
+theme_override_styles/hover = SubResource("StyleBoxFlat_5qxwa")
 text = "d"
 
 [node name="DialogueBox" type="MarginContainer" parent="UIHolder" unique_id=1546584707]
 visible = false
+modulate = Color(1, 1, 1, 0)
+z_index = 14
 layout_mode = 0
 offset_left = 20.0
 offset_top = 21.0
@@ -465,6 +508,9 @@ custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxFlat_8ju71")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_6t1o7")
+theme_override_styles/hover = SubResource("StyleBoxFlat_5qxwa")
 text = "no worries"
 
 [node name="Scanlines" type="TextureRect" parent="UIHolder/DialogueBox/DialoguePC" unique_id=600688116]
@@ -476,7 +522,90 @@ texture = SubResource("GradientTexture2D_4b75m")
 expand_mode = 3
 stretch_mode = 1
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=481155692]
-stream = ExtResource("7_q68mp")
-volume_db = -6.175
-autoplay = true
+[node name="IntroManager" type="MarginContainer" parent="UIHolder" unique_id=696674233]
+process_mode = 3
+visible = false
+z_index = 20
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset_ratio = Vector2(0.5, 0.5)
+mouse_filter = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 50
+script = ExtResource("8_f140w")
+intro_dialogue_them = Array[String](["Look, you're right.", "Times have been getting real tough.", "Prices climb, but the quality falls.", "Taxes rise, but services get worse.", "The elites sail out among the stars...", "... and keep us thrashing in the dirt.", "So yeah, I get the impulse to lash out.", "But still, stealing a skimmer?               A bold move.", "A stupid move.", "Y'know one of them capital ships is gonna come blast you into dust!", "So then why? You think you're gonna tear it all down by yourself?", "You think you can fight the entire system in a jacked-up cargo skimmer?", "...", "...", "...", "...", "...", "I'm rooting for ya buddy."])
+intro_dialogue_you = Array[String](["...", "...", "...", "...", "...", "...", "...", "Thanks.", "Fair.", "Yeah...", "...", "Nah...", "But I can help the people.", "I can expand the bloc.", "And maybe if others see it happen...", "We can tear it down together...", "And build it back better.", "Cheers big ears"])
+
+[node name="DialoguePC" type="PanelContainer" parent="UIHolder/IntroManager" unique_id=106718416]
+custom_minimum_size = Vector2(500, 100)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_f140w")
+
+[node name="MarginContainer" type="MarginContainer" parent="UIHolder/IntroManager/DialoguePC" unique_id=416564246]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UIHolder/IntroManager/DialoguePC/MarginContainer" unique_id=1224627298]
+layout_mode = 2
+theme_override_constants/separation = 35
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UIHolder/IntroManager/DialoguePC/MarginContainer/VBoxContainer" unique_id=43153068]
+layout_mode = 2
+
+[node name="Portrait" type="TextureRect" parent="UIHolder/IntroManager/DialoguePC/MarginContainer/VBoxContainer/HBoxContainer" unique_id=875875931]
+texture_filter = 1
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+size_flags_horizontal = 2
+size_flags_vertical = 0
+texture = ExtResource("7_f140w")
+expand_mode = 5
+stretch_mode = 5
+
+[node name="DialogueLabel" type="RichTextLabel" parent="UIHolder/IntroManager/DialoguePC/MarginContainer/VBoxContainer/HBoxContainer" unique_id=575609355]
+process_mode = 3
+clip_contents = false
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+size_flags_stretch_ratio = 2.44
+theme_override_colors/default_color = Color(0.3675, 0.60975003, 0.75, 1)
+theme_override_constants/line_separation = -2
+theme_override_constants/paragraph_separation = -6
+theme_override_font_sizes/normal_font_size = 26
+bbcode_enabled = true
+fit_content = true
+scroll_active = false
+
+[node name="DialogueButton" type="Button" parent="UIHolder/IntroManager/DialoguePC/MarginContainer/VBoxContainer" unique_id=1574139972]
+process_mode = 3
+z_index = 1
+custom_minimum_size = Vector2(150, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxFlat_xb4mg")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_6t1o7")
+theme_override_styles/hover = SubResource("StyleBoxFlat_5qxwa")
+
+[node name="Scanlines" type="TextureRect" parent="UIHolder/IntroManager/DialoguePC" unique_id=41388890]
+modulate = Color(0.2891, 0.47967002, 0.59, 0.47058824)
+texture_repeat = 2
+layout_mode = 2
+mouse_filter = 2
+texture = SubResource("GradientTexture2D_4b75m")
+expand_mode = 3
+stretch_mode = 1
+
+[connection signal="pressed" from="UIHolder/IntroManager/DialoguePC/MarginContainer/VBoxContainer/DialogueButton" to="UIHolder/IntroManager" method="_on_button_pressed"]

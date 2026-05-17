@@ -17,7 +17,7 @@ class_name NotificationManager extends Node
 
 @export var order_options : Array[String] = [
 	"Whoever recieves this, we urgently require %s for repairs.",
-	"Mutual aid request: %s to fix our water filtration.",
+	"Mutual aid request: %s to fix our water filtration system.",
 	"In such times, we humbly request a delivery of %s!",
 	"Even %s would help get us back in the green.",
 	"%s would let us take the fight upwards!",

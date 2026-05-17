@@ -11,13 +11,14 @@ config_version=5
 [application]
 
 config/name="Project Thornbury"
-run/main_scene="uid://jcnlsaxu7mak"
+run/main_scene="uid://mwy3b31cbiu7"
 config/features=PackedStringArray("4.6", "GL Compatibility")
 config/icon="res://icon.svg"
 
 [autoload]
 
 Globals="*uid://cduwiiq2d51c5"
+MusicPlayer="*uid://dld4w370qi3um"
 
 [display]
 
@@ -92,3 +93,4 @@ common/physics_interpolation=true
 rendering_device/driver.windows="d3d12"
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
+environment/defaults/default_clear_color=Color(0.16078432, 0.15686275, 0.19215687, 1)

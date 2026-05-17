@@ -30,13 +30,18 @@ var trails : Array[ShipTrail] = []
 
 func _enter_tree() -> void:
 	instance = self
+	GLOBALS.on_game_started().connect(game_started)
 
 func _ready() -> void:
 	for _child:ShipTrail in find_children("","ShipTrail"):
 		trails.append(_child)
-	
+
+func game_started() -> void:
+	engine_audio_player.play()
+
 
 func _physics_process(delta: float) -> void:
+	
 	previous_speed = speed
 	
 	if has_control:

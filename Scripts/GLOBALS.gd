@@ -88,6 +88,7 @@ static var BOUNTY_BRAZEN_FINE_MULTIPLIER : float = 1
 #endregion
 
 
+
 static var health : int = 0 : 
 	set(value):
 		if health != value:
@@ -103,6 +104,11 @@ static func on_health_changed() -> Signal: return instance._on_health_changed
 
 
 
+static var game_started : bool = false
+
+signal _on_game_started
+static func on_game_started() -> Signal: return instance._on_game_started
+
 
 func _init() -> void:
 	instance = self
@@ -117,10 +123,12 @@ static func restart_game() -> void:
 	game_config_manager.apply_game_config()
 	
 	health = SHIP_MAX_HEALTH
+	#game_started = false
 
 
-
-
+static func start_game() -> void:
+	game_started = true
+	on_game_started().emit()
 
 
 
