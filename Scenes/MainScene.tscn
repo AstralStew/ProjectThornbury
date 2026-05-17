@@ -13,22 +13,6 @@
 offsets = PackedFloat32Array(0, 0.50641024, 1)
 colors = PackedColorArray(1, 0, 0, 1, 1, 0.98333335, 0, 1, 0, 1, 0.049999952, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oqgf2"]
-content_margin_left = 2.0
-content_margin_top = 2.0
-content_margin_right = 2.0
-content_margin_bottom = 2.0
-bg_color = Color(0.2, 0.24705882, 0.34509805, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_blend = true
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_81xng"]
-content_margin_left = 8.0
-content_margin_right = 8.0
-
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0f350"]
 content_margin_left = 8.0
 content_margin_right = 8.0
@@ -42,29 +26,28 @@ border_blend = true
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8c0lf"]
 bg_color = Color(1, 1, 1, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_754fn"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_81xng"]
 content_margin_left = 8.0
-content_margin_top = 0.0
 content_margin_right = 8.0
-content_margin_bottom = 2.0
-bg_color = Color(0.2, 0.24705882, 0.34509805, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_blend = true
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bvt00"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0iob3"]
 content_margin_left = 8.0
 content_margin_top = 0.0
 content_margin_right = 8.0
 content_margin_bottom = 0.0
 bg_color = Color(0.2, 0.24705882, 0.34509805, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_blend = true
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.3675, 0.60975003, 0.75, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4b75m"]
+content_margin_left = 8.0
+content_margin_top = 0.0
+content_margin_right = 8.0
+content_margin_bottom = 0.0
+bg_color = Color(0.2901961, 0.47843137, 0.5882353, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wqkje"]
 content_margin_left = 8.0
@@ -79,11 +62,11 @@ border_width_bottom = 2
 border_blend = true
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_81xng"]
-content_margin_left = 20.0
-content_margin_top = 20.0
-content_margin_right = 20.0
-content_margin_bottom = 20.0
-bg_color = Color(0.16007765, 0.15594886, 0.1931151, 0.85700005)
+content_margin_left = 40.0
+content_margin_top = 40.0
+content_margin_right = 40.0
+content_margin_bottom = 40.0
+bg_color = Color(0.15811166, 0.1539, 0.19, 1)
 border_width_left = 2
 border_width_top = 2
 border_width_right = 2
@@ -98,11 +81,20 @@ shadow_size = 9
 shadow_offset = Vector2(0, 2)
 anti_aliasing = false
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8ju71"]
+content_margin_left = 50.0
+content_margin_top = 12.0
+content_margin_right = 50.0
+content_margin_bottom = 12.0
+bg_color = Color(0.2, 0.24705882, 0.34509805, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.3675, 0.60975003, 0.75, 1)
+border_blend = true
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f140w"]
-content_margin_left = 0.0
-content_margin_top = 0.0
-content_margin_right = 0.0
-content_margin_bottom = 0.0
 bg_color = Color(0.20300001, 0.24955001, 0.35, 0.90588236)
 border_width_left = 4
 border_width_top = 4
@@ -170,26 +162,23 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 1.26
 
+[node name="OutsideManager" parent="UIHolder/MC_ScreenHolders/HB_ScreenHolders/LeftScreen" unique_id=1854772268 instance=ExtResource("2_qxria")]
+custom_minimum_size = Vector2(680, 640)
+layout_mode = 2
+collectable_pipe_prefab = ExtResource("3_y4jh7")
+
 [node name="PanelContainer" type="PanelContainer" parent="UIHolder/MC_ScreenHolders/HB_ScreenHolders/LeftScreen" unique_id=1521003445]
+custom_minimum_size = Vector2(0, 27)
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_styles/panel = SubResource("StyleBoxFlat_oqgf2")
+size_flags_vertical = 3
 
 [node name="TopBar" type="HBoxContainer" parent="UIHolder/MC_ScreenHolders/HB_ScreenHolders/LeftScreen/PanelContainer" unique_id=408115628]
+visible = false
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="Label" type="Label" parent="UIHolder/MC_ScreenHolders/HB_ScreenHolders/LeftScreen/PanelContainer/TopBar" unique_id=886410127]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 1
-size_flags_stretch_ratio = 0.0
-theme_override_font_sizes/font_size = 18
-theme_override_styles/normal = SubResource("StyleBoxEmpty_81xng")
-text = "PROSPERITY"
-vertical_alignment = 1
-
-[node name="ProsperityBar" type="ProgressBar" parent="UIHolder/MC_ScreenHolders/HB_ScreenHolders/LeftScreen/PanelContainer/TopBar" unique_id=346931455]
+[node name="ProsperityBar" type="ProgressBar" parent="UIHolder/MC_ScreenHolders/HB_ScreenHolders/LeftScreen/PanelContainer" unique_id=346931455]
 modulate = Color(1, 0, 0, 1)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -199,113 +188,22 @@ theme_override_constants/outline_size = 6
 theme_override_font_sizes/font_size = 20
 theme_override_styles/background = SubResource("StyleBoxFlat_0f350")
 theme_override_styles/fill = SubResource("StyleBoxFlat_8c0lf")
+show_percentage = false
 
-[node name="OutsideManager" parent="UIHolder/MC_ScreenHolders/HB_ScreenHolders/LeftScreen" unique_id=1854772268 instance=ExtResource("2_qxria")]
-custom_minimum_size = Vector2(680, 600)
-layout_mode = 2
-collectable_pipe_prefab = ExtResource("3_y4jh7")
-
-[node name="BottomBar" type="HBoxContainer" parent="UIHolder/MC_ScreenHolders/HB_ScreenHolders/LeftScreen" unique_id=1771191263]
-custom_minimum_size = Vector2(0, 27)
-layout_mode = 2
-size_flags_vertical = 3
-
-[node name="BountyLabel" type="RichTextLabel" parent="UIHolder/MC_ScreenHolders/HB_ScreenHolders/LeftScreen/BottomBar" unique_id=1357896985]
+[node name="Label" type="Label" parent="UIHolder/MC_ScreenHolders/HB_ScreenHolders/LeftScreen/PanelContainer" unique_id=886410127]
 layout_mode = 2
 size_flags_horizontal = 3
-size_flags_stretch_ratio = 0.51
-theme_override_font_sizes/normal_font_size = 17
-theme_override_styles/normal = SubResource("StyleBoxFlat_754fn")
-bbcode_enabled = true
-text = "BOUNTY:"
-scroll_active = false
-vertical_alignment = 1
-
-[node name="BountyBox" type="PanelContainer" parent="UIHolder/MC_ScreenHolders/HB_ScreenHolders/LeftScreen/BottomBar" unique_id=1284918690]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_styles/panel = SubResource("StyleBoxFlat_bvt00")
-
-[node name="BountyBox" type="HBoxContainer" parent="UIHolder/MC_ScreenHolders/HB_ScreenHolders/LeftScreen/BottomBar/BountyBox" unique_id=687468187]
-custom_minimum_size = Vector2(0, 27)
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme_override_constants/separation = 0
-script = ExtResource("4_qxria")
-
-[node name="BountyTotalLabel" type="RichTextLabel" parent="UIHolder/MC_ScreenHolders/HB_ScreenHolders/LeftScreen/BottomBar/BountyBox/BountyBox" unique_id=1672441783]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_stretch_ratio = 2.0
-theme_override_colors/default_color = Color(1, 1, 0, 1)
-theme_override_font_sizes/normal_font_size = 24
-bbcode_enabled = true
-text = "0 [font_size=15]CREDS"
-scroll_active = false
-vertical_alignment = 1
-
-[node name="BountyChangeLabel" type="RichTextLabel" parent="UIHolder/MC_ScreenHolders/HB_ScreenHolders/LeftScreen/BottomBar/BountyBox/BountyBox" unique_id=41076911]
-visible = false
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_font_sizes/normal_font_size = 20
-theme_override_font_sizes/italics_font_size = 20
-bbcode_enabled = true
-text = "[color=green]+[i]0"
-scroll_active = false
+size_flags_vertical = 1
+size_flags_stretch_ratio = 0.0
+theme_override_colors/font_color = Color(1, 1, 1, 0.7764706)
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 0
+theme_override_constants/shadow_outline_size = 9
+theme_override_font_sizes/font_size = 26
+theme_override_styles/normal = SubResource("StyleBoxEmpty_81xng")
+text = "c o m m u n i t y"
 horizontal_alignment = 1
 vertical_alignment = 1
-
-[node name="EtaLabel" type="RichTextLabel" parent="UIHolder/MC_ScreenHolders/HB_ScreenHolders/LeftScreen/BottomBar" unique_id=1370415613]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_stretch_ratio = 0.8
-theme_override_font_sizes/normal_font_size = 16
-theme_override_styles/normal = SubResource("StyleBoxFlat_bvt00")
-bbcode_enabled = true
-text = "AUTHORITIES ETA:"
-scroll_active = false
-vertical_alignment = 1
-
-[node name="BountyBox2" type="PanelContainer" parent="UIHolder/MC_ScreenHolders/HB_ScreenHolders/LeftScreen/BottomBar" unique_id=980604586]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_styles/panel = SubResource("StyleBoxFlat_bvt00")
-
-[node name="CountdownBox" type="HBoxContainer" parent="UIHolder/MC_ScreenHolders/HB_ScreenHolders/LeftScreen/BottomBar/BountyBox2" unique_id=1101631201]
-custom_minimum_size = Vector2(0, 27)
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme_override_constants/separation = 0
-script = ExtResource("5_y4jh7")
-
-[node name="CountdownRemaining" type="RichTextLabel" parent="UIHolder/MC_ScreenHolders/HB_ScreenHolders/LeftScreen/BottomBar/BountyBox2/CountdownBox" unique_id=352028060]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_font_sizes/normal_font_size = 22
-theme_override_font_sizes/bold_font_size = 22
-bbcode_enabled = true
-text = "[b]10:00"
-scroll_active = false
-vertical_alignment = 1
-
-[node name="Timer" type="Timer" parent="UIHolder/MC_ScreenHolders/HB_ScreenHolders/LeftScreen/BottomBar/BountyBox2/CountdownBox/CountdownRemaining" unique_id=1480961910]
-process_mode = 1
-process_callback = 0
-autostart = true
-
-[node name="CountdownChangeLabel" type="RichTextLabel" parent="UIHolder/MC_ScreenHolders/HB_ScreenHolders/LeftScreen/BottomBar/BountyBox2/CountdownBox" unique_id=1011892542]
-visible = false
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_font_sizes/normal_font_size = 24
-theme_override_font_sizes/bold_italics_font_size = 20
-bbcode_enabled = true
-text = "[color=red]-[i][b]00:10"
-scroll_active = false
-horizontal_alignment = 1
 
 [node name="RightScreen" type="VBoxContainer" parent="UIHolder/MC_ScreenHolders/HB_ScreenHolders" unique_id=1162533289]
 layout_mode = 2
@@ -316,7 +214,121 @@ texture_filter = 1
 custom_minimum_size = Vector2(0, 640)
 layout_mode = 2
 
+[node name="BottomBar2" type="HBoxContainer" parent="UIHolder/MC_ScreenHolders/HB_ScreenHolders/RightScreen" unique_id=1771191263]
+custom_minimum_size = Vector2(0, 27)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 4
+
+[node name="EtaLabel" type="RichTextLabel" parent="UIHolder/MC_ScreenHolders/HB_ScreenHolders/RightScreen/BottomBar2" unique_id=1370415613]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.83
+theme_override_colors/default_color = Color(0.3675, 0.60975003, 0.75, 1)
+theme_override_constants/paragraph_separation = -4
+theme_override_font_sizes/normal_font_size = 16
+theme_override_styles/normal = SubResource("StyleBoxFlat_0iob3")
+bbcode_enabled = true
+text = "capital ship arrives in:"
+scroll_active = false
+vertical_alignment = 1
+
+[node name="BountyBox2" type="PanelContainer" parent="UIHolder/MC_ScreenHolders/HB_ScreenHolders/RightScreen/BottomBar2" unique_id=980604586]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.93
+theme_override_styles/panel = SubResource("StyleBoxFlat_4b75m")
+
+[node name="CountdownBox" type="HBoxContainer" parent="UIHolder/MC_ScreenHolders/HB_ScreenHolders/RightScreen/BottomBar2/BountyBox2" unique_id=1101631201]
+custom_minimum_size = Vector2(0, 27)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 0
+script = ExtResource("5_y4jh7")
+
+[node name="CountdownRemaining" type="RichTextLabel" parent="UIHolder/MC_ScreenHolders/HB_ScreenHolders/RightScreen/BottomBar2/BountyBox2/CountdownBox" unique_id=352028060]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/paragraph_separation = -4
+theme_override_font_sizes/normal_font_size = 28
+theme_override_font_sizes/bold_font_size = 28
+bbcode_enabled = true
+text = "[b]10:00"
+scroll_active = false
+vertical_alignment = 1
+
+[node name="Timer" type="Timer" parent="UIHolder/MC_ScreenHolders/HB_ScreenHolders/RightScreen/BottomBar2/BountyBox2/CountdownBox/CountdownRemaining" unique_id=1480961910]
+process_mode = 1
+process_callback = 0
+autostart = true
+
+[node name="CountdownChangeLabel" type="RichTextLabel" parent="UIHolder/MC_ScreenHolders/HB_ScreenHolders/RightScreen/BottomBar2/BountyBox2/CountdownBox" unique_id=1011892542]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/paragraph_separation = -4
+theme_override_font_sizes/normal_font_size = 28
+theme_override_font_sizes/bold_italics_font_size = 28
+bbcode_enabled = true
+text = "[color=red]-[i][b]00:10"
+scroll_active = false
+vertical_alignment = 1
+
+[node name="BountyLabel" type="RichTextLabel" parent="UIHolder/MC_ScreenHolders/HB_ScreenHolders/RightScreen/BottomBar2" unique_id=1357896985]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.39
+theme_override_colors/default_color = Color(0.3675, 0.60975003, 0.75, 1)
+theme_override_constants/paragraph_separation = -4
+theme_override_font_sizes/normal_font_size = 17
+theme_override_styles/normal = SubResource("StyleBoxFlat_0iob3")
+bbcode_enabled = true
+text = "BOUNTY:"
+scroll_active = false
+vertical_alignment = 1
+
+[node name="BountyBox" type="PanelContainer" parent="UIHolder/MC_ScreenHolders/HB_ScreenHolders/RightScreen/BottomBar2" unique_id=1284918690]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.89
+theme_override_styles/panel = SubResource("StyleBoxFlat_4b75m")
+
+[node name="BountyBox" type="HBoxContainer" parent="UIHolder/MC_ScreenHolders/HB_ScreenHolders/RightScreen/BottomBar2/BountyBox" unique_id=687468187]
+custom_minimum_size = Vector2(0, 27)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 0
+script = ExtResource("4_qxria")
+
+[node name="BountyTotalLabel" type="RichTextLabel" parent="UIHolder/MC_ScreenHolders/HB_ScreenHolders/RightScreen/BottomBar2/BountyBox/BountyBox" unique_id=1672441783]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
+theme_override_colors/default_color = Color(1, 1, 0, 1)
+theme_override_constants/paragraph_separation = -4
+theme_override_font_sizes/normal_font_size = 28
+bbcode_enabled = true
+text = "0 [font_size=18]CR"
+scroll_active = false
+vertical_alignment = 1
+
+[node name="BountyChangeLabel" type="RichTextLabel" parent="UIHolder/MC_ScreenHolders/HB_ScreenHolders/RightScreen/BottomBar2/BountyBox/BountyBox" unique_id=41076911]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/paragraph_separation = -4
+theme_override_font_sizes/normal_font_size = 28
+theme_override_font_sizes/italics_font_size = 28
+bbcode_enabled = true
+text = "[color=green]+[i]0"
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="BottomBar" type="HBoxContainer" parent="UIHolder/MC_ScreenHolders/HB_ScreenHolders/RightScreen" unique_id=1300402169]
+visible = false
 custom_minimum_size = Vector2(0, 27)
 layout_mode = 2
 size_flags_vertical = 3
@@ -343,23 +355,31 @@ color = Color(0.16078432, 0.15686275, 0.19215687, 1)
 [node name="MessageBox" type="PanelContainer" parent="UIHolder" unique_id=258760470]
 visible = false
 custom_minimum_size = Vector2(400, 100)
-layout_mode = 0
-offset_left = 440.0
-offset_top = 248.0
-offset_right = 840.0
-offset_bottom = 472.0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = -112.0
+offset_right = 200.0
+offset_bottom = 112.0
+grow_horizontal = 2
+grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_styles/panel = SubResource("StyleBoxFlat_81xng")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="UIHolder/MessageBox" unique_id=1716209200]
 layout_mode = 2
-theme_override_constants/separation = 15
+theme_override_constants/separation = 40
 alignment = 1
 
 [node name="RTL_Message" type="RichTextLabel" parent="UIHolder/MessageBox/VBoxContainer" unique_id=1987009389]
 process_mode = 3
 layout_mode = 2
+theme_override_font_sizes/normal_font_size = 28
 bbcode_enabled = true
 text = "a"
 fit_content = true
@@ -373,64 +393,85 @@ self_modulate = Color(1, 1, 1, 0)
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
 size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 26
+theme_override_styles/normal = SubResource("StyleBoxFlat_8ju71")
 text = "d"
 
-[node name="DialogueBox" type="PanelContainer" parent="UIHolder" unique_id=1871352225]
-custom_minimum_size = Vector2(400, 100)
+[node name="DialogueBox" type="MarginContainer" parent="UIHolder" unique_id=1546584707]
+visible = false
 layout_mode = 0
-offset_left = 57.0
-offset_top = 417.0
-offset_right = 477.0
-offset_bottom = 630.0
+offset_left = 20.0
+offset_top = 21.0
+offset_right = 700.0
+offset_bottom = 661.0
+pivot_offset_ratio = Vector2(0.5, 0.5)
+mouse_filter = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 50
+
+[node name="DialoguePC" type="PanelContainer" parent="UIHolder/DialogueBox" unique_id=1871352225]
+custom_minimum_size = Vector2(500, 100)
+layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_styles/panel = SubResource("StyleBoxFlat_f140w")
 
-[node name="MarginContainer" type="MarginContainer" parent="UIHolder/DialogueBox" unique_id=974129575]
+[node name="MarginContainer" type="MarginContainer" parent="UIHolder/DialogueBox/DialoguePC" unique_id=974129575]
 layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
 
-[node name="VBoxContainer" type="VBoxContainer" parent="UIHolder/DialogueBox/MarginContainer" unique_id=424586139]
+[node name="VBoxContainer" type="VBoxContainer" parent="UIHolder/DialogueBox/DialoguePC/MarginContainer" unique_id=424586139]
 layout_mode = 2
 theme_override_constants/separation = 15
 
-[node name="HBoxContainer" type="HBoxContainer" parent="UIHolder/DialogueBox/MarginContainer/VBoxContainer" unique_id=759766579]
+[node name="HBoxContainer" type="HBoxContainer" parent="UIHolder/DialogueBox/DialoguePC/MarginContainer/VBoxContainer" unique_id=759766579]
 layout_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="UIHolder/DialogueBox/MarginContainer/VBoxContainer/HBoxContainer" unique_id=231442264]
+[node name="Portrait" type="TextureRect" parent="UIHolder/DialogueBox/DialoguePC/MarginContainer/VBoxContainer/HBoxContainer" unique_id=231442264]
 texture_filter = 1
-custom_minimum_size = Vector2(0, 121.44)
+custom_minimum_size = Vector2(120, 0)
 layout_mode = 2
-size_flags_horizontal = 0
+size_flags_horizontal = 2
 size_flags_vertical = 0
 texture = ExtResource("7_f140w")
-expand_mode = 3
+expand_mode = 5
+stretch_mode = 5
 
-[node name="RTL_Message" type="RichTextLabel" parent="UIHolder/DialogueBox/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1197499702]
+[node name="DialogueLabel" type="RichTextLabel" parent="UIHolder/DialogueBox/DialoguePC/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1197499702]
 process_mode = 3
+clip_contents = false
 layout_mode = 2
 size_flags_horizontal = 3
-size_flags_vertical = 4
-theme_override_colors/default_color = Color(0.343, 0.5691, 0.7, 1)
+size_flags_vertical = 0
+size_flags_stretch_ratio = 2.44
+theme_override_colors/default_color = Color(0.3675, 0.60975003, 0.75, 1)
+theme_override_constants/line_separation = -2
+theme_override_constants/paragraph_separation = -6
 theme_override_font_sizes/normal_font_size = 26
 bbcode_enabled = true
-text = "The old planet is dying, and a new one struggles to be born.
-
-Give me 5 pipe."
+text = "The old planet is dying; a new one struggles to be born. If you're hearing this, we urgently require 4 Pipes for repairs."
 fit_content = true
 scroll_active = false
 
-[node name="RTL_Button" type="Button" parent="UIHolder/DialogueBox/MarginContainer/VBoxContainer" unique_id=2028214528]
+[node name="DialogueButton" type="Button" parent="UIHolder/DialogueBox/DialoguePC/MarginContainer/VBoxContainer" unique_id=2028214528]
 process_mode = 3
-self_modulate = Color(1, 1, 1, 0)
+z_index = 1
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
 size_flags_horizontal = 4
-text = "d"
+theme_override_font_sizes/font_size = 24
+text = "no worries"
 
-[node name="TextureRect" type="TextureRect" parent="UIHolder/DialogueBox" unique_id=600688116]
+[node name="Scanlines" type="TextureRect" parent="UIHolder/DialogueBox/DialoguePC" unique_id=600688116]
 modulate = Color(0.2891, 0.47967002, 0.59, 0.47058824)
 texture_repeat = 2
 layout_mode = 2
+mouse_filter = 2
 texture = SubResource("GradientTexture2D_4b75m")
 expand_mode = 3
 stretch_mode = 1

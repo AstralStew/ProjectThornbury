@@ -7,6 +7,9 @@ var _tracking_bodies : bool = false
 var _material : ShaderMaterial = null
 var _mat_changed : bool = false
 
+
+static var has_been_scanned : bool = false # don't reset this on restart!
+
 signal on_scan_end(number_of_hits)
 
 # Called when the node enters the scene tree for the first time.
@@ -90,6 +93,10 @@ func scanning() -> void:
 	on_scan_end.emit(_items)
 	
 	await get_tree().create_timer(1,false).timeout
+	
+	if !has_been_scanned:
+		has_been_scanned = true
+		UIManager.instance.was_scanned_first_time()
 	
 	_tween = create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUAD)
 	_tween.tween_property(self,"modulate",Color(0,0,0,0),2)

@@ -10,15 +10,24 @@ static var current_bounty : int = 0
 
 func _enter_tree() -> void:
 	instance = self
+	current_bounty = 0
+
+
 
 
 static func add_from_scanned_items(items:Array[Item]) -> void:
-	instance._add_from_scanned_items(items)
+	var _items : Array[InventoryManager.ItemType]
+	for _item in items:
+		_items.append(_item.type)
+	instance._add_from_items(_items)
 
-func _add_from_scanned_items(items:Array[Item]) -> void:
+static func add_from_items(items:Array[InventoryManager.ItemType]) -> void:
+	instance._add_from_items(items)
+
+func _add_from_items(items:Array[InventoryManager.ItemType]) -> void:
 	var _amount : int = 0
 	for _item in items:
-		match _item.type:
+		match _item:
 			InventoryManager.ItemType.Rock:
 				_amount += GLOBALS.BOUNTY_ROCK_FINE_AMOUNT
 			InventoryManager.ItemType.Crate:
@@ -37,7 +46,7 @@ static func add_to_bounty(amount:int) -> void:
 func _add_to_bounty(amount:int) -> void:
 	
 	current_bounty += amount
-	bounty_total_label.text = str(current_bounty) + " [font_size=15]CREDS"
+	bounty_total_label.text = str(current_bounty) + " [font_size=15]CR"
 	bounty_change_label.text = "[color=green]+[i]" + str(amount)
 	bounty_change_label.visible = true
 	bounty_change_label.modulate = Color.WHITE

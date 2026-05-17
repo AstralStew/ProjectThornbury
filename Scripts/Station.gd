@@ -21,13 +21,15 @@ var DEBUG_NAME : String :
 @export var order_type : InventoryManager.ItemType = InventoryManager.ItemType.Rock
 @export var order_number : int = -1
 
-@onready var _label : Label = $PanelContainer/Label
+#@onready var _label : Label = $PanelContainer/Label
 
 signal on_make_order(station_ref)
 signal on_complete_order(station_ref)
 signal on_become_prosperous(station_ref)
 
 var _expansions : Array[Node2D]
+
+var _order_items : Array[InventoryManager.ItemType]
 
 func _ready() -> void:
 	
@@ -53,20 +55,23 @@ func make_order() -> void:
 		InventoryManager.ItemType.Pipe:
 			order_number = randi_range(4,8)
 	
+	for i in order_number:
+		_order_items.append(order_type)
+	
 	has_order = true
-	update_text()
+	#update_text()
 	on_make_order.emit(self)
 
-func update_text() -> void:
-	if has_order:
-		_label.text = "We need " + str(order_number) + " " + str(InventoryManager.ItemType.keys()[order_type])
-		_label.visible = true
-	elif is_prosperous:
-		_label.text = "We are prosperous!\nThank you fam!"
-		_label.visible = true
-	else:
-		_label.text = ""
-		_label.visible = false
+#func update_text() -> void:
+	#if has_order:
+		##_label.text = "We need " + str(order_number) + " " + str(InventoryManager.ItemType.keys()[order_type])
+		##_label.visible = true
+	#elif is_prosperous:
+		#_label.text = "COMPLETE"
+		#_label.visible = true
+	#else:
+		#_label.text = ""
+		#_label.visible = false
 
 func collect(collectable: Collectable) -> void:
 	collectable.collected = true
@@ -75,7 +80,7 @@ func collect(collectable: Collectable) -> void:
 	if collectable.type == order_type:
 		order_number -= 1
 		if check_order(): complete_order()
-		else: update_text()
+		#else: update_text()
 	
 	var _tween : Tween = create_tween().set_parallel().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUAD)
 	_tween.tween_property(collectable,"modulate",Color(0,0,0,0),0.75)
@@ -93,7 +98,9 @@ func complete_order() -> void:
 	print_rich(DEBUG_NAME,"CheckOrder > Order complete! Starting cooldown and returning true...")
 	has_order = false
 	
-	prosperity += 1	
+	BountyManager.add_from_items(_order_items)
+	
+	prosperity += 1
 	var _chosen:Node2D=null
 	while _chosen == null:
 		_chosen = _expansions.pick_random()
@@ -105,7 +112,7 @@ func complete_order() -> void:
 	else: on_become_prosperous.emit(self)
 
 func cooldown() -> void:
-	update_text()
+	#update_text()
 	for i in prosperity+1:
 		await get_tree().create_timer(randf_range(cooldown_duration.x,cooldown_duration.y)).timeout
 	print_rich(DEBUG_NAME,"Cooldown > Cooldown finished! Making a new order...")

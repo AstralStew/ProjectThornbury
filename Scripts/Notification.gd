@@ -15,7 +15,14 @@ class_name Notification extends Area2D
 @export var target_position : Vector2 = Vector2(460,460)
 @export var is_tracking : bool = false
 @export var is_hovered : bool = false
-#
+
+var station : Station = null
+
+var portait : Texture2D = null
+
+var dialogue_message : String = ""
+
+
 #func _ready() -> void:
 	#tracking(get_tree().get_first_node_in_group("Stations"))
 
@@ -57,20 +64,20 @@ func tracking(_node:Node2D) -> void:
 		
 		if _distance < _disappear_start_sqr_distance:
 			$Arrow.visible = false
-			$SpriteIcon.modulate = Color(0,1,0,0.9) if !is_hovered else Color(0,1,0,1)
-			scale = Vector2.ONE * 1.2 * (1.312 if is_hovered else 1.0)
+			$SpriteIcon.modulate = Color(1,1,1,0.9) if !is_hovered else Color(1,1,1,1)
+			scale = Vector2.ONE * (1.1 if is_hovered else 1.0)
 			global_position = target_position
 		else:
 			$Arrow.visible = true
 			if _distance > _minimum_alpha_sqr_distance:
-				$SpriteIcon.modulate = Color(0,1,0,0.25) if !is_hovered else Color(0,1,0,1)
+				$SpriteIcon.modulate = Color(1,1,1,0.25) if !is_hovered else Color(1,1,1,1)
 			else:
-				$SpriteIcon.modulate = Color(1,1,1,clamp(remap(_distance,_minimum_alpha_sqr_distance,_maximum_alpha_sqr_distance,0.25,0.9),0.25,0.9)) if !is_hovered else Color(0,1,0,1)
+				$SpriteIcon.modulate = Color(1,1,1,clamp(remap(_distance,_minimum_alpha_sqr_distance,_maximum_alpha_sqr_distance,0.25,0.9),0.25,0.9)) if !is_hovered else Color(1,1,1,1)
 			
 			if _distance > _minimum_scale_sqr_distance:
-				scale = Vector2(0.69,0.69) * (1.312 if is_hovered else 1.0)
+				scale = Vector2(0.69,0.69) * (1.1 if is_hovered else 1.0)
 			else:
-				scale = Vector2.ONE * clamp(remap(_distance,_maximum_scale_sqr_distance,_minimum_scale_sqr_distance,1.2,0.69),0.69,1.2) * (1.312 if is_hovered else 1.0)
+				scale = Vector2.ONE * clamp(remap(_distance,_maximum_scale_sqr_distance,_minimum_scale_sqr_distance,1.2,0.69),0.69,1.2) * (1.1 if is_hovered else 1.0)
 			
 			var clamped : Vector2 = (_camera_pos + (target_position - _camera_pos)) #  .direction_to(target_position) * 500)
 			clamped = Vector2(clamp(clamped.x,_camera_pos.x - screen_edge.x + (scale.x * 40),_camera_pos.x + screen_edge.x - (scale.x * 40)),clamp(clamped.y,_camera_pos.y - screen_edge.y + (scale.x * 40),_camera_pos.y + screen_edge.y - (scale.y * 40)))
@@ -89,3 +96,25 @@ func _on_mouse_entered() -> void:
 
 func _on_mouse_exited() -> void:
 	is_hovered = false
+
+
+func create_dialogue_message(_node:Node2D) -> void:
+	if randi() % 2:
+		dialogue_message = (
+			NotificationManager.local_order_flavour_options.pop_at(randi() % NotificationManager.local_order_flavour_options.size()) +
+			" " + #"\n\n" +
+			NotificationManager.local_order_options.pop_at(randi() % NotificationManager.local_order_options.size())
+		)
+	else:
+		dialogue_message = (
+			NotificationManager.local_order_options.pop_at(randi() % NotificationManager.local_order_options.size()) +
+			" " + #"\n\n" +
+			NotificationManager.local_order_flavour_options.pop_at(randi() % NotificationManager.local_order_flavour_options.size())
+		)
+
+func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
+	if event is InputEventMouseButton && Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
+		
+		var _current_message = dialogue_message % ("[color=7dcfff]" + str(station.order_number) + " " + str(InventoryManager.ItemType.keys()[station.order_type]) + ("s" if station.order_number > 1 else "") + "[/color]")
+		
+		UIManager.instance.display_dialogue_box(portait,_current_message,NotificationManager.local_button_options.pick_random())

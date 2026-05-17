@@ -1,19 +1,14 @@
 [gd_scene format=3 uid="uid://ibwgeq3nkflt"]
 
 [ext_resource type="Script" uid="uid://h4wwr486ejuw" path="res://Scripts/Notification.gd" id="1_sruue"]
-[ext_resource type="Texture2D" uid="uid://c0sl1u4dvsqni" path="res://Assets/Images/City/Building64.png" id="2_3fx4b"]
-[ext_resource type="Texture2D" uid="uid://dqe77qt1ubk05" path="res://Assets/Images/UI/GuideIcon_Background.png" id="2_68ugo"]
-[ext_resource type="Texture2D" uid="uid://bsa0wah52o8uu" path="res://Assets/Images/UI/GuideIcon_Logo.png" id="3_1j0aa"]
-[ext_resource type="Texture2D" uid="uid://i1g58vh6a4qg" path="res://Assets/Images/Inventory/Greebles.png" id="3_68ugo"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_sruue"]
-atlas = ExtResource("3_68ugo")
-region = Rect2(175, 12, 46, 46)
+[ext_resource type="Texture2D" uid="uid://deamvpu6230ei" path="res://Assets/Images/UI/GuideIcon_Background_Blue.png" id="2_68ugo"]
+[ext_resource type="Texture2D" uid="uid://dmqa8es5jcxl2" path="res://Assets/Images/UI/GuideIcon_Logo_Blue.png" id="5_1j0aa"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_sruue"]
 radius = 42.66
 
 [node name="Notification" type="Area2D" unique_id=1937379457]
+process_mode = 3
 collision_layer = 65536
 collision_mask = 0
 monitoring = false
@@ -29,41 +24,20 @@ metadata/_custom_type_script = "uid://h4wwr486ejuw"
 [node name="Arrow" type="Node2D" parent="." unique_id=93638010]
 
 [node name="GuideIconBackground" type="Sprite2D" parent="Arrow" unique_id=603216855]
-modulate = Color(0.0333333, 1, 0, 1)
+self_modulate = Color(1, 1, 1, 0.56078434)
 rotation = -1.5707964
 texture = ExtResource("2_68ugo")
 offset = Vector2(0, 1.2)
 
-[node name="SpriteArrow" type="Sprite2D" parent="Arrow" unique_id=57675543]
-visible = false
-position = Vector2(32, 0)
-rotation = 1.5707964
-scale = Vector2(0.4, 0.4)
-texture = ExtResource("3_68ugo")
-region_enabled = true
-region_rect = Rect2(91, 16, 58, 45)
-
-[node name="SpriteBG" type="Sprite2D" parent="." unique_id=1388421572]
-visible = false
-position = Vector2(-1, 0)
-texture = ExtResource("2_3fx4b")
-
 [node name="SpriteIcon" type="Sprite2D" parent="." unique_id=1684078043]
-modulate = Color(0.0333333, 1, 0, 1)
+self_modulate = Color(1.1011497, 1.7863542, 2.183051, 0.85490197)
 rotation = -1.5707964
-texture = ExtResource("3_1j0aa")
+texture = ExtResource("5_1j0aa")
 offset = Vector2(0, 1.2)
-
-[node name="SpriteIcon2" type="TextureRect" parent="." unique_id=10505829]
-visible = false
-offset_left = -23.0
-offset_top = -23.0
-offset_right = 23.0
-offset_bottom = 23.0
-texture = SubResource("AtlasTexture_sruue")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=66726932]
 shape = SubResource("CircleShape2D_sruue")
 
+[connection signal="input_event" from="." to="." method="_on_input_event"]
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

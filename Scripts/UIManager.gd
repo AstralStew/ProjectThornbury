@@ -5,7 +5,7 @@ static var instance : UIManager = null
 @onready var ui_holder : Control = $UIHolder
 @onready var border : Control = $UIHolder/Border
 @onready var msg_bg_overlay : Control = $UIHolder/MessageBgOverlay
-@onready var prosperity_bar : ProgressBar = $UIHolder/MC_ScreenHolders/HB_ScreenHolders/LeftScreen/PanelContainer/TopBar/ProsperityBar
+@onready var prosperity_bar : ProgressBar =  $UIHolder/MC_ScreenHolders/HB_ScreenHolders/LeftScreen/PanelContainer/ProsperityBar #$UIHolder/MC_ScreenHolders/HB_ScreenHolders/LeftScreen/PanelContainer/TopBar/ProsperityBar
 
 @export var progress_colour : Gradient
 
@@ -26,7 +26,13 @@ func _ready() -> void:
 	GLOBALS.on_health_changed().connect(took_damage)
 	LevelManager.on_prosperity_updated().connect(update_prosperity)
 	
+	
+	$UIHolder/DialogueBox.visible = true
+	await get_tree().process_frame
+	$UIHolder/DialogueBox.visible = false
+	
 	if _first_run: first_run()
+	
 	
 
 func first_run() -> void:
@@ -54,7 +60,7 @@ func start_time(fade:=0.0) -> void:
 	get_tree().paused = false
 	if fade:
 		msg_bg_overlay.visible = true
-		msg_bg_overlay.modulate = Color(1,1,1,0.25)
+		msg_bg_overlay.modulate = Color(1,1,1,0.3)
 		Engine.time_scale = 0.0
 		var _tween:Tween = create_tween().set_ignore_time_scale().set_pause_mode(Tween.TWEEN_PAUSE_PROCESS).set_parallel().set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_QUAD)
 		_tween.tween_property(Engine,"time_scale",1,fade)
@@ -77,11 +83,14 @@ func stop_time(fade:=0.0) -> void:
 		await get_tree().create_timer(fade,true,false,true).timeout
 		await get_tree().process_frame
 		Engine.time_scale = 1.0
-	msg_bg_overlay.modulate = Color(1,1,1,0.25)
+	msg_bg_overlay.modulate = Color(1,1,1,0.3)
 	get_tree().paused = true
 
 
 #region Events
+
+#[wave amp=50.0 freq=5.0 connected=1]someone[/wave]
+#[tornado radius=5.0 freq=1.0 connected=1]You must be bad at video games.[/tornado]
 
 func took_damage() -> void:
 	if !has_taken_damage:
@@ -94,16 +103,36 @@ func took_damage_first_time() -> void:
 	await get_tree().create_timer(0.35,true,false,true).timeout
 	await stop_time(1)
 	await display_message_box(
-		"""Well well, looks like [wave amp=50.0 freq=5.0 connected=1]someone[/wave] took some [shake rate=20.0 level=5 connected=1]damage[/shake] for the first time!
+		"""You just took a hit of [shake rate=20.0 level=5 connected=1][color=red] Damage [/color][/shake] for the first time!
+		
+		Whether you take damage depends on how fast you are moving. You can take a total of  [color=cyan]%s hits[/color]  before your ship is destroyed.\nPay attention to how your hangar bay is looking.
 
-[tornado radius=5.0 freq=1.0 connected=1]You must be bad at video games.[/tornado]
-
-Good luck out there, baka desu.""",
-	"wow okay :(",
-	2
+Good luck & fly safe!""" % GLOBALS.SHIP_MAX_HEALTH,
+	NotificationManager.local_button_options.pick_random(),
+	4
 	)
 	#await get_tree().create_timer(0.25,true,false,true).timeout
 	await start_time(1)
+
+
+func was_scanned_first_time() -> void:
+	has_taken_damage = true
+	await get_tree().create_timer(0.35,true,false,true).timeout
+	await stop_time(1)
+	await display_message_box(
+		"""You just got [wave amp=50.0 freq=5.0 connected=1][color=yellow] Scanned [/color][/wave] for the first time!
+		
+		Haulers will scan your cargo when you get close.\nMove all items out of the zone to quietly [color=green]pass[/color] the scan.\n If any of your cargo is [color=red]found[/color], your bounty will increase and the Capital ship will arrive sooner.
+
+Keep it secret! Keep it safe!""",
+	NotificationManager.local_button_options.pick_random(),
+	4
+	)
+	#await get_tree().create_timer(0.25,true,false,true).timeout
+	await start_time(1)
+
+
+
 
 func dead() -> void:
 	await stop_time(1)
@@ -150,18 +179,48 @@ func lose() -> void:
 #endregion
 
 
-func display_message_box(message_text:="",button_text:="OK",min_time:=0.0,box_size:Vector2=Vector2(400,100)) -> void:
+func display_message_box(message_text:="",button_text:="OK",min_time:=0.0,box_size:Vector2=Vector2(700,300)) -> void:
 	$UIHolder/MessageBox.visible = true
 	
 	$UIHolder/MessageBox.custom_minimum_size = box_size
 	$UIHolder/MessageBox/VBoxContainer/RTL_Message.text = message_text
 	$UIHolder/MessageBox/VBoxContainer/RTL_Button.text = button_text
 	
+	$UIHolder/MessageBox/VBoxContainer/RTL_Button.visible = false
+	
 	await get_tree().create_timer(min_time,true,false,true).timeout
+	
+	$UIHolder/MessageBox/VBoxContainer/RTL_Button.visible = true
 	$UIHolder/MessageBox/VBoxContainer/RTL_Button.self_modulate = Color.WHITE
+	
 	await $UIHolder/MessageBox/VBoxContainer/RTL_Button.pressed
+	
 	$UIHolder/MessageBox/VBoxContainer/RTL_Button.self_modulate = Color.TRANSPARENT
 	$UIHolder/MessageBox.visible = false
+
+
+
+
+func display_dialogue_box(portrait:Texture2D, message_text:="",button_text:="OK") -> void:
+	
+	await stop_time(0.5)
+	
+	$UIHolder/DialogueBox.visible = true
+	
+	$UIHolder/DialogueBox/DialoguePC/MarginContainer/VBoxContainer/HBoxContainer/Portrait.texture = portrait
+	$UIHolder/DialogueBox/DialoguePC/MarginContainer/VBoxContainer/HBoxContainer/DialogueLabel.text = message_text
+	$UIHolder/DialogueBox/DialoguePC/MarginContainer/VBoxContainer/DialogueButton.text = button_text
+	
+	await $UIHolder/DialogueBox/DialoguePC/MarginContainer/VBoxContainer/DialogueButton.pressed
+	$UIHolder/DialogueBox.visible = false
+	
+	await start_time(1)
+
+
+
+
+
+
 
 func jolt() -> void:
 	

@@ -147,6 +147,7 @@ texture = SubResource("AtlasTexture_rr3ex")
 shape = SubResource("CircleShape2D_80ic5")
 
 [node name="PanelContainer" type="PanelContainer" parent="." unique_id=373591278]
+visible = false
 z_index = 10
 anchors_preset = 15
 anchor_right = 1.0
