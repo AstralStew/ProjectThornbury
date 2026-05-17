@@ -2,6 +2,8 @@
 
 [ext_resource type="Script" uid="uid://h4wwr486ejuw" path="res://Scripts/Notification.gd" id="1_sruue"]
 [ext_resource type="Texture2D" uid="uid://c0sl1u4dvsqni" path="res://Assets/Images/City/Building64.png" id="2_3fx4b"]
+[ext_resource type="Texture2D" uid="uid://dqe77qt1ubk05" path="res://Assets/Images/UI/GuideIcon_Background.png" id="2_68ugo"]
+[ext_resource type="Texture2D" uid="uid://bsa0wah52o8uu" path="res://Assets/Images/UI/GuideIcon_Logo.png" id="3_1j0aa"]
 [ext_resource type="Texture2D" uid="uid://i1g58vh6a4qg" path="res://Assets/Images/Inventory/Greebles.png" id="3_68ugo"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_sruue"]
@@ -26,7 +28,13 @@ metadata/_custom_type_script = "uid://h4wwr486ejuw"
 
 [node name="Arrow" type="Node2D" parent="." unique_id=93638010]
 
+[node name="GuideIconBackground" type="Sprite2D" parent="Arrow" unique_id=603216855]
+rotation = -1.5707964
+texture = ExtResource("2_68ugo")
+offset = Vector2(0, 1.2)
+
 [node name="SpriteArrow" type="Sprite2D" parent="Arrow" unique_id=57675543]
+visible = false
 position = Vector2(32, 0)
 rotation = 1.5707964
 scale = Vector2(0.4, 0.4)
@@ -35,10 +43,17 @@ region_enabled = true
 region_rect = Rect2(91, 16, 58, 45)
 
 [node name="SpriteBG" type="Sprite2D" parent="." unique_id=1388421572]
+visible = false
 position = Vector2(-1, 0)
 texture = ExtResource("2_3fx4b")
 
-[node name="SpriteIcon" type="TextureRect" parent="." unique_id=10505829]
+[node name="SpriteIcon" type="Sprite2D" parent="." unique_id=1684078043]
+rotation = -1.5707964
+texture = ExtResource("3_1j0aa")
+offset = Vector2(0, 1.2)
+
+[node name="SpriteIcon2" type="TextureRect" parent="." unique_id=10505829]
+visible = false
 offset_left = -23.0
 offset_top = -23.0
 offset_right = 23.0
