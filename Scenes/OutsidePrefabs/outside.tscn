@@ -7,7 +7,9 @@
 [ext_resource type="PackedScene" uid="uid://dtkur4468wq5q" path="res://Scenes/OutsidePrefabs/collectable_crate.tscn" id="3_dw31t"]
 [ext_resource type="Texture2D" uid="uid://bs8wppq8ctccy" path="res://Assets/Images/Ships/Ships_Sheet.png" id="3_slk23"]
 [ext_resource type="Script" uid="uid://c7fg3jgojxubh" path="res://Scripts/ship_trail.gd" id="5_hhqqv"]
+[ext_resource type="AudioStream" uid="uid://drhykpp8hryvb" path="res://Assets/Audio/Ship/427504__solarphasing__industrial-noises-ambient-sound-1.wav" id="8_dw31t"]
 [ext_resource type="Script" uid="uid://dvgg4pi46sf3l" path="res://Scripts/NotificationManager.gd" id="9_2x00p"]
+[ext_resource type="AudioStream" uid="uid://c4oqc6dubk2el" path="res://Assets/Audio/Ship/716972__newlocknew__expldsgn_engine-ignition-burstengine-startnitroflareblast.mp3" id="9_7c3hi"]
 
 [sub_resource type="Curve" id="Curve_mf7ev"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 1.4, 0.0, 0, 0]
@@ -103,6 +105,14 @@ rotation_smoothing_enabled = true
 rotation_smoothing_speed = 3.185
 
 [node name="Line2D" type="Line2D" parent="SubViewportContainer/SubViewport/Ship" unique_id=223409123]
+
+[node name="EngineAudioPlayer" type="AudioStreamPlayer" parent="SubViewportContainer/SubViewport/Ship" unique_id=1394407564]
+stream = ExtResource("8_dw31t")
+autoplay = true
+
+[node name="BoostAudioPlayer" type="AudioStreamPlayer" parent="SubViewportContainer/SubViewport/Ship" unique_id=847278325]
+stream = ExtResource("9_7c3hi")
+volume_db = -10.0
 
 [node name="NotificationManager" type="Node2D" parent="SubViewportContainer/SubViewport" unique_id=1939579723]
 script = ExtResource("9_2x00p")

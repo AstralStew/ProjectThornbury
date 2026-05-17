@@ -3,31 +3,11 @@ const DEBUG_NAME = "[b][Ship][/b] "
 static var instance : Ship = null
 
 
-#
-#
-#static var SHIP_ROTATION_SPEED : float = 30.0
-#static var SHIP_ROTATION_CHANGE_RATE : float = 50.0
-#static var SHIP_BOOST_ROTATION_CHANGE_RATE : float = 100.0
-#static var SHIP_ROTATION_ACC : float = 0.05
-#
-##@EXPORT_CATEGORY("SPEED CONTROLS")
-#
-#static var SHIP_FORWARD_SPEED : float = 100.0
-#static var SHIP_FORWARD_CHANGE_RATE : float = 100.0
-#static var SHIP_BACK_SPEED : float = 10.0
-#static var SHIP_BACK_CHANGE_RATE : float = 100.0
-#static var SHIP_NEUTRAL_CHANGE_RATE : float = 30.0
-#static var SHIP_BOOST_SPEED : float = 200.0
-#static var SHIP_BOOST_CHANGE_RATE : float = 100.0
-#
+@onready var engine_audio_player : AudioStreamPlayer = $EngineAudioPlayer
+@onready var boost_audio_player : AudioStreamPlayer = $BoostAudioPlayer
 
-
-
-
-
-
-
-
+@export var engine_audio_volume_scale : Vector2 = Vector2(0.2,0.4)
+@export var engine_audio_pitch_scale : Vector2 = Vector2(0.75,1.75)
 
 @export_category("READ ONLY")
 
@@ -47,12 +27,14 @@ static var instance : Ship = null
 
 var trails : Array[ShipTrail] = []
 
+
 func _enter_tree() -> void:
 	instance = self
 
 func _ready() -> void:
 	for _child:ShipTrail in find_children("","ShipTrail"):
 		trails.append(_child)
+	
 
 func _physics_process(delta: float) -> void:
 	previous_speed = speed
@@ -73,6 +55,10 @@ func _physics_process(delta: float) -> void:
 		
 		rotation = collision.get_normal().angle() + deg_to_rad(90) + GLOBALS.random_rotation(30)
 		take_damage()
+	
+	engine_audio_player.volume_linear = lerp(engine_audio_volume_scale.x,engine_audio_volume_scale.y,abs(speed.y / GLOBALS.SHIP_BOOST_SPEED))
+	print("acceleration = " + str(acceleration))
+	engine_audio_player.pitch_scale = lerp(engine_audio_pitch_scale.x,engine_audio_pitch_scale.y,abs(speed.y / GLOBALS.SHIP_BOOST_SPEED))
 
 
 
@@ -104,8 +90,15 @@ func lose_control() -> void:
 func get_input(delta: float) -> void:
 	var _target_rotation : float
 	var _new_speed : float
+	#
+	#if Input.is_action_just_pressed("Boost"):
+		#boost_audio_player
+		#$BoostAudioPlayer.play()
 	
 	if Input.is_action_pressed("Boost"):
+		if !boost_audio_player.playing:
+			boost_audio_player.play()
+	
 		_target_rotation = move_toward(speed.x, 0, GLOBALS.SHIP_BOOST_ROTATION_CHANGE_RATE * delta)
 		_new_speed = move_toward(speed.y, -GLOBALS.SHIP_BOOST_SPEED, GLOBALS.SHIP_BOOST_CHANGE_RATE  * delta)
 	else:
@@ -122,6 +115,7 @@ func get_input(delta: float) -> void:
 			_new_speed = move_toward(speed.y, -GLOBALS.SHIP_FORWARD_SPEED, GLOBALS.SHIP_FORWARD_CHANGE_RATE * delta)
 		else:
 			_new_speed = move_toward(speed.y,-GLOBALS.SHIP_BACK_SPEED, GLOBALS.SHIP_NEUTRAL_CHANGE_RATE * delta)
+	
 	
 	speed = Vector2(_target_rotation,_new_speed)
 	

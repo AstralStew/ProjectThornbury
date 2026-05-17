@@ -52,12 +52,18 @@ func _add_item(_type:ItemType) -> void:
 		ItemType.Rock:
 			_prefab = item_rock_prefab
 			_name = "<ItemRock>"
+			var _audio = RandomAudioPlayer.new(preload("res://Configs/Audio_Inventory_ItemIncoming.tres"),2,-1)
+			add_child(_audio)
 		ItemType.Crate:
 			_prefab = item_crate_prefab
 			_name = "<ItemCrate>"
+			var _audio = RandomAudioPlayer.new(preload("res://Configs/Audio_Inventory_ItemIncoming.tres"),1,3)
+			add_child(_audio)
 		ItemType.Pipe:
 			_prefab = item_pipe_prefab
 			_name = "<ItemPipe>"
+			var _audio = RandomAudioPlayer.new(preload("res://Configs/Audio_Inventory_ItemIncoming.tres"),3,-2)
+			add_child(_audio)
 	
 	await get_tree().physics_frame
 	var _new_scene = _prefab.instantiate() as Item
@@ -66,6 +72,9 @@ func _add_item(_type:ItemType) -> void:
 	_new_scene.reset_physics_interpolation()
 	_new_scene.name = _name
 	_new_scene.set_deferred("linear_velocity", Vector2(remap(randf(),0,1,-1,1), remap(randf(),0,1,1,3)).normalized() * 800)
+	 
+	
+
 
 
 func cancel_dragging() -> void:

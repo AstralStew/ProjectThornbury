@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://dfbi3x303ug65" path="res://Scenes/InventoryPrefabs/inventory.tscn" id="4_q68mp"]
 [ext_resource type="Script" uid="uid://cncokyrrq0buv" path="res://Scripts/BountyManager.gd" id="4_qxria"]
 [ext_resource type="Script" uid="uid://ck5g8xe0ginh2" path="res://Scripts/CountdownManager.gd" id="5_y4jh7"]
+[ext_resource type="AudioStream" uid="uid://ccanrxdhcjibq" path="res://Assets/Audio/Music/845153__glorytothemachine__unkown_entity-113bpm-melodic_data_stream-seamless-loop-glorytothemachine.mp3" id="7_q68mp"]
 
 [sub_resource type="Gradient" id="Gradient_81xng"]
 offsets = PackedFloat32Array(0, 0.50641024, 1)
@@ -346,3 +347,8 @@ custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
 size_flags_horizontal = 4
 text = "d"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=481155692]
+stream = ExtResource("7_q68mp")
+volume_db = -6.175
+autoplay = true

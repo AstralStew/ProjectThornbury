@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="AudioSequence" format=3 uid="uid://cc4q6yoxfdtud"]
+
+[ext_resource type="Script" uid="uid://cug8lclkcox55" path="res://Scripts/AudioSequence.gd" id="1_8ubwt"]
+[ext_resource type="AudioStream" uid="uid://bx8cyap2nowde" path="res://Assets/Audio/Inventory/550314__moulaythami__throwing-dices-slowed-down-a.wav" id="2_ige8g"]
+
+[resource]
+script = ExtResource("1_8ubwt")
+stream = ExtResource("2_ige8g")
+times = Array[Vector2]([Vector2(0.58, 2.6), Vector2(4.05, 6.26), Vector2(8.15, 10.3), Vector2(11.6, 13.45), Vector2(15, 17.3), Vector2(19.5, 21.4)])
+pitch_adjustment = 0.69
+volume_adjustment = -2.0
+random_pitch_semitones = 4.0
+metadata/_custom_type_script = "uid://cug8lclkcox55"
