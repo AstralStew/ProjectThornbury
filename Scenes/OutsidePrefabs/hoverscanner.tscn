@@ -47,6 +47,7 @@ region_rect = Rect2(8, 50, 28, 25)
 [node name="SightLine" type="Line2D" parent="." unique_id=316053402]
 modulate = Color(1, 1, 1, 0)
 self_modulate = Color(1, 1, 1, 0.77254903)
+z_index = 12
 rotation = -0.40221027
 points = PackedVector2Array(0, 0, 0, 0, 0, 0)
 width = 69.0

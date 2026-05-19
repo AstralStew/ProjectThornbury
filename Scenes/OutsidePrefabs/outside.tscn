@@ -115,6 +115,7 @@ stream = ExtResource("9_7c3hi")
 volume_db = -10.0
 
 [node name="NotificationManager" type="Node2D" parent="SubViewportContainer/SubViewport" unique_id=1939579723]
+z_index = 10
 script = ExtResource("9_2x00p")
 order_flavour_options = Array[String](["The old planet is dying; a new one struggles to be born.", "We stand for the pink, white, and blue around these parts.", "Those who bring us tools of our own - that is true aid.", "From each to their ability; to each an even bounty!", "Community or barbarism - there is no other choice.", "They say to 'get ahead'... of whom? Our neighbours?", "People of the stars unite! We lose nothing but our chains!", "Let us throw our bodies upon the gears of this machine!"])
 

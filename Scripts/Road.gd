@@ -55,7 +55,10 @@ func _physics_process(delta: float) -> void:
 		
 		if (!_path_reversed && followers[i].progress_ratio == 1.0) || (_path_reversed && followers[i].progress_ratio == 0.0):
 			if loop_path && !hoverscanners[i].is_scanning:
+				followers[i].visible = false
 				followers[i].progress_ratio = abs(followers[i].progress_ratio - 1)
+				followers[i].set_deferred("visible",true)
+				
 			if !loop_path && number_of_followers == 1:
 				_path_reversed = !_path_reversed
 		

@@ -22,6 +22,8 @@ class_name NotificationManager extends Node
 	"Even %s would help get us back in the green.",
 	"%s would let us take the fight upwards!",
 	"We will need %s before the Capital ship arrives.",
+	"just %s and we can finally get back on track.",
+	"can someone spare %s for our hydroponic facility?",
 ]
 
 @export var button_options : Array[String] = [

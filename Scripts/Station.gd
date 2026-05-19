@@ -49,11 +49,11 @@ func make_order() -> void:
 	order_type = (randi() % 3) as InventoryManager.ItemType
 	match order_type:
 		InventoryManager.ItemType.Rock:
-			order_number = randi_range(3,6)
+			order_number = randi_range(4,7)
 		InventoryManager.ItemType.Crate:
-			order_number = randi_range(2,4)
+			order_number = randi_range(2,3)
 		InventoryManager.ItemType.Pipe:
-			order_number = randi_range(4,8)
+			order_number = randi_range(3,5)
 	
 	for i in order_number:
 		_order_items.append(order_type)
@@ -77,6 +77,8 @@ func collect(collectable: Collectable) -> void:
 	collectable.collected = true
 	print_rich(DEBUG_NAME,"Collect > Item matches, taking it for myself <|:)")
 	
+	BountyManager.add_from_items([collectable.type],3)
+	
 	if collectable.type == order_type:
 		order_number -= 1
 		if check_order(): complete_order()
@@ -98,7 +100,7 @@ func complete_order() -> void:
 	print_rich(DEBUG_NAME,"CheckOrder > Order complete! Starting cooldown and returning true...")
 	has_order = false
 	
-	BountyManager.add_from_items(_order_items)
+	CountdownManager.adjust_countdown(-randf_range(30,60))
 	
 	prosperity += 1
 	var _chosen:Node2D=null

@@ -5,7 +5,7 @@
 [node name="RoadLine" type="Line2D" unique_id=1009893303]
 points = PackedVector2Array(0, 0, 100, 100)
 width = 20.0
-default_color = Color(0.9843137, 0.73333335, 0.6784314, 1)
+default_color = Color(0.2, 0.24705882, 0.34509805, 1)
 joint_mode = 1
 script = ExtResource("1_4hmke")
 number_of_followers = 3

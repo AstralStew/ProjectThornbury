@@ -66,8 +66,11 @@ func _adjust_countdown(amount_of_seconds:int) -> void:
 	
 	countdown_remaining = max(0,countdown_remaining - amount_of_seconds)
 	
-	countdown_remaining_label.text = convert_seconds_to_text(countdown_remaining)	
-	countdown_change_label.text = "[color=red]-[i][b]" + convert_seconds_to_text(amount_of_seconds)
+	countdown_remaining_label.text = convert_seconds_to_text(countdown_remaining)
+	if amount_of_seconds < 0:
+		countdown_change_label.text = "[color=green]+[i][b]" + convert_seconds_to_text(abs(amount_of_seconds))
+	else:
+		countdown_change_label.text = "[color=red]-[i][b]" + convert_seconds_to_text(abs(amount_of_seconds))
 	countdown_change_label.visible = true
 	countdown_change_label.modulate = Color.WHITE
 		

@@ -1,0 +1,17 @@
+[gd_resource type="NoiseTexture2D" format=3 uid="uid://bgo6j7s33yy72"]
+
+[ext_resource type="FastNoiseLite" uid="uid://dt2skanx3bduo" path="res://Assets/Subresources/MapBackground_FastNoiseLite.tres" id="1_rnebx"]
+
+[sub_resource type="Gradient" id="Gradient_rx4sy"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0.6201172, 0.66308594)
+
+[resource]
+width = 64
+height = 64
+generate_mipmaps = false
+noise = ExtResource("1_rnebx")
+color_ramp = SubResource("Gradient_rx4sy")
+seamless = true
+normalize = false
+seamless_blend_skirt = 0.105
