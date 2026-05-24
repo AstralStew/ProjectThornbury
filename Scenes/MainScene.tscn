@@ -6,8 +6,10 @@
 [ext_resource type="PackedScene" uid="uid://dfbi3x303ug65" path="res://Scenes/InventoryPrefabs/inventory.tscn" id="4_q68mp"]
 [ext_resource type="Script" uid="uid://cncokyrrq0buv" path="res://Scripts/BountyManager.gd" id="4_qxria"]
 [ext_resource type="Script" uid="uid://ck5g8xe0ginh2" path="res://Scripts/CountdownManager.gd" id="5_y4jh7"]
+[ext_resource type="Script" uid="uid://c35khoyxpw0jp" path="res://Scripts/DialogueManager.gd" id="7_0iob3"]
 [ext_resource type="Texture2D" uid="uid://cl68y0cwjkauc" path="res://Assets/Images/UI/Potrait1.png" id="7_f140w"]
 [ext_resource type="Script" uid="uid://jlo8v3v54a6g" path="res://Scripts/IntroManager.gd" id="8_f140w"]
+[ext_resource type="AudioStream" uid="uid://d2lj350r8iiyc" path="res://Assets/Audio/UI/453087__lilmati__script-dialogue-03.wav" id="9_4b75m"]
 
 [sub_resource type="Gradient" id="Gradient_81xng"]
 offsets = PackedFloat32Array(0, 0.50641024, 1)
@@ -82,9 +84,9 @@ shadow_offset = Vector2(0, 2)
 anti_aliasing = false
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8ju71"]
-content_margin_left = 50.0
+content_margin_left = 12.0
 content_margin_top = 12.0
-content_margin_right = 50.0
+content_margin_right = 12.0
 content_margin_bottom = 12.0
 bg_color = Color(0.2, 0.24705882, 0.34509805, 1)
 border_width_left = 4
@@ -95,9 +97,9 @@ border_color = Color(0.3675, 0.60975003, 0.75, 1)
 border_blend = true
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6t1o7"]
-content_margin_left = 50.0
+content_margin_left = 12.0
 content_margin_top = 12.0
-content_margin_right = 50.0
+content_margin_right = 12.0
 content_margin_bottom = 12.0
 bg_color = Color(0.19140002, 0.23529004, 0.33, 1)
 border_width_left = 4
@@ -108,9 +110,9 @@ border_color = Color(0.3675, 0.60975003, 0.75, 1)
 border_blend = true
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5qxwa"]
-content_margin_left = 50.0
+content_margin_left = 12.0
 content_margin_top = 12.0
-content_margin_right = 50.0
+content_margin_right = 12.0
 content_margin_bottom = 12.0
 bg_color = Color(0.25520003, 0.31372002, 0.44, 1)
 border_width_left = 4
@@ -439,8 +441,7 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_5qxwa")
 text = "d"
 
 [node name="DialogueBox" type="MarginContainer" parent="UIHolder" unique_id=1546584707]
-visible = false
-modulate = Color(1, 1, 1, 0)
+process_mode = 3
 z_index = 14
 layout_mode = 0
 offset_left = 20.0
@@ -453,6 +454,8 @@ theme_override_constants/margin_left = 50
 theme_override_constants/margin_top = 50
 theme_override_constants/margin_right = 50
 theme_override_constants/margin_bottom = 50
+script = ExtResource("7_0iob3")
+default_text_speed = 20
 
 [node name="DialoguePC" type="PanelContainer" parent="UIHolder/DialogueBox" unique_id=1871352225]
 custom_minimum_size = Vector2(500, 100)
@@ -501,17 +504,34 @@ text = "The old planet is dying; a new one struggles to be born. If you're heari
 fit_content = true
 scroll_active = false
 
-[node name="DialogueButton" type="Button" parent="UIHolder/DialogueBox/DialoguePC/MarginContainer/VBoxContainer" unique_id=2028214528]
+[node name="HBButtons" type="HBoxContainer" parent="UIHolder/DialogueBox/DialoguePC/MarginContainer/VBoxContainer" unique_id=269093320]
+layout_mode = 2
+theme_override_constants/separation = 28
+alignment = 1
+
+[node name="DialogueButton1" type="Button" parent="UIHolder/DialogueBox/DialoguePC/MarginContainer/VBoxContainer/HBButtons" unique_id=2028214528]
 process_mode = 3
 z_index = 1
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
-size_flags_horizontal = 4
+size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 24
 theme_override_styles/normal = SubResource("StyleBoxFlat_8ju71")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_6t1o7")
 theme_override_styles/hover = SubResource("StyleBoxFlat_5qxwa")
-text = "no worries"
+text = "repair my ship"
+
+[node name="DialogueButton2" type="Button" parent="UIHolder/DialogueBox/DialoguePC/MarginContainer/VBoxContainer/HBButtons" unique_id=1556647283]
+process_mode = 3
+z_index = 1
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxFlat_8ju71")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_6t1o7")
+theme_override_styles/hover = SubResource("StyleBoxFlat_5qxwa")
+text = "buy me time"
 
 [node name="Scanlines" type="TextureRect" parent="UIHolder/DialogueBox/DialoguePC" unique_id=600688116]
 modulate = Color(0.2891, 0.47967002, 0.59, 0.47058824)
@@ -522,9 +542,12 @@ texture = SubResource("GradientTexture2D_4b75m")
 expand_mode = 3
 stretch_mode = 1
 
+[node name="DialogueAudio" type="AudioStreamPlayer" parent="UIHolder/DialogueBox" unique_id=165032746]
+stream = ExtResource("9_4b75m")
+volume_db = -22.0
+
 [node name="IntroManager" type="MarginContainer" parent="UIHolder" unique_id=696674233]
 process_mode = 3
-visible = false
 z_index = 20
 layout_mode = 1
 anchors_preset = 15
@@ -543,6 +566,7 @@ intro_dialogue_them = Array[String](["Look, you're right.", "Times have been get
 intro_dialogue_you = Array[String](["...", "...", "...", "...", "...", "...", "...", "Thanks.", "Fair.", "Yeah...", "...", "Nah...", "But I can help the people.", "I can expand the bloc.", "And maybe if others see it happen...", "We can tear it down together...", "And build it back better.", "Cheers big ears"])
 
 [node name="DialoguePC" type="PanelContainer" parent="UIHolder/IntroManager" unique_id=106718416]
+visible = false
 custom_minimum_size = Vector2(500, 100)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -608,4 +632,6 @@ texture = SubResource("GradientTexture2D_4b75m")
 expand_mode = 3
 stretch_mode = 1
 
+[connection signal="pressed" from="UIHolder/DialogueBox/DialoguePC/MarginContainer/VBoxContainer/HBButtons/DialogueButton1" to="UIHolder/DialogueBox" method="_on_dialogue_button_1_pressed"]
+[connection signal="pressed" from="UIHolder/DialogueBox/DialoguePC/MarginContainer/VBoxContainer/HBButtons/DialogueButton2" to="UIHolder/DialogueBox" method="_on_dialogue_button_2_pressed"]
 [connection signal="pressed" from="UIHolder/IntroManager/DialoguePC/MarginContainer/VBoxContainer/DialogueButton" to="UIHolder/IntroManager" method="_on_button_pressed"]

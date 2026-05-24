@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://blyqo3acyv4gq" path="res://Scripts/Scan.gd" id="1_jldu1"]
 [ext_resource type="Shader" uid="uid://c8fh7yqqlk1x0" path="res://Assets/Shaders/new_shader.gdshader" id="2_yaixh"]
+[ext_resource type="AudioStream" uid="uid://d2lj350r8iiyc" path="res://Assets/Audio/UI/453087__lilmati__script-dialogue-03.wav" id="3_yaixh"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4pvd7"]
 bg_color = Color(1, 1, 1, 0.23921569)
@@ -91,6 +92,11 @@ stretch_mode = 1
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=296680898]
 scale = Vector2(200, 201.04)
 shape = SubResource("CircleShape2D_jldu1")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=788922585]
+stream = ExtResource("3_yaixh")
+volume_db = -60.0
+pitch_scale = 4.0
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]

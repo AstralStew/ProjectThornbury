@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="AudioSequence" format=3 uid="uid://6g3heg7ivx13"]
+
+[ext_resource type="Script" uid="uid://cug8lclkcox55" path="res://Scripts/AudioSequence.gd" id="1_2urje"]
+[ext_resource type="AudioStream" uid="uid://cxo3l6pli7te7" path="res://Assets/Audio/Inventory/611193__eminyildirim__power-up-buff-positive-level-up.wav" id="2_2urje"]
+
+[resource]
+script = ExtResource("1_2urje")
+stream = ExtResource("2_2urje")
+times = Array[Vector2]([Vector2(0.27, 2.6), Vector2(2.46, 3.9)])
+pitch_adjustment = 0.5
+volume_adjustment = -8.0
+random_pitch_semitones = 12.0
+metadata/_custom_type_script = "uid://cug8lclkcox55"

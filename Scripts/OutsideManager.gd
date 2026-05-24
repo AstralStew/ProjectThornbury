@@ -2,6 +2,9 @@ class_name OutsideManager extends MarginContainer
 const DEBUG_NAME = "[b][OutsideManager][/b] "
 static var instance : OutsideManager = null
 
+@onready var sub_viewport: SubViewport = $SubViewportContainer/SubViewport
+
+
 @export var collectable_rock_prefab : PackedScene = null
 @export var collectable_crate_prefab : PackedScene = null
 @export var collectable_pipe_prefab : PackedScene = null
@@ -13,6 +16,7 @@ func _enter_tree() -> void:
 
 func _ready() -> void:
 	collectable_holder = ($SubViewportContainer/SubViewport.get_child(0) as LevelManager).collectable_holder
+
 
 
 
@@ -37,9 +41,10 @@ func _add_collectable(_type:InventoryManager.ItemType) -> void:
 	collectable_holder.add_child(_new_scene)
 	_new_scene.global_position = Ship.instance.global_position
 	_new_scene.rotation_degrees = randf_range(-360,360)
+	_new_scene.scale = Vector2(1,1)
+	_new_scene.modulate = Color(0,0,0,0)
 	_new_scene.reset_physics_interpolation()
 	_new_scene.name = _name
 	#_new_scene.finished_spawning = false
 	#_new_scene.call_deferred("_spawn_countdown")
-
 	

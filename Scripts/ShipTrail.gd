@@ -1,4 +1,4 @@
-class_name ShipTrailOld extends Line2D
+class_name ShipTrail extends Line2D
 
 @export var number_of_points : int = 20
 @export var min_time_step : float = 0.1

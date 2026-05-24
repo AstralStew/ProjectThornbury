@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://h4wwr486ejuw" path="res://Scripts/Notification.gd" id="1_sruue"]
 [ext_resource type="Texture2D" uid="uid://deamvpu6230ei" path="res://Assets/Images/UI/GuideIcon_Background_Blue.png" id="2_68ugo"]
+[ext_resource type="AudioStream" uid="uid://qme0ufcyqitc" path="res://Assets/Audio/UI/591457__stavsounds__select.wav" id="4_3fx4b"]
 [ext_resource type="Texture2D" uid="uid://dmqa8es5jcxl2" path="res://Assets/Images/UI/GuideIcon_Logo_Blue.png" id="5_1j0aa"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_sruue"]
@@ -37,6 +38,10 @@ offset = Vector2(0, 1.2)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=66726932]
 shape = SubResource("CircleShape2D_sruue")
+
+[node name="NotificationAudioPlayer" type="AudioStreamPlayer" parent="." unique_id=1842749447]
+stream = ExtResource("4_3fx4b")
+volume_db = -10.0
 
 [connection signal="input_event" from="." to="." method="_on_input_event"]
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]

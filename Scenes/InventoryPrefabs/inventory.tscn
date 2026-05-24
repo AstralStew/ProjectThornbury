@@ -8,7 +8,10 @@
 [ext_resource type="PackedScene" uid="uid://be2frk3ryyebk" path="res://Scenes/InventoryPrefabs/item_pipe.tscn" id="4_aco8w"]
 [ext_resource type="Script" uid="uid://dw1ch6u6ctwe8" path="res://Scripts/damage_texture.gd" id="5_aco8w"]
 [ext_resource type="Texture2D" uid="uid://bqlsoecnfovaq" path="res://Assets/Images/Inventory/Panel.png" id="6_lnm75"]
+[ext_resource type="Texture2D" uid="uid://dfo4gnbnchhhv" path="res://Assets/Images/Banners/SplashImage.png" id="7_lwken"]
 [ext_resource type="Texture2D" uid="uid://056n6uoorop6" path="res://Assets/Images/Hanger/HangerDoor.png" id="7_v7qpt"]
+[ext_resource type="AudioStream" uid="uid://c4oqc6dubk2el" path="res://Assets/Audio/Ship/716972__newlocknew__expldsgn_engine-ignition-burstengine-startnitroflareblast.mp3" id="9_82wu0"]
+[ext_resource type="Texture2D" uid="uid://bd3t2qjevbhoe" path="res://Assets/Images/Hanger/HangerBG.png" id="9_e8mdc"]
 [ext_resource type="Texture2D" uid="uid://i1g58vh6a4qg" path="res://Assets/Images/Inventory/Greebles.png" id="10_lnm75"]
 [ext_resource type="Script" uid="uid://ba0ppdfg70y3g" path="res://Scripts/HangerCamera.gd" id="10_v7qpt"]
 [ext_resource type="PackedScene" uid="uid://cxmonnf8anrq8" path="res://Scenes/InventoryPrefabs/scan.tscn" id="11_4pvd7"]
@@ -117,6 +120,7 @@ size = Vector2i(540, 640)
 render_target_update_mode = 4
 
 [node name="Colours" type="Node2D" parent="SubViewportContainer/SubViewport" unique_id=346356498]
+visible = false
 z_index = -2
 position = Vector2(265, 0)
 
@@ -171,7 +175,16 @@ script = ExtResource("3_k1vlg")
 rotation = -1.5707964
 shape = SubResource("RectangleShape2D_0n8tc")
 
-[node name="Outside" type="ColorRect" parent="SubViewportContainer/SubViewport/Chute" unique_id=2032913877]
+[node name="OutsideView" type="Sprite2D" parent="SubViewportContainer/SubViewport/Chute" unique_id=713900500]
+modulate = Color(1.1603818, 1.1603818, 1.1603818, 1)
+show_behind_parent = true
+scale = Vector2(11, 11)
+texture = ExtResource("7_lwken")
+region_enabled = true
+region_rect = Rect2(220, 180, 180, 180)
+
+[node name="OutsideColorRect" type="ColorRect" parent="SubViewportContainer/SubViewport/Chute" unique_id=2032913877]
+visible = false
 show_behind_parent = true
 anchors_preset = 15
 anchor_right = 1.0
@@ -206,7 +219,18 @@ position = Vector2(0, -90)
 [node name="ExitPoint" type="Marker2D" parent="SubViewportContainer/SubViewport/Chute" unique_id=1178400924]
 position = Vector2(0, 75)
 
+[node name="DoorsAudioPlayer" type="AudioStreamPlayer" parent="SubViewportContainer/SubViewport/Chute" unique_id=95944141]
+stream = ExtResource("9_82wu0")
+volume_db = -24.0
+pitch_scale = 12.0
+
+[node name="HangerBg" type="Sprite2D" parent="SubViewportContainer/SubViewport" unique_id=1697893312]
+position = Vector2(269.99997, 314)
+scale = Vector2(0.908, 0.908)
+texture = ExtResource("9_e8mdc")
+
 [node name="DoorCoverL" type="ColorRect" parent="SubViewportContainer/SubViewport" unique_id=972572487]
+visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -233,6 +257,7 @@ mouse_filter = 2
 color = Color(0.2, 0.24705882, 0.34509805, 1)
 
 [node name="DoorCoverR" type="ColorRect" parent="SubViewportContainer/SubViewport" unique_id=812382015]
+visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0

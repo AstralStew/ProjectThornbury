@@ -7,13 +7,16 @@
 size = Vector2(12, 12)
 
 [node name="CollectableRock" type="Area2D" unique_id=1843489661]
+scale = Vector2(0.7, 0.7)
 script = ExtResource("1_1objw")
 metadata/_custom_type_script = "uid://bu7nan430podd"
 
 [node name="RockResouceSmallMap" type="Sprite2D" parent="." unique_id=201365052]
+texture_filter = 1
 texture = ExtResource("2_glfwy")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=634640248]
+texture_filter = 1
 shape = SubResource("RectangleShape2D_dxilr")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

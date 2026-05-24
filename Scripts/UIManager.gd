@@ -9,14 +9,16 @@ static var instance : UIManager = null
 
 @export var progress_colour : Gradient
 
+static var is_time_stopped : bool = false
 
 static var has_taken_damage : bool = false # don't reset this on restart!
 
 signal _on_restart_game
 static func on_restart_game() -> Signal: return instance._on_restart_game
 
-static var _first_run : bool = true
+#static var _first_run : bool = true
 static var seen_opening_tutorial : bool = false
+
 
 
 func _enter_tree() -> void:
@@ -28,6 +30,8 @@ func _ready() -> void:
 	GLOBALS.on_health_changed().connect(took_damage)
 	LevelManager.on_prosperity_updated().connect(update_prosperity)
 	
+	Ship.on_took_damage().connect(jolt)
+	
 	
 	$UIHolder/DialogueBox.visible = true
 	await get_tree().process_frame
@@ -35,30 +39,37 @@ func _ready() -> void:
 	await get_tree().process_frame
 	$UIHolder/DialogueBox.modulate = Color.WHITE
 	
-	stop_time()
+	if GLOBALS.skip_everything:
+		IntroManager.remove()
+		msg_bg_overlay.visible = false
+		msg_bg_overlay.modulate = Color(1,1,1,0)
+		_start_time()
+		return
 	
-	if _first_run: first_run()
-	elif !GLOBALS.game_started:
+	_stop_time()
+	
+	#if _first_run: first_run()
+	
+	if !GLOBALS.game_started:
 		opening()
 	else:
 		IntroManager.remove()
 		msg_bg_overlay.visible = false
 		msg_bg_overlay.modulate = Color(1,1,1,0)
-		start_time()
-		
+		_start_time()
 		
 	
-
-func first_run() -> void:
-	_first_run = false
-	await get_tree().create_timer(0.5).timeout
-	_on_restart_game.emit()
-	get_tree().reload_current_scene()
+#
+#func first_run() -> void:
+	#_first_run = false
+	#await get_tree().create_timer(0.5).timeout
+	#_on_restart_game.emit()
+	#get_tree().reload_current_scene()
 
 func opening() -> void:
-	stop_time()
+	#_stop_time()
 	await GLOBALS.on_game_started()
-	start_time(2)
+	_start_time(2)
 	
 	if !seen_opening_tutorial: opening_tutorial()
 
@@ -76,8 +87,10 @@ func update_prosperity(value:float) -> void:
 
 
 
+static func start_time(fade:=0.0) -> void:
+	await instance._start_time(fade)
 
-func start_time(fade:=0.0) -> void:
+func _start_time(fade:=0.0) -> void:
 	get_tree().paused = false
 	if fade:
 		msg_bg_overlay.visible = true
@@ -90,10 +103,13 @@ func start_time(fade:=0.0) -> void:
 		await get_tree().process_frame
 		Engine.time_scale = 1.0
 	msg_bg_overlay.visible = false
+	is_time_stopped = false
 
-	
 
-func stop_time(fade:=0.0) -> void:
+static func stop_time(fade:=0.0) -> void:
+	await instance._stop_time(fade)
+
+func _stop_time(fade:=0.0) -> void:
 	msg_bg_overlay.visible = true
 	if fade:
 		#msg_bg_overlay.modulate = Color(1,1,1,0)
@@ -106,6 +122,7 @@ func stop_time(fade:=0.0) -> void:
 		Engine.time_scale = 1.0
 		msg_bg_overlay.modulate = Color(1,1,1,0.3)
 	get_tree().paused = true
+	is_time_stopped = true
 
 
 #region Events
@@ -118,7 +135,7 @@ func stop_time(fade:=0.0) -> void:
 func opening_tutorial() -> void:
 	seen_opening_tutorial = true
 	await get_tree().create_timer(0.35,true,false,true).timeout
-	await stop_time(1)
+	await _stop_time(1)
 	await display_message_box(
 		"""wasd to fly
 hold spacebar to take/drop items you pass over
@@ -132,7 +149,7 @@ you have 10 mins until the capital ships arrive""",
 	4
 	)
 	#await get_tree().create_timer(0.25,true,false,true).timeout
-	await start_time(1)
+	await _start_time(1)
 
 
 
@@ -146,71 +163,71 @@ func took_damage() -> void:
 func took_damage_first_time() -> void:
 	has_taken_damage = true
 	await get_tree().create_timer(0.35,true,false,true).timeout
-	await stop_time(1)
+	await _stop_time(1)
 	await display_message_box(
 		"""You just took a hit of [shake rate=20.0 level=5 connected=1][color=red] Damage [/color][/shake] for the first time!
 		
 		Whether you take damage depends on how fast you are moving. You can take a total of  [color=cyan]%s hits[/color]  before your ship is destroyed.\nPay attention to how your hangar bay is looking.
 
 Good luck & fly safe!""" % GLOBALS.SHIP_MAX_HEALTH,
-	NotificationManager.local_button_options.pick_random(),
+	NotificationManager.random_button_option(),
 	4
 	)
 	#await get_tree().create_timer(0.25,true,false,true).timeout
-	await start_time(1)
+	await _start_time(1)
 
 
 func was_scanned_first_time() -> void:
 	await get_tree().create_timer(0.35,true,false,true).timeout
-	await stop_time(1)
+	await _stop_time(1)
 	await display_message_box(
 		"""You just got [wave amp=50.0 freq=5.0 connected=1][color=yellow] Scanned [/color][/wave] for the first time!
 		
 		Haulers will scan your cargo when you get close.\nMove all items out of the zone to quietly [color=green]pass[/color] the scan.\n If any of your cargo is [color=red]found[/color], your bounty will increase and the Capital ship will arrive sooner.
 
 Keep it secret! Keep it safe!""",
-	NotificationManager.local_button_options.pick_random(),
+	NotificationManager.random_button_option(),
 	4
 	)
 	#await get_tree().create_timer(0.25,true,false,true).timeout
-	await start_time(1)
+	await _start_time(1)
 
 
 
 
 func dead() -> void:
-	await stop_time(1)
+	await _stop_time(1)
 	await display_message_box(
 		"[tornado radius=3.0 freq=1.0 connected=1]Although the skimmer was destroyed, the people hold your sacrifice in their memories.[/tornado]\n\nYour final bounty on this planet was [color=yellow]%s credits![/color]" % BountyManager.current_bounty,
 	"We can do better!",
 	4
 	)
-	await start_time(1)
+	await _start_time(1)
 	_on_restart_game.emit()
 	get_tree().reload_current_scene()
 	
 
 
 func win() -> void:
-	await stop_time(1)
+	await _stop_time(1)
 	await display_message_box(
 		"[font_size=50][rainbow freq=0.1 sat=0.69 val=1 speed=0.5]C o n g r a t u l a t i o n s ![/rainbow][/font_size]\n\nYour community pulled together against all odds to\nthrow off the yoke of those Capital ships once and for all!\n\nYour final bounty at time of freedom was [color=yellow]%s credits![/color]" % BountyManager.current_bounty,
 	"Can you beat your score?",
 	4
 	)
-	await start_time(1)
+	await _start_time(1)
 	_on_restart_game.emit()
 	get_tree().reload_current_scene()
 
 
 func lose() -> void:
-	await stop_time(1)
+	await _stop_time(1)
 	await display_message_box(
 		"[shake rate=10.0 level=3 connected=1]The capital ship arrived to obliterate your skimmer and your community from the safety of orbit.[/shake]\n\nYour final bounty on this planet was [color=yellow]%s credits![/color]" % BountyManager.current_bounty,
 	"They can't keep getting away with this!",
 	2
 	)
-	await start_time(1)
+	await _start_time(1)
 	_on_restart_game.emit()
 	get_tree().reload_current_scene()
 	
@@ -239,22 +256,6 @@ func display_message_box(message_text:="",button_text:="OK",min_time:=0.0,box_si
 	$UIHolder/MessageBox.visible = false
 
 
-
-
-func display_dialogue_box(portrait:Texture2D, message_text:="",button_text:="OK") -> void:
-	
-	await stop_time(0.5)
-	
-	$UIHolder/DialogueBox.visible = true
-	
-	$UIHolder/DialogueBox/DialoguePC/MarginContainer/VBoxContainer/HBoxContainer/Portrait.texture = portrait
-	$UIHolder/DialogueBox/DialoguePC/MarginContainer/VBoxContainer/HBoxContainer/DialogueLabel.text = message_text
-	$UIHolder/DialogueBox/DialoguePC/MarginContainer/VBoxContainer/DialogueButton.text = button_text
-	
-	await $UIHolder/DialogueBox/DialoguePC/MarginContainer/VBoxContainer/DialogueButton.pressed
-	$UIHolder/DialogueBox.visible = false
-	
-	await start_time(1)
 
 
 

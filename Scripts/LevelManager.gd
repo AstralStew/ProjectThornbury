@@ -46,4 +46,6 @@ func increase_prosperity(_station:Station) -> void:
 
 
 func station_became_prosperous(_station:Station) -> void:
-	print_rich("StationBecameProsperous > [i]does nothing right now lol[/i]")
+	print_rich("StationBecameProsperous > Adding a bunch of bounty!")
+	
+	BountyManager.add_to_bounty(5000)

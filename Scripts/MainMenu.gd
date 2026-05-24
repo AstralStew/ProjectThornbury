@@ -3,6 +3,10 @@ class_name MainMenu extends CanvasLayer
 @export var game_scene : PackedScene = null
 
 
+func _ready() -> void:
+	if GLOBALS.skip_everything:
+		call_deferred("change_scene")
+
 
 func _on_start_button_pressed() -> void:
 	
@@ -15,4 +19,5 @@ func _on_start_button_pressed() -> void:
 
 
 func change_scene() -> void:
+	GLOBALS.restart_game()
 	get_tree().change_scene_to_packed(game_scene)

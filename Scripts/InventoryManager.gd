@@ -11,6 +11,9 @@ enum ItemType {Rock,Crate,Pipe}
 
 @onready var debug_line : Line2D = $DebugLine
 @onready var item_holder : Node2D = $SubViewportContainer/SubViewport/ItemHolder
+@onready var outside_view: Sprite2D = $SubViewportContainer/SubViewport/Chute/OutsideView
+
+
 
 #@export var drag_force : float = 2.5
 #@export var release_force : float = 0.5
@@ -34,14 +37,33 @@ func _enter_tree() -> void:
 	GLOBALS.on_health_changed().connect(cancel_dragging)
 	GLOBALS.on_health_changed().connect(maybe_open_chute)
 
-
+func _ready() -> void:
+	outside_view.texture = OutsideManager.instance.sub_viewport.get_texture()
+	
 func maybe_open_chute() -> void:
 	if randf() < GLOBALS.INVENTORY_CHANCE_TO_OPEN_ON_DAMAGE: chute_open = true
 
 
+func render_outside_view() -> void:
+	var hole_size := Vector2(180,180)
+	var adjusted_midpoint : Vector2 = Vector2(0,18) + Vector2(340,300) - (Ship.instance.camera.get_screen_center_position() - Ship.instance.global_position)
+	outside_view.region_rect = Rect2(adjusted_midpoint - (hole_size/2), hole_size) # .x-(hole_size.x/2),adjusted_midpoint.y-(hole_size.y/2),hole_size.x,hole_size.y)
+
+
 func _physics_process(delta: float) -> void:
+	
+	
 	if Ship.instance.has_control:
 		chute_open = Input.is_action_pressed("OpenChute")
+	
+	if chute_open:
+		render_outside_view()
+		outside_view.rotation = -Ship.instance.rotation
+	
+	#if chute_open:
+		#if OutsideManager.instance.sub_viewport != null:
+			#outside_view.texture = OutsideManager.instance.sub_viewport.get_texture()
+			#OutsideManager.instance.sub_viewport.get_texture()
 
 static func add_item(_type:ItemType) -> void:
 	instance._add_item(_type)
@@ -73,7 +95,8 @@ func _add_item(_type:ItemType) -> void:
 	_new_scene.name = _name
 	_new_scene.set_deferred("linear_velocity", Vector2(remap(randf(),0,1,-1,1), remap(randf(),0,1,1,3)).normalized() * 800)
 	 
-	
+
+
 
 
 

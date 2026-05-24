@@ -2,6 +2,9 @@ class_name Scan extends Area2D
 var DEBUG_NAME : String :
 	get: return "[b][Scan][/b] "
 
+@onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
+
+
 
 var _tracking_bodies : bool = false
 var _material : ShaderMaterial = null
@@ -51,8 +54,12 @@ func scanning() -> void:
 	
 	if _tween: _tween.kill()
 	
-	_tween = create_tween().set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_QUAD)
+	audio_stream_player.play()
+	
+	_tween = create_tween().set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_QUAD).set_parallel()
 	_tween.tween_property(self,"modulate",Color(1,1,0,1),1)
+	_tween.tween_property(audio_stream_player,"volume_db",-24,1).set_delay(0.25)
+	
 	
 	await get_tree().create_timer(1.5,false).timeout
 	
@@ -63,15 +70,20 @@ func scanning() -> void:
 	var scan_time = 0.015
 	var _number_of_scan_attempts = 20
 	while (_number_of_scan_attempts > 0):
-		_tween = create_tween().set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_QUAD)
+		_tween = create_tween().set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_QUAD).set_parallel()
 		_tween.tween_property(self,"modulate",Color(1,1,0,0),scan_time * _number_of_scan_attempts * 0.5)
+		_tween.tween_property(audio_stream_player,"volume_db",-60,scan_time * _number_of_scan_attempts * 0.5)
 		await get_tree().create_timer(scan_time * _number_of_scan_attempts * 0.5,false).timeout
-		_tween = create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUAD)
+		_tween = create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUAD).set_parallel()
 		_tween.tween_property(self,"modulate",Color(1,1,0,1),scan_time * _number_of_scan_attempts * 0.5)
+		_tween.tween_property(audio_stream_player,"volume_db",-24,scan_time * _number_of_scan_attempts * 0.5)
 		await get_tree().create_timer(scan_time * _number_of_scan_attempts,false).timeout
 		_number_of_scan_attempts -= 1
 	
 	await get_tree().create_timer(0.5,false).timeout
+	
+	audio_stream_player.stop()
+	audio_stream_player.stream = preload("res://Assets/Audio/Inventory/722376__qubodup__error-2.wav")
 	
 	
 	_tracking_bodies = false
@@ -80,15 +92,24 @@ func scanning() -> void:
 	if has_overlapping_bodies():
 			for _item:Item in get_overlapping_bodies():
 				_items.append(_item)
-				_item.set_outline_glow(Color(20,0,0,1))				
+				_item.set_outline_glow(Color(20,0,0,1))
 			_tween = create_tween().set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_QUAD)
 			_tween.tween_property(self,"modulate",Color(1,0,0,1),scan_time)
 			for _body:Item in get_overlapping_bodies():
 				print_rich(DEBUG_NAME,"[color=red]Scanning > GOT ONE BAWS")
+				
+			audio_stream_player.stream = preload("res://Assets/Audio/Inventory/722376__qubodup__error-2.wav")
+			audio_stream_player.volume_db = -20
+			audio_stream_player.pitch_scale = 1.0
+			audio_stream_player.play()
 			#on_scan_end.emit(_items)
 	else:
 		_tween = create_tween().set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_QUAD)
 		_tween.tween_property(self,"modulate",Color(0,1,0,1),scan_time)
+		audio_stream_player.stream = preload("res://Assets/Audio/UI/591457__stavsounds__select.wav")
+		audio_stream_player.volume_db = -10
+		audio_stream_player.pitch_scale = 0.65
+		audio_stream_player.play()
 	
 	on_scan_end.emit(_items)
 	

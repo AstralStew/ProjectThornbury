@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://i1g58vh6a4qg" path="res://Assets/Images/Inventory/Greebles.png" id="3_g0kpg"]
 [ext_resource type="Texture2D" uid="uid://c0sl1u4dvsqni" path="res://Assets/Images/City/Building64.png" id="3_rr3ex"]
 [ext_resource type="Texture2D" uid="uid://rpi66dfpi25r" path="res://Assets/Images/City/Building1.png" id="4_dulit"]
+[ext_resource type="AudioStream" uid="uid://da1eqtqoss6mf" path="res://Assets/Audio/Station/371283__knoplund__spaceship-engine-noise-heavy-beep.wav" id="6_rr3ex"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rr3ex"]
 atlas = ExtResource("3_g0kpg")
@@ -42,6 +43,12 @@ metadata/_custom_type_script = "uid://dj133dg4r65on"
 
 [node name="Gfx" type="Node2D" parent="." unique_id=293722123]
 
+[node name="Shadow" type="Sprite2D" parent="Gfx" unique_id=895512428]
+modulate = Color(0, 0, 0, 0.15686275)
+position = Vector2(8, 10)
+texture = ExtResource("4_dulit")
+offset = Vector2(1.11, -6.65)
+
 [node name="MainBuilding" type="Sprite2D" parent="Gfx" unique_id=62090757]
 texture = ExtResource("4_dulit")
 offset = Vector2(1.11, -6.65)
@@ -49,16 +56,63 @@ offset = Vector2(1.11, -6.65)
 [node name="Expansion1" type="Node2D" parent="Gfx" unique_id=1868911331]
 visible = false
 
-[node name="Building41" type="Sprite2D" parent="Gfx/Expansion1" unique_id=268334236]
+[node name="Shadow" type="Node2D" parent="Gfx/Expansion1" unique_id=264854990]
+
+[node name="Shadow" type="Sprite2D" parent="Gfx/Expansion1/Shadow" unique_id=268334236]
+modulate = Color(0, 0, 0, 0.15686275)
+position = Vector2(26, -61)
+texture = ExtResource("2_g0kpg")
+
+[node name="Shadow2" type="Sprite2D" parent="Gfx/Expansion1/Shadow" unique_id=541141922]
+modulate = Color(0, 0, 0, 0.15686275)
+position = Vector2(69, -61)
+texture = ExtResource("3_rr3ex")
+
+[node name="Building42" type="Sprite2D" parent="Gfx/Expansion1" unique_id=1248161745]
 position = Vector2(18, -71)
 texture = ExtResource("2_g0kpg")
 
-[node name="Building65" type="Sprite2D" parent="Gfx/Expansion1" unique_id=541141922]
+[node name="Building66" type="Sprite2D" parent="Gfx/Expansion1" unique_id=64683608]
 position = Vector2(61, -71)
 texture = ExtResource("3_rr3ex")
 
 [node name="Expansion2" type="Node2D" parent="Gfx" unique_id=815276259]
 visible = false
+
+[node name="Shadow" type="Node2D" parent="Gfx/Expansion2" unique_id=257709463]
+modulate = Color(0, 0, 0, 0.15686275)
+
+[node name="Background10" type="ColorRect" parent="Gfx/Expansion2/Shadow" unique_id=1390196803]
+z_index = -1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -82.0
+offset_top = -8.0
+offset_right = -50.0
+offset_bottom = 8.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset_ratio = Vector2(1, 0)
+color = Color(0.2, 0.24705882, 0.34509805, 1)
+
+[node name="Background11" type="ColorRect" parent="Gfx/Expansion2/Shadow" unique_id=1868545774]
+z_index = -1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -82.0
+offset_top = -6.0
+offset_right = -50.0
+offset_bottom = 6.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset_ratio = Vector2(1, 0)
+color = Color(0.2901961, 0.47843137, 0.5882353, 1)
+
+[node name="Building67" type="Sprite2D" parent="Gfx/Expansion2/Shadow" unique_id=965369320]
+position = Vector2(-102, 0)
+texture = ExtResource("3_rr3ex")
 
 [node name="Background8" type="ColorRect" parent="Gfx/Expansion2" unique_id=835363159]
 z_index = -1
@@ -95,7 +149,10 @@ texture = ExtResource("3_rr3ex")
 [node name="Expansion3" type="Node2D" parent="Gfx" unique_id=264725998]
 visible = false
 
-[node name="Background10" type="ColorRect" parent="Gfx/Expansion3" unique_id=1908001030]
+[node name="Shadow" type="Node2D" parent="Gfx/Expansion3" unique_id=1043890642]
+modulate = Color(0, 0, 0, 0.15686275)
+
+[node name="Shadow" type="ColorRect" parent="Gfx/Expansion3/Shadow" unique_id=1908001030]
 z_index = -1
 texture_filter = 1
 anchors_preset = 15
@@ -111,7 +168,7 @@ rotation = -1.5707964
 pivot_offset_ratio = Vector2(1, 0)
 color = Color(0.2, 0.24705882, 0.34509805, 1)
 
-[node name="Background11" type="ColorRect" parent="Gfx/Expansion3" unique_id=613236630]
+[node name="Shadow2" type="ColorRect" parent="Gfx/Expansion3/Shadow" unique_id=613236630]
 z_index = -1
 texture_filter = 1
 anchors_preset = 15
@@ -127,12 +184,54 @@ rotation = -1.5707964
 pivot_offset_ratio = Vector2(1, 0)
 color = Color(0.2901961, 0.47843137, 0.5882353, 1)
 
-[node name="Building42" type="Sprite2D" parent="Gfx/Expansion3" unique_id=1190618317]
+[node name="Shadow3" type="Sprite2D" parent="Gfx/Expansion3/Shadow" unique_id=1190618317]
 texture_filter = 1
 position = Vector2(0, 76)
 texture = ExtResource("2_g0kpg")
 
-[node name="Building43" type="Sprite2D" parent="Gfx/Expansion3" unique_id=680204545]
+[node name="Shadow4" type="Sprite2D" parent="Gfx/Expansion3/Shadow" unique_id=680204545]
+texture_filter = 1
+position = Vector2(-101, 56)
+texture = ExtResource("2_g0kpg")
+
+[node name="Background12" type="ColorRect" parent="Gfx/Expansion3" unique_id=1239581139]
+z_index = -1
+texture_filter = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -141.0
+offset_top = 19.0
+offset_right = -109.0
+offset_bottom = 35.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -1.5707964
+pivot_offset_ratio = Vector2(1, 0)
+color = Color(0.2, 0.24705882, 0.34509805, 1)
+
+[node name="Background13" type="ColorRect" parent="Gfx/Expansion3" unique_id=2027446139]
+z_index = -1
+texture_filter = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -143.0
+offset_top = 23.0
+offset_right = -107.0
+offset_bottom = 35.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -1.5707964
+pivot_offset_ratio = Vector2(1, 0)
+color = Color(0.2901961, 0.47843137, 0.5882353, 1)
+
+[node name="Building44" type="Sprite2D" parent="Gfx/Expansion3" unique_id=1877791733]
+texture_filter = 1
+position = Vector2(0, 76)
+texture = ExtResource("2_g0kpg")
+
+[node name="Building45" type="Sprite2D" parent="Gfx/Expansion3" unique_id=1655711618]
 texture_filter = 1
 position = Vector2(-101, 56)
 texture = ExtResource("2_g0kpg")
@@ -169,5 +268,13 @@ size_flags_horizontal = 4
 label_settings = SubResource("LabelSettings_rx4sy")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=493163674]
+process_mode = 3
+stream = ExtResource("6_rr3ex")
+volume_db = 1.0
+pitch_scale = 1.15
+autoplay = true
+max_distance = 350.0
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]

@@ -92,7 +92,7 @@ static var BOUNTY_BRAZEN_FINE_MULTIPLIER : float = 1
 static var health : int = 0 : 
 	set(value):
 		if health != value:
-			health = value
+			health = clamp(value,0,SHIP_MAX_HEALTH)
 			instance._on_health_changed.emit()
 
 static var proportional_health : float :
@@ -110,10 +110,12 @@ signal _on_game_started
 static func on_game_started() -> Signal: return instance._on_game_started
 
 
+static var skip_everything := true
+
 func _init() -> void:
 	instance = self
 	game_config_manager = preload("res://Configs/GameConfigManager.tres")
-	restart_game()
+	#restart_game()
 
 #func _ready() -> void:
 
@@ -127,6 +129,7 @@ static func restart_game() -> void:
 
 
 static func start_game() -> void:
+	
 	game_started = true
 	on_game_started().emit()
 

@@ -5,7 +5,7 @@ var DEBUG_NAME : String :
 
 @export var cooldown_duration : Vector2 = Vector2(10.0,30.0)
 
-@export var prosperity_target : int = 2
+@export var prosperity_target : int = 3
 
 @export_category("READ ONLY")
 
@@ -33,11 +33,12 @@ var _order_items : Array[InventoryManager.ItemType]
 
 func _ready() -> void:
 	
-	get_child(0).get_child(0).rotation = GLOBALS.random_rotation(180)
 	for _child:Node2D in get_child(0).get_children():
 		if "Expansion" in _child.name:
 			_expansions.append(_child)
 			_child.rotation = GLOBALS.random_rotation(180)
+			(_child.get_child(0) as Node2D).global_position = _child.global_position + Vector2(8,10)
+	
 	_expansions.pick_random().visible = true
 	
 	prosperity = 0
@@ -49,11 +50,11 @@ func make_order() -> void:
 	order_type = (randi() % 3) as InventoryManager.ItemType
 	match order_type:
 		InventoryManager.ItemType.Rock:
-			order_number = randi_range(4,7)
+			order_number = 4 + (prosperity * 4) # randi_range(4,7)		2	4
 		InventoryManager.ItemType.Crate:
-			order_number = randi_range(2,3)
+			order_number = 2 + (prosperity * 1)  # randi_range(2,3)		1	2
 		InventoryManager.ItemType.Pipe:
-			order_number = randi_range(3,5)
+			order_number = 3 + (prosperity * 2)  	#randi_range(3,5)		2	3
 	
 	for i in order_number:
 		_order_items.append(order_type)
@@ -100,14 +101,13 @@ func complete_order() -> void:
 	print_rich(DEBUG_NAME,"CheckOrder > Order complete! Starting cooldown and returning true...")
 	has_order = false
 	
-	CountdownManager.adjust_countdown(-randf_range(30,60))
+	#CountdownManager.adjust_countdown(-randf_range(30,60))
 	
 	prosperity += 1
-	var _chosen:Node2D=null
-	while _chosen == null:
-		_chosen = _expansions.pick_random()
-		if _chosen.visible: _chosen=null
-	_chosen.visible = true
+	
+	if _expansions.size() > 0:
+		_expansions.shuffle()
+		_expansions.pop_back().visible = true
 	
 	on_complete_order.emit(self)
 	if !is_prosperous: cooldown()

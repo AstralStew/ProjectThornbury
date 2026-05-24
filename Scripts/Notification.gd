@@ -1,5 +1,7 @@
 class_name Notification extends Area2D
 
+@onready var notification_audio_player: AudioStreamPlayer = $NotificationAudioPlayer
+
 
 @export var screen_edge : Vector2 = Vector2(310,260)
 
@@ -10,6 +12,7 @@ class_name Notification extends Area2D
 @export var disappear_start_distance : float = 400
 @export var disappear_end_distance : float = 200
 
+
 @export_category("READ ONLY")
 
 @export var target_position : Vector2 = Vector2(460,460)
@@ -19,16 +22,17 @@ class_name Notification extends Area2D
 var station : Station = null
 
 var portait : Texture2D = null
+var audio_median_pitch : float = 0.85
 
 var dialogue_message : String = ""
 
+var rewards : Array
+
+var awaiting_reward : bool = false
 
 #func _ready() -> void:
 	#tracking(get_tree().get_first_node_in_group("Stations"))
 
-func stop(_node:Node2D) -> void:
-	is_tracking = false
-	visible = false
 
 func tracking(_node:Node2D) -> void:
 	var _minimum_alpha_sqr_distance : float = minimum_alpha_distance * minimum_alpha_distance
@@ -90,6 +94,101 @@ func tracking(_node:Node2D) -> void:
 		if !is_inside_tree(): break
 
 
+func define_rewards(_node:Node2D) -> void:
+	
+	rewards = NotificationManager.RewardType.values()
+	rewards.remove_at(randi() % rewards.size())
+
+
+func stop() -> void:
+	is_tracking = false
+	visible = false
+
+
+func finish(_node:Node2D) -> void:
+	stop()
+	notification_audio_player.play()
+	
+	var _current_message = "Thank you comrade! Please let us help you with something in turn..." # dialogue_message % ("[color=7dcfff]" + str(station.order_number) + " " + str(InventoryManager.ItemType.keys()[station.order_type]) + ("s" if station.order_number > 1 else "") + "[/color]")
+	
+	var _button_1_text : String
+	match rewards[0]:
+		NotificationManager.RewardType.REPAIR:
+			_button_1_text = "Repair your ship"
+		NotificationManager.RewardType.DELAY:
+			_button_1_text = "run interference"
+		NotificationManager.RewardType.RESOURCE:
+			_button_1_text = "Restock supplies"
+	var _button_2_text : String
+	match rewards[1]:
+		NotificationManager.RewardType.REPAIR:
+			_button_2_text = "Repair your ship"
+		NotificationManager.RewardType.DELAY:
+			_button_2_text = "run interference"
+		NotificationManager.RewardType.RESOURCE:
+			_button_2_text = "Restock supplies"
+	
+	awaiting_reward = true
+	
+	DialogueManager.display_dialogue_box(_current_message,_button_1_text,_button_2_text,portait,true,true,30,audio_median_pitch)
+	DialogueManager.on_dialogue_choice().connect(on_choose_reward,CONNECT_ONE_SHOT)
+	
+	#match station.order_type:
+		#InventoryManager.ItemType.Rock:
+			#_possible_rewards.remove_at(_possible_rewards.find(NotificationManager.RewardType.ROCKS))
+		#InventoryManager.ItemType.Crate:
+			#_possible_rewards.remove_at(_possible_rewards.find(NotificationManager.RewardType.CRATES))
+		#InventoryManager.ItemType.Pipe:
+			#_possible_rewards.remove_at(_possible_rewards.find(NotificationManager.RewardType.PIPES))
+	#
+	#_new_notification.rewards = []
+
+func on_choose_reward(reward_index:int) -> void:
+	
+	match rewards[reward_index]:
+		NotificationManager.RewardType.REPAIR:
+			for i in station.prosperity:
+				GLOBALS.health += 3
+		
+		NotificationManager.RewardType.DELAY:
+			for i in station.prosperity:
+				CountdownManager.adjust_countdown(-45)
+		
+		NotificationManager.RewardType.RESOURCE:
+			match station.order_type:
+				InventoryManager.ItemType.Rock:
+					for i in station.prosperity:
+						if randi() % 2:
+							#InventoryManager.add_item(InventoryManager.ItemType.Crate)
+							InventoryManager.add_item(InventoryManager.ItemType.Crate)
+						else:
+							#InventoryManager.add_item(InventoryManager.ItemType.Pipe)
+							InventoryManager.add_item(InventoryManager.ItemType.Pipe)
+							InventoryManager.add_item(InventoryManager.ItemType.Pipe)
+				InventoryManager.ItemType.Crate:
+					for i in station.prosperity:
+						if randi() % 2:
+							#InventoryManager.add_item(InventoryManager.ItemType.Rock)
+							InventoryManager.add_item(InventoryManager.ItemType.Rock)
+							InventoryManager.add_item(InventoryManager.ItemType.Rock)
+							InventoryManager.add_item(InventoryManager.ItemType.Rock)
+						else:
+							#InventoryManager.add_item(InventoryManager.ItemType.Pipe)
+							InventoryManager.add_item(InventoryManager.ItemType.Pipe)
+							InventoryManager.add_item(InventoryManager.ItemType.Pipe)
+				InventoryManager.ItemType.Pipe:
+					for i in station.prosperity:
+						if randi() % 2:
+							#InventoryManager.add_item(InventoryManager.ItemType.Rock)
+							InventoryManager.add_item(InventoryManager.ItemType.Rock)
+							InventoryManager.add_item(InventoryManager.ItemType.Rock)
+							InventoryManager.add_item(InventoryManager.ItemType.Rock)
+						else:
+							#InventoryManager.add_item(InventoryManager.ItemType.Crate)
+							InventoryManager.add_item(InventoryManager.ItemType.Crate)
+
+
+
 func _on_mouse_entered() -> void:
 	is_hovered = true
 
@@ -100,21 +199,16 @@ func _on_mouse_exited() -> void:
 
 func create_dialogue_message(_node:Node2D) -> void:
 	if randi() % 2:
-		dialogue_message = (
-			NotificationManager.local_order_flavour_options.pop_at(randi() % NotificationManager.local_order_flavour_options.size()) +
-			" " + #"\n\n" +
-			NotificationManager.local_order_options.pop_at(randi() % NotificationManager.local_order_options.size())
-		)
+		dialogue_message = NotificationManager.pop_random_flavour_option() + " " + NotificationManager.pop_random_order_option()
 	else:
-		dialogue_message = (
-			NotificationManager.local_order_options.pop_at(randi() % NotificationManager.local_order_options.size()) +
-			" " + #"\n\n" +
-			NotificationManager.local_order_flavour_options.pop_at(randi() % NotificationManager.local_order_flavour_options.size())
-		)
+		dialogue_message = NotificationManager.pop_random_order_option() + " " + NotificationManager.pop_random_flavour_option()
+
 
 func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 	if event is InputEventMouseButton && Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
 		
+		notification_audio_player.play()
+		
 		var _current_message = dialogue_message % ("[color=7dcfff]" + str(station.order_number) + " " + str(InventoryManager.ItemType.keys()[station.order_type]) + ("s" if station.order_number > 1 else "") + "[/color]")
 		
-		UIManager.instance.display_dialogue_box(portait,_current_message,NotificationManager.local_button_options.pick_random())
+		DialogueManager.display_dialogue_box(_current_message,NotificationManager.random_button_option(),"",portait,true,true,30,audio_median_pitch)

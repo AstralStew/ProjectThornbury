@@ -5,6 +5,10 @@ static var instance : Ship = null
 
 @onready var engine_audio_player : AudioStreamPlayer = $EngineAudioPlayer
 @onready var boost_audio_player : AudioStreamPlayer = $BoostAudioPlayer
+@onready var damage_audio_player: AudioStreamPlayer = $DamageAudioPlayer
+
+#@onready var shadow : Sprite2D = $Shadow
+
 
 @export var engine_audio_volume_scale : Vector2 = Vector2(0.2,0.4)
 @export var engine_audio_pitch_scale : Vector2 = Vector2(0.75,1.75)
@@ -25,8 +29,13 @@ static var instance : Ship = null
 			1 if (Input.is_action_pressed("MoveUp")) else -1 if (Input.is_action_pressed("MoveDown")) else 0,
 		)
 
-var trails : Array[ShipTrail] = []
+@export var trails : Array[ShipTrail] = []
 
+@onready var camera: Camera2D = $Camera2D
+
+signal _on_took_damage
+static func on_took_damage() -> Signal: return instance._on_took_damage 
+	
 
 func _enter_tree() -> void:
 	instance = self
@@ -35,12 +44,15 @@ func _enter_tree() -> void:
 func _ready() -> void:
 	for _child:ShipTrail in find_children("","ShipTrail"):
 		trails.append(_child)
+	
+	$AudioListener2D.make_current()
 
 func game_started() -> void:
 	engine_audio_player.play()
 
 
 func _physics_process(delta: float) -> void:
+	
 	
 	previous_speed = speed
 	
@@ -70,34 +82,40 @@ func _physics_process(delta: float) -> void:
 func take_damage() -> void:
 	print_rich(DEBUG_NAME,"TakeDamage > Reducing health and losing control!")
 	GLOBALS.health -= 1
+	_on_took_damage.emit()
 	lose_control()
+	damage_audio_player.play()
 
 var has_control := true
 var _tween:Tween = null
 func lose_control() -> void:
 	has_control = false
-	modulate = Color.RED
+	#modulate = Color.RED
 	for _trail in trails: _trail.deactivate()
 	if _tween: _tween.kill()
 	_tween = create_tween().set_parallel().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_SPRING)
 	_tween.tween_property(self,"rotation",rotation + GLOBALS.random_rotation(50),0.25)
-	_tween.tween_property($ShipsSheet,"rotation_degrees",$ShipsSheet.rotation_degrees+360,0.25)
+	#_tween.tween_property($ShipsSheet,"rotation_degrees",$ShipsSheet.rotation_degrees+360,0.25)
 	
-	if UIManager.instance != null: UIManager.instance.jolt()
-	if Boot.instance != null: Boot.instance.jolt()
+	#if UIManager.instance != null: UIManager.instance.jolt()
+	#if Boot.instance != null: Boot.instance.jolt()
 	
 	await get_tree().create_timer(0.25).timeout
-	$ShipsSheet.rotation_degrees = 180
+	#$ShipsSheet.rotation_degrees = 180
 	for _trail in trails: _trail.activate()
-	modulate = Color.WHITE
+	#modulate = Color.WHITE
 	has_control = true
 
 
 func get_input(delta: float) -> void:
 	var _target_rotation : float
 	var _new_speed : float
-	
-	
+	#
+	#if Input.is_action_pressed("OpenChute"):
+		#shadow.global_position = shadow.global_position.move_toward(global_position + Vector2(2,2.5), 50 * delta)
+	#else:
+		#shadow.global_position = shadow.global_position.move_toward(global_position + Vector2(16,20), 50 * delta)
+	#
 	if Input.is_action_just_pressed("Boost"):
 		if !boost_audio_player.playing || boost_audio_player.get_playback_position() > 2.5:
 			boost_audio_player.play()

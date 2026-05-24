@@ -17,11 +17,15 @@ func _ready() -> void:
 	start()
 
 func _on_button_pressed() -> void:
-	print("got here")
+	print("OnButtonPressed > Displaying next.")
 	next_dialogue()
 
 func start() -> void:
 	await get_tree().create_timer(1).timeout
+	
+	DialogueManager.set_transform(Vector2.ZERO,Vector2(1280,720),[50,50,50,50])
+	DialogueManager.on_dialogue_close().connect(_on_button_pressed)
+	
 	next_dialogue()
 	visible = true
 
@@ -32,9 +36,16 @@ func next_dialogue() -> void:
 	index += 1
 	
 	if index < intro_dialogue_them.size():
-		$DialoguePC/MarginContainer/VBoxContainer/HBoxContainer/DialogueLabel.text = intro_dialogue_them[index]
-		$DialoguePC/MarginContainer/VBoxContainer/DialogueButton.text = intro_dialogue_you[index]
+		
+		
+		DialogueManager.display_dialogue_box(intro_dialogue_them[index],intro_dialogue_you[index],"",null,false, true if index == intro_dialogue_them.size() - 1 else false)
+		#
+		#$DialoguePC/MarginContainer/VBoxContainer/HBoxContainer/DialogueLabel.text = intro_dialogue_them[index]
+		#$DialoguePC/MarginContainer/VBoxContainer/DialogueButton.text = intro_dialogue_you[index]
 		return
+	else:
+		DialogueManager.set_transform(Vector2(20,21),Vector2(680,640),[50,50,50,50])
+	
 	
 	MusicPlayer.fade_in(3)
 	GLOBALS.start_game()

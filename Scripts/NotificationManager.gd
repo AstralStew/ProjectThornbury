@@ -1,7 +1,12 @@
 class_name NotificationManager extends Node
+const DEBUG_NAME = "[b][NotificationManager][/b] "
+static var instance : NotificationManager = null
 
 @onready var notification_prefab : PackedScene = preload("res://Scenes/OutsidePrefabs/notification.tscn")
 
+
+
+enum RewardType {REPAIR,DELAY,RESOURCE}
 
 
 @export var order_flavour_options : Array[String] = [
@@ -45,45 +50,67 @@ class_name NotificationManager extends Node
 
 
 
-static var local_order_flavour_options : Array[String] = []
+var local_order_flavour_options : Array[String] = []
 
-static var local_order_options : Array[String] = []
+var local_order_options : Array[String] = []
 
-static var local_button_options : Array[String] = []
+
+func _enter_tree() -> void:
+	instance = self
 
 var portraits : Array[Texture2D] = []
 
 
+static func pop_random_flavour_option() -> String:
+	if instance.local_order_flavour_options.size() == 0:
+		instance.local_order_flavour_options = instance.order_flavour_options.duplicate()
+	return instance.local_order_flavour_options.pop_at(randi() % instance.local_order_flavour_options.size())
+
+static func pop_random_order_option() -> String:
+	if instance.local_order_options.size() == 0:
+		instance.local_order_options = instance.order_options.duplicate()
+	return instance.local_order_options.pop_at(randi() % instance.local_order_options.size())
+
+static func random_button_option() -> String:
+	return instance.button_options.pick_random()
+
 
 
 func _ready() -> void:
-	local_order_flavour_options = order_flavour_options
-	local_order_options = order_options
-	local_button_options = button_options
+	local_order_flavour_options = order_flavour_options.duplicate()
+	local_order_options = order_options.duplicate()
 	
-	portraits.append(preload("res://Assets/Images/UI/Potrait1.png"))
 	portraits.append(preload("res://Assets/Images/UI/Potrait2.png"))
-	portraits.append(preload("res://Assets/Images/UI/Potrait3.png"))
 	portraits.append(preload("res://Assets/Images/UI/Potrait4.png"))
+	portraits.append(preload("res://Assets/Images/UI/Potrait1.png"))
+	portraits.append(preload("res://Assets/Images/UI/Potrait3.png"))
 	
 	register_notifications()
 
 func register_notifications() -> void:
-	var _station_number = -1
+	var _station_number : int = -1
+	var _starting_median_pitch : float = 1.15
+	var _total_station_count = get_tree().get_node_count_in_group("Stations")
 	for _station:Station in get_tree().get_nodes_in_group("Stations"):
 		_station_number += 1
+		_starting_median_pitch -= 0.12
 		
 		var _new_notification = create_notification()
 		_new_notification.visible = false
 		_new_notification.name = "Notification{"+_station.name+"}"
 		_new_notification.global_position = _station.global_position
+		#_new_notification.screen_edge += Vector2.ONE * remap(_station_number,0,_total_station_count-1,-40,40)
 		
 		_new_notification.station = _station
 		_new_notification.portait = portraits[_station_number]
+		_new_notification.audio_median_pitch = _starting_median_pitch
+		
+		
 		
 		_station.on_make_order.connect(_new_notification.tracking)
 		_station.on_make_order.connect(_new_notification.create_dialogue_message)
-		_station.on_complete_order.connect(_new_notification.stop)
+		_station.on_make_order.connect(_new_notification.define_rewards)
+		_station.on_complete_order.connect(_new_notification.finish)
 		
 
 func create_notification() -> Notification:

@@ -30,7 +30,7 @@ func _ready() -> void:
 	volume_db += volume_adjustment + config.volume_adjustment
 	
 	play(_sound.x)
-	
+	await get_tree().process_frame
 	while get_playback_position() + AudioServer.get_time_since_last_mix() < _sound.y:
 		await get_tree().process_frame
 	stop()
