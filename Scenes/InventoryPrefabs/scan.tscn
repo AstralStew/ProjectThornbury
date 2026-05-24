@@ -42,7 +42,6 @@ fill_to = Vector2(1, 1)
 radius = 0.69
 
 [node name="Scan" type="Area2D" unique_id=1892070229]
-process_mode = 3
 visible = false
 modulate = Color(1, 1, 1, 0)
 z_index = 15

@@ -82,45 +82,45 @@ func update_prosperity(value:float) -> void:
 	prosperity_bar.modulate = progress_colour.sample(value)
 	
 	if value >= 1:
-		await get_tree().create_timer(0.5,true,false,true).timeout
+		await get_tree().create_timer(1.0,false,false,false).timeout
 		win()
 
 
 
-static func start_time(fade:=0.0) -> void:
+static func start_time(fade:=0.0,affect_bg:bool=true) -> void:
 	await instance._start_time(fade)
 
-func _start_time(fade:=0.0) -> void:
+func _start_time(fade:=0.0,affect_bg:bool=true) -> void:
 	get_tree().paused = false
 	if fade:
-		msg_bg_overlay.visible = true
+		if affect_bg: msg_bg_overlay.visible = true
 		#msg_bg_overlay.modulate = Color(1,1,1,0.3)
 		Engine.time_scale = 0.0
 		var _tween:Tween = create_tween().set_ignore_time_scale().set_pause_mode(Tween.TWEEN_PAUSE_PROCESS).set_parallel().set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_QUAD)
 		_tween.tween_property(Engine,"time_scale",1,fade)
-		_tween.tween_property(msg_bg_overlay,"modulate", Color(1,1,1,0),fade)
+		if affect_bg: _tween.tween_property(msg_bg_overlay,"modulate", Color(1,1,1,0),fade)
 		await get_tree().create_timer(fade,true,false,true).timeout
 		await get_tree().process_frame
 		Engine.time_scale = 1.0
-	msg_bg_overlay.visible = false
+	if affect_bg: msg_bg_overlay.visible = false
 	is_time_stopped = false
 
 
-static func stop_time(fade:=0.0) -> void:
+static func stop_time(fade:=0.0,affect_bg:bool=true) -> void:
 	await instance._stop_time(fade)
 
-func _stop_time(fade:=0.0) -> void:
+func _stop_time(fade:=0.0,affect_bg:bool=true) -> void:
 	msg_bg_overlay.visible = true
 	if fade:
 		#msg_bg_overlay.modulate = Color(1,1,1,0)
 		Engine.time_scale = 1.0
 		var _tween:Tween = create_tween().set_ignore_time_scale().set_pause_mode(Tween.TWEEN_PAUSE_PROCESS).set_parallel().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUAD)
 		_tween.tween_property(Engine,"time_scale",0,fade)
-		_tween.tween_property(msg_bg_overlay,"modulate", Color(1,1,1,0.3),fade)
+		if affect_bg: _tween.tween_property(msg_bg_overlay,"modulate", Color(1,1,1,0.3),fade)
 		await get_tree().create_timer(fade,true,false,true).timeout
 		await get_tree().process_frame
 		Engine.time_scale = 1.0
-		msg_bg_overlay.modulate = Color(1,1,1,0.3)
+		if affect_bg: msg_bg_overlay.modulate = Color(1,1,1,0.3)
 	get_tree().paused = true
 	is_time_stopped = true
 
@@ -196,38 +196,51 @@ Keep it secret! Keep it safe!""",
 
 
 func dead() -> void:
-	await _stop_time(1)
+	await _stop_time(1,false)
+	
+	var _tween:Tween = create_tween().set_ignore_time_scale().set_pause_mode(Tween.TWEEN_PAUSE_PROCESS).set_parallel().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUAD)
+	_tween.tween_property(msg_bg_overlay,"modulate", Color(1,1,1,1),4)
+	
 	await display_message_box(
 		"[tornado radius=3.0 freq=1.0 connected=1]Although the skimmer was destroyed, the people hold your sacrifice in their memories.[/tornado]\n\nYour final bounty on this planet was [color=yellow]%s credits![/color]" % BountyManager.current_bounty,
 	"We can do better!",
 	4
 	)
-	await _start_time(1)
+	await _start_time(1,false)
 	_on_restart_game.emit()
 	get_tree().reload_current_scene()
 	
 
 
 func win() -> void:
-	await _stop_time(1)
+	
+	await _stop_time(1,false)
+	
+	var _tween:Tween = create_tween().set_ignore_time_scale().set_pause_mode(Tween.TWEEN_PAUSE_PROCESS).set_parallel().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUAD)
+	_tween.tween_property(msg_bg_overlay,"modulate", Color(1,1,1,1),4)
+	
 	await display_message_box(
 		"[font_size=50][rainbow freq=0.1 sat=0.69 val=1 speed=0.5]C o n g r a t u l a t i o n s ![/rainbow][/font_size]\n\nYour community pulled together against all odds to\nthrow off the yoke of those Capital ships once and for all!\n\nYour final bounty at time of freedom was [color=yellow]%s credits![/color]" % BountyManager.current_bounty,
 	"Can you beat your score?",
 	4
 	)
-	await _start_time(1)
+	await _start_time(1,false)
 	_on_restart_game.emit()
 	get_tree().reload_current_scene()
 
 
 func lose() -> void:
-	await _stop_time(1)
+	await _stop_time(1,false)
+	
+	var _tween:Tween = create_tween().set_ignore_time_scale().set_pause_mode(Tween.TWEEN_PAUSE_PROCESS).set_parallel().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUAD)
+	_tween.tween_property(msg_bg_overlay,"modulate", Color(1,1,1,1),4)
+	
 	await display_message_box(
 		"[shake rate=10.0 level=3 connected=1]The capital ship arrived to obliterate your skimmer and your community from the safety of orbit.[/shake]\n\nYour final bounty on this planet was [color=yellow]%s credits![/color]" % BountyManager.current_bounty,
 	"They can't keep getting away with this!",
 	2
 	)
-	await _start_time(1)
+	await _start_time(1,false)
 	_on_restart_game.emit()
 	get_tree().reload_current_scene()
 	

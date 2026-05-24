@@ -99,6 +99,8 @@ func _display_dialogue_box(message_text:="",button_1_text:="OK",button_2_text:="
 func stop_audio() -> void:
 	if dialogue_audio.playing: dialogue_audio.stop()
 
+
+
 func _on_dialogue_button_1_pressed() -> void:
 	dialogue_button_pressed()
 	_on_dialogue_choice.emit(0)
@@ -108,15 +110,21 @@ func _on_dialogue_button_2_pressed() -> void:
 	_on_dialogue_choice.emit(1)
 
 func dialogue_button_pressed() -> void:
-	if is_scrolling_text:
-		if _tween: _tween.kill()
-		is_scrolling_text = false
-		dialogue_label.visible_ratio = 1.0
-		stop_audio()
-	else:
-		waiting_for_button = false
+	if is_scrolling_text: skip_text_scroll()
+	
+	waiting_for_button = false
 	dialogue_audio.volume_db = -10
 	dialogue_audio.stream = preload("res://Assets/Audio/UI/591457__stavsounds__select.wav")
 	await get_tree().physics_frame
 	dialogue_audio.pitch_scale = 0.9
 	dialogue_audio.play()
+
+func skip_text_scroll() -> void:
+	if _tween: _tween.kill()
+	is_scrolling_text = false
+	dialogue_label.visible_ratio = 1.0
+	stop_audio()
+
+func _on_gui_input(event: InputEvent) -> void:
+	if is_scrolling_text && event is InputEventMouseButton && Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
+		skip_text_scroll()
