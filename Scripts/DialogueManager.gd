@@ -56,6 +56,7 @@ func _display_dialogue_box(message_text:="",button_1_text:="OK",button_2_text:="
 		print(DEBUG_NAME, "DisplayDialogueBox > Setting portrait!")
 		portrait_box.texture = portrait
 	
+	await get_tree().process_frame
 	visible = true
 	
 	waiting_for_button = true

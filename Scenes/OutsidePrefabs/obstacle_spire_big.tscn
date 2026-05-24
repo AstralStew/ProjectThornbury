@@ -1,0 +1,77 @@
+[gd_scene format=3 uid="uid://ukixse4dnogy"]
+
+[ext_resource type="Shape2D" uid="uid://dqne3v6xq5hx1" path="res://Assets/Subresources/Spire_RectangleShape2d.tres" id="1_ru6wf"]
+
+[node name="ObstacleSpireBig" type="StaticBody2D" unique_id=1677324250]
+texture_filter = 2
+scale = Vector2(4, 4)
+collision_layer = 16
+collision_mask = 0
+
+[node name="BigSpireCliff" type="ColorRect" parent="." unique_id=973801819]
+offset_left = -30.0
+offset_top = -30.0
+offset_right = 30.0
+offset_bottom = 30.0
+scale = Vector2(1.15, 1.15)
+pivot_offset_ratio = Vector2(0.5, 0.5)
+mouse_filter = 2
+color = Color(0.38431373, 0.22352941, 0, 1)
+
+[node name="BigSpireCliff2" type="ColorRect" parent="." unique_id=131070904]
+offset_left = -30.0
+offset_top = -30.0
+offset_right = 30.0
+offset_bottom = 30.0
+rotation = 0.7853982
+scale = Vector2(1.15, 1.15)
+pivot_offset_ratio = Vector2(0.5, 0.5)
+mouse_filter = 2
+color = Color(0.38431373, 0.22352941, 0, 1)
+
+[node name="BigSpireShadow" type="ColorRect" parent="." unique_id=168198058]
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(1.15, 1.15)
+pivot_offset_ratio = Vector2(0.5, 0.5)
+mouse_filter = 2
+color = Color(0, 0, 0, 0.23900001)
+
+[node name="BigSpireShadow2" type="ColorRect" parent="." unique_id=2105441735]
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 40.0
+offset_bottom = 40.0
+rotation = 0.7853982
+scale = Vector2(1.15, 1.15)
+pivot_offset_ratio = Vector2(0.5, 0.5)
+mouse_filter = 2
+color = Color(0, 0, 0, 0.23900001)
+
+[node name="BigSpireCollider" type="CollisionShape2D" parent="." unique_id=1338276272]
+shape = ExtResource("1_ru6wf")
+
+[node name="BigSpireCollider2" type="CollisionShape2D" parent="." unique_id=151100619]
+rotation = 0.7853982
+shape = ExtResource("1_ru6wf")
+
+[node name="BigSpireGfx" type="ColorRect" parent="." unique_id=61507243]
+offset_left = -30.0
+offset_top = -30.0
+offset_right = 30.0
+offset_bottom = 30.0
+pivot_offset_ratio = Vector2(0.5, 0.5)
+mouse_filter = 2
+color = Color(0, 0.77254903, 0.6509804, 1)
+
+[node name="BigSpireGfx2" type="ColorRect" parent="." unique_id=1862346220]
+offset_left = -30.0
+offset_top = -30.0
+offset_right = 30.0
+offset_bottom = 30.0
+rotation = 0.7853982
+pivot_offset_ratio = Vector2(0.5, 0.5)
+mouse_filter = 2
+color = Color(0, 0.77254903, 0.6509804, 1)

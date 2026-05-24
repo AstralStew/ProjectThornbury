@@ -3101,60 +3101,6 @@ shape = ExtResource("5_rx4sy")
 
 [node name="BigSpires" type="Node2D" parent="ObstacleHolder" unique_id=1796457854]
 
-[node name="ObstacleSpireBig2" type="StaticBody2D" parent="ObstacleHolder/BigSpires" unique_id=1947647661]
-position = Vector2(-632, -195)
-rotation = -1.6815177
-scale = Vector2(4, 4)
-collision_layer = 16
-collision_mask = 0
-
-[node name="BigSpireShadow" type="ColorRect" parent="ObstacleHolder/BigSpires/ObstacleSpireBig2" unique_id=2126867797]
-z_index = -1
-offset_left = -34.297485
-offset_top = -31.316345
-offset_right = 25.702515
-offset_bottom = 28.683655
-pivot_offset_ratio = Vector2(0.5, 0.5)
-mouse_filter = 2
-color = Color(0.38431373, 0.22352941, 0, 1)
-
-[node name="BigSpireShadow2" type="ColorRect" parent="ObstacleHolder/BigSpires/ObstacleSpireBig2" unique_id=1203454316]
-z_index = -1
-offset_left = -34.297424
-offset_top = -31.316345
-offset_right = 25.702576
-offset_bottom = 28.683655
-rotation = 0.7853982
-pivot_offset_ratio = Vector2(0.5, 0.5)
-mouse_filter = 2
-color = Color(0.38431373, 0.22352941, 0, 1)
-
-[node name="BigSpireGfx" type="ColorRect" parent="ObstacleHolder/BigSpires/ObstacleSpireBig2" unique_id=1870496515]
-offset_left = -29.814552
-offset_top = -30.48099
-offset_right = 30.185448
-offset_bottom = 29.51901
-pivot_offset_ratio = Vector2(0.5, 0.5)
-mouse_filter = 2
-color = Color(0, 0.77254903, 0.6509804, 1)
-
-[node name="BigSpireGfx2" type="ColorRect" parent="ObstacleHolder/BigSpires/ObstacleSpireBig2" unique_id=176846682]
-offset_left = -29.814552
-offset_top = -30.48099
-offset_right = 30.185448
-offset_bottom = 29.51901
-rotation = 0.7853982
-pivot_offset_ratio = Vector2(0.5, 0.5)
-mouse_filter = 2
-color = Color(0, 0.77254903, 0.6509804, 1)
-
-[node name="BigSpireCollider" type="CollisionShape2D" parent="ObstacleHolder/BigSpires/ObstacleSpireBig2" unique_id=1192396840]
-shape = ExtResource("6_i458n")
-
-[node name="BigSpireCollider2" type="CollisionShape2D" parent="ObstacleHolder/BigSpires/ObstacleSpireBig2" unique_id=1343396543]
-rotation = 0.7853982
-shape = ExtResource("6_i458n")
-
 [node name="ObstacleSpireBig15" type="StaticBody2D" parent="ObstacleHolder/BigSpires" unique_id=1852412244]
 position = Vector2(1086, 358.99997)
 rotation = -1.6815177
@@ -3638,6 +3584,60 @@ color = Color(0, 0.77254903, 0.6509804, 1)
 shape = ExtResource("6_i458n")
 
 [node name="BigSpireCollider2" type="CollisionShape2D" parent="ObstacleHolder/BigSpires/ObstacleSpireBig" unique_id=168838644]
+rotation = 0.7853982
+shape = ExtResource("6_i458n")
+
+[node name="ObstacleSpireBig2" type="StaticBody2D" parent="ObstacleHolder/BigSpires" unique_id=1127074138]
+position = Vector2(-673, -143)
+rotation = -1.6815177
+scale = Vector2(4, 4)
+collision_layer = 16
+collision_mask = 0
+
+[node name="BigSpireShadow" type="ColorRect" parent="ObstacleHolder/BigSpires/ObstacleSpireBig2" unique_id=1769931843]
+z_index = -1
+offset_left = -34.297485
+offset_top = -31.316345
+offset_right = 25.702515
+offset_bottom = 28.683655
+pivot_offset_ratio = Vector2(0.5, 0.5)
+mouse_filter = 2
+color = Color(0.38431373, 0.22352941, 0, 1)
+
+[node name="BigSpireShadow2" type="ColorRect" parent="ObstacleHolder/BigSpires/ObstacleSpireBig2" unique_id=1223301958]
+z_index = -1
+offset_left = -34.297424
+offset_top = -31.316345
+offset_right = 25.702576
+offset_bottom = 28.683655
+rotation = 0.7853982
+pivot_offset_ratio = Vector2(0.5, 0.5)
+mouse_filter = 2
+color = Color(0.38431373, 0.22352941, 0, 1)
+
+[node name="BigSpireGfx" type="ColorRect" parent="ObstacleHolder/BigSpires/ObstacleSpireBig2" unique_id=235712930]
+offset_left = -29.814552
+offset_top = -30.48099
+offset_right = 30.185448
+offset_bottom = 29.51901
+pivot_offset_ratio = Vector2(0.5, 0.5)
+mouse_filter = 2
+color = Color(0, 0.77254903, 0.6509804, 1)
+
+[node name="BigSpireGfx2" type="ColorRect" parent="ObstacleHolder/BigSpires/ObstacleSpireBig2" unique_id=2065913996]
+offset_left = -29.814552
+offset_top = -30.48099
+offset_right = 30.185448
+offset_bottom = 29.51901
+rotation = 0.7853982
+pivot_offset_ratio = Vector2(0.5, 0.5)
+mouse_filter = 2
+color = Color(0, 0.77254903, 0.6509804, 1)
+
+[node name="BigSpireCollider" type="CollisionShape2D" parent="ObstacleHolder/BigSpires/ObstacleSpireBig2" unique_id=519079754]
+shape = ExtResource("6_i458n")
+
+[node name="BigSpireCollider2" type="CollisionShape2D" parent="ObstacleHolder/BigSpires/ObstacleSpireBig2" unique_id=1336922552]
 rotation = 0.7853982
 shape = ExtResource("6_i458n")
 

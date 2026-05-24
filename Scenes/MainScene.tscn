@@ -143,19 +143,6 @@ shadow_size = 9
 shadow_offset = Vector2(0, 2)
 anti_aliasing = false
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xb4mg"]
-content_margin_left = 50.0
-content_margin_top = 12.0
-content_margin_right = 50.0
-content_margin_bottom = 12.0
-bg_color = Color(0.21460001, 0.26381004, 0.37, 1)
-border_width_left = 4
-border_width_top = 4
-border_width_right = 4
-border_width_bottom = 4
-border_color = Color(0.3675, 0.60975003, 0.75, 1)
-border_blend = true
-
 [node name="UIManager" type="CanvasLayer" unique_id=785319097]
 process_mode = 3
 script = ExtResource("1_7rqgy")
@@ -394,6 +381,7 @@ color = Color(0.16078432, 0.15686275, 0.19215687, 1)
 
 [node name="DialogueBox" type="MarginContainer" parent="UIHolder" unique_id=1546584707]
 process_mode = 3
+visible = false
 z_index = 14
 layout_mode = 0
 offset_left = 20.0
@@ -567,74 +555,6 @@ script = ExtResource("8_f140w")
 intro_dialogue_them = Array[String](["Look, you're right.", "Times have been getting real tough.", "Prices climb, but the quality falls.", "Taxes rise, but services get worse.", "The elites sail out among the stars...", "... and keep us thrashing in the dirt.", "So yeah, I get the impulse to lash out.", "But still, stealing a skimmer?               A bold move.", "A stupid move.", "Y'know one of them capital ships is gonna come blast you into dust!", "So then why? You think you're gonna tear it all down by yourself?", "You think you can fight the entire system in a jacked-up cargo skimmer?", "...", "...", "...", "...", "...", "I'm rooting for ya buddy."])
 intro_dialogue_you = Array[String](["...", "...", "...", "...", "...", "...", "...", "Thanks.", "Fair.", "Yeah...", "...", "Nah...", "But I can help the people.", "I can expand the bloc.", "And maybe if others see it happen...", "We can tear it down together...", "And build it back better.", "Cheers big ears"])
 
-[node name="DialoguePC" type="PanelContainer" parent="UIHolder/IntroManager" unique_id=106718416]
-visible = false
-custom_minimum_size = Vector2(500, 100)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-theme_override_styles/panel = SubResource("StyleBoxFlat_f140w")
-
-[node name="MarginContainer" type="MarginContainer" parent="UIHolder/IntroManager/DialoguePC" unique_id=416564246]
-layout_mode = 2
-theme_override_constants/margin_left = 16
-theme_override_constants/margin_top = 16
-theme_override_constants/margin_right = 16
-theme_override_constants/margin_bottom = 16
-
-[node name="VBoxContainer" type="VBoxContainer" parent="UIHolder/IntroManager/DialoguePC/MarginContainer" unique_id=1224627298]
-layout_mode = 2
-theme_override_constants/separation = 35
-
-[node name="HBoxContainer" type="HBoxContainer" parent="UIHolder/IntroManager/DialoguePC/MarginContainer/VBoxContainer" unique_id=43153068]
-layout_mode = 2
-
-[node name="Portrait" type="TextureRect" parent="UIHolder/IntroManager/DialoguePC/MarginContainer/VBoxContainer/HBoxContainer" unique_id=875875931]
-texture_filter = 1
-custom_minimum_size = Vector2(120, 0)
-layout_mode = 2
-size_flags_horizontal = 2
-size_flags_vertical = 0
-texture = ExtResource("7_f140w")
-expand_mode = 5
-stretch_mode = 5
-
-[node name="DialogueLabel" type="RichTextLabel" parent="UIHolder/IntroManager/DialoguePC/MarginContainer/VBoxContainer/HBoxContainer" unique_id=575609355]
-process_mode = 3
-clip_contents = false
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 0
-size_flags_stretch_ratio = 2.44
-theme_override_colors/default_color = Color(0.3675, 0.60975003, 0.75, 1)
-theme_override_constants/line_separation = -2
-theme_override_constants/paragraph_separation = -6
-theme_override_font_sizes/normal_font_size = 26
-bbcode_enabled = true
-fit_content = true
-scroll_active = false
-
-[node name="DialogueButton" type="Button" parent="UIHolder/IntroManager/DialoguePC/MarginContainer/VBoxContainer" unique_id=1574139972]
-process_mode = 3
-z_index = 1
-custom_minimum_size = Vector2(150, 50)
-layout_mode = 2
-size_flags_horizontal = 4
-theme_override_font_sizes/font_size = 24
-theme_override_styles/normal = SubResource("StyleBoxFlat_xb4mg")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_6t1o7")
-theme_override_styles/hover = SubResource("StyleBoxFlat_5qxwa")
-
-[node name="Scanlines" type="TextureRect" parent="UIHolder/IntroManager/DialoguePC" unique_id=41388890]
-modulate = Color(0.2891, 0.47967002, 0.59, 0.47058824)
-texture_repeat = 2
-layout_mode = 2
-mouse_filter = 2
-texture = SubResource("GradientTexture2D_4b75m")
-expand_mode = 3
-stretch_mode = 1
-
 [connection signal="gui_input" from="UIHolder/DialogueBox" to="UIHolder/DialogueBox" method="_on_gui_input"]
 [connection signal="pressed" from="UIHolder/DialogueBox/DialoguePC/MarginContainer/VBoxContainer/HBButtons/DialogueButton1" to="UIHolder/DialogueBox" method="_on_dialogue_button_1_pressed"]
 [connection signal="pressed" from="UIHolder/DialogueBox/DialoguePC/MarginContainer/VBoxContainer/HBButtons/DialogueButton2" to="UIHolder/DialogueBox" method="_on_dialogue_button_2_pressed"]
-[connection signal="pressed" from="UIHolder/IntroManager/DialoguePC/MarginContainer/VBoxContainer/DialogueButton" to="UIHolder/IntroManager" method="_on_button_pressed"]
