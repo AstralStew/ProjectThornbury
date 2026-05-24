@@ -20,13 +20,13 @@ func _enter_tree() -> void:
 	
 
 func activate_stations_over_time() -> void:
-	await get_tree().create_timer(10).timeout
+	await get_tree().create_timer(10,false).timeout
 	var _first : bool = false
 	for _station:Station in get_tree().get_nodes_in_group("Stations"):
 		if !_first: _station.make_order()
 		else: _station.cooldown()
 		
-		await get_tree().create_timer(20).timeout
+		await get_tree().create_timer(20,false).timeout
 
 func _ready() -> void:
 	for _station:Station in get_tree().get_nodes_in_group("Stations"):

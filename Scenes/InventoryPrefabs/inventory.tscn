@@ -54,6 +54,15 @@ fill_from = Vector2(0.5, 0.4)
 fill_to = Vector2(0.843209, 0.16971917)
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_51e2h"]
+normal = Vector2(0, 1)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_82wu0"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_xkusj"]
+normal = Vector2(1, 0)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_w2v4m"]
+normal = Vector2(-1, 0)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tumq0"]
 size = Vector2(540, 640)
@@ -501,7 +510,6 @@ texture = SubResource("GradientTexture2D_4pvd7")
 
 [node name="BoundaryTop" type="StaticBody2D" parent="SubViewportContainer/SubViewport/Boundaries" unique_id=799551523]
 position = Vector2(265, 14)
-rotation = -3.1415925
 collision_layer = 512
 collision_mask = 0
 
@@ -514,25 +522,23 @@ collision_layer = 512
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SubViewportContainer/SubViewport/Boundaries/BoundaryBottom" unique_id=1378531015]
-shape = SubResource("WorldBoundaryShape2D_51e2h")
+shape = SubResource("WorldBoundaryShape2D_82wu0")
 
 [node name="BoundaryLeft" type="StaticBody2D" parent="SubViewportContainer/SubViewport/Boundaries" unique_id=1668904604]
 position = Vector2(11, 320)
-rotation = 1.5707964
 collision_layer = 512
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SubViewportContainer/SubViewport/Boundaries/BoundaryLeft" unique_id=211440190]
-shape = SubResource("WorldBoundaryShape2D_51e2h")
+shape = SubResource("WorldBoundaryShape2D_xkusj")
 
 [node name="BoundaryRight" type="StaticBody2D" parent="SubViewportContainer/SubViewport/Boundaries" unique_id=1623602192]
 position = Vector2(531, 320)
-rotation = -1.5707964
 collision_layer = 512
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SubViewportContainer/SubViewport/Boundaries/BoundaryRight" unique_id=572296364]
-shape = SubResource("WorldBoundaryShape2D_51e2h")
+shape = SubResource("WorldBoundaryShape2D_w2v4m")
 
 [node name="BootArea" type="Area2D" parent="SubViewportContainer/SubViewport" unique_id=1927072519]
 position = Vector2(270, 340)

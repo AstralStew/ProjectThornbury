@@ -162,6 +162,8 @@ func took_damage() -> void:
 
 func took_damage_first_time() -> void:
 	has_taken_damage = true
+	if GLOBALS.skip_everything: return
+	
 	await get_tree().create_timer(0.35,true,false,true).timeout
 	await _stop_time(1)
 	await display_message_box(
@@ -178,6 +180,8 @@ Good luck & fly safe!""" % GLOBALS.SHIP_MAX_HEALTH,
 
 
 func was_scanned_first_time() -> void:
+	if GLOBALS.skip_everything: return
+	
 	await get_tree().create_timer(0.35,true,false,true).timeout
 	await _stop_time(1)
 	await display_message_box(
@@ -230,12 +234,12 @@ func win() -> void:
 
 
 func lose() -> void:
-	await _stop_time(1,false)
+	await _stop_time(0.5,false)
 	
 	var _tween:Tween = create_tween().set_ignore_time_scale().set_pause_mode(Tween.TWEEN_PAUSE_PROCESS).set_parallel().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUAD)
-	_tween.tween_property(msg_bg_overlay,"modulate", Color(1,1,1,1),4)
+	_tween.tween_property(msg_bg_overlay,"modulate", Color(1,1,1,1),3)
 	
-	await display_message_box(
+	await display_message_box( 
 		"[shake rate=10.0 level=3 connected=1]The capital ship arrived to obliterate your skimmer and your community from the safety of orbit.[/shake]\n\nYour final bounty on this planet was [color=yellow]%s credits![/color]" % BountyManager.current_bounty,
 	"They can't keep getting away with this!",
 	2
@@ -256,11 +260,12 @@ func display_message_box(message_text:="",button_text:="OK",min_time:=0.0,box_si
 	$UIHolder/MessageBox/VBoxContainer/RTL_Message.text = message_text
 	$UIHolder/MessageBox/VBoxContainer/RTL_Button.text = button_text
 	
-	$UIHolder/MessageBox/VBoxContainer/RTL_Button.visible = false
+	#$UIHolder/MessageBox/VBoxContainer/RTL_Button.visible = false
+	$UIHolder/MessageBox/VBoxContainer/RTL_Button.self_modulate = Color(Color.WHITE,0)
 	
 	await get_tree().create_timer(min_time,true,false,true).timeout
 	
-	$UIHolder/MessageBox/VBoxContainer/RTL_Button.visible = true
+	#$UIHolder/MessageBox/VBoxContainer/RTL_Button.visible = true
 	$UIHolder/MessageBox/VBoxContainer/RTL_Button.self_modulate = Color.WHITE
 	
 	await $UIHolder/MessageBox/VBoxContainer/RTL_Button.pressed

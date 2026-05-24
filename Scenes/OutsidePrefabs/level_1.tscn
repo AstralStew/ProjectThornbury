@@ -36,6 +36,36 @@ color_ramp = SubResource("Gradient_i458n")
 seamless = true
 seamless_blend_skirt = 0.3
 
+[sub_resource type="Gradient" id="Gradient_0iob3"]
+colors = PackedColorArray(0, 0, 0, 0, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_2kmtg"]
+gradient = SubResource("Gradient_0iob3")
+width = 8
+height = 7
+fill_to = Vector2(0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_25cc2"]
+bg_color = Color(0.20300001, 0.24955001, 0.35, 0.90588236)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_blend = true
+expand_margin_left = 4.0
+expand_margin_top = 4.0
+expand_margin_right = 4.0
+expand_margin_bottom = 4.0
+
+[sub_resource type="Gradient" id="Gradient_wro4f"]
+colors = PackedColorArray(0, 0, 0, 0, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_7ipgj"]
+gradient = SubResource("Gradient_wro4f")
+width = 8
+height = 7
+fill_to = Vector2(0, 1)
+
 [node name="Level1" type="Node2D" unique_id=1392275605]
 z_index = -2
 script = ExtResource("1_80ic5")
@@ -14353,6 +14383,120 @@ stretch_mode = 1
 [node name="Station" parent="." unique_id=1439882274 groups=["Stations"] instance=ExtResource("2_80ic5")]
 position = Vector2(1518, 1459)
 cooldown_duration = Vector2(25, 45)
+
+[node name="MarginContainer" type="MarginContainer" parent="Station" unique_id=630000922]
+z_index = 30
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -282.0
+offset_top = -227.0
+offset_right = 298.0
+offset_bottom = 189.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 40
+theme_override_constants/margin_right = 40
+theme_override_constants/margin_bottom = 40
+
+[node name="MarginContainer" type="MarginContainer" parent="Station/MarginContainer" unique_id=85813345]
+visible = false
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Station/MarginContainer/MarginContainer" unique_id=1382839642]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Station/MarginContainer/MarginContainer/VBoxContainer" unique_id=1865119209]
+layout_mode = 2
+
+[node name="Scanlines2" type="TextureRect" parent="Station/MarginContainer" unique_id=969456110]
+visible = false
+modulate = Color(0.2891, 0.47967002, 0.59, 0.47058824)
+texture_repeat = 2
+custom_minimum_size = Vector2(264.345, 50.165)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+mouse_filter = 2
+texture = SubResource("GradientTexture2D_2kmtg")
+expand_mode = 1
+stretch_mode = 1
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="Station/MarginContainer" unique_id=1720030103]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_constants/separation = 260
+alignment = 1
+
+[node name="DialoguePC" type="PanelContainer" parent="Station/MarginContainer/VBoxContainer2" unique_id=1736370210]
+modulate = Color(1, 1, 1, 0.666)
+self_modulate = Color(1.0349987, 1.0349987, 1.0349987, 1)
+custom_minimum_size = Vector2(300, 30)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxFlat_25cc2")
+
+[node name="StationHeader" type="RichTextLabel" parent="Station/MarginContainer/VBoxContainer2/DialoguePC" unique_id=124649720]
+process_mode = 3
+self_modulate = Color(1.908589, 1.908589, 1.908589, 1)
+clip_contents = false
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+size_flags_stretch_ratio = 2.44
+mouse_filter = 1
+theme_override_colors/default_color = Color(0.3675, 0.60975003, 0.75, 1)
+theme_override_colors/font_outline_color = Color(0.3675, 0.60975003, 0.75, 1)
+theme_override_constants/line_separation = -2
+theme_override_constants/paragraph_separation = -6
+theme_override_constants/outline_size = 2
+theme_override_font_sizes/normal_font_size = 36
+bbcode_enabled = true
+text = "s a n k a r a   s t a t i o n"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Scanlines" type="TextureRect" parent="Station/MarginContainer/VBoxContainer2/DialoguePC" unique_id=1213389917]
+modulate = Color(0.2891, 0.47967002, 0.59, 0.47058824)
+texture_repeat = 2
+layout_mode = 2
+mouse_filter = 2
+texture = SubResource("GradientTexture2D_7ipgj")
+expand_mode = 3
+stretch_mode = 1
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="Station/MarginContainer/VBoxContainer2" unique_id=486034961]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/normal_font_size = 20
+text = "population: 1312"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Station/MarginContainer/VBoxContainer2" unique_id=1292008497]
+visible = false
+modulate = Color(1, 1, 1, 0.72300005)
+self_modulate = Color(1.101, 1.786, 2.183, 0.855)
+layout_mode = 2
+size_flags_vertical = 2
+theme_override_colors/default_color = Color(0, 1, 1, 1)
+theme_override_font_sizes/normal_font_size = 24
+bbcode_enabled = true
+text = "POPULATION: 1,312"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
 
 [node name="Station2" parent="." unique_id=352694730 groups=["Stations"] instance=ExtResource("2_80ic5")]
 position = Vector2(-1886, -1954)

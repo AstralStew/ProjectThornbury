@@ -110,7 +110,7 @@ signal _on_game_started
 static func on_game_started() -> Signal: return instance._on_game_started
 
 
-static var skip_everything := false
+static var skip_everything := true
 
 func _init() -> void:
 	instance = self

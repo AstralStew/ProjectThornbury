@@ -12,6 +12,12 @@
 [ext_resource type="Script" uid="uid://6wr1bf514qcn" path="res://Scripts/ShipTrail.gd" id="11_2x00p"]
 [ext_resource type="AudioStream" uid="uid://bmman7mh5pbow" path="res://Assets/Audio/Ship/827562__audiopapkin__sound-design-elements-impact-sfx-ps-103.wav" id="11_b5k80"]
 [ext_resource type="Script" uid="uid://b6e4lle0dp47u" path="res://Scripts/ShipGraphics.gd" id="11_lksva"]
+[ext_resource type="Script" uid="uid://dxmkwgnwkkuu" path="res://Scripts/CapitalShot.gd" id="13_wqig2"]
+[ext_resource type="Texture2D" uid="uid://dmqa8es5jcxl2" path="res://Assets/Images/UI/GuideIcon_Logo_Blue.png" id="14_34hon"]
+[ext_resource type="Texture2D" uid="uid://i1g58vh6a4qg" path="res://Assets/Images/Inventory/Greebles.png" id="15_2tyim"]
+[ext_resource type="Texture2D" uid="uid://bilt7cu3ivxxr" path="res://Assets/Images/City/Building40.png" id="16_34hon"]
+[ext_resource type="Texture2D" uid="uid://b23ulwq6eo2yy" path="res://Assets/Images/City/Building160.png" id="17_2tyim"]
+[ext_resource type="AudioStream" uid="uid://bddgytamfn588" path="res://Assets/Audio/Capital/822420__audiopapkin__riser-hit-sfx-120.wav" id="18_wro4f"]
 
 [sub_resource type="Curve" id="Curve_mf7ev"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 1.4, 0.0, 0, 0]
@@ -35,6 +41,44 @@ playback_mode = 1
 random_pitch = 1.587401
 streams_count = 1
 stream_0/stream = ExtResource("11_b5k80")
+
+[sub_resource type="Gradient" id="Gradient_2x00p"]
+colors = PackedColorArray(0, 0, 0, 0, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_2x00p"]
+gradient = SubResource("Gradient_2x00p")
+width = 8
+height = 7
+fill_to = Vector2(0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2tyim"]
+bg_color = Color(0.20300001, 0.24955001, 0.35, 0.90588236)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_blend = true
+expand_margin_left = 4.0
+expand_margin_top = 4.0
+expand_margin_right = 4.0
+expand_margin_bottom = 4.0
+
+[sub_resource type="Gradient" id="Gradient_kbeus"]
+colors = PackedColorArray(0, 0, 0, 0, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_4ehy8"]
+gradient = SubResource("Gradient_kbeus")
+width = 8
+height = 7
+fill_to = Vector2(0, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wro4f"]
+atlas = ExtResource("15_2tyim")
+region = Rect2(164, 78, 72, 72)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4ehy8"]
+atlas = ExtResource("15_2tyim")
+region = Rect2(18, 92, 44, 43)
 
 [node name="OutsideManager" type="MarginContainer" unique_id=1854772268]
 process_mode = 1
@@ -202,6 +246,116 @@ offset = Vector2(0, -2.655)
 region_enabled = true
 region_rect = Rect2(54, 44, 24, 31)
 
+[node name="CanvasLayer" type="CanvasLayer" parent="SubViewportContainer/SubViewport" unique_id=1719000389]
+
+[node name="MarginContainer" type="MarginContainer" parent="SubViewportContainer/SubViewport/CanvasLayer" unique_id=485890872]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 40
+theme_override_constants/margin_right = 40
+theme_override_constants/margin_bottom = 40
+
+[node name="MarginContainer" type="MarginContainer" parent="SubViewportContainer/SubViewport/CanvasLayer/MarginContainer" unique_id=1804496861]
+visible = false
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="VBoxContainer" type="VBoxContainer" parent="SubViewportContainer/SubViewport/CanvasLayer/MarginContainer/MarginContainer" unique_id=1499070291]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="HBoxContainer" type="HBoxContainer" parent="SubViewportContainer/SubViewport/CanvasLayer/MarginContainer/MarginContainer/VBoxContainer" unique_id=1839051696]
+layout_mode = 2
+
+[node name="Scanlines2" type="TextureRect" parent="SubViewportContainer/SubViewport/CanvasLayer/MarginContainer" unique_id=761041328]
+visible = false
+modulate = Color(0.2891, 0.47967002, 0.59, 0.47058824)
+texture_repeat = 2
+custom_minimum_size = Vector2(264.345, 50.165)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+mouse_filter = 2
+texture = SubResource("GradientTexture2D_2x00p")
+expand_mode = 1
+stretch_mode = 1
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="SubViewportContainer/SubViewport/CanvasLayer/MarginContainer" unique_id=1452804356]
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="DialoguePC" type="PanelContainer" parent="SubViewportContainer/SubViewport/CanvasLayer/MarginContainer/VBoxContainer2" unique_id=752460918]
+modulate = Color(1, 1, 1, 0.795)
+self_modulate = Color(1.0349987, 1.0349987, 1.0349987, 1)
+custom_minimum_size = Vector2(500, 30)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxFlat_2tyim")
+
+[node name="StationHeader" type="RichTextLabel" parent="SubViewportContainer/SubViewport/CanvasLayer/MarginContainer/VBoxContainer2/DialoguePC" unique_id=1799901078]
+process_mode = 3
+self_modulate = Color(1.908589, 1.908589, 1.908589, 1)
+clip_contents = false
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+size_flags_stretch_ratio = 2.44
+mouse_filter = 1
+theme_override_colors/default_color = Color(0.3675, 0.60975003, 0.75, 1)
+theme_override_colors/font_outline_color = Color(0.3675, 0.60975003, 0.75, 1)
+theme_override_constants/line_separation = -2
+theme_override_constants/paragraph_separation = -6
+theme_override_constants/outline_size = 2
+theme_override_font_sizes/normal_font_size = 36
+bbcode_enabled = true
+text = "s a n k a r a   s t a t i o n"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Scanlines" type="TextureRect" parent="SubViewportContainer/SubViewport/CanvasLayer/MarginContainer/VBoxContainer2/DialoguePC" unique_id=827002072]
+modulate = Color(0.2891, 0.47967002, 0.59, 0.47058824)
+texture_repeat = 2
+layout_mode = 2
+mouse_filter = 2
+texture = SubResource("GradientTexture2D_4ehy8")
+expand_mode = 3
+stretch_mode = 1
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="SubViewportContainer/SubViewport/CanvasLayer/MarginContainer/VBoxContainer2" unique_id=1849920057]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/normal_font_size = 20
+text = "population: 1312"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="SubViewportContainer/SubViewport/CanvasLayer/MarginContainer/VBoxContainer2" unique_id=308368977]
+visible = false
+modulate = Color(1, 1, 1, 0.72300005)
+self_modulate = Color(1.101, 1.786, 2.183, 0.855)
+layout_mode = 2
+size_flags_vertical = 2
+theme_override_colors/default_color = Color(0, 1, 1, 1)
+theme_override_font_sizes/normal_font_size = 24
+bbcode_enabled = true
+text = "POPULATION: 1,312"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+
 [node name="ShipGfx" type="Node2D" parent="." unique_id=1045358773]
 physics_interpolation_mode = 1
 top_level = true
@@ -216,3 +370,75 @@ rotation = -3.1415925
 texture = ExtResource("3_slk23")
 region_enabled = true
 region_rect = Rect2(90, 5, 40, 33)
+
+[node name="CapitalShot" type="Sprite2D" parent="." unique_id=2018180924]
+visible = false
+z_index = 10
+position = Vector2(367, 378)
+script = ExtResource("13_wqig2")
+metadata/_custom_type_script = "uid://dxmkwgnwkkuu"
+
+[node name="Circles" type="Node2D" parent="CapitalShot" unique_id=74026244]
+modulate = Color(1, 1, 1, 0)
+
+[node name="LandingZone" type="Sprite2D" parent="CapitalShot/Circles" unique_id=928623907]
+modulate = Color(5.5342674, 0.54779184, 0.3804938, 1)
+texture_filter = 1
+position = Vector2(1, -5)
+scale = Vector2(4.7622952, 4.7622952)
+texture = ExtResource("14_34hon")
+offset = Vector2(0, 1)
+
+[node name="LandingZone2" type="Sprite2D" parent="CapitalShot/Circles" unique_id=1852991825]
+modulate = Color(3.1164875, 0, 0, 1)
+texture_filter = 1
+position = Vector2(0.114746094, -3.885254)
+rotation = 3.1415925
+scale = Vector2(1.9541037, 1.9541037)
+texture = SubResource("AtlasTexture_wro4f")
+
+[node name="Dot" type="Sprite2D" parent="CapitalShot" unique_id=1010936273]
+modulate = Color(5.5342674, 0.54779184, 0.3804938, 1)
+texture_filter = 1
+scale = Vector2(0.23757839, 0.23454246)
+texture = ExtResource("16_34hon")
+
+[node name="Warning" type="Sprite2D" parent="CapitalShot" unique_id=747673784]
+visible = false
+modulate = Color(1.361005, 1.229893, 0, 1)
+texture_filter = 1
+position = Vector2(0, -11)
+scale = Vector2(1.2938029, 1.2938029)
+texture = SubResource("AtlasTexture_4ehy8")
+offset = Vector2(0, 1)
+
+[node name="Explosion" type="Sprite2D" parent="CapitalShot" unique_id=794792823]
+modulate = Color(0.96489865, 0.96489865, 0.96489865, 1)
+self_modulate = Color(4.415934, 4.415934, 4.415934, 1)
+texture_filter = 1
+scale = Vector2(1e-05, 1e-05)
+texture = ExtResource("17_2tyim")
+offset = Vector2(0, -6.465)
+
+[node name="Shockwave" type="Sprite2D" parent="CapitalShot/Explosion" unique_id=1446771429]
+modulate = Color(0.96489865, 0.96489865, 0.96489865, 0.157)
+self_modulate = Color(4.248697, 3.4500334, 0, 1)
+z_index = -1
+texture_filter = 1
+rotation = 3.1415927
+scale = Vector2(1.2876781, 1.2876781)
+texture = ExtResource("17_2tyim")
+offset = Vector2(0, -6.465)
+
+[node name="Core" type="Sprite2D" parent="CapitalShot/Explosion" unique_id=353253593]
+modulate = Color(0.96489865, 0.96489865, 0.96489865, 1)
+self_modulate = Color(4.415934, 4.415934, 4.415934, 1)
+texture_filter = 1
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("17_2tyim")
+offset = Vector2(0, -6.465)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="CapitalShot" unique_id=569745998]
+process_mode = 3
+stream = ExtResource("18_wro4f")
+volume_db = 4.0

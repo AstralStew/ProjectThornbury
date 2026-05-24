@@ -114,11 +114,11 @@ border_width_bottom = 4
 border_color = Color(0.3675, 0.60975003, 0.75, 1)
 border_blend = true
 
-[sub_resource type="Gradient" id="Gradient_0iob3"]
+[sub_resource type="Gradient" id="Gradient_4b75m"]
 colors = PackedColorArray(0, 0, 0, 0, 1, 1, 1, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_4b75m"]
-gradient = SubResource("Gradient_0iob3")
+gradient = SubResource("Gradient_4b75m")
 width = 8
 height = 7
 fill_to = Vector2(0, 1)

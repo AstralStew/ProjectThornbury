@@ -26,7 +26,7 @@ func _spawn_countdown() -> void:
 	_tween.tween_property(self,"scale",Vector2(0.7,0.7),_land_time)
 	_tween.tween_property(self,"modulate",Color.WHITE,_land_time/3).set_delay(_land_time/10)
 	
-	await get_tree().create_timer(_land_time).timeout
+	await get_tree().create_timer(_land_time,false).timeout
 	
 	z_index = 0
 	finished_spawning = true

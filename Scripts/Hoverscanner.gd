@@ -1,6 +1,7 @@
 class_name Hoverscanner extends Area2D
 
 @export var cooldown_duration : float = 1.0
+@export var sight_radius : float = 3.25
 
 @export_category("READ ONLY")
 @export var is_scanning : bool = false
@@ -9,12 +10,17 @@ class_name Hoverscanner extends Area2D
 var _line : Line2D = null
 var _path_follow : PathFollow2D = null
 var _sight_radius : Panel = null
+var _collision_shape : CollisionShape2D = null
 
 func _ready() -> void: 
 	
 	_line = $SightLine
 	_path_follow = $".."
 	_sight_radius = $SightRadius
+	_collision_shape = $CollisionShape2D
+	
+	_sight_radius.scale = Vector2.ONE * sight_radius
+	_collision_shape.scale = Vector2.ONE * sight_radius
 	
 
 
@@ -67,8 +73,14 @@ func scan_end(_found_items:Array[Item]) -> void:
 
 func cooldown() -> void:
 	is_cooling = true
+	_sight_radius.scale = Vector2.ZERO
 	_sight_radius.visible = true
+	
+	if _tween: _tween.kill()
+	_tween = create_tween()
+	_tween.tween_property(_sight_radius,"scale", Vector2.ONE * sight_radius,cooldown_duration)
 	await get_tree().create_timer(cooldown_duration,false).timeout
+	
 	is_cooling = false
 	for _body in get_overlapping_bodies():
 		_on_body_entered(_body)

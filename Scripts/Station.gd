@@ -2,7 +2,7 @@ class_name Station extends Area2D
 var DEBUG_NAME : String :
 	get: return "[b][Station("+name+")][/b] "
 #static var instance : Station = null
-
+# 1420    1619   1312   1161
 @export var cooldown_duration : Vector2 = Vector2(10.0,30.0)
 
 @export var prosperity_target : int = 3
@@ -89,7 +89,7 @@ func collect(collectable: Collectable) -> void:
 	_tween.tween_property(collectable,"modulate",Color(0,0,0,0),0.75)
 	_tween.tween_property(collectable,"global_position",global_position + Vector2(remap(randf(),0,1,-30,30),remap(randf(),0,1,-30,30)),0.75)
 	_tween.tween_property(collectable,"scale",Vector2(0.25,0.25),0.75)
-	await get_tree().create_timer(0.75).timeout
+	await get_tree().create_timer(0.75,false).timeout
 	
 
 func check_order() -> bool:
@@ -116,7 +116,7 @@ func complete_order() -> void:
 func cooldown() -> void:
 	#update_text()
 	for i in prosperity+1:
-		await get_tree().create_timer(randf_range(cooldown_duration.x,cooldown_duration.y)).timeout
+		await get_tree().create_timer(randf_range(cooldown_duration.x,cooldown_duration.y),false).timeout
 	print_rich(DEBUG_NAME,"Cooldown > Cooldown finished! Making a new order...")
 	make_order()
 

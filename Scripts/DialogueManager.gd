@@ -43,6 +43,10 @@ func _display_dialogue_box(message_text:="",button_1_text:="OK",button_2_text:="
 	
 	if affect_time && !UIManager.is_time_stopped: await UIManager.stop_time(0.5)
 	
+	dialogue_button_1.modulate = Color(Color.WHITE,0)
+	dialogue_button_2.modulate = Color(Color.WHITE,0)
+	get_tree().process_frame
+	
 	dialogue_label.text = message_text
 	dialogue_button_1.text = button_1_text
 	if button_2_text != "":
@@ -60,31 +64,39 @@ func _display_dialogue_box(message_text:="",button_1_text:="OK",button_2_text:="
 	visible = true
 	
 	waiting_for_button = true
-	if text_speed > 0:
-		is_scrolling_text = true
-		print(DEBUG_NAME, "DisplayDialogueBox > Scrolling the text!")
-		dialogue_label.visible_characters = 0
+	if message_text == "" || message_text == "...":
+		dialogue_label.visible_ratio = 1.0
+		dialogue_button_1.modulate = Color.WHITE
+		dialogue_button_2.modulate = Color.WHITE
+		while waiting_for_button:
+			await get_tree().create_timer(0.2).timeout
+	else:
+		if text_speed > 0:
+			is_scrolling_text = true
+			print(DEBUG_NAME, "DisplayDialogueBox > Scrolling the text!")
+			dialogue_label.visible_characters = 0
+			
+			if _tween && _tween.is_running(): _tween.kill()
+			_tween = create_tween()
+			_tween.tween_property(dialogue_label,"visible_ratio",1.0,(dialogue_label.get_total_character_count() as float) / (text_speed as float))
+			#_tween.tween_callback(set.bind("is_scrolling_text",false)) # is_scrolling_text = false
+			_tween.tween_callback(skip_text_scroll) # is_scrolling_text = false
 		
-		if _tween && _tween.is_running(): _tween.kill()
-		_tween = create_tween()
-		_tween.tween_property(dialogue_label,"visible_ratio",1.0,(dialogue_label.get_total_character_count() as float) / (text_speed as float))
-		_tween.tween_callback(set.bind("is_scrolling_text",false)) # is_scrolling_text = false
-		_tween.tween_callback(stop_audio) # is_scrolling_text = false
-	
-	#print(DEBUG_NAME, "DisplayDialogueBox > Waiting for button press...")
-	
-	dialogue_audio.stream = preload("res://Assets/Audio/UI/453087__lilmati__script-dialogue-03.wav")
-	dialogue_audio.pitch_scale = audio_median_pitch 
-	dialogue_audio.volume_db = -22 
-	dialogue_audio.play()
-	while (is_scrolling_text || waiting_for_button):
 		#print(DEBUG_NAME, "DisplayDialogueBox > Waiting for button press...")
-		if randf() < 0.5: dialogue_audio.pitch_scale = audio_median_pitch + randf_range(-0.05,0.05)
-		dialogue_audio.volume_db = -22 if randf() < 0.9 else -60
-		#dialogue_audio.volume_db = -18 if randi() % 8 else -60 # if randi() % 2: if randi() % 2: if randi() % 2: dialogue_audio.pitch_scale = randf_range(0.8,1.0)
-		await get_tree().create_timer(0.2).timeout
-	#if _tween && _tween.is_running(): _tween.kill()
-	
+		
+		dialogue_audio.stream = preload("res://Assets/Audio/UI/453087__lilmati__script-dialogue-03.wav")
+		dialogue_audio.pitch_scale = audio_median_pitch 
+		dialogue_audio.volume_db = -22 
+		dialogue_audio.play()
+		while (is_scrolling_text || waiting_for_button):
+			#print(DEBUG_NAME, "DisplayDialogueBox > Waiting for button press...")
+			if randf() < 0.5: dialogue_audio.pitch_scale = audio_median_pitch + randf_range(-0.05,0.05)
+			dialogue_audio.volume_db = -22 if randf() < 0.9 else -60
+			#dialogue_audio.volume_db = -18 if randi() % 8 else -60 # if randi() % 2: if randi() % 2: if randi() % 2: dialogue_audio.pitch_scale = randf_range(0.8,1.0)
+			await get_tree().create_timer(0.2).timeout
+		#if _tween && _tween.is_running(): _tween.kill()
+		
+
 	
 	if close_on_finish:
 		print(DEBUG_NAME, "DisplayDialogueBox > Closing on finish!")
@@ -125,6 +137,8 @@ func skip_text_scroll() -> void:
 	is_scrolling_text = false
 	dialogue_label.visible_ratio = 1.0
 	stop_audio()
+	dialogue_button_1.modulate = Color.WHITE
+	dialogue_button_2.modulate = Color.WHITE
 
 func _on_gui_input(event: InputEvent) -> void:
 	if is_scrolling_text && event is InputEventMouseButton && Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):

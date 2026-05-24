@@ -39,7 +39,17 @@ func ticking_countdown() -> void:
 		await _timer.timeout
 		countdown_remaining -= 1
 	
-	UIManager.instance.lose()
+	
+	CapitalShot.fire()
+	
+	while (true):
+		countdown_remaining_label.text = "[color=red]00 : 00"
+		await get_tree().create_timer(1,false).timeout
+		countdown_remaining_label.text = " "
+		await get_tree().create_timer(1,false).timeout
+		
+	
+	#UIManager.instance.lose()
 
 
 

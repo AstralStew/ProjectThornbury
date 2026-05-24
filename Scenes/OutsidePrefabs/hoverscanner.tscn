@@ -28,7 +28,7 @@ corner_radius_bottom_left = 48
 corner_detail = 10
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_65i52"]
-radius = 150.0
+radius = 46.0
 
 [node name="Hoverscanner" type="Area2D" unique_id=1942971500]
 rotation = -1.5707964
@@ -37,6 +37,7 @@ collision_layer = 0
 input_pickable = false
 monitorable = false
 script = ExtResource("1_mob7o")
+cooldown_duration = 3.0
 metadata/_custom_type_script = "uid://du2cjhuyvairt"
 
 [node name="Hoverscanner" type="Sprite2D" parent="." unique_id=529130055]
@@ -69,7 +70,7 @@ mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_65i52")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1245731728]
-scale = Vector2(0.99999994, 0.99999994)
+scale = Vector2(3.25, 3.25)
 shape = SubResource("CircleShape2D_65i52")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=346863330]
