@@ -1,5 +1,6 @@
 class_name Hoverscanner extends Area2D
 
+@export var shadow_distance : float = 5
 @export var cooldown_duration : float = 1.0
 @export var sight_radius : float = 3.25
 
@@ -11,6 +12,9 @@ var _line : Line2D = null
 var _path_follow : PathFollow2D = null
 var _sight_radius : Panel = null
 var _collision_shape : CollisionShape2D = null
+var _hoverscanner: Sprite2D
+var _shadow: Sprite2D
+
 
 func _ready() -> void: 
 	
@@ -18,10 +22,15 @@ func _ready() -> void:
 	_path_follow = $".."
 	_sight_radius = $SightRadius
 	_collision_shape = $CollisionShape2D
+	_hoverscanner = $Hoverscanner
+	_shadow = $Shadow
 	
 	_sight_radius.scale = Vector2.ONE * sight_radius
 	_collision_shape.scale = Vector2.ONE * sight_radius
 	
+
+func _physics_process(delta: float) -> void:
+	_shadow.global_position = _hoverscanner.global_position + Vector2(shadow_distance,shadow_distance)
 
 
 var _tween : Tween

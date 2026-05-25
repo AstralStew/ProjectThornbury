@@ -3,11 +3,32 @@ var DEBUG_NAME : String :
 	get: return "[b][Station("+name+")][/b] "
 #static var instance : Station = null
 # 1420    1619   1312   1161
+
+
+
+
+
+@onready var info_overlay: MarginContainer = $InfoOverlay
+@onready var station_header: RichTextLabel = $InfoOverlay/VBoxContainer2/DialoguePC/StationHeader
+@onready var population_label: RichTextLabel = $InfoOverlay/VBoxContainer2/PopulationLabel
+
+
+@export_category("UI")
+
+@export var fade_duration : float = 2.0
+
+@export_category("CONTROLS")
+
+
 @export var cooldown_duration : Vector2 = Vector2(10.0,30.0)
 
 @export var prosperity_target : int = 3
 
 @export_category("READ ONLY")
+
+@export var station_name : String = ""
+@export var population : String = ""
+@export var is_displaying_info : bool = false
 
 @export var prosperity : int = 0 :
 	set(value):
@@ -20,6 +41,7 @@ var DEBUG_NAME : String :
 @export var has_order : bool = false
 @export var order_type : InventoryManager.ItemType = InventoryManager.ItemType.Rock
 @export var order_number : int = -1
+
 
 #@onready var _label : Label = $PanelContainer/Label
 
@@ -40,6 +62,13 @@ func _ready() -> void:
 			(_child.get_child(0) as Node2D).global_position = _child.global_position + Vector2(8,10)
 	
 	_expansions.pick_random().visible = true
+	
+	station_name = NotificationManager.pop_random_station_name()
+	station_header.text = station_name
+	
+	population = NotificationManager.pop_random_population()
+	population_label.text = "Population: " + population
+	
 	
 	prosperity = 0
 	#cooldown()
@@ -122,12 +151,38 @@ func cooldown() -> void:
 
 
 func _physics_process(delta: float) -> void:
-	if !has_overlapping_areas(): return
+	if !has_overlapping_areas() &&  !has_overlapping_bodies():
+		if is_displaying_info: hide_info()
+		return
 	
 	for _area:Area2D in get_overlapping_areas():
 		if _area is Collectable:
 			if _area.finished_spawning && !_area.collected:
 				collect(_area)
+	for _body:PhysicsBody2D in get_overlapping_bodies():
+		if _body is Ship:
+				if !is_displaying_info:
+					display_info()
+
+var _tween:Tween
+
+func display_info() -> void:
+	is_displaying_info = true
+	#info_overlay.visible = true
+	if _tween: _tween.kill()
+	_tween = get_tree().create_tween().set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_BOUNCE)
+	_tween.tween_property(info_overlay,"modulate",Color.WHITE,fade_duration)
+	await get_tree().create_timer(fade_duration).timeout
+	#_tween.tween_property(info_overlay,"modulate",1,3)
+
+
+func hide_info() -> void:
+	if _tween: _tween.kill()
+	_tween = get_tree().create_tween().set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_BOUNCE)
+	_tween.tween_property(info_overlay,"modulate",Color(Color.WHITE,0),fade_duration)
+	await get_tree().create_timer(fade_duration).timeout
+	#info_overlay.visible = false
+	is_displaying_info = false
 
 #func _on_area_entered(area: Area2D) -> void:
 	#if !has_order: return

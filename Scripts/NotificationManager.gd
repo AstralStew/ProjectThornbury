@@ -48,11 +48,26 @@ enum RewardType {REPAIR,DELAY,RESOURCE}
 	"Let's go",
 ]
 
+@export var station_names : Array[String] = [
+	"Sankara Prime",
+	"Camp Goldman",
+	"Gram-Sci Hub",
+	"Bogdanov Arcade",
+]
+
+@export var populations : Array[String] = [
+	"1312",
+	"1691",
+	"1420",
+	"1161",
+]
 
 
 var local_order_flavour_options : Array[String] = []
-
 var local_order_options : Array[String] = []
+
+var local_station_names : Array[String] = []
+var local_populations : Array[String] = []
 
 
 func _enter_tree() -> void:
@@ -74,11 +89,19 @@ static func pop_random_order_option() -> String:
 static func random_button_option() -> String:
 	return instance.button_options.pick_random()
 
+static func pop_random_station_name() -> String:
+	if instance.local_station_names.size() == 0:
+		instance.local_station_names = instance.station_names.duplicate()
+	return instance.local_station_names.pop_at(randi() % instance.local_station_names.size())
 
+static func pop_random_population() -> String:
+	if instance.local_populations.size() == 0:
+		instance.local_populations = instance.populations.duplicate()
+	return instance.local_populations.pop_at(randi() % instance.local_populations.size())
 
 func _ready() -> void:
-	local_order_flavour_options = order_flavour_options.duplicate()
-	local_order_options = order_options.duplicate()
+	#local_order_flavour_options = order_flavour_options.duplicate()
+	#local_order_options = order_options.duplicate()
 	
 	portraits.append(preload("res://Assets/Images/UI/Potrait2.png"))
 	portraits.append(preload("res://Assets/Images/UI/Potrait4.png"))

@@ -7,6 +7,7 @@ class_name ShipGraphics extends Node2D
 @onready var ship_shadow: Sprite2D = Ship.instance.get_child(0)
 @onready var ship_gfx: Sprite2D = $ShipGfx
 
+var shadow_margin : Vector2
 
 @onready var camera : Camera2D = Ship.instance.find_child("Camera2D")
 
@@ -26,10 +27,13 @@ func _physics_process(delta: float) -> void:
 	global_rotation = Ship.instance.global_rotation
 	var _speed = 0.03 * clamp(remap(abs(Ship.instance.speed.y),10,100,50,100),50,100)
 	
+	
+	
 	if Input.is_action_pressed("OpenChute") && Ship.instance.has_control:
 		ship_gfx.modulate = ship_gfx.modulate.lerp(Color(1,1,1,0.8),_speed * delta)
 		ship_shadow.modulate = ship_shadow.modulate.lerp(Color(0,0,0,0.2),_speed * delta)
-		ship_shadow.global_position = ship_shadow.global_position.lerp(Ship.instance.global_position + Vector2(1,1.25), _speed * delta)
+		shadow_margin = shadow_margin.lerp(Vector2(1,1.25),_speed * delta)
+		ship_shadow.global_position = Ship.instance.global_position + shadow_margin # ship_shadow.global_position.lerp(Ship.instance.global_position + Vector2(1,1.25), 2 * _speed * delta)
 		if Input.is_action_pressed("Boost"):
 			scale = scale.lerp(Vector2(0.88,0.92), _speed * delta)
 			ship_shadow.scale = ship_shadow.scale.lerp(Vector2(0.88,0.92), _speed * delta)
@@ -39,7 +43,8 @@ func _physics_process(delta: float) -> void:
 	else:
 		ship_gfx.modulate = ship_gfx.modulate.lerp(Color(1,1,1,1),_speed * delta)
 		ship_shadow.modulate = ship_shadow.modulate.lerp(Color(0,0,0,0.1),_speed * delta)
-		ship_shadow.global_position = ship_shadow.global_position.lerp(Ship.instance.global_position + Vector2(16,20), _speed * delta)
+		shadow_margin = shadow_margin.lerp(Vector2(16,20),_speed * delta)
+		ship_shadow.global_position = Ship.instance.global_position + shadow_margin #ship_shadow.global_position.lerp(Ship.instance.global_position + Vector2(16,20), 2 * _speed * delta)
 		if Input.is_action_pressed("Boost"):
 			scale = scale.lerp(Vector2(0.98,1.02), _speed * delta)
 			ship_shadow.scale = ship_shadow.scale.lerp(Vector2(0.98,1.02), _speed * delta)

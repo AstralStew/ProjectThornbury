@@ -1,37 +1,36 @@
-[gd_scene format=3 uid="uid://ukixse4dnogy"]
+[gd_scene format=3 uid="uid://b6iil7b4pqyxy"]
 
-[ext_resource type="Script" uid="uid://cfpouck60arm4" path="res://Scripts/Obstacle.gd" id="1_qj60p"]
-[ext_resource type="Shape2D" uid="uid://dqne3v6xq5hx1" path="res://Assets/Subresources/Spire_RectangleShape2d.tres" id="1_ru6wf"]
+[ext_resource type="Script" uid="uid://cfpouck60arm4" path="res://Scripts/Obstacle.gd" id="1_ngl7e"]
+[ext_resource type="Shape2D" uid="uid://dqne3v6xq5hx1" path="res://Assets/Subresources/Spire_RectangleShape2d.tres" id="2_nssi5"]
 
-[node name="ObstacleSpireBig" type="StaticBody2D" unique_id=1677324250 node_paths=PackedStringArray("top_layer", "shadow_layer")]
+[node name="ObstacleSpire" type="StaticBody2D" unique_id=1677324250 node_paths=PackedStringArray("top_layer", "shadow_layer")]
 texture_filter = 2
 collision_layer = 16
 collision_mask = 0
-script = ExtResource("1_qj60p")
+script = ExtResource("1_ngl7e")
 top_layer = NodePath("TopLayer")
 shadow_layer = NodePath("ShadowLayer")
-shadow_distance = 20.0
-parallax_distance = 4.0
+parallax_distance = 2.0
 
-[node name="BigSpireCliff" type="ColorRect" parent="." unique_id=973801819]
+[node name="SmallSpireCliff" type="ColorRect" parent="." unique_id=973801819]
 z_index = -2
 offset_left = -30.0
 offset_top = -30.0
 offset_right = 30.0
 offset_bottom = 30.0
-scale = Vector2(4.5, 4.5)
+scale = Vector2(1.15, 1.15)
 pivot_offset_ratio = Vector2(0.5, 0.5)
 mouse_filter = 2
 color = Color(0.5, 0.356, 0.13999999, 1)
 
-[node name="BigSpireCliff2" type="ColorRect" parent="." unique_id=131070904]
+[node name="SmallSpireCliff2" type="ColorRect" parent="." unique_id=131070904]
 z_index = -2
 offset_left = -30.0
 offset_top = -30.0
 offset_right = 30.0
 offset_bottom = 30.0
 rotation = 0.7853982
-scale = Vector2(4.5, 4.5)
+scale = Vector2(1.15, 1.15)
 pivot_offset_ratio = Vector2(0.5, 0.5)
 mouse_filter = 2
 color = Color(0.5, 0.356, 0.13999999, 1)
@@ -39,55 +38,56 @@ color = Color(0.5, 0.356, 0.13999999, 1)
 [node name="ShadowLayer" type="Node2D" parent="." unique_id=1079910012]
 z_index = -1
 
-[node name="BigSpireShadow" type="ColorRect" parent="ShadowLayer" unique_id=168198058]
+[node name="SmallSpireShadow" type="ColorRect" parent="ShadowLayer" unique_id=168198058]
 offset_left = -30.0
 offset_top = -30.0
 offset_right = 30.0
 offset_bottom = 30.0
-scale = Vector2(4.6, 4.6)
+scale = Vector2(1.21, 1.21)
 pivot_offset_ratio = Vector2(0.5, 0.5)
 mouse_filter = 2
 color = Color(0, 0, 0, 0.147)
 
-[node name="BigSpireShadow2" type="ColorRect" parent="ShadowLayer" unique_id=2105441735]
+[node name="SmallSpireShadow2" type="ColorRect" parent="ShadowLayer" unique_id=2105441735]
 offset_left = -30.0
 offset_top = -30.0
 offset_right = 30.0
 offset_bottom = 30.0
 rotation = 0.7853982
-scale = Vector2(4.6, 4.6)
+scale = Vector2(1.21, 1.21)
 pivot_offset_ratio = Vector2(0.5, 0.5)
 mouse_filter = 2
 color = Color(0, 0, 0, 0.147)
 
 [node name="TopLayer" type="Node2D" parent="." unique_id=643906579]
+z_index = 1
 
-[node name="BigSpireTopLayer" type="ColorRect" parent="TopLayer" unique_id=61507243]
+[node name="SmallSpireTopLayer" type="ColorRect" parent="TopLayer" unique_id=61507243]
 offset_left = -30.0
 offset_top = -30.0
 offset_right = 30.0
 offset_bottom = 30.0
-scale = Vector2(4, 4)
+scale = Vector2(0.9, 0.9)
 pivot_offset_ratio = Vector2(0.5, 0.5)
 mouse_filter = 2
 color = Color(0, 0.77254903, 0.6509804, 1)
 
-[node name="BigSpireTopLayer2" type="ColorRect" parent="TopLayer" unique_id=1862346220]
+[node name="SmallSpireTopLayer2" type="ColorRect" parent="TopLayer" unique_id=1862346220]
 offset_left = -30.0
 offset_top = -30.0
 offset_right = 30.0
 offset_bottom = 30.0
 rotation = 0.7853982
-scale = Vector2(4, 4)
+scale = Vector2(0.9, 0.9)
 pivot_offset_ratio = Vector2(0.5, 0.5)
 mouse_filter = 2
 color = Color(0, 0.77254903, 0.6509804, 1)
 
-[node name="BigSpireCollider" type="CollisionShape2D" parent="." unique_id=1338276272]
-scale = Vector2(4, 4)
-shape = ExtResource("1_ru6wf")
+[node name="SmallSpireCollider" type="CollisionShape2D" parent="." unique_id=1338276272]
+scale = Vector2(0.9, 0.9)
+shape = ExtResource("2_nssi5")
 
-[node name="BigSpireCollider2" type="CollisionShape2D" parent="." unique_id=151100619]
+[node name="SmallSpireCollider2" type="CollisionShape2D" parent="." unique_id=151100619]
 rotation = 0.7853982
-scale = Vector2(4, 4)
-shape = ExtResource("1_ru6wf")
+scale = Vector2(0.9, 0.9)
+shape = ExtResource("2_nssi5")

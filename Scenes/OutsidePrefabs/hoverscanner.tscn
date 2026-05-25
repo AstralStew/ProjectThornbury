@@ -31,7 +31,6 @@ corner_detail = 10
 radius = 46.0
 
 [node name="Hoverscanner" type="Area2D" unique_id=1942971500]
-rotation = -1.5707964
 scale = Vector2(2.145, 2.145)
 collision_layer = 0
 input_pickable = false
@@ -42,6 +41,16 @@ metadata/_custom_type_script = "uid://du2cjhuyvairt"
 
 [node name="Hoverscanner" type="Sprite2D" parent="." unique_id=529130055]
 texture_filter = 1
+rotation = -1.5707964
+texture = ExtResource("2_v38k4")
+region_enabled = true
+region_rect = Rect2(8, 50, 28, 25)
+
+[node name="Shadow" type="Sprite2D" parent="." unique_id=429174059]
+modulate = Color(0, 0, 0, 0.147)
+z_index = -1
+texture_filter = 1
+rotation = -1.5707964
 texture = ExtResource("2_v38k4")
 region_enabled = true
 region_rect = Rect2(8, 50, 28, 25)
