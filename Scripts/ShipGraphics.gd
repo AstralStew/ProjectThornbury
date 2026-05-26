@@ -1,6 +1,8 @@
 class_name ShipGraphics extends Node2D
 
 
+@export var skim_scale = Vector2(0.8,0.8)
+@export var boost_scale_adjustment = Vector2(-0.02,0.02)
 
 #var trails : Array[ShipTrail] = []
 
@@ -35,19 +37,19 @@ func _physics_process(delta: float) -> void:
 		shadow_margin = shadow_margin.lerp(Vector2(1,1.25),_speed * delta)
 		ship_shadow.global_position = Ship.instance.global_position + shadow_margin # ship_shadow.global_position.lerp(Ship.instance.global_position + Vector2(1,1.25), 2 * _speed * delta)
 		if Input.is_action_pressed("Boost"):
-			scale = scale.lerp(Vector2(0.88,0.92), _speed * delta)
-			ship_shadow.scale = ship_shadow.scale.lerp(Vector2(0.88,0.92), _speed * delta)
+			scale = scale.lerp(skim_scale + boost_scale_adjustment, _speed * delta)
+			ship_shadow.scale = ship_shadow.scale.lerp(skim_scale + boost_scale_adjustment, _speed * delta)
 		else:
-			scale = scale.lerp(Vector2(0.9,0.9), _speed * delta)
-			ship_shadow.scale = ship_shadow.scale.lerp(Vector2(0.9,0.9), _speed * delta)
+			scale = scale.lerp(skim_scale, _speed * delta)
+			ship_shadow.scale = ship_shadow.scale.lerp(skim_scale, _speed * delta)
 	else:
 		ship_gfx.modulate = ship_gfx.modulate.lerp(Color(1,1,1,1),_speed * delta)
 		ship_shadow.modulate = ship_shadow.modulate.lerp(Color(0,0,0,0.1),_speed * delta)
-		shadow_margin = shadow_margin.lerp(Vector2(16,20),_speed * delta)
+		shadow_margin = shadow_margin.lerp(Vector2(10,14),_speed * delta)
 		ship_shadow.global_position = Ship.instance.global_position + shadow_margin #ship_shadow.global_position.lerp(Ship.instance.global_position + Vector2(16,20), 2 * _speed * delta)
 		if Input.is_action_pressed("Boost"):
-			scale = scale.lerp(Vector2(0.98,1.02), _speed * delta)
-			ship_shadow.scale = ship_shadow.scale.lerp(Vector2(0.98,1.02), _speed * delta)
+			scale = scale.lerp(Vector2.ONE + boost_scale_adjustment, _speed * delta)
+			ship_shadow.scale = ship_shadow.scale.lerp(Vector2.ONE + boost_scale_adjustment, _speed * delta)
 		else:
 			scale = scale.lerp(Vector2.ONE, _speed * delta)
 			ship_shadow.scale = ship_shadow.scale.lerp(Vector2.ONE, _speed * delta)

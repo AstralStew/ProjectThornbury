@@ -3,7 +3,17 @@
 [ext_resource type="Script" uid="uid://h4wwr486ejuw" path="res://Scripts/Notification.gd" id="1_sruue"]
 [ext_resource type="Texture2D" uid="uid://deamvpu6230ei" path="res://Assets/Images/UI/GuideIcon_Background_Blue.png" id="2_68ugo"]
 [ext_resource type="AudioStream" uid="uid://qme0ufcyqitc" path="res://Assets/Audio/UI/591457__stavsounds__select.wav" id="4_3fx4b"]
+[ext_resource type="Material" uid="uid://begdsyvaebxsh" path="res://Assets/Materials/scanlines.tres" id="4_68ugo"]
 [ext_resource type="Texture2D" uid="uid://dmqa8es5jcxl2" path="res://Assets/Images/UI/GuideIcon_Logo_Blue.png" id="5_1j0aa"]
+
+[sub_resource type="Gradient" id="Gradient_wro4f"]
+colors = PackedColorArray(0, 0, 0, 0, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_1j0aa"]
+gradient = SubResource("Gradient_wro4f")
+width = 8
+height = 7
+fill_to = Vector2(0, 1)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_sruue"]
 radius = 42.66
@@ -15,7 +25,6 @@ collision_mask = 0
 monitoring = false
 monitorable = false
 script = ExtResource("1_sruue")
-screen_edge = Vector2(344.725, 299)
 minimum_alpha_distance = 4000.0
 maximum_alpha_distance = 500.0
 maximum_scale_distance = 300.0
@@ -26,17 +35,43 @@ metadata/_custom_type_script = "uid://h4wwr486ejuw"
 
 [node name="GuideIconBackground" type="Sprite2D" parent="Arrow" unique_id=603216855]
 self_modulate = Color(1, 1, 1, 0.56078434)
+clip_children = 2
 rotation = -1.5707964
 texture = ExtResource("2_68ugo")
 offset = Vector2(0, 1.2)
 
 [node name="SpriteIcon" type="Sprite2D" parent="." unique_id=1684078043]
 self_modulate = Color(1.1011497, 1.7863542, 2.183051, 0.85490197)
+clip_children = 2
 rotation = -1.5707964
 texture = ExtResource("5_1j0aa")
 offset = Vector2(0, 1.2)
 
+[node name="Scanlines" type="TextureRect" parent="SpriteIcon" unique_id=1486758645]
+visible = false
+modulate = Color(0.7431572, 1.2161936, 1.4900565, 0.2627451)
+texture_repeat = 2
+material = ExtResource("4_68ugo")
+custom_minimum_size = Vector2(110, 60)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -18.999998
+offset_top = -103.0
+offset_right = 91.0
+offset_bottom = -42.999985
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 1.5707964
+mouse_filter = 2
+texture = SubResource("GradientTexture2D_1j0aa")
+expand_mode = 3
+stretch_mode = 1
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=66726932]
+visible = false
 shape = SubResource("CircleShape2D_sruue")
 
 [node name="NotificationAudioPlayer" type="AudioStreamPlayer" parent="." unique_id=1842749447]

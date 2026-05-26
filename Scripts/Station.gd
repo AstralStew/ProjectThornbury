@@ -1,11 +1,6 @@
 class_name Station extends Area2D
 var DEBUG_NAME : String :
 	get: return "[b][Station("+name+")][/b] "
-#static var instance : Station = null
-# 1420    1619   1312   1161
-
-
-
 
 
 @onready var info_overlay: MarginContainer = $InfoOverlay
@@ -43,7 +38,6 @@ var DEBUG_NAME : String :
 @export var order_number : int = -1
 
 
-#@onready var _label : Label = $PanelContainer/Label
 
 signal on_make_order(station_ref)
 signal on_complete_order(station_ref)
@@ -71,7 +65,6 @@ func _ready() -> void:
 	
 	
 	prosperity = 0
-	#cooldown()
 
 func make_order() -> void:
 	if has_order || is_prosperous: return
@@ -89,19 +82,8 @@ func make_order() -> void:
 		_order_items.append(order_type)
 	
 	has_order = true
-	#update_text()
 	on_make_order.emit(self)
 
-#func update_text() -> void:
-	#if has_order:
-		##_label.text = "We need " + str(order_number) + " " + str(InventoryManager.ItemType.keys()[order_type])
-		##_label.visible = true
-	#elif is_prosperous:
-		#_label.text = "COMPLETE"
-		#_label.visible = true
-	#else:
-		#_label.text = ""
-		#_label.visible = false
 
 func collect(collectable: Collectable) -> void:
 	collectable.collected = true
@@ -112,13 +94,14 @@ func collect(collectable: Collectable) -> void:
 	if collectable.type == order_type:
 		order_number -= 1
 		if check_order(): complete_order()
-		#else: update_text()
 	
 	var _tween : Tween = create_tween().set_parallel().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUAD)
 	_tween.tween_property(collectable,"modulate",Color(0,0,0,0),0.75)
 	_tween.tween_property(collectable,"global_position",global_position + Vector2(remap(randf(),0,1,-30,30),remap(randf(),0,1,-30,30)),0.75)
 	_tween.tween_property(collectable,"scale",Vector2(0.25,0.25),0.75)
+	_tween.tween_callback(collectable.queue_free).set_delay(0.75)
 	await get_tree().create_timer(0.75,false).timeout
+	
 	
 
 func check_order() -> bool:
@@ -129,9 +112,7 @@ func check_order() -> bool:
 func complete_order() -> void:
 	print_rich(DEBUG_NAME,"CheckOrder > Order complete! Starting cooldown and returning true...")
 	has_order = false
-	
-	#CountdownManager.adjust_countdown(-randf_range(30,60))
-	
+		
 	prosperity += 1
 	
 	if _expansions.size() > 0:
@@ -164,29 +145,27 @@ func _physics_process(delta: float) -> void:
 				if !is_displaying_info:
 					display_info()
 
+
+
 var _tween:Tween
 
 func display_info() -> void:
 	is_displaying_info = true
 	#info_overlay.visible = true
 	if _tween: _tween.kill()
-	_tween = get_tree().create_tween().set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_BOUNCE)
-	_tween.tween_property(info_overlay,"modulate",Color.WHITE,fade_duration)
-	await get_tree().create_timer(fade_duration).timeout
+	_tween = get_tree().create_tween().set_parallel().set_trans(Tween.TRANS_BOUNCE)
+	_tween.tween_property(info_overlay,"modulate",Color.WHITE,fade_duration).from(Color(Color.WHITE,0))
+	_tween.tween_property(info_overlay,"scale",Vector2.ONE,fade_duration).from(Vector2(0.9,0.9))
+	await get_tree().create_timer(fade_duration,false).timeout
 	#_tween.tween_property(info_overlay,"modulate",1,3)
 
 
 func hide_info() -> void:
-	if _tween: _tween.kill()
-	_tween = get_tree().create_tween().set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_BOUNCE)
-	_tween.tween_property(info_overlay,"modulate",Color(Color.WHITE,0),fade_duration)
-	await get_tree().create_timer(fade_duration).timeout
-	#info_overlay.visible = false
 	is_displaying_info = false
-
-#func _on_area_entered(area: Area2D) -> void:
-	#if !has_order: return
-	#
-	#if area is Collectable:
-		#if area.type == order_type:
-			#collect(area)
+	
+	if _tween: _tween.kill()
+	_tween = get_tree().create_tween().set_parallel().set_trans(Tween.TRANS_BOUNCE)
+	_tween.tween_property(info_overlay,"modulate",Color(Color.WHITE,0),fade_duration/2).from(Color.WHITE)
+	_tween.tween_property(info_overlay,"scale",Vector2(0.9,0.9),fade_duration/2).from(Vector2.ONE).set_ease(Tween.EASE_OUT)
+	await get_tree().create_timer(fade_duration/2,false).timeout
+	#info_overlay.visible = false

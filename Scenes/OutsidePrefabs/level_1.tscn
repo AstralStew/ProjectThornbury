@@ -5,12 +5,12 @@
 [ext_resource type="PackedScene" uid="uid://dtkur4468wq5q" path="res://Scenes/OutsidePrefabs/collectable_crate.tscn" id="2_7asov"]
 [ext_resource type="PackedScene" uid="uid://bjd7rlg5ulwgy" path="res://Scenes/OutsidePrefabs/station.tscn" id="2_80ic5"]
 [ext_resource type="Texture2D" uid="uid://bgo6j7s33yy72" path="res://Assets/Subresources/MapBackground_NoiseTexture2D.tres" id="2_i458n"]
-[ext_resource type="Shape2D" uid="uid://r5wtxbftxr78" path="res://Assets/Subresources/Wall_RectangleShape2d.tres" id="5_rx4sy"]
 [ext_resource type="PackedScene" uid="uid://cyoh81v318bq0" path="res://Scenes/OutsidePrefabs/road.tscn" id="6_80ic5"]
 [ext_resource type="PackedScene" uid="uid://ukixse4dnogy" path="res://Scenes/OutsidePrefabs/obstacle_spire_big.tscn" id="7_25cc2"]
 [ext_resource type="PackedScene" uid="uid://cbf7m3hmnto6d" path="res://Scenes/OutsidePrefabs/collectable_pipe.tscn" id="8_rx4sy"]
 [ext_resource type="Shader" uid="uid://blns1mvk8wu7r" path="res://Assets/Shaders/scrolling.gdshader" id="9_2kmtg"]
 [ext_resource type="PackedScene" uid="uid://b6iil7b4pqyxy" path="res://Scenes/OutsidePrefabs/obstacle_spire.tscn" id="9_7ipgj"]
+[ext_resource type="PackedScene" uid="uid://cti12y32qfori" path="res://Scenes/OutsidePrefabs/obstacle_container.tscn" id="9_t1q4r"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_51e2h"]
 
@@ -1583,1526 +1583,204 @@ z_index = 4
 
 [node name="Wall" type="Node2D" parent="ObstacleHolder" unique_id=1811325694]
 
-[node name="ObstacleWall" type="StaticBody2D" parent="ObstacleHolder/Wall" unique_id=586166663]
-position = Vector2(28, 203)
-rotation = -1.6815177
-scale = Vector2(0.99999994, 0.99999994)
-collision_layer = 16
-collision_mask = 0
-
-[node name="WallShadow" type="ColorRect" parent="ObstacleHolder/Wall/ObstacleWall" unique_id=304746912]
-z_index = -1
-offset_left = -62.107807
-offset_top = -16.346098
-offset_right = 37.892193
-offset_bottom = 13.6538925
-scale = Vector2(1.8109853, 1.8109853)
-pivot_offset_ratio = Vector2(0.5, 0.5)
-mouse_filter = 2
-color = Color(0.37629852, 0.37629852, 0.37629846, 1)
-
-[node name="WallGfx" type="ColorRect" parent="ObstacleHolder/Wall/ObstacleWall" unique_id=232384215]
-offset_left = -50.0
-offset_top = -15.0
-offset_right = 50.0
-offset_bottom = 15.0
-scale = Vector2(1.8109853, 1.8109853)
-pivot_offset_ratio = Vector2(0.5, 0.5)
-mouse_filter = 2
-color = Color(0.2901961, 0.47843137, 0.5882353, 1)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ObstacleHolder/Wall/ObstacleWall" unique_id=1308901821]
-scale = Vector2(1.8109853, 1.8109853)
-shape = ExtResource("5_rx4sy")
-
-[node name="ObstacleWall2" type="StaticBody2D" parent="ObstacleHolder/Wall" unique_id=932656814]
-position = Vector2(1820, 163)
-rotation = -2.3591862
-scale = Vector2(0.9999999, 0.9999999)
-collision_layer = 16
-collision_mask = 0
-
-[node name="WallShadow" type="ColorRect" parent="ObstacleHolder/Wall/ObstacleWall2" unique_id=1806508161]
-z_index = -1
-offset_left = -58.58845
-offset_top = -23.639992
-offset_right = 41.41155
-offset_bottom = 6.3599987
-scale = Vector2(1.8109853, 1.8109853)
-pivot_offset_ratio = Vector2(0.5, 0.5)
-mouse_filter = 2
-color = Color(0.37629852, 0.37629852, 0.37629846, 1)
-
-[node name="WallGfx" type="ColorRect" parent="ObstacleHolder/Wall/ObstacleWall2" unique_id=518081211]
-offset_left = -50.0
-offset_top = -15.0
-offset_right = 50.0
-offset_bottom = 15.0
-scale = Vector2(1.8109853, 1.8109853)
-pivot_offset_ratio = Vector2(0.5, 0.5)
-mouse_filter = 2
-color = Color(0.2901961, 0.47843137, 0.5882353, 1)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ObstacleHolder/Wall/ObstacleWall2" unique_id=1915835589]
-scale = Vector2(1.8109853, 1.8109853)
-shape = ExtResource("5_rx4sy")
-
-[node name="ObstacleWall22" type="StaticBody2D" parent="ObstacleHolder/Wall" unique_id=397648052]
-position = Vector2(1632, -48.999756)
-rotation = -1.4938058
-scale = Vector2(0.9999999, 0.9999999)
-collision_layer = 16
-collision_mask = 0
-
-[node name="WallShadow" type="ColorRect" parent="ObstacleHolder/Wall/ObstacleWall22" unique_id=650877664]
-z_index = -1
-offset_left = -62.146317
-offset_top = -14.062996
-offset_right = 37.853683
-offset_bottom = 15.936995
-scale = Vector2(1.8109853, 1.8109853)
-pivot_offset_ratio = Vector2(0.5, 0.5)
-mouse_filter = 2
-color = Color(0.37629852, 0.37629852, 0.37629846, 1)
-
-[node name="WallGfx" type="ColorRect" parent="ObstacleHolder/Wall/ObstacleWall22" unique_id=1761105997]
-offset_left = -50.0
-offset_top = -15.0
-offset_right = 50.0
-offset_bottom = 15.0
-scale = Vector2(1.8109853, 1.8109853)
-pivot_offset_ratio = Vector2(0.5, 0.5)
-mouse_filter = 2
-color = Color(0.2901961, 0.47843137, 0.5882353, 1)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ObstacleHolder/Wall/ObstacleWall22" unique_id=1999052761]
-scale = Vector2(1.8109853, 1.8109853)
-shape = ExtResource("5_rx4sy")
-
-[node name="ObstacleWall23" type="StaticBody2D" parent="ObstacleHolder/Wall" unique_id=281799502]
-position = Vector2(1344.0001, 9.999757)
-rotation = -0.08550501
-scale = Vector2(0.9999999, 0.9999999)
-collision_layer = 16
-collision_mask = 0
-
-[node name="WallShadow" type="ColorRect" parent="ObstacleHolder/Wall/ObstacleWall23" unique_id=960992723]
-z_index = -1
-offset_left = -51.040386
-offset_top = -2.8620996
-offset_right = 48.959614
-offset_bottom = 27.13789
-scale = Vector2(1.8109853, 1.8109853)
-pivot_offset_ratio = Vector2(0.5, 0.5)
-mouse_filter = 2
-color = Color(0.37629852, 0.37629852, 0.37629846, 1)
-
-[node name="WallGfx" type="ColorRect" parent="ObstacleHolder/Wall/ObstacleWall23" unique_id=2067593845]
-offset_left = -50.0
-offset_top = -15.0
-offset_right = 50.0
-offset_bottom = 15.0
-scale = Vector2(1.8109853, 1.8109853)
-pivot_offset_ratio = Vector2(0.5, 0.5)
-mouse_filter = 2
-color = Color(0.2901961, 0.47843137, 0.5882353, 1)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ObstacleHolder/Wall/ObstacleWall23" unique_id=940571444]
-scale = Vector2(1.8109853, 1.8109853)
-shape = ExtResource("5_rx4sy")
-
-[node name="ObstacleWall24" type="StaticBody2D" parent="ObstacleHolder/Wall" unique_id=1258143591]
-position = Vector2(1273.0001, -111)
-rotation = 0.1772156
-scale = Vector2(0.9999999, 0.9999999)
-collision_layer = 16
-collision_mask = 0
-
-[node name="WallShadow" type="ColorRect" parent="ObstacleHolder/Wall/ObstacleWall24" unique_id=576706284]
-z_index = -1
-offset_left = -47.85237
-offset_top = -3.0083904
-offset_right = 52.14763
-offset_bottom = 26.9916
-scale = Vector2(1.8109853, 1.8109853)
-pivot_offset_ratio = Vector2(0.5, 0.5)
-mouse_filter = 2
-color = Color(0.37629852, 0.37629852, 0.37629846, 1)
-
-[node name="WallGfx" type="ColorRect" parent="ObstacleHolder/Wall/ObstacleWall24" unique_id=2039234983]
-offset_left = -50.0
-offset_top = -15.0
-offset_right = 50.0
-offset_bottom = 15.0
-scale = Vector2(1.8109853, 1.8109853)
-pivot_offset_ratio = Vector2(0.5, 0.5)
-mouse_filter = 2
-color = Color(0.2901961, 0.47843137, 0.5882353, 1)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ObstacleHolder/Wall/ObstacleWall24" unique_id=1972893887]
-scale = Vector2(1.8109853, 1.8109853)
-shape = ExtResource("5_rx4sy")
-
-[node name="ObstacleWall25" type="StaticBody2D" parent="ObstacleHolder/Wall" unique_id=829348911]
-position = Vector2(1234.9999, 104.999756)
-rotation = 0.53597426
-scale = Vector2(0.9999999, 0.9999999)
-collision_layer = 16
-collision_mask = 0
-
-[node name="WallShadow" type="ColorRect" parent="ObstacleHolder/Wall/ObstacleWall25" unique_id=219899441]
-z_index = -1
-offset_left = -43.7787
-offset_top = -4.525915
-offset_right = 56.2213
-offset_bottom = 25.474075
-scale = Vector2(1.8109853, 1.8109853)
-pivot_offset_ratio = Vector2(0.5, 0.5)
-mouse_filter = 2
-color = Color(0.37629852, 0.37629852, 0.37629846, 1)
-
-[node name="WallGfx" type="ColorRect" parent="ObstacleHolder/Wall/ObstacleWall25" unique_id=1862780203]
-offset_left = -50.0
-offset_top = -15.0
-offset_right = 50.0
-offset_bottom = 15.0
-scale = Vector2(1.8109853, 1.8109853)
-pivot_offset_ratio = Vector2(0.5, 0.5)
-mouse_filter = 2
-color = Color(0.2901961, 0.47843137, 0.5882353, 1)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ObstacleHolder/Wall/ObstacleWall25" unique_id=1482853144]
-scale = Vector2(1.8109853, 1.8109853)
-shape = ExtResource("5_rx4sy")
-
-[node name="ObstacleWall26" type="StaticBody2D" parent="ObstacleHolder/Wall" unique_id=1079710089]
-position = Vector2(1060, -59.999756)
-rotation = 0.15585989
-scale = Vector2(0.9999999, 0.9999999)
-collision_layer = 16
-collision_mask = 0
-
-[node name="WallShadow" type="ColorRect" parent="ObstacleHolder/Wall/ObstacleWall26" unique_id=1053372521]
-z_index = -1
-offset_left = -48.10893
-offset_top = -2.9652662
-offset_right = 51.89107
-offset_bottom = 27.034725
-scale = Vector2(1.8109853, 1.8109853)
-pivot_offset_ratio = Vector2(0.5, 0.5)
-mouse_filter = 2
-color = Color(0.37629852, 0.37629852, 0.37629846, 1)
-
-[node name="WallGfx" type="ColorRect" parent="ObstacleHolder/Wall/ObstacleWall26" unique_id=837320694]
-offset_left = -50.0
-offset_top = -15.0
-offset_right = 50.0
-offset_bottom = 15.0
-scale = Vector2(1.8109853, 1.8109853)
-pivot_offset_ratio = Vector2(0.5, 0.5)
-mouse_filter = 2
-color = Color(0.2901961, 0.47843137, 0.5882353, 1)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ObstacleHolder/Wall/ObstacleWall26" unique_id=571310463]
-scale = Vector2(1.8109853, 1.8109853)
-shape = ExtResource("5_rx4sy")
-
-[node name="ObstacleWall27" type="StaticBody2D" parent="ObstacleHolder/Wall" unique_id=257838607]
-position = Vector2(1258, -234.00024)
-rotation = 0.15585989
-scale = Vector2(0.9999999, 0.9999999)
-collision_layer = 16
-collision_mask = 0
-
-[node name="WallShadow" type="ColorRect" parent="ObstacleHolder/Wall/ObstacleWall27" unique_id=1761647380]
-z_index = -1
-offset_left = -48.10893
-offset_top = -2.9652662
-offset_right = 51.89107
-offset_bottom = 27.034725
-scale = Vector2(1.8109853, 1.8109853)
-pivot_offset_ratio = Vector2(0.5, 0.5)
-mouse_filter = 2
-color = Color(0.37629852, 0.37629852, 0.37629846, 1)
-
-[node name="WallGfx" type="ColorRect" parent="ObstacleHolder/Wall/ObstacleWall27" unique_id=56632662]
-offset_left = -50.0
-offset_top = -15.0
-offset_right = 50.0
-offset_bottom = 15.0
-scale = Vector2(1.8109853, 1.8109853)
-pivot_offset_ratio = Vector2(0.5, 0.5)
-mouse_filter = 2
-color = Color(0.2901961, 0.47843137, 0.5882353, 1)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ObstacleHolder/Wall/ObstacleWall27" unique_id=1097901319]
-scale = Vector2(1.8109853, 1.8109853)
-shape = ExtResource("5_rx4sy")
-
-[node name="ObstacleWall28" type="StaticBody2D" parent="ObstacleHolder/Wall" unique_id=2071479593]
-position = Vector2(1009, 79)
-rotation = -0.1787712
-scale = Vector2(0.9999999, 0.9999999)
-collision_layer = 16
-collision_mask = 0
-
-[node name="WallShadow" type="ColorRect" parent="ObstacleHolder/Wall/ObstacleWall28" unique_id=1376182312]
-z_index = -1
-offset_left = -52.166283
-offset_top = -3.0117464
-offset_right = 47.833717
-offset_bottom = 26.988243
-scale = Vector2(1.8109853, 1.8109853)
-pivot_offset_ratio = Vector2(0.5, 0.5)
-mouse_filter = 2
-color = Color(0.37629852, 0.37629852, 0.37629846, 1)
-
-[node name="WallGfx" type="ColorRect" parent="ObstacleHolder/Wall/ObstacleWall28" unique_id=583495671]
-offset_left = -50.0
-offset_top = -15.0
-offset_right = 50.0
-offset_bottom = 15.0
-scale = Vector2(1.8109853, 1.8109853)
-pivot_offset_ratio = Vector2(0.5, 0.5)
-mouse_filter = 2
-color = Color(0.2901961, 0.47843137, 0.5882353, 1)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ObstacleHolder/Wall/ObstacleWall28" unique_id=619785792]
-scale = Vector2(1.8109853, 1.8109853)
-shape = ExtResource("5_rx4sy")
-
-[node name="ObstacleWall29" type="StaticBody2D" parent="ObstacleHolder/Wall" unique_id=1223691383]
-position = Vector2(971, -265.99988)
-rotation = -0.1787712
-scale = Vector2(0.9999999, 0.9999999)
-collision_layer = 16
-collision_mask = 0
-
-[node name="WallShadow" type="ColorRect" parent="ObstacleHolder/Wall/ObstacleWall29" unique_id=573375212]
-z_index = -1
-offset_left = -52.166283
-offset_top = -3.0117464
-offset_right = 47.833717
-offset_bottom = 26.988243
-scale = Vector2(1.8109853, 1.8109853)
-pivot_offset_ratio = Vector2(0.5, 0.5)
-mouse_filter = 2
-color = Color(0.37629852, 0.37629852, 0.37629846, 1)
-
-[node name="WallGfx" type="ColorRect" parent="ObstacleHolder/Wall/ObstacleWall29" unique_id=1493353587]
-offset_left = -50.0
-offset_top = -15.0
-offset_right = 50.0
-offset_bottom = 15.0
-scale = Vector2(1.8109853, 1.8109853)
-pivot_offset_ratio = Vector2(0.5, 0.5)
-mouse_filter = 2
-color = Color(0.2901961, 0.47843137, 0.5882353, 1)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ObstacleHolder/Wall/ObstacleWall29" unique_id=246969186]
-scale = Vector2(1.8109853, 1.8109853)
-shape = ExtResource("5_rx4sy")
-
-[node name="ObstacleWall30" type="StaticBody2D" parent="ObstacleHolder/Wall" unique_id=1768879531]
-position = Vector2(-1929, 257)
-rotation = -0.1787712
-scale = Vector2(0.9999999, 0.9999999)
-collision_layer = 16
-collision_mask = 0
-
-[node name="WallShadow" type="ColorRect" parent="ObstacleHolder/Wall/ObstacleWall30" unique_id=800899687]
-z_index = -1
-offset_left = -52.166283
-offset_top = -3.0117464
-offset_right = 47.833717
-offset_bottom = 26.988243
-scale = Vector2(1.8109853, 1.8109853)
-pivot_offset_ratio = Vector2(0.5, 0.5)
-mouse_filter = 2
-color = Color(0.37629852, 0.37629852, 0.37629846, 1)
-
-[node name="WallGfx" type="ColorRect" parent="ObstacleHolder/Wall/ObstacleWall30" unique_id=178417016]
-offset_left = -50.0
-offset_top = -15.0
-offset_right = 50.0
-offset_bottom = 15.0
-scale = Vector2(1.8109853, 1.8109853)
-pivot_offset_ratio = Vector2(0.5, 0.5)
-mouse_filter = 2
-color = Color(0.2901961, 0.47843137, 0.5882353, 1)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ObstacleHolder/Wall/ObstacleWall30" unique_id=1349134900]
-scale = Vector2(1.8109853, 1.8109853)
-shape = ExtResource("5_rx4sy")
-
-[node name="ObstacleWall31" type="StaticBody2D" parent="ObstacleHolder/Wall" unique_id=1552941082]
-position = Vector2(-2031, 142)
-rotation = 0.08557379
-scale = Vector2(0.9999999, 0.9999999)
-collision_layer = 16
-collision_mask = 0
-
-[node name="WallShadow" type="ColorRect" parent="ObstacleHolder/Wall/ObstacleWall31" unique_id=515583939]
-z_index = -1
-offset_left = -48.95878
-offset_top = -2.862173
-offset_right = 51.04122
-offset_bottom = 27.137817
-scale = Vector2(1.8109853, 1.8109853)
-pivot_offset_ratio = Vector2(0.5, 0.5)
-mouse_filter = 2
-color = Color(0.37629852, 0.37629852, 0.37629846, 1)
-
-[node name="WallGfx" type="ColorRect" parent="ObstacleHolder/Wall/ObstacleWall31" unique_id=1846457456]
-offset_left = -50.0
-offset_top = -15.0
-offset_right = 50.0
-offset_bottom = 15.0
-scale = Vector2(1.8109853, 1.8109853)
-pivot_offset_ratio = Vector2(0.5, 0.5)
-mouse_filter = 2
-color = Color(0.2901961, 0.47843137, 0.5882353, 1)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ObstacleHolder/Wall/ObstacleWall31" unique_id=637401286]
-scale = Vector2(1.8109853, 1.8109853)
-shape = ExtResource("5_rx4sy")
-
-[node name="ObstacleWall32" type="StaticBody2D" parent="ObstacleHolder/Wall" unique_id=540881554]
-position = Vector2(-2157.0002, 327.99994)
-rotation = 2.5827963
-scale = Vector2(0.9999999, 0.9999999)
-collision_layer = 16
-collision_mask = 0
-
-[node name="WallShadow" type="ColorRect" parent="ObstacleHolder/Wall/ObstacleWall32" unique_id=889094749]
-z_index = -1
-offset_left = -43.541306
-offset_top = -25.329388
-offset_right = 56.458694
-offset_bottom = 4.670603
-scale = Vector2(1.8109853, 1.8109853)
-pivot_offset_ratio = Vector2(0.5, 0.5)
-mouse_filter = 2
-color = Color(0.37629852, 0.37629852, 0.37629846, 1)
-
-[node name="WallGfx" type="ColorRect" parent="ObstacleHolder/Wall/ObstacleWall32" unique_id=1142527129]
-offset_left = -50.0
-offset_top = -15.0
-offset_right = 50.0
-offset_bottom = 15.0
-scale = Vector2(1.8109853, 1.8109853)
-pivot_offset_ratio = Vector2(0.5, 0.5)
-mouse_filter = 2
-color = Color(0.2901961, 0.47843137, 0.5882353, 1)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ObstacleHolder/Wall/ObstacleWall32" unique_id=1719852888]
-scale = Vector2(1.8109853, 1.8109853)
-shape = ExtResource("5_rx4sy")
-
-[node name="ObstacleWall33" type="StaticBody2D" parent="ObstacleHolder/Wall" unique_id=450090828]
-position = Vector2(-1748, 88.00004)
-rotation = 1.1703789
-scale = Vector2(0.9999999, 0.9999999)
-collision_layer = 16
-collision_mask = 0
-
-[node name="WallShadow" type="ColorRect" parent="ObstacleHolder/Wall/ObstacleWall33" unique_id=1192863242]
-z_index = -1
-offset_left = -38.781242
-offset_top = -10.251265
-offset_right = 61.218758
-offset_bottom = 19.748726
-scale = Vector2(1.8109853, 1.8109853)
-pivot_offset_ratio = Vector2(0.5, 0.5)
-mouse_filter = 2
-color = Color(0.37629852, 0.37629852, 0.37629846, 1)
-
-[node name="WallGfx" type="ColorRect" parent="ObstacleHolder/Wall/ObstacleWall33" unique_id=2129765565]
-offset_left = -50.0
-offset_top = -15.0
-offset_right = 50.0
-offset_bottom = 15.0
-scale = Vector2(1.8109853, 1.8109853)
-pivot_offset_ratio = Vector2(0.5, 0.5)
-mouse_filter = 2
-color = Color(0.2901961, 0.47843137, 0.5882353, 1)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ObstacleHolder/Wall/ObstacleWall33" unique_id=524856769]
-scale = Vector2(1.8109853, 1.8109853)
-shape = ExtResource("5_rx4sy")
-
-[node name="ObstacleWall34" type="StaticBody2D" parent="ObstacleHolder/Wall" unique_id=1186236526]
-position = Vector2(-1792.9999, 352)
-rotation = -0.7158939
-scale = Vector2(0.9999999, 0.9999999)
-collision_layer = 16
-collision_mask = 0
-
-[node name="WallShadow" type="ColorRect" parent="ObstacleHolder/Wall/ObstacleWall34" unique_id=504390204]
-z_index = -1
-offset_left = -57.995216
-offset_top = -5.8082914
-offset_right = 42.004784
-offset_bottom = 24.1917
-scale = Vector2(1.8109853, 1.8109853)
-pivot_offset_ratio = Vector2(0.5, 0.5)
-mouse_filter = 2
-color = Color(0.37629852, 0.37629852, 0.37629846, 1)
-
-[node name="WallGfx" type="ColorRect" parent="ObstacleHolder/Wall/ObstacleWall34" unique_id=1640109806]
-offset_left = -50.0
-offset_top = -15.0
-offset_right = 50.0
-offset_bottom = 15.0
-scale = Vector2(1.8109853, 1.8109853)
-pivot_offset_ratio = Vector2(0.5, 0.5)
-mouse_filter = 2
-color = Color(0.2901961, 0.47843137, 0.5882353, 1)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ObstacleHolder/Wall/ObstacleWall34" unique_id=1526517269]
-scale = Vector2(1.8109853, 1.8109853)
-shape = ExtResource("5_rx4sy")
-
-[node name="ObstacleWall35" type="StaticBody2D" parent="ObstacleHolder/Wall" unique_id=860416490]
-position = Vector2(-2248.0002, 98.99997)
-rotation = 0.1620903
-scale = Vector2(0.9999999, 0.9999999)
-collision_layer = 16
-collision_mask = 0
-
-[node name="WallShadow" type="ColorRect" parent="ObstacleHolder/Wall/ObstacleWall35" unique_id=2072338582]
-z_index = -1
-offset_left = -48.033985
-offset_top = -2.9772797
-offset_right = 51.966015
-offset_bottom = 27.02271
-scale = Vector2(1.8109853, 1.8109853)
-pivot_offset_ratio = Vector2(0.5, 0.5)
-mouse_filter = 2
-color = Color(0.37629852, 0.37629852, 0.37629846, 1)
-
-[node name="WallGfx" type="ColorRect" parent="ObstacleHolder/Wall/ObstacleWall35" unique_id=814336636]
-offset_left = -50.0
-offset_top = -15.0
-offset_right = 50.0
-offset_bottom = 15.0
-scale = Vector2(1.8109853, 1.8109853)
-pivot_offset_ratio = Vector2(0.5, 0.5)
-mouse_filter = 2
-color = Color(0.2901961, 0.47843137, 0.5882353, 1)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ObstacleHolder/Wall/ObstacleWall35" unique_id=723214170]
-scale = Vector2(1.8109853, 1.8109853)
-shape = ExtResource("5_rx4sy")
-
-[node name="ObstacleWall36" type="StaticBody2D" parent="ObstacleHolder/Wall" unique_id=177133015]
-position = Vector2(-2293, 269)
-rotation = 2.154662
-scale = Vector2(0.9999999, 0.9999999)
-collision_layer = 16
-collision_mask = 0
-
-[node name="WallShadow" type="ColorRect" parent="ObstacleHolder/Wall/ObstacleWall36" unique_id=771522669]
-z_index = -1
-offset_left = -39.83576
-offset_top = -21.71559
-offset_right = 60.16424
-offset_bottom = 8.284401
-scale = Vector2(1.8109853, 1.8109853)
-pivot_offset_ratio = Vector2(0.5, 0.5)
-mouse_filter = 2
-color = Color(0.37629852, 0.37629852, 0.37629846, 1)
-
-[node name="WallGfx" type="ColorRect" parent="ObstacleHolder/Wall/ObstacleWall36" unique_id=33262981]
-offset_left = -50.0
-offset_top = -15.0
-offset_right = 50.0
-offset_bottom = 15.0
-scale = Vector2(1.8109853, 1.8109853)
-pivot_offset_ratio = Vector2(0.5, 0.5)
-mouse_filter = 2
-color = Color(0.2901961, 0.47843137, 0.5882353, 1)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ObstacleHolder/Wall/ObstacleWall36" unique_id=161590981]
-scale = Vector2(1.8109853, 1.8109853)
-shape = ExtResource("5_rx4sy")
-
-[node name="ObstacleWall37" type="StaticBody2D" parent="ObstacleHolder/Wall" unique_id=1576776808]
-position = Vector2(-2007.9999, 446)
-rotation = 0.03796047
-scale = Vector2(0.9999999, 0.9999999)
-collision_layer = 16
-collision_mask = 0
-
-[node name="WallShadow" type="ColorRect" parent="ObstacleHolder/Wall/ObstacleWall37" unique_id=502333518]
-z_index = -1
-offset_left = -49.537663
-offset_top = -2.8263702
-offset_right = 50.462337
-offset_bottom = 27.17362
-scale = Vector2(1.8109853, 1.8109853)
-pivot_offset_ratio = Vector2(0.5, 0.5)
-mouse_filter = 2
-color = Color(0.37629852, 0.37629852, 0.37629846, 1)
-
-[node name="WallGfx" type="ColorRect" parent="ObstacleHolder/Wall/ObstacleWall37" unique_id=1175863148]
-offset_left = -50.0
-offset_top = -15.0
-offset_right = 50.0
-offset_bottom = 15.0
-scale = Vector2(1.8109853, 1.8109853)
-pivot_offset_ratio = Vector2(0.5, 0.5)
-mouse_filter = 2
-color = Color(0.2901961, 0.47843137, 0.5882353, 1)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ObstacleHolder/Wall/ObstacleWall37" unique_id=585012068]
-scale = Vector2(1.8109853, 1.8109853)
-shape = ExtResource("5_rx4sy")
-
-[node name="ObstacleWall38" type="StaticBody2D" parent="ObstacleHolder/Wall" unique_id=1085471812]
-position = Vector2(-1483.9998, 495)
-rotation = -0.28065026
-scale = Vector2(0.9999999, 0.9999999)
-collision_layer = 16
-collision_mask = 0
-
-[node name="WallShadow" type="ColorRect" parent="ObstacleHolder/Wall/ObstacleWall38" unique_id=874565052]
-z_index = -1
-offset_left = -53.37429
-offset_top = -3.2942257
-offset_right = 46.62571
-offset_bottom = 26.705765
-scale = Vector2(1.8109853, 1.8109853)
-pivot_offset_ratio = Vector2(0.5, 0.5)
-mouse_filter = 2
-color = Color(0.37629852, 0.37629852, 0.37629846, 1)
-
-[node name="WallGfx" type="ColorRect" parent="ObstacleHolder/Wall/ObstacleWall38" unique_id=318930281]
-offset_left = -50.0
-offset_top = -15.0
-offset_right = 50.0
-offset_bottom = 15.0
-scale = Vector2(1.8109853, 1.8109853)
-pivot_offset_ratio = Vector2(0.5, 0.5)
-mouse_filter = 2
-color = Color(0.2901961, 0.47843137, 0.5882353, 1)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ObstacleHolder/Wall/ObstacleWall38" unique_id=771169476]
-scale = Vector2(1.8109853, 1.8109853)
-shape = ExtResource("5_rx4sy")
-
-[node name="ObstacleWall39" type="StaticBody2D" parent="ObstacleHolder/Wall" unique_id=1312564848]
-position = Vector2(-1888, -85.00006)
-rotation = -0.28065026
-scale = Vector2(0.9999999, 0.9999999)
-collision_layer = 16
-collision_mask = 0
-
-[node name="WallShadow" type="ColorRect" parent="ObstacleHolder/Wall/ObstacleWall39" unique_id=1408736255]
-z_index = -1
-offset_left = -53.37429
-offset_top = -3.2942257
-offset_right = 46.62571
-offset_bottom = 26.705765
-scale = Vector2(1.8109853, 1.8109853)
-pivot_offset_ratio = Vector2(0.5, 0.5)
-mouse_filter = 2
-color = Color(0.37629852, 0.37629852, 0.37629846, 1)
-
-[node name="WallGfx" type="ColorRect" parent="ObstacleHolder/Wall/ObstacleWall39" unique_id=687723858]
-offset_left = -50.0
-offset_top = -15.0
-offset_right = 50.0
-offset_bottom = 15.0
-scale = Vector2(1.8109853, 1.8109853)
-pivot_offset_ratio = Vector2(0.5, 0.5)
-mouse_filter = 2
-color = Color(0.2901961, 0.47843137, 0.5882353, 1)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ObstacleHolder/Wall/ObstacleWall39" unique_id=606044781]
-scale = Vector2(1.8109853, 1.8109853)
-shape = ExtResource("5_rx4sy")
-
-[node name="ObstacleWall3" type="StaticBody2D" parent="ObstacleHolder/Wall" unique_id=2116697495]
-position = Vector2(746, -2500)
-rotation = -0.89611953
-collision_layer = 16
-collision_mask = 0
-
-[node name="WallShadow" type="ColorRect" parent="ObstacleHolder/Wall/ObstacleWall3" unique_id=1850855946]
-z_index = -1
-offset_left = -60.680492
-offset_top = -6.456729
-offset_right = 39.319508
-offset_bottom = 23.54327
-scale = Vector2(1.8109853, 1.8109853)
-pivot_offset_ratio = Vector2(0.5, 0.5)
-mouse_filter = 2
-color = Color(0.37629852, 0.37629852, 0.37629846, 1)
-
-[node name="WallGfx" type="ColorRect" parent="ObstacleHolder/Wall/ObstacleWall3" unique_id=2041244564]
-offset_left = -50.0
-offset_top = -15.0
-offset_right = 50.0
-offset_bottom = 15.0
-scale = Vector2(1.8109853, 1.8109853)
-pivot_offset_ratio = Vector2(0.5, 0.5)
-mouse_filter = 2
-color = Color(0.2901961, 0.47843137, 0.5882353, 1)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ObstacleHolder/Wall/ObstacleWall3" unique_id=1294827892]
-scale = Vector2(1.8109853, 1.8109853)
-shape = ExtResource("5_rx4sy")
-
-[node name="ObstacleWall4" type="StaticBody2D" parent="ObstacleHolder/Wall" unique_id=1531753499]
-position = Vector2(124, 729)
-rotation = -2.7287154
-collision_layer = 16
-collision_mask = 0
-
-[node name="WallShadow" type="ColorRect" parent="ObstacleHolder/Wall/ObstacleWall4" unique_id=1327606740]
-z_index = -1
-offset_left = -55.48785
-offset_top = -27.527725
-offset_right = 44.51215
-offset_bottom = 2.4722748
-scale = Vector2(1.8109853, 1.8109853)
-pivot_offset_ratio = Vector2(0.5, 0.5)
-mouse_filter = 2
-color = Color(0.37629852, 0.37629852, 0.37629846, 1)
-
-[node name="WallGfx" type="ColorRect" parent="ObstacleHolder/Wall/ObstacleWall4" unique_id=895638592]
-offset_left = -50.0
-offset_top = -15.0
-offset_right = 50.0
-offset_bottom = 15.0
-scale = Vector2(1.8109853, 1.8109853)
-pivot_offset_ratio = Vector2(0.5, 0.5)
-mouse_filter = 2
-color = Color(0.2901961, 0.47843137, 0.5882353, 1)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ObstacleHolder/Wall/ObstacleWall4" unique_id=1498485771]
-scale = Vector2(1.8109853, 1.8109853)
-shape = ExtResource("5_rx4sy")
-
-[node name="ObstacleWall5" type="StaticBody2D" parent="ObstacleHolder/Wall" unique_id=1801126969]
-position = Vector2(842, -1974)
-rotation = -1.943317
-collision_layer = 16
-collision_mask = 0
-
-[node name="WallShadow" type="ColorRect" parent="ObstacleHolder/Wall/ObstacleWall5" unique_id=1968101168]
-z_index = -1
-offset_left = -62.738934
-offset_top = -19.977942
-offset_right = 37.261066
-offset_bottom = 10.0220585
-scale = Vector2(1.8109853, 1.8109853)
-pivot_offset_ratio = Vector2(0.5, 0.5)
-mouse_filter = 2
-color = Color(0.37629852, 0.37629852, 0.37629846, 1)
-
-[node name="WallGfx" type="ColorRect" parent="ObstacleHolder/Wall/ObstacleWall5" unique_id=95180548]
-offset_left = -50.0
-offset_top = -15.0
-offset_right = 50.0
-offset_bottom = 15.0
-scale = Vector2(1.8109853, 1.8109853)
-pivot_offset_ratio = Vector2(0.5, 0.5)
-mouse_filter = 2
-color = Color(0.2901961, 0.47843137, 0.5882353, 1)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ObstacleHolder/Wall/ObstacleWall5" unique_id=19911293]
-scale = Vector2(1.8109853, 1.8109853)
-shape = ExtResource("5_rx4sy")
-
-[node name="ObstacleWall6" type="StaticBody2D" parent="ObstacleHolder/Wall" unique_id=1154354018]
-position = Vector2(-1438, -2620.0002)
-rotation = -0.054386515
-scale = Vector2(0.99999994, 0.99999994)
-collision_layer = 16
-collision_mask = 0
-
-[node name="WallShadow" type="ColorRect" parent="ObstacleHolder/Wall/ObstacleWall6" unique_id=2086356941]
-z_index = -1
-offset_left = -50.743477
-offset_top = -1.3432198
-offset_right = 49.256523
-offset_bottom = 28.65678
-scale = Vector2(1.8109853, 1.8109853)
-pivot_offset_ratio = Vector2(0.5, 0.5)
-mouse_filter = 2
-color = Color(0.37629852, 0.37629852, 0.37629846, 1)
-
-[node name="WallGfx" type="ColorRect" parent="ObstacleHolder/Wall/ObstacleWall6" unique_id=624920925]
-offset_left = -50.0
-offset_top = -15.0
-offset_right = 50.0
-offset_bottom = 15.0
-scale = Vector2(1.8109853, 1.8109853)
-pivot_offset_ratio = Vector2(0.5, 0.5)
-mouse_filter = 2
-color = Color(0.2901961, 0.47843137, 0.5882353, 1)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ObstacleHolder/Wall/ObstacleWall6" unique_id=165071494]
-scale = Vector2(1.8109853, 1.8109853)
-shape = ExtResource("5_rx4sy")
-
-[node name="ObstacleWall7" type="StaticBody2D" parent="ObstacleHolder/Wall" unique_id=380462989]
-position = Vector2(-695, -2714)
-rotation = 0.7310116
-collision_layer = 16
-collision_mask = 0
-
-[node name="WallShadow" type="ColorRect" parent="ObstacleHolder/Wall/ObstacleWall7" unique_id=1438158316]
-z_index = -1
-offset_left = -40.868916
-offset_top = -4.81748
-offset_right = 59.131084
-offset_bottom = 25.18252
-scale = Vector2(1.8109853, 1.8109853)
-pivot_offset_ratio = Vector2(0.5, 0.5)
-mouse_filter = 2
-color = Color(0.37629852, 0.37629852, 0.37629846, 1)
-
-[node name="WallGfx" type="ColorRect" parent="ObstacleHolder/Wall/ObstacleWall7" unique_id=1676353524]
-offset_left = -50.0
-offset_top = -15.0
-offset_right = 50.0
-offset_bottom = 15.0
-scale = Vector2(1.8109853, 1.8109853)
-pivot_offset_ratio = Vector2(0.5, 0.5)
-mouse_filter = 2
-color = Color(0.2901961, 0.47843137, 0.5882353, 1)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ObstacleHolder/Wall/ObstacleWall7" unique_id=680009059]
-scale = Vector2(1.8109853, 1.8109853)
-shape = ExtResource("5_rx4sy")
-
-[node name="ObstacleWall8" type="StaticBody2D" parent="ObstacleHolder/Wall" unique_id=194994551]
-position = Vector2(-1342, -2094.0002)
-rotation = -1.1015842
-scale = Vector2(0.99999994, 0.99999994)
-collision_layer = 16
-collision_mask = 0
-
-[node name="WallShadow" type="ColorRect" parent="ObstacleHolder/Wall/ObstacleWall8" unique_id=734176342]
-z_index = -1
-offset_left = -62.19886
-offset_top = -8.815483
-offset_right = 37.80114
-offset_bottom = 21.184517
-scale = Vector2(1.8109853, 1.8109853)
-pivot_offset_ratio = Vector2(0.5, 0.5)
-mouse_filter = 2
-color = Color(0.37629852, 0.37629852, 0.37629846, 1)
-
-[node name="WallGfx" type="ColorRect" parent="ObstacleHolder/Wall/ObstacleWall8" unique_id=1260193212]
-offset_left = -50.0
-offset_top = -15.0
-offset_right = 50.0
-offset_bottom = 15.0
-scale = Vector2(1.8109853, 1.8109853)
-pivot_offset_ratio = Vector2(0.5, 0.5)
-mouse_filter = 2
-color = Color(0.2901961, 0.47843137, 0.5882353, 1)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ObstacleHolder/Wall/ObstacleWall8" unique_id=11350620]
-scale = Vector2(1.8109853, 1.8109853)
-shape = ExtResource("5_rx4sy")
-
-[node name="ObstacleWall9" type="StaticBody2D" parent="ObstacleHolder/Wall" unique_id=1770756614]
-position = Vector2(-574, 421)
-rotation = -0.31618598
-collision_layer = 16
-collision_mask = 0
-
-[node name="WallShadow" type="ColorRect" parent="ObstacleHolder/Wall/ObstacleWall9" unique_id=453326723]
-z_index = -1
-offset_left = -54.25278
-offset_top = -2.00099
-offset_right = 45.74722
-offset_bottom = 27.99901
-scale = Vector2(1.8109853, 1.8109853)
-pivot_offset_ratio = Vector2(0.5, 0.5)
-mouse_filter = 2
-color = Color(0.37629852, 0.37629852, 0.37629846, 1)
-
-[node name="WallGfx" type="ColorRect" parent="ObstacleHolder/Wall/ObstacleWall9" unique_id=35405943]
-offset_left = -50.0
-offset_top = -15.0
-offset_right = 50.0
-offset_bottom = 15.0
-scale = Vector2(1.8109853, 1.8109853)
-pivot_offset_ratio = Vector2(0.5, 0.5)
-mouse_filter = 2
-color = Color(0.2901961, 0.47843137, 0.5882353, 1)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ObstacleHolder/Wall/ObstacleWall9" unique_id=67290053]
-scale = Vector2(1.8109853, 1.8109853)
-shape = ExtResource("5_rx4sy")
-
-[node name="ObstacleWall10" type="StaticBody2D" parent="ObstacleHolder/Wall" unique_id=1946228412]
-position = Vector2(692.0005, -791.99994)
-rotation = -0.054386515
-scale = Vector2(0.99999994, 0.99999994)
-collision_layer = 16
-collision_mask = 0
-
-[node name="WallShadow" type="ColorRect" parent="ObstacleHolder/Wall/ObstacleWall10" unique_id=1766664712]
-z_index = -1
-offset_left = -50.743477
-offset_top = -1.3432198
-offset_right = 49.256523
-offset_bottom = 28.65678
-scale = Vector2(1.8109853, 1.8109853)
-pivot_offset_ratio = Vector2(0.5, 0.5)
-mouse_filter = 2
-color = Color(0.37629852, 0.37629852, 0.37629846, 1)
-
-[node name="WallGfx" type="ColorRect" parent="ObstacleHolder/Wall/ObstacleWall10" unique_id=1193631184]
-offset_left = -50.0
-offset_top = -15.0
-offset_right = 50.0
-offset_bottom = 15.0
-scale = Vector2(1.8109853, 1.8109853)
-pivot_offset_ratio = Vector2(0.5, 0.5)
-mouse_filter = 2
-color = Color(0.2901961, 0.47843137, 0.5882353, 1)
-metadata/_edit_use_anchors_ = true
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ObstacleHolder/Wall/ObstacleWall10" unique_id=611139931]
-scale = Vector2(1.8109853, 1.8109853)
-shape = ExtResource("5_rx4sy")
-
-[node name="ObstacleWall11" type="StaticBody2D" parent="ObstacleHolder/Wall" unique_id=110142097]
-position = Vector2(-1872, -1575)
-rotation = 0.7310116
-collision_layer = 16
-collision_mask = 0
-
-[node name="WallShadow" type="ColorRect" parent="ObstacleHolder/Wall/ObstacleWall11" unique_id=1844280892]
-z_index = -1
-offset_left = -40.868916
-offset_top = -4.81748
-offset_right = 59.131084
-offset_bottom = 25.18252
-scale = Vector2(1.8109853, 1.8109853)
-pivot_offset_ratio = Vector2(0.5, 0.5)
-mouse_filter = 2
-color = Color(0.37629852, 0.37629852, 0.37629846, 1)
-
-[node name="WallGfx" type="ColorRect" parent="ObstacleHolder/Wall/ObstacleWall11" unique_id=1415059039]
-offset_left = -50.0
-offset_top = -15.0
-offset_right = 50.0
-offset_bottom = 15.0
-scale = Vector2(1.8109853, 1.8109853)
-pivot_offset_ratio = Vector2(0.5, 0.5)
-mouse_filter = 2
-color = Color(0.2901961, 0.47843137, 0.5882353, 1)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ObstacleHolder/Wall/ObstacleWall11" unique_id=591813038]
-scale = Vector2(1.8109853, 1.8109853)
-shape = ExtResource("5_rx4sy")
-
-[node name="ObstacleWall40" type="StaticBody2D" parent="ObstacleHolder/Wall" unique_id=1697841577]
-position = Vector2(-2699, -2083.0002)
-rotation = 1.6008428
-collision_layer = 16
-collision_mask = 0
-
-[node name="WallShadow" type="ColorRect" parent="ObstacleHolder/Wall/ObstacleWall40" unique_id=562925866]
-z_index = -1
-offset_left = -36.32917
-offset_top = -15.410884
-offset_right = 63.67083
-offset_bottom = 14.589116
-scale = Vector2(1.8109853, 1.8109853)
-pivot_offset_ratio = Vector2(0.5, 0.5)
-mouse_filter = 2
-color = Color(0.37629852, 0.37629852, 0.37629846, 1)
-
-[node name="WallGfx" type="ColorRect" parent="ObstacleHolder/Wall/ObstacleWall40" unique_id=1848194507]
-offset_left = -50.0
-offset_top = -15.0
-offset_right = 50.0
-offset_bottom = 15.0
-scale = Vector2(1.8109853, 1.8109853)
-pivot_offset_ratio = Vector2(0.5, 0.5)
-mouse_filter = 2
-color = Color(0.2901961, 0.47843137, 0.5882353, 1)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ObstacleHolder/Wall/ObstacleWall40" unique_id=20363748]
-scale = Vector2(1.8109853, 1.8109853)
-shape = ExtResource("5_rx4sy")
-
-[node name="ObstacleWall41" type="StaticBody2D" parent="ObstacleHolder/Wall" unique_id=958808828]
-position = Vector2(-2768, -2279.0002)
-rotation = 1.6008428
-collision_layer = 16
-collision_mask = 0
-
-[node name="WallShadow" type="ColorRect" parent="ObstacleHolder/Wall/ObstacleWall41" unique_id=1638487831]
-z_index = -1
-offset_left = -36.32917
-offset_top = -15.410884
-offset_right = 63.67083
-offset_bottom = 14.589116
-scale = Vector2(1.8109853, 1.8109853)
-pivot_offset_ratio = Vector2(0.5, 0.5)
-mouse_filter = 2
-color = Color(0.37629852, 0.37629852, 0.37629846, 1)
-
-[node name="WallGfx" type="ColorRect" parent="ObstacleHolder/Wall/ObstacleWall41" unique_id=621246315]
-offset_left = -50.0
-offset_top = -15.0
-offset_right = 50.0
-offset_bottom = 15.0
-scale = Vector2(1.8109853, 1.8109853)
-pivot_offset_ratio = Vector2(0.5, 0.5)
-mouse_filter = 2
-color = Color(0.2901961, 0.47843137, 0.5882353, 1)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ObstacleHolder/Wall/ObstacleWall41" unique_id=694776373]
-scale = Vector2(1.8109853, 1.8109853)
-shape = ExtResource("5_rx4sy")
-
-[node name="ObstacleWall42" type="StaticBody2D" parent="ObstacleHolder/Wall" unique_id=1120526007]
-position = Vector2(-2657, -2411)
-rotation = 1.2958875
-collision_layer = 16
-collision_mask = 0
-
-[node name="WallShadow" type="ColorRect" parent="ObstacleHolder/Wall/ObstacleWall42" unique_id=844533685]
-z_index = -1
-offset_left = -36.83657
-offset_top = -11.287252
-offset_right = 63.16343
-offset_bottom = 18.712748
-scale = Vector2(1.8109853, 1.8109853)
-pivot_offset_ratio = Vector2(0.5, 0.5)
-mouse_filter = 2
-color = Color(0.37629852, 0.37629852, 0.37629846, 1)
-
-[node name="WallGfx" type="ColorRect" parent="ObstacleHolder/Wall/ObstacleWall42" unique_id=2011542697]
-offset_left = -50.0
-offset_top = -15.0
-offset_right = 50.0
-offset_bottom = 15.0
-scale = Vector2(1.8109853, 1.8109853)
-pivot_offset_ratio = Vector2(0.5, 0.5)
-mouse_filter = 2
-color = Color(0.2901961, 0.47843137, 0.5882353, 1)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ObstacleHolder/Wall/ObstacleWall42" unique_id=107236310]
-scale = Vector2(1.8109853, 1.8109853)
-shape = ExtResource("5_rx4sy")
-
-[node name="ObstacleWall43" type="StaticBody2D" parent="ObstacleHolder/Wall" unique_id=609167743]
-position = Vector2(-2507.0002, -2159)
-rotation = 1.3912101
-collision_layer = 16
-collision_mask = 0
-
-[node name="WallShadow" type="ColorRect" parent="ObstacleHolder/Wall/ObstacleWall43" unique_id=1121035056]
-z_index = -1
-offset_left = -36.542953
-offset_top = -12.556979
-offset_right = 63.457047
-offset_bottom = 17.44302
-scale = Vector2(1.8109853, 1.8109853)
-pivot_offset_ratio = Vector2(0.5, 0.5)
-mouse_filter = 2
-color = Color(0.37629852, 0.37629852, 0.37629846, 1)
-
-[node name="WallGfx" type="ColorRect" parent="ObstacleHolder/Wall/ObstacleWall43" unique_id=332421834]
-offset_left = -50.0
-offset_top = -15.0
-offset_right = 50.0
-offset_bottom = 15.0
-scale = Vector2(1.8109853, 1.8109853)
-pivot_offset_ratio = Vector2(0.5, 0.5)
-mouse_filter = 2
-color = Color(0.2901961, 0.47843137, 0.5882353, 1)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ObstacleHolder/Wall/ObstacleWall43" unique_id=169223110]
-scale = Vector2(1.8109853, 1.8109853)
-shape = ExtResource("5_rx4sy")
-
-[node name="ObstacleWall44" type="StaticBody2D" parent="ObstacleHolder/Wall" unique_id=271987264]
+[node name="ObstacleContainer" parent="ObstacleHolder/Wall" unique_id=1677324250 instance=ExtResource("9_t1q4r")]
+position = Vector2(-301, -138)
+
+[node name="ObstacleContainer2" parent="ObstacleHolder/Wall" unique_id=634332669 instance=ExtResource("9_t1q4r")]
+position = Vector2(29, 208)
+rotation = -1.6556436
+
+[node name="ObstacleContainer3" parent="ObstacleHolder/Wall" unique_id=14909140 instance=ExtResource("9_t1q4r")]
+position = Vector2(-574, 419)
+rotation = -0.31802416
+
+[node name="ObstacleContainer4" parent="ObstacleHolder/Wall" unique_id=1963493014 instance=ExtResource("9_t1q4r")]
+position = Vector2(124, 730)
+rotation = 0.3842811
+
+[node name="ObstacleContainer5" parent="ObstacleHolder/Wall" unique_id=1023517586 instance=ExtResource("9_t1q4r")]
+position = Vector2(15, 995)
+rotation = -0.8810001
+
+[node name="ObstacleContainer6" parent="ObstacleHolder/Wall" unique_id=1623085574 instance=ExtResource("9_t1q4r")]
+position = Vector2(-96, 1317)
+rotation = -1.8727901
+
+[node name="ObstacleContainer7" parent="ObstacleHolder/Wall" unique_id=1289134512 instance=ExtResource("9_t1q4r")]
+position = Vector2(-840, 1410)
+rotation = -2.6544757
+
+[node name="ObstacleContainer8" parent="ObstacleHolder/Wall" unique_id=1032555929 instance=ExtResource("9_t1q4r")]
+position = Vector2(-937, 881)
+rotation = -1.6200612
+
+[node name="ObstacleContainer9" parent="ObstacleHolder/Wall" unique_id=562633705 instance=ExtResource("9_t1q4r")]
+position = Vector2(-1485, 495.00006)
+rotation = -0.2836275
+
+[node name="ObstacleContainer10" parent="ObstacleHolder/Wall" unique_id=2044608121 instance=ExtResource("9_t1q4r")]
+position = Vector2(-2008.0001, 446.00003)
+rotation = 0.050222248
+
+[node name="ObstacleContainer11" parent="ObstacleHolder/Wall" unique_id=678314445 instance=ExtResource("9_t1q4r")]
+position = Vector2(-2155, 329.00003)
+rotation = -0.5736337
+
+[node name="ObstacleContainer12" parent="ObstacleHolder/Wall" unique_id=1997512834 instance=ExtResource("9_t1q4r")]
+position = Vector2(-2291, 269.00003)
+rotation = -0.96411365
+
+[node name="ObstacleContainer13" parent="ObstacleHolder/Wall" unique_id=1279011398 instance=ExtResource("9_t1q4r")]
+position = Vector2(-2246.9998, 101.000046)
+rotation = 0.15104312
+
+[node name="ObstacleContainer14" parent="ObstacleHolder/Wall" unique_id=486211649 instance=ExtResource("9_t1q4r")]
+position = Vector2(-2032.0002, 141.00002)
+rotation = 0.069731146
+
+[node name="ObstacleContainer15" parent="ObstacleHolder/Wall" unique_id=928287641 instance=ExtResource("9_t1q4r")]
+position = Vector2(-1888.0001, -86.000015)
+rotation = -0.24750817
+
+[node name="ObstacleContainer16" parent="ObstacleHolder/Wall" unique_id=876644605 instance=ExtResource("9_t1q4r")]
+position = Vector2(-1746.9999, 88.99992)
+rotation = 1.1543136
+
+[node name="ObstacleContainer17" parent="ObstacleHolder/Wall" unique_id=1959204291 instance=ExtResource("9_t1q4r")]
+position = Vector2(-1931, 256)
+rotation = -0.16823697
+
+[node name="ObstacleContainer18" parent="ObstacleHolder/Wall" unique_id=1129167809 instance=ExtResource("9_t1q4r")]
+position = Vector2(-1792, 354)
+rotation = -0.674544
+
+[node name="ObstacleContainer19" parent="ObstacleHolder/Wall" unique_id=1615047226 instance=ExtResource("9_t1q4r")]
+position = Vector2(-2629.0002, 1116.0002)
+rotation = -0.0609439
+
+[node name="ObstacleContainer20" parent="ObstacleHolder/Wall" unique_id=1857682586 instance=ExtResource("9_t1q4r")]
+position = Vector2(-1885, 1020)
+rotation = 0.7008203
+
+[node name="ObstacleContainer21" parent="ObstacleHolder/Wall" unique_id=1790622395 instance=ExtResource("9_t1q4r")]
+position = Vector2(-1791, 1552)
+rotation = -0.32146764
+
+[node name="ObstacleContainer22" parent="ObstacleHolder/Wall" unique_id=1201980866 instance=ExtResource("9_t1q4r")]
+position = Vector2(-2533, 1645)
+rotation = -1.1058247
+
+[node name="ObstacleContainer23" parent="ObstacleHolder/Wall" unique_id=1953939545 instance=ExtResource("9_t1q4r")]
+position = Vector2(787, -261)
+rotation = -1.1058247
+
+[node name="ObstacleContainer24" parent="ObstacleHolder/Wall" unique_id=1578997958 instance=ExtResource("9_t1q4r")]
+position = Vector2(1011, 78)
+rotation = -0.1849938
+
+[node name="ObstacleContainer25" parent="ObstacleHolder/Wall" unique_id=706314029 instance=ExtResource("9_t1q4r")]
+position = Vector2(1060.0001, -60.000015)
+rotation = 0.128865
+
+[node name="ObstacleContainer26" parent="ObstacleHolder/Wall" unique_id=1121582715 instance=ExtResource("9_t1q4r")]
+position = Vector2(970, -268)
+rotation = -0.19158831
+
+[node name="ObstacleContainer27" parent="ObstacleHolder/Wall" unique_id=1610206578 instance=ExtResource("9_t1q4r")]
+position = Vector2(1531, -359)
+rotation = -0.2846502
+
+[node name="ObstacleContainer28" parent="ObstacleHolder/Wall" unique_id=1745319118 instance=ExtResource("9_t1q4r")]
+position = Vector2(1259.0001, -236.00002)
+rotation = 0.12701502
+
+[node name="ObstacleContainer29" parent="ObstacleHolder/Wall" unique_id=285605274 instance=ExtResource("9_t1q4r")]
+position = Vector2(1275, -109.999985)
+rotation = 0.15489393
+
+[node name="ObstacleContainer30" parent="ObstacleHolder/Wall" unique_id=1645737702 instance=ExtResource("9_t1q4r")]
+position = Vector2(1343, 9.000015)
+rotation = -0.08512333
+
+[node name="ObstacleContainer31" parent="ObstacleHolder/Wall" unique_id=1365918829 instance=ExtResource("9_t1q4r")]
+position = Vector2(1237, 105)
+rotation = 0.5304204
+
+[node name="ObstacleContainer32" parent="ObstacleHolder/Wall" unique_id=1302811270 instance=ExtResource("9_t1q4r")]
+position = Vector2(1632.0001, -50.99994)
+rotation = 1.6453528
+
+[node name="ObstacleContainer33" parent="ObstacleHolder/Wall" unique_id=572398808 instance=ExtResource("9_t1q4r")]
+position = Vector2(1819, 159.99994)
+rotation = 0.7805964
+
+[node name="ObstacleContainer34" parent="ObstacleHolder/Wall" unique_id=1190441991 instance=ExtResource("9_t1q4r")]
+position = Vector2(691.00006, -791.9999)
+rotation = -0.054534495
+
+[node name="ObstacleContainer35" parent="ObstacleHolder/Wall" unique_id=401021523 instance=ExtResource("9_t1q4r")]
+position = Vector2(841.00006, -1975)
+rotation = 1.2231693
+
+[node name="ObstacleContainer36" parent="ObstacleHolder/Wall" unique_id=1793401045 instance=ExtResource("9_t1q4r")]
+position = Vector2(743.99994, -2500)
+rotation = 2.2331116
+
+[node name="ObstacleContainer37" parent="ObstacleHolder/Wall" unique_id=1562254269 instance=ExtResource("9_t1q4r")]
+position = Vector2(-695.0002, -2714)
+rotation = 0.7225263
+
+[node name="ObstacleContainer38" parent="ObstacleHolder/Wall" unique_id=1281326049 instance=ExtResource("9_t1q4r")]
+position = Vector2(-1439.0001, -2619.9998)
+rotation = -0.046703856
+
+[node name="ObstacleContainer39" parent="ObstacleHolder/Wall" unique_id=908965754 instance=ExtResource("9_t1q4r")]
+position = Vector2(-1343.0001, -2094)
+rotation = -1.0952373
+
+[node name="ObstacleContainer40" parent="ObstacleHolder/Wall" unique_id=934272440 instance=ExtResource("9_t1q4r")]
+position = Vector2(-1874.9999, -1575.9998)
+rotation = -2.4227133
+
+[node name="ObstacleContainer41" parent="ObstacleHolder/Wall" unique_id=2108011978 instance=ExtResource("9_t1q4r")]
+position = Vector2(-2642, -1776)
+rotation = -2.279573
+
+[node name="ObstacleContainer42" parent="ObstacleHolder/Wall" unique_id=631851978 instance=ExtResource("9_t1q4r")]
+position = Vector2(-2865, -1600)
+rotation = -1.8073103
+
+[node name="ObstacleContainer43" parent="ObstacleHolder/Wall" unique_id=1630762297 instance=ExtResource("9_t1q4r")]
+position = Vector2(-2700, -2083)
+rotation = -1.5551548
+
+[node name="ObstacleContainer44" parent="ObstacleHolder/Wall" unique_id=126347751 instance=ExtResource("9_t1q4r")]
+position = Vector2(-2769, -2280)
+rotation = -1.5551548
+
+[node name="ObstacleContainer45" parent="ObstacleHolder/Wall" unique_id=767522713 instance=ExtResource("9_t1q4r")]
+position = Vector2(-2656, -2412.0002)
+rotation = -1.830659
+
+[node name="ObstacleContainer46" parent="ObstacleHolder/Wall" unique_id=1268564652 instance=ExtResource("9_t1q4r")]
+position = Vector2(-2507.0002, -2160.0002)
+rotation = -1.7500224
+
+[node name="ObstacleContainer47" parent="ObstacleHolder/Wall" unique_id=1654192890 instance=ExtResource("9_t1q4r")]
+position = Vector2(-2867, -2058)
+rotation = -2.653563
+
+[node name="ObstacleContainer48" parent="ObstacleHolder/Wall" unique_id=1246152815 instance=ExtResource("9_t1q4r")]
 position = Vector2(-2525, -1986)
-rotation = 0.005599618
-collision_layer = 16
-collision_mask = 0
+rotation = -3.1552997
 
-[node name="WallShadow" type="ColorRect" parent="ObstacleHolder/Wall/ObstacleWall44" unique_id=1398901813]
-z_index = -1
-offset_left = -49.923416
-offset_top = -1.3232117
-offset_right = 50.076584
-offset_bottom = 28.676788
-scale = Vector2(1.8109853, 1.8109853)
-pivot_offset_ratio = Vector2(0.5, 0.5)
-mouse_filter = 2
-color = Color(0.37629852, 0.37629852, 0.37629846, 1)
-
-[node name="WallGfx" type="ColorRect" parent="ObstacleHolder/Wall/ObstacleWall44" unique_id=1037100814]
-offset_left = -50.0
-offset_top = -15.0
-offset_right = 50.0
-offset_bottom = 15.0
-scale = Vector2(1.8109853, 1.8109853)
-pivot_offset_ratio = Vector2(0.5, 0.5)
-mouse_filter = 2
-color = Color(0.2901961, 0.47843137, 0.5882353, 1)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ObstacleHolder/Wall/ObstacleWall44" unique_id=533823252]
-scale = Vector2(1.8109853, 1.8109853)
-shape = ExtResource("5_rx4sy")
-
-[node name="ObstacleWall45" type="StaticBody2D" parent="ObstacleHolder/Wall" unique_id=149686013]
-position = Vector2(-2643, -1776)
-rotation = 0.8695458
-collision_layer = 16
-collision_mask = 0
-
-[node name="WallShadow" type="ColorRect" parent="ObstacleHolder/Wall/ObstacleWall45" unique_id=722717942]
-z_index = -1
-offset_left = -39.550278
-offset_top = -6.1759596
-offset_right = 60.449722
-offset_bottom = 23.82404
-scale = Vector2(1.8109853, 1.8109853)
-pivot_offset_ratio = Vector2(0.5, 0.5)
-mouse_filter = 2
-color = Color(0.37629852, 0.37629852, 0.37629846, 1)
-
-[node name="WallGfx" type="ColorRect" parent="ObstacleHolder/Wall/ObstacleWall45" unique_id=32519825]
-offset_left = -50.0
-offset_top = -15.0
-offset_right = 50.0
-offset_bottom = 15.0
-scale = Vector2(1.8109853, 1.8109853)
-pivot_offset_ratio = Vector2(0.5, 0.5)
-mouse_filter = 2
-color = Color(0.2901961, 0.47843137, 0.5882353, 1)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ObstacleHolder/Wall/ObstacleWall45" unique_id=1480012012]
-scale = Vector2(1.8109853, 1.8109853)
-shape = ExtResource("5_rx4sy")
-
-[node name="ObstacleWall46" type="StaticBody2D" parent="ObstacleHolder/Wall" unique_id=1957729461]
-position = Vector2(-2805, -1869)
-rotation = 2.159492
-collision_layer = 16
-collision_mask = 0
-
-[node name="WallShadow" type="ColorRect" parent="ObstacleHolder/Wall/ObstacleWall46" unique_id=1236488163]
-z_index = -1
-offset_left = -38.625305
-offset_top = -22.59452
-offset_right = 61.374695
-offset_bottom = 7.4054794
-scale = Vector2(1.8109853, 1.8109853)
-pivot_offset_ratio = Vector2(0.5, 0.5)
-mouse_filter = 2
-color = Color(0.37629852, 0.37629852, 0.37629846, 1)
-
-[node name="WallGfx" type="ColorRect" parent="ObstacleHolder/Wall/ObstacleWall46" unique_id=742353366]
-offset_left = -50.0
-offset_top = -15.0
-offset_right = 50.0
-offset_bottom = 15.0
-scale = Vector2(1.8109853, 1.8109853)
-pivot_offset_ratio = Vector2(0.5, 0.5)
-mouse_filter = 2
-color = Color(0.2901961, 0.47843137, 0.5882353, 1)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ObstacleHolder/Wall/ObstacleWall46" unique_id=1280386097]
-scale = Vector2(1.8109853, 1.8109853)
-shape = ExtResource("5_rx4sy")
-
-[node name="ObstacleWall48" type="StaticBody2D" parent="ObstacleHolder/Wall" unique_id=1973517817]
-position = Vector2(-2865, -1597.9999)
-rotation = 1.3477995
-collision_layer = 16
-collision_mask = 0
-
-[node name="WallShadow" type="ColorRect" parent="ObstacleHolder/Wall/ObstacleWall48" unique_id=267693298]
-z_index = -1
-offset_left = -36.66165
-offset_top = -11.975287
-offset_right = 63.33835
-offset_bottom = 18.024712
-scale = Vector2(1.8109853, 1.8109853)
-pivot_offset_ratio = Vector2(0.5, 0.5)
-mouse_filter = 2
-color = Color(0.37629852, 0.37629852, 0.37629846, 1)
-
-[node name="WallGfx" type="ColorRect" parent="ObstacleHolder/Wall/ObstacleWall48" unique_id=1759194877]
-offset_left = -50.0
-offset_top = -15.0
-offset_right = 50.0
-offset_bottom = 15.0
-scale = Vector2(1.8109853, 1.8109853)
-pivot_offset_ratio = Vector2(0.5, 0.5)
-mouse_filter = 2
-color = Color(0.2901961, 0.47843137, 0.5882353, 1)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ObstacleHolder/Wall/ObstacleWall48" unique_id=947701085]
-scale = Vector2(1.8109853, 1.8109853)
-shape = ExtResource("5_rx4sy")
-
-[node name="ObstacleWall47" type="StaticBody2D" parent="ObstacleHolder/Wall" unique_id=1461482708]
-position = Vector2(-2867, -2059.0002)
-rotation = 3.610693
-collision_layer = 16
-collision_mask = 0
-
-[node name="WallShadow" type="ColorRect" parent="ObstacleHolder/Wall/ObstacleWall47" unique_id=1257242816]
-z_index = -1
-offset_left = -56.18315
-offset_top = -27.199547
-offset_right = 43.81685
-offset_bottom = 2.8004532
-scale = Vector2(1.8109853, 1.8109853)
-pivot_offset_ratio = Vector2(0.5, 0.5)
-mouse_filter = 2
-color = Color(0.37629852, 0.37629852, 0.37629846, 1)
-
-[node name="WallGfx" type="ColorRect" parent="ObstacleHolder/Wall/ObstacleWall47" unique_id=1966641533]
-offset_left = -50.0
-offset_top = -15.0
-offset_right = 50.0
-offset_bottom = 15.0
-scale = Vector2(1.8109853, 1.8109853)
-pivot_offset_ratio = Vector2(0.5, 0.5)
-mouse_filter = 2
-color = Color(0.2901961, 0.47843137, 0.5882353, 1)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ObstacleHolder/Wall/ObstacleWall47" unique_id=273325956]
-scale = Vector2(1.8109853, 1.8109853)
-shape = ExtResource("5_rx4sy")
-
-[node name="ObstacleWall12" type="StaticBody2D" parent="ObstacleHolder/Wall" unique_id=1776665902]
-position = Vector2(788.0005, -265.99994)
-rotation = -1.1015842
-scale = Vector2(0.99999994, 0.99999994)
-collision_layer = 16
-collision_mask = 0
-
-[node name="WallShadow" type="ColorRect" parent="ObstacleHolder/Wall/ObstacleWall12" unique_id=45689769]
-z_index = -1
-offset_left = -62.19886
-offset_top = -8.815483
-offset_right = 37.80114
-offset_bottom = 21.184517
-scale = Vector2(1.8109853, 1.8109853)
-pivot_offset_ratio = Vector2(0.5, 0.5)
-mouse_filter = 2
-color = Color(0.37629852, 0.37629852, 0.37629846, 1)
-
-[node name="WallGfx" type="ColorRect" parent="ObstacleHolder/Wall/ObstacleWall12" unique_id=66939609]
-offset_left = -50.0
-offset_top = -15.0
-offset_right = 50.0
-offset_bottom = 15.0
-scale = Vector2(1.8109853, 1.8109853)
-pivot_offset_ratio = Vector2(0.5, 0.5)
-mouse_filter = 2
-color = Color(0.2901961, 0.47843137, 0.5882353, 1)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ObstacleHolder/Wall/ObstacleWall12" unique_id=814053866]
-scale = Vector2(1.8109853, 1.8109853)
-shape = ExtResource("5_rx4sy")
-
-[node name="ObstacleWall13" type="StaticBody2D" parent="ObstacleHolder/Wall" unique_id=1273430793]
-position = Vector2(1531, -359.99988)
-rotation = -0.31618598
-collision_layer = 16
-collision_mask = 0
-
-[node name="WallShadow" type="ColorRect" parent="ObstacleHolder/Wall/ObstacleWall13" unique_id=556326158]
-z_index = -1
-offset_left = -54.25278
-offset_top = -2.00099
-offset_right = 45.74722
-offset_bottom = 27.99901
-scale = Vector2(1.8109853, 1.8109853)
-pivot_offset_ratio = Vector2(0.5, 0.5)
-mouse_filter = 2
-color = Color(0.37629852, 0.37629852, 0.37629846, 1)
-
-[node name="WallGfx" type="ColorRect" parent="ObstacleHolder/Wall/ObstacleWall13" unique_id=2077406228]
-offset_left = -50.0
-offset_top = -15.0
-offset_right = 50.0
-offset_bottom = 15.0
-scale = Vector2(1.8109853, 1.8109853)
-pivot_offset_ratio = Vector2(0.5, 0.5)
-mouse_filter = 2
-color = Color(0.2901961, 0.47843137, 0.5882353, 1)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ObstacleHolder/Wall/ObstacleWall13" unique_id=517030793]
-scale = Vector2(1.8109853, 1.8109853)
-shape = ExtResource("5_rx4sy")
-
-[node name="ObstacleWall14" type="StaticBody2D" parent="ObstacleHolder/Wall" unique_id=823370691]
-position = Vector2(-2629, 1116.0001)
-rotation = -0.054386515
-scale = Vector2(0.99999994, 0.99999994)
-collision_layer = 16
-collision_mask = 0
-
-[node name="WallShadow" type="ColorRect" parent="ObstacleHolder/Wall/ObstacleWall14" unique_id=1514752431]
-z_index = -1
-offset_left = -50.743477
-offset_top = -1.3432198
-offset_right = 49.256523
-offset_bottom = 28.65678
-scale = Vector2(1.8109853, 1.8109853)
-pivot_offset_ratio = Vector2(0.5, 0.5)
-mouse_filter = 2
-color = Color(0.37629852, 0.37629852, 0.37629846, 1)
-
-[node name="WallGfx" type="ColorRect" parent="ObstacleHolder/Wall/ObstacleWall14" unique_id=2123794103]
-offset_left = -50.0
-offset_top = -15.0
-offset_right = 50.0
-offset_bottom = 15.0
-scale = Vector2(1.8109853, 1.8109853)
-pivot_offset_ratio = Vector2(0.5, 0.5)
-mouse_filter = 2
-color = Color(0.2901961, 0.47843137, 0.5882353, 1)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ObstacleHolder/Wall/ObstacleWall14" unique_id=1706202714]
-scale = Vector2(1.8109853, 1.8109853)
-shape = ExtResource("5_rx4sy")
-
-[node name="ObstacleWall15" type="StaticBody2D" parent="ObstacleHolder/Wall" unique_id=1129818392]
-position = Vector2(-1886, 1022)
-rotation = 0.7310116
-collision_layer = 16
-collision_mask = 0
-
-[node name="WallShadow" type="ColorRect" parent="ObstacleHolder/Wall/ObstacleWall15" unique_id=1489061936]
-z_index = -1
-offset_left = -40.868916
-offset_top = -4.81748
-offset_right = 59.131084
-offset_bottom = 25.18252
-scale = Vector2(1.8109853, 1.8109853)
-pivot_offset_ratio = Vector2(0.5, 0.5)
-mouse_filter = 2
-color = Color(0.37629852, 0.37629852, 0.37629846, 1)
-
-[node name="WallGfx" type="ColorRect" parent="ObstacleHolder/Wall/ObstacleWall15" unique_id=2022304496]
-offset_left = -50.0
-offset_top = -15.0
-offset_right = 50.0
-offset_bottom = 15.0
-scale = Vector2(1.8109853, 1.8109853)
-pivot_offset_ratio = Vector2(0.5, 0.5)
-mouse_filter = 2
-color = Color(0.2901961, 0.47843137, 0.5882353, 1)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ObstacleHolder/Wall/ObstacleWall15" unique_id=1755309540]
-scale = Vector2(1.8109853, 1.8109853)
-shape = ExtResource("5_rx4sy")
-
-[node name="ObstacleWall16" type="StaticBody2D" parent="ObstacleHolder/Wall" unique_id=786771428]
-position = Vector2(-2533, 1642.0001)
-rotation = -1.1015842
-scale = Vector2(0.99999994, 0.99999994)
-collision_layer = 16
-collision_mask = 0
-
-[node name="WallShadow" type="ColorRect" parent="ObstacleHolder/Wall/ObstacleWall16" unique_id=1494115767]
-z_index = -1
-offset_left = -62.19886
-offset_top = -8.815483
-offset_right = 37.80114
-offset_bottom = 21.184517
-scale = Vector2(1.8109853, 1.8109853)
-pivot_offset_ratio = Vector2(0.5, 0.5)
-mouse_filter = 2
-color = Color(0.37629852, 0.37629852, 0.37629846, 1)
-
-[node name="WallGfx" type="ColorRect" parent="ObstacleHolder/Wall/ObstacleWall16" unique_id=591309765]
-offset_left = -50.0
-offset_top = -15.0
-offset_right = 50.0
-offset_bottom = 15.0
-scale = Vector2(1.8109853, 1.8109853)
-pivot_offset_ratio = Vector2(0.5, 0.5)
-mouse_filter = 2
-color = Color(0.2901961, 0.47843137, 0.5882353, 1)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ObstacleHolder/Wall/ObstacleWall16" unique_id=46324418]
-scale = Vector2(1.8109853, 1.8109853)
-shape = ExtResource("5_rx4sy")
-
-[node name="ObstacleWall17" type="StaticBody2D" parent="ObstacleHolder/Wall" unique_id=453051034]
-position = Vector2(-1790, 1548)
-rotation = -0.31618598
-collision_layer = 16
-collision_mask = 0
-
-[node name="WallShadow" type="ColorRect" parent="ObstacleHolder/Wall/ObstacleWall17" unique_id=1876806364]
-z_index = -1
-offset_left = -54.25278
-offset_top = -2.00099
-offset_right = 45.74722
-offset_bottom = 27.99901
-scale = Vector2(1.8109853, 1.8109853)
-pivot_offset_ratio = Vector2(0.5, 0.5)
-mouse_filter = 2
-color = Color(0.37629852, 0.37629852, 0.37629846, 1)
-
-[node name="WallGfx" type="ColorRect" parent="ObstacleHolder/Wall/ObstacleWall17" unique_id=1440570633]
-offset_left = -50.0
-offset_top = -15.0
-offset_right = 50.0
-offset_bottom = 15.0
-scale = Vector2(1.8109853, 1.8109853)
-pivot_offset_ratio = Vector2(0.5, 0.5)
-mouse_filter = 2
-color = Color(0.2901961, 0.47843137, 0.5882353, 1)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ObstacleHolder/Wall/ObstacleWall17" unique_id=1753520793]
-scale = Vector2(1.8109853, 1.8109853)
-shape = ExtResource("5_rx4sy")
-
-[node name="ObstacleWall18" type="StaticBody2D" parent="ObstacleHolder/Wall" unique_id=478900520]
-position = Vector2(-936, 885.0001)
-rotation = 1.5171586
-scale = Vector2(0.99999994, 0.99999994)
-collision_layer = 16
-collision_mask = 0
-
-[node name="WallShadow" type="ColorRect" parent="ObstacleHolder/Wall/ObstacleWall18" unique_id=86855011]
-z_index = -1
-offset_left = -36.342667
-offset_top = -14.266748
-offset_right = 63.657333
-offset_bottom = 15.733252
-scale = Vector2(1.8109853, 1.8109853)
-pivot_offset_ratio = Vector2(0.5, 0.5)
-mouse_filter = 2
-color = Color(0.37629852, 0.37629852, 0.37629846, 1)
-
-[node name="WallGfx" type="ColorRect" parent="ObstacleHolder/Wall/ObstacleWall18" unique_id=2033289344]
-offset_left = -50.0
-offset_top = -15.0
-offset_right = 50.0
-offset_bottom = 15.0
-scale = Vector2(1.8109853, 1.8109853)
-pivot_offset_ratio = Vector2(0.5, 0.5)
-mouse_filter = 2
-color = Color(0.2901961, 0.47843137, 0.5882353, 1)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ObstacleHolder/Wall/ObstacleWall18" unique_id=648648660]
-scale = Vector2(1.8109853, 1.8109853)
-shape = ExtResource("5_rx4sy")
-
-[node name="ObstacleWall19" type="StaticBody2D" parent="ObstacleHolder/Wall" unique_id=1080639119]
-position = Vector2(16.000061, 995)
-rotation = 2.3025568
-collision_layer = 16
-collision_mask = 0
-
-[node name="WallShadow" type="ColorRect" parent="ObstacleHolder/Wall/ObstacleWall19" unique_id=817334920]
-z_index = -1
-offset_left = -39.824318
-offset_top = -24.138704
-offset_right = 60.175682
-offset_bottom = 5.8612957
-scale = Vector2(1.8109853, 1.8109853)
-pivot_offset_ratio = Vector2(0.5, 0.5)
-mouse_filter = 2
-color = Color(0.37629852, 0.37629852, 0.37629846, 1)
-
-[node name="WallGfx" type="ColorRect" parent="ObstacleHolder/Wall/ObstacleWall19" unique_id=324769528]
-offset_left = -50.0
-offset_top = -15.0
-offset_right = 50.0
-offset_bottom = 15.0
-scale = Vector2(1.8109853, 1.8109853)
-pivot_offset_ratio = Vector2(0.5, 0.5)
-mouse_filter = 2
-color = Color(0.2901961, 0.47843137, 0.5882353, 1)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ObstacleHolder/Wall/ObstacleWall19" unique_id=714363448]
-scale = Vector2(1.8109853, 1.8109853)
-shape = ExtResource("5_rx4sy")
-
-[node name="ObstacleWall20" type="StaticBody2D" parent="ObstacleHolder/Wall" unique_id=114895583]
-position = Vector2(-840, 1411.0001)
-rotation = 0.46996093
-collision_layer = 16
-collision_mask = 0
-
-[node name="WallShadow" type="ColorRect" parent="ObstacleHolder/Wall/ObstacleWall20" unique_id=1775260004]
-z_index = -1
-offset_left = -43.80635
-offset_top = -2.8057766
-offset_right = 56.19365
-offset_bottom = 27.194223
-scale = Vector2(1.8109853, 1.8109853)
-pivot_offset_ratio = Vector2(0.5, 0.5)
-mouse_filter = 2
-color = Color(0.37629852, 0.37629852, 0.37629846, 1)
-
-[node name="WallGfx" type="ColorRect" parent="ObstacleHolder/Wall/ObstacleWall20" unique_id=1995177709]
-offset_left = -50.0
-offset_top = -15.0
-offset_right = 50.0
-offset_bottom = 15.0
-scale = Vector2(1.8109853, 1.8109853)
-pivot_offset_ratio = Vector2(0.5, 0.5)
-mouse_filter = 2
-color = Color(0.2901961, 0.47843137, 0.5882353, 1)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ObstacleHolder/Wall/ObstacleWall20" unique_id=1822078615]
-scale = Vector2(1.8109853, 1.8109853)
-shape = ExtResource("5_rx4sy")
-
-[node name="ObstacleWall21" type="StaticBody2D" parent="ObstacleHolder/Wall" unique_id=158209118]
-position = Vector2(-97.00006, 1317)
-rotation = 1.2553592
-scale = Vector2(0.99999994, 0.99999994)
-collision_layer = 16
-collision_mask = 0
-
-[node name="WallShadow" type="ColorRect" parent="ObstacleHolder/Wall/ObstacleWall21" unique_id=964995925]
-z_index = -1
-offset_left = -36.99781
-offset_top = -10.756955
-offset_right = 63.00219
-offset_bottom = 19.243046
-scale = Vector2(1.8109853, 1.8109853)
-pivot_offset_ratio = Vector2(0.5, 0.5)
-mouse_filter = 2
-color = Color(0.37629852, 0.37629852, 0.37629846, 1)
-
-[node name="WallGfx" type="ColorRect" parent="ObstacleHolder/Wall/ObstacleWall21" unique_id=814745637]
-offset_left = -50.0
-offset_top = -15.0
-offset_right = 50.0
-offset_bottom = 15.0
-scale = Vector2(1.8109853, 1.8109853)
-pivot_offset_ratio = Vector2(0.5, 0.5)
-mouse_filter = 2
-color = Color(0.2901961, 0.47843137, 0.5882353, 1)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ObstacleHolder/Wall/ObstacleWall21" unique_id=731804135]
-scale = Vector2(1.8109853, 1.8109853)
-shape = ExtResource("5_rx4sy")
+[node name="ObstacleContainer49" parent="ObstacleHolder/Wall" unique_id=1915216323 instance=ExtResource("9_t1q4r")]
+position = Vector2(-2805, -1868.0001)
+rotation = -0.9708805
 
 [node name="BigSpires" type="Node2D" parent="ObstacleHolder" unique_id=1796457854]
 
-[node name="ObstacleSpireBig35" parent="ObstacleHolder/BigSpires" unique_id=1677324250 instance=ExtResource("7_25cc2")]
+[node name="ObstacleSpireBig35" parent="ObstacleHolder/BigSpires" unique_id=2108071402 instance=ExtResource("7_25cc2")]
 position = Vector2(345, 1128)
 
 [node name="ObstacleSpireBig36" parent="ObstacleHolder/BigSpires" unique_id=1115230686 instance=ExtResource("7_25cc2")]

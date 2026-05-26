@@ -12,9 +12,9 @@ var _camera : Camera2D
 func _ready() -> void:
 	_camera = Ship.instance.find_child("Camera2D")
 	
-	shadow_layer.position = Vector2.ONE * shadow_distance
+	shadow_layer.global_position = global_position + (Vector2.ONE * shadow_distance)
 
 
 func _physics_process(delta: float) -> void:
 	if parallax_distance != 0:
-		top_layer.position = (_camera.get_target_position() - global_position) * parallax_distance * -0.01
+		top_layer.global_position = global_position + ((_camera.get_target_position() - global_position) * parallax_distance * -0.01)

@@ -14,7 +14,7 @@ shadow_distance = 20.0
 parallax_distance = 4.0
 
 [node name="BigSpireCliff" type="ColorRect" parent="." unique_id=973801819]
-z_index = -2
+z_index = -5
 offset_left = -30.0
 offset_top = -30.0
 offset_right = 30.0
@@ -25,7 +25,7 @@ mouse_filter = 2
 color = Color(0.5, 0.356, 0.13999999, 1)
 
 [node name="BigSpireCliff2" type="ColorRect" parent="." unique_id=131070904]
-z_index = -2
+z_index = -5
 offset_left = -30.0
 offset_top = -30.0
 offset_right = 30.0

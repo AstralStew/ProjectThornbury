@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://blyqo3acyv4gq" path="res://Scripts/Scan.gd" id="1_jldu1"]
 [ext_resource type="Shader" uid="uid://c8fh7yqqlk1x0" path="res://Assets/Shaders/new_shader.gdshader" id="2_yaixh"]
+[ext_resource type="Texture2D" uid="uid://cmcmd1bvjoq1b" path="res://Assets/Subresources/Grid_GradientTexture2D.tres" id="3_epmx8"]
 [ext_resource type="AudioStream" uid="uid://d2lj350r8iiyc" path="res://Assets/Audio/UI/453087__lilmati__script-dialogue-03.wav" id="3_yaixh"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4pvd7"]
@@ -25,18 +26,6 @@ expand_margin_bottom = 60.0
 shader = ExtResource("2_yaixh")
 shader_parameter/direction = Vector2(1, 1)
 shader_parameter/speed = 0.50000002375
-
-[sub_resource type="Gradient" id="Gradient_4pvd7"]
-offsets = PackedFloat32Array(0.86932516, 0.89631903)
-colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 0.39215687)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_lwken"]
-gradient = SubResource("Gradient_4pvd7")
-width = 32
-height = 32
-fill = 2
-fill_from = Vector2(0.4920635, 0.50915754)
-fill_to = Vector2(1, 1)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_jldu1"]
 radius = 0.69
@@ -84,7 +73,7 @@ offset_bottom = 156.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset_ratio = Vector2(0.5, 0.5)
-texture = SubResource("GradientTexture2D_lwken")
+texture = ExtResource("3_epmx8")
 expand_mode = 2
 stretch_mode = 1
 
@@ -93,6 +82,7 @@ scale = Vector2(200, 201.04)
 shape = SubResource("CircleShape2D_jldu1")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=788922585]
+process_mode = 1
 stream = ExtResource("3_yaixh")
 volume_db = -60.0
 pitch_scale = 4.0

@@ -21,7 +21,7 @@ offset_bottom = 30.0
 scale = Vector2(1.15, 1.15)
 pivot_offset_ratio = Vector2(0.5, 0.5)
 mouse_filter = 2
-color = Color(0.5, 0.356, 0.13999999, 1)
+color = Color(0.5019608, 0.35686275, 0.14117648, 1)
 
 [node name="SmallSpireCliff2" type="ColorRect" parent="." unique_id=131070904]
 z_index = -2
@@ -33,7 +33,7 @@ rotation = 0.7853982
 scale = Vector2(1.15, 1.15)
 pivot_offset_ratio = Vector2(0.5, 0.5)
 mouse_filter = 2
-color = Color(0.5, 0.356, 0.13999999, 1)
+color = Color(0.5019608, 0.35686275, 0.14117648, 1)
 
 [node name="ShadowLayer" type="Node2D" parent="." unique_id=1079910012]
 z_index = -1

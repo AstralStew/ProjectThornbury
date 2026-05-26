@@ -7,10 +7,17 @@
 size = Vector2(48, 6)
 
 [node name="CollectablePipe" type="Area2D" unique_id=1843489661]
-scale = Vector2(0.7, 0.7)
+scale = Vector2(0.6, 0.6)
 script = ExtResource("1_g1orq")
 type = 2
 metadata/_custom_type_script = "uid://bu7nan430podd"
+
+[node name="Shadow" type="Sprite2D" parent="." unique_id=524893635]
+modulate = Color(0, 0, 0, 0)
+texture_filter = 1
+position = Vector2(1.133, 0)
+scale = Vector2(1.1333332, 1.6666665)
+texture = ExtResource("2_bfdce")
 
 [node name="PipeLongMap" type="Sprite2D" parent="." unique_id=994004803]
 texture_filter = 1

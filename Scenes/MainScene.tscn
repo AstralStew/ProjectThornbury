@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://cl68y0cwjkauc" path="res://Assets/Images/UI/Potrait1.png" id="7_f140w"]
 [ext_resource type="Script" uid="uid://jlo8v3v54a6g" path="res://Scripts/IntroManager.gd" id="8_f140w"]
 [ext_resource type="AudioStream" uid="uid://d2lj350r8iiyc" path="res://Assets/Audio/UI/453087__lilmati__script-dialogue-03.wav" id="9_4b75m"]
+[ext_resource type="Material" uid="uid://begdsyvaebxsh" path="res://Assets/Materials/scanlines.tres" id="9_8ju71"]
 
 [sub_resource type="Gradient" id="Gradient_81xng"]
 offsets = PackedFloat32Array(0, 0.50641024, 1)
@@ -63,17 +64,14 @@ border_width_right = 2
 border_width_bottom = 2
 border_blend = true
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f140w"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xb4mg"]
 bg_color = Color(0.20300001, 0.24955001, 0.35, 0.90588236)
 border_width_left = 4
 border_width_top = 4
 border_width_right = 4
 border_width_bottom = 4
+border_color = Color(0, 0.57400006, 0.84, 0.627451)
 border_blend = true
-expand_margin_left = 4.0
-expand_margin_top = 4.0
-expand_margin_right = 4.0
-expand_margin_bottom = 4.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8ju71"]
 content_margin_left = 12.0
@@ -114,11 +112,11 @@ border_width_bottom = 4
 border_color = Color(0.3675, 0.60975003, 0.75, 1)
 border_blend = true
 
-[sub_resource type="Gradient" id="Gradient_4b75m"]
+[sub_resource type="Gradient" id="Gradient_ns7y1"]
 colors = PackedColorArray(0, 0, 0, 0, 1, 1, 1, 1)
 
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_4b75m"]
-gradient = SubResource("Gradient_4b75m")
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_6t1o7"]
+gradient = SubResource("Gradient_ns7y1")
 width = 8
 height = 7
 fill_to = Vector2(0, 1)
@@ -398,12 +396,14 @@ script = ExtResource("7_0iob3")
 default_text_speed = 20
 
 [node name="DialoguePC" type="PanelContainer" parent="UIHolder/DialogueBox" unique_id=1871352225]
+modulate = Color(1, 1, 1, 0.85882354)
+self_modulate = Color(1.0349987, 1.0349987, 1.0349987, 1)
 custom_minimum_size = Vector2(500, 100)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 mouse_filter = 1
-theme_override_styles/panel = SubResource("StyleBoxFlat_f140w")
+theme_override_styles/panel = SubResource("StyleBoxFlat_xb4mg")
 
 [node name="MarginContainer" type="MarginContainer" parent="UIHolder/DialogueBox/DialoguePC" unique_id=974129575]
 layout_mode = 2
@@ -475,12 +475,14 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_6t1o7")
 theme_override_styles/hover = SubResource("StyleBoxFlat_5qxwa")
 text = "buy me time"
 
-[node name="Scanlines" type="TextureRect" parent="UIHolder/DialogueBox/DialoguePC" unique_id=600688116]
-modulate = Color(0.2891, 0.47967002, 0.59, 0.47058824)
+[node name="Scanlines" type="TextureRect" parent="UIHolder/DialogueBox/DialoguePC" unique_id=1473701180]
+modulate = Color(0.7431572, 1.2161936, 1.4900565, 0.14117648)
+z_index = 1
 texture_repeat = 2
+material = ExtResource("9_8ju71")
 layout_mode = 2
 mouse_filter = 2
-texture = SubResource("GradientTexture2D_4b75m")
+texture = SubResource("GradientTexture2D_6t1o7")
 expand_mode = 3
 stretch_mode = 1
 

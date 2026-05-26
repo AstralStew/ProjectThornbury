@@ -1,11 +1,16 @@
 class_name Hoverscanner extends Area2D
 
 @export var shadow_distance : float = 5
+
+@export_category("SCANNING")
+
 @export var cooldown_duration : float = 1.0
 @export var sight_radius : float = 3.25
+@export var cancel_distance_adjust : float = 1.75
 
 @export_category("READ ONLY")
 @export var is_scanning : bool = false
+@export var is_cancelling : bool = false
 @export var is_cooling : bool = false
 
 var _line : Line2D = null
@@ -15,6 +20,7 @@ var _collision_shape : CollisionShape2D = null
 var _hoverscanner: Sprite2D
 var _shadow: Sprite2D
 
+var _current_scan : Scan = null
 
 func _ready() -> void: 
 	
@@ -37,10 +43,10 @@ var _tween : Tween
 func start_scan() -> void:
 	is_scanning = true
 	await get_tree().physics_frame
-	var _new_scan : Scan = InventoryManager.create_new_scan()
+	_current_scan = InventoryManager.create_new_scan()
 	
-	_new_scan.on_scan_end.connect(scan_end)
-	_new_scan.scanning()
+	_current_scan.on_scan_end.connect(scan_end)
+	_current_scan.scanning()
 	
 	_sight_radius.visible = false
 	_line.width = 69
@@ -57,9 +63,36 @@ func start_scan() -> void:
 		_line.set_point_position(2,_line.to_local(Ship.instance.global_position))
 		_line.set_point_position(1,_line.to_local(lerp(Ship.instance.global_position,global_position,0.5)))
 		
-		_line.modulate = _new_scan.modulate
+		_line.modulate = _current_scan.modulate
+		
+		if Ship.instance.global_position.distance_squared_to(global_position) > ((sight_radius + cancel_distance_adjust) * 100) * ((sight_radius + cancel_distance_adjust) * 100):
+			scan_cancel()
 		
 		await get_tree().physics_frame
+
+
+func scan_cancel() -> void:
+	is_cancelling = true
+	is_scanning = false
+	_current_scan.cancelling()
+	
+	await get_tree().physics_frame
+	if _tween: _tween.kill()
+	_tween = create_tween().set_parallel()
+	_tween.tween_property(_current_scan,"modulate",Color(modulate,0),1)
+	_tween.tween_property(_current_scan.audio_stream_player,"volume_db",-60,1)
+	_tween.tween_property(_current_scan.audio_stream_player,'pitch_scale',0.5,1)
+	_tween.tween_property(_line,"modulate",Color(1.0, 1.0, 0.5, 0.0),1)
+	_tween.tween_property(_line,"self_modulate",Color(1.0, 1.0, 1.0, 0),1)
+	_tween.tween_property(_line,"width",0,1)
+	
+	await get_tree().create_timer(1).timeout
+	
+	_current_scan.queue_free()
+	_current_scan = null
+	cooldown()
+	is_cancelling = false
+
 
 func scan_end(_found_items:Array[Item]) -> void:
 	if _found_items.size() > 0:
@@ -95,5 +128,5 @@ func cooldown() -> void:
 		_on_body_entered(_body)
 
 func _on_body_entered(body: Node2D) -> void:
-	if !is_scanning && !is_cooling && body is Ship:
+	if !is_scanning && !is_cancelling && !is_cooling && body is Ship:
 		start_scan()

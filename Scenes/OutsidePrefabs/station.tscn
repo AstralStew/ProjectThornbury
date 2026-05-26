@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://c0sl1u4dvsqni" path="res://Assets/Images/City/Building64.png" id="3_rr3ex"]
 [ext_resource type="Texture2D" uid="uid://rpi66dfpi25r" path="res://Assets/Images/City/Building1.png" id="4_dulit"]
 [ext_resource type="AudioStream" uid="uid://da1eqtqoss6mf" path="res://Assets/Audio/Station/371283__knoplund__spaceship-engine-noise-heavy-beep.wav" id="6_rr3ex"]
+[ext_resource type="Material" uid="uid://begdsyvaebxsh" path="res://Assets/Materials/scanlines.tres" id="7_dulit"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rr3ex"]
 atlas = ExtResource("3_g0kpg")
@@ -37,15 +38,6 @@ expand_margin_right = 10.0
 outline_size = 5
 outline_color = Color(0.2, 0.24705882, 0.34509805, 1)
 
-[sub_resource type="Gradient" id="Gradient_0iob3"]
-colors = PackedColorArray(0, 0, 0, 0, 1, 1, 1, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_rr3ex"]
-gradient = SubResource("Gradient_0iob3")
-width = 8
-height = 7
-fill_to = Vector2(0, 1)
-
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dulit"]
 bg_color = Color(0.20300001, 0.24955001, 0.35, 0.90588236)
 border_width_left = 4
@@ -55,11 +47,11 @@ border_width_bottom = 4
 border_color = Color(0, 0.57400006, 0.84, 0.627451)
 border_blend = true
 
-[sub_resource type="Gradient" id="Gradient_wro4f"]
+[sub_resource type="Gradient" id="Gradient_ns7y1"]
 colors = PackedColorArray(0, 0, 0, 0, 1, 1, 1, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_ns7y1"]
-gradient = SubResource("Gradient_wro4f")
+gradient = SubResource("Gradient_ns7y1")
 width = 8
 height = 7
 fill_to = Vector2(0, 1)
@@ -67,7 +59,7 @@ fill_to = Vector2(0, 1)
 [node name="Station" type="Area2D" unique_id=1439882274]
 monitorable = false
 script = ExtResource("1_ytpb5")
-fade_duration = 0.5
+fade_duration = 1.0
 metadata/_custom_type_script = "uid://dj133dg4r65on"
 
 [node name="Gfx" type="Node2D" parent="." unique_id=293722123]
@@ -307,7 +299,6 @@ autoplay = true
 max_distance = 350.0
 
 [node name="InfoOverlay" type="MarginContainer" parent="." unique_id=558995336]
-visible = false
 modulate = Color(1, 1, 1, 0)
 z_index = 263
 z_as_relative = false
@@ -320,23 +311,12 @@ offset_right = 290.0
 offset_bottom = 208.0
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(1e-05, 1e-05)
+pivot_offset_ratio = Vector2(0.5, 0.5)
 theme_override_constants/margin_left = 40
 theme_override_constants/margin_top = 40
 theme_override_constants/margin_right = 40
 theme_override_constants/margin_bottom = 40
-
-[node name="Scanlines2" type="TextureRect" parent="InfoOverlay" unique_id=1969637084]
-visible = false
-modulate = Color(0.2891, 0.47967002, 0.59, 0.47058824)
-texture_repeat = 2
-custom_minimum_size = Vector2(264.345, 50.165)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 0
-mouse_filter = 2
-texture = SubResource("GradientTexture2D_rr3ex")
-expand_mode = 1
-stretch_mode = 1
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="InfoOverlay" unique_id=247358760]
 layout_mode = 2
@@ -345,8 +325,9 @@ theme_override_constants/separation = 240
 alignment = 1
 
 [node name="DialoguePC" type="PanelContainer" parent="InfoOverlay/VBoxContainer2" unique_id=560489829]
-modulate = Color(1, 1, 1, 0.666)
+modulate = Color(1, 1, 1, 0.8039216)
 self_modulate = Color(1.0349987, 1.0349987, 1.0349987, 1)
+clip_children = 2
 custom_minimum_size = Vector2(300, 30)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -377,8 +358,9 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Scanlines" type="TextureRect" parent="InfoOverlay/VBoxContainer2/DialoguePC" unique_id=829875756]
-modulate = Color(0.2891, 0.47967002, 0.59, 0.47058824)
+modulate = Color(0.7431572, 1.2161936, 1.4900565, 0.2627451)
 texture_repeat = 2
+material = ExtResource("7_dulit")
 layout_mode = 2
 mouse_filter = 2
 texture = SubResource("GradientTexture2D_ns7y1")
@@ -386,7 +368,7 @@ expand_mode = 3
 stretch_mode = 1
 
 [node name="PopulationLabel" type="RichTextLabel" parent="InfoOverlay/VBoxContainer2" unique_id=904773881]
-modulate = Color(1, 1, 1, 0.7372549)
+clip_children = 2
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_colors/default_color = Color(0, 0.57400006, 0.84, 0.627451)
@@ -398,18 +380,19 @@ fit_content = true
 scroll_active = false
 horizontal_alignment = 1
 
-[node name="PopulationLabel2" type="RichTextLabel" parent="InfoOverlay/VBoxContainer2" unique_id=420875112]
-visible = false
-modulate = Color(1, 1, 1, 0.72300005)
-self_modulate = Color(1.101, 1.786, 2.183, 0.855)
-layout_mode = 2
-size_flags_vertical = 2
-theme_override_colors/default_color = Color(0, 1, 1, 1)
-theme_override_font_sizes/normal_font_size = 24
-bbcode_enabled = true
-text = "POPULATION: 1,312"
-fit_content = true
-scroll_active = false
-horizontal_alignment = 1
+[node name="Scanlines2" type="TextureRect" parent="InfoOverlay/VBoxContainer2/PopulationLabel" unique_id=1309056775]
+modulate = Color(0.7431572, 1.2161936, 1.4900565, 0.2627451)
+texture_repeat = 2
+material = ExtResource("7_dulit")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = SubResource("GradientTexture2D_ns7y1")
+expand_mode = 3
+stretch_mode = 1
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]

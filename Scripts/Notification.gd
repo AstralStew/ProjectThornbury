@@ -3,14 +3,20 @@ class_name Notification extends Area2D
 @onready var notification_audio_player: AudioStreamPlayer = $NotificationAudioPlayer
 
 
-@export var screen_edge : Vector2 = Vector2(310,260)
+#@export var screen_edge : Vector2 = Vector2(360,340)		# its in the inspector!!!
+
+@export var screen_edge_min : Vector2 = Vector2(300,280)
+@export var screen_edge_max : Vector2 = Vector2(360,340)
+
+@export var scale_distance_adjust : float = 30
 
 @export var minimum_alpha_distance : float = 6000
 @export var maximum_alpha_distance : float = 4000
 @export var minimum_scale_distance : float = 3000
 @export var maximum_scale_distance : float = 200
 @export var disappear_start_distance : float = 400
-@export var disappear_end_distance : float = 200
+@export var disappear_min_distance : float = 100
+@export var disappear_max_distance : float = 200
 
 
 @export_category("READ ONLY")
@@ -40,7 +46,8 @@ func tracking(_node:Node2D) -> void:
 	var _minimum_scale_sqr_distance : float = minimum_scale_distance * minimum_scale_distance
 	var _maximum_scale_sqr_distance : float = maximum_scale_distance * maximum_scale_distance
 	var _disappear_start_sqr_distance : float = disappear_start_distance * disappear_start_distance
-	var _disappear_end_sqr_distance : float = disappear_end_distance * disappear_end_distance
+	var disappear_min_sqr_distance : float = disappear_min_distance * disappear_min_distance
+	var disappear_max_sqr_distance : float = disappear_max_distance * disappear_max_distance
 	
 	target_position = _node.global_position # LevelManager.instance.to_local(get_tree().get_first_node_in_group("Stations").global_position)
 	
@@ -68,7 +75,8 @@ func tracking(_node:Node2D) -> void:
 		
 		if _distance < _disappear_start_sqr_distance:
 			$Arrow.visible = false
-			$SpriteIcon.modulate = Color(1,1,1,0.9) if !is_hovered else Color(1,1,1,1)
+			#$SpriteIcon.modulate = Color(1,1,1,0.9) if !is_hovered else Color(1,1,1,1)
+			$SpriteIcon.modulate = Color(1,1,1,clamp(remap(_distance,disappear_min_sqr_distance,disappear_max_sqr_distance,0.9,0.25), 0.25 if !is_hovered else 0.5,0.9)) 
 			scale = Vector2.ONE * (1.1 if is_hovered else 1.0)
 			global_position = target_position
 		else:
@@ -83,11 +91,15 @@ func tracking(_node:Node2D) -> void:
 			else:
 				scale = Vector2.ONE * clamp(remap(_distance,_maximum_scale_sqr_distance,_minimum_scale_sqr_distance,1.2,0.69),0.69,1.2) * (1.1 if is_hovered else 1.0)
 			
-			var clamped : Vector2 = (_camera_pos + (target_position - _camera_pos)) #  .direction_to(target_position) * 500)
-			clamped = Vector2(clamp(clamped.x,_camera_pos.x - screen_edge.x + (scale.x * 40),_camera_pos.x + screen_edge.x - (scale.x * 40)),clamp(clamped.y,_camera_pos.y - screen_edge.y + (scale.x * 40),_camera_pos.y + screen_edge.y - (scale.y * 40)))
+			var _screen_edge_x = clamp(remap(_distance,_disappear_start_sqr_distance,_minimum_alpha_sqr_distance,screen_edge_min.x,screen_edge_max.x),screen_edge_min.x,screen_edge_max.x)
+			var _screen_edge_y = clamp(remap(_distance,_disappear_start_sqr_distance,_minimum_alpha_sqr_distance,screen_edge_min.y,screen_edge_max.y),screen_edge_min.y,screen_edge_max.y)
+			
+			var clamped : Vector2 = target_position # (_camera_pos + (target_position - _camera_pos)) #  .direction_to(target_position) * 500)
+			clamped = Vector2(clamp(clamped.x,_camera_pos.x - _screen_edge_x + (scale.x * scale_distance_adjust),_camera_pos.x + _screen_edge_x - (scale.x * scale_distance_adjust)),clamp(clamped.y,_camera_pos.y - _screen_edge_y + (scale.y * scale_distance_adjust),_camera_pos.y + _screen_edge_y - (scale.y * scale_distance_adjust)))
 			
 			global_position = clamped # (_camera_pos + _camera_pos.direction_to(target_position) * 400) #.clamp(_camera_pos-screen_edge + (scale * 40), _camera_pos+screen_edge - (scale * 40))  # target_position.clamp(_camera_pos-screen_edge + (scale * 40), _camera_pos+screen_edge - (scale * 40))
-		
+			
+			# ITS IN THE INSPECTOR IDIOT !!!!!!!!!!!!!
 		
 		await get_tree().physics_frame
 		
@@ -147,12 +159,10 @@ func on_choose_reward(reward_index:int) -> void:
 	
 	match rewards[reward_index]:
 		NotificationManager.RewardType.REPAIR:
-			for i in station.prosperity:
-				GLOBALS.health += 3
+			GLOBALS.health += 3 * station.prosperity
 		
 		NotificationManager.RewardType.DELAY:
-			for i in station.prosperity:
-				CountdownManager.adjust_countdown(-45)
+			CountdownManager.adjust_countdown(-45 * station.prosperity)
 		
 		NotificationManager.RewardType.RESOURCE:
 			match station.order_type:

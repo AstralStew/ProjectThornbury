@@ -37,6 +37,7 @@ enum RewardType {REPAIR,DELAY,RESOURCE}
 	"No worries",
 	"Can do",
 	"Yea sick",
+	"Sure thing",
 	"Affirmative",
 	"Nah yeah",
 	"Of course",
@@ -45,21 +46,24 @@ enum RewardType {REPAIR,DELAY,RESOURCE}
 	"On my way",
 	"Say no more",
 	"I got you",
-	"Let's go",
+	"Let's gooo",
+	"Heard chef",
 ]
 
 @export var station_names : Array[String] = [
 	"Sankara Prime",
-	"Camp Goldman",
-	"Gram-Sci Hub",
-	"Bogdanov Arcade",
+	"Goldman Prospekt",
+	"GramSci Hub",
+	"Bogdanov Arkade",
+	"Gue'Vara Colony",
+	"Laomao 2X-V2",
 ]
 
 @export var populations : Array[String] = [
 	"1312",
-	"1691",
-	"1420",
-	"1161",
+	"6090",
+	"4200",
+	"1610",
 ]
 
 

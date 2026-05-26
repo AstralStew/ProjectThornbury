@@ -1,0 +1,74 @@
+[gd_scene format=3 uid="uid://cti12y32qfori"]
+
+[ext_resource type="Script" uid="uid://cfpouck60arm4" path="res://Scripts/Obstacle.gd" id="1_q11j4"]
+[ext_resource type="Shape2D" uid="uid://r5wtxbftxr78" path="res://Assets/Subresources/Wall_RectangleShape2d.tres" id="2_q11j4"]
+[ext_resource type="Texture2D" uid="uid://dk41bap0j0ycg" path="res://Assets/Subresources/ContainerGrid_GradientTexture2D.tres" id="2_y4npm"]
+
+[node name="ObstacleContainer" type="StaticBody2D" unique_id=1677324250 node_paths=PackedStringArray("top_layer", "shadow_layer")]
+texture_filter = 2
+collision_layer = 16
+collision_mask = 0
+script = ExtResource("1_q11j4")
+top_layer = NodePath("TopLayer")
+shadow_layer = NodePath("ShadowLayer")
+shadow_distance = 8.0
+parallax_distance = 2.5
+
+[node name="ContainerBase" type="ColorRect" parent="." unique_id=2111633141]
+modulate = Color(0.92191374, 0.62178475, 0.66970366, 1)
+z_index = -2
+offset_left = -85.0
+offset_top = -23.0
+offset_right = 85.0
+offset_bottom = 23.0
+pivot_offset_ratio = Vector2(0.5, 0.5)
+mouse_filter = 2
+color = Color(0.2901961, 0.47843137, 0.5882353, 1)
+
+[node name="ShadowLayer" type="Node2D" parent="." unique_id=1079910012]
+z_index = -1
+
+[node name="ContainerShadow" type="ColorRect" parent="ShadowLayer" unique_id=472339982]
+z_index = -1
+offset_left = -85.0
+offset_top = -23.0
+offset_right = 85.0
+offset_bottom = 23.0
+pivot_offset_ratio = Vector2(0.5, 0.5)
+mouse_filter = 2
+color = Color(0, 0, 0, 0.147)
+
+[node name="TopLayer" type="Node2D" parent="." unique_id=643906579]
+z_index = 1
+
+[node name="ContainerGfx2" type="ColorRect" parent="TopLayer" unique_id=1739123463]
+offset_left = -85.0
+offset_top = -23.0
+offset_right = 85.0
+offset_bottom = 23.0
+pivot_offset_ratio = Vector2(0.5, 0.5)
+mouse_filter = 2
+color = Color(0.2901961, 0.47843137, 0.5882353, 1)
+
+[node name="ContainerGfx" type="TextureRect" parent="TopLayer" unique_id=822345592]
+modulate = Color(1, 1, 1, 0.27058825)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -85.0
+offset_top = -23.0
+offset_right = 85.0
+offset_bottom = 23.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset_ratio = Vector2(0.5, 0.5)
+mouse_filter = 2
+texture = ExtResource("2_y4npm")
+expand_mode = 1
+stretch_mode = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=697111983]
+position = Vector2(9.536743e-07, 0)
+shape = ExtResource("2_q11j4")

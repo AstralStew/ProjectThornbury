@@ -68,7 +68,7 @@ func scanning() -> void:
 	
 	_tracking_bodies = true
 	var scan_time = 0.015
-	var _number_of_scan_attempts = 20
+	var _number_of_scan_attempts = 15
 	while (_number_of_scan_attempts > 0):
 		_tween = create_tween().set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_QUAD).set_parallel()
 		_tween.tween_property(self,"modulate",Color(1,1,0,0),scan_time * _number_of_scan_attempts * 0.5)
@@ -130,6 +130,10 @@ func scanning() -> void:
 	visible = false
 	
 
+func cancelling() -> void:
+	audio_stream_player.volume_db = -24
+	process_mode = Node.PROCESS_MODE_DISABLED
+	
 
 func _on_body_entered(body: Node2D) -> void:
 	if _tracking_bodies && body is Item:
