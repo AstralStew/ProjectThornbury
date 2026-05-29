@@ -5,6 +5,7 @@ static var instance : OutsideManager = null
 @onready var sub_viewport: SubViewport = $SubViewportContainer/SubViewport
 
 
+@export var level_prefab : PackedScene = null
 @export var collectable_rock_prefab : PackedScene = null
 @export var collectable_crate_prefab : PackedScene = null
 @export var collectable_pipe_prefab : PackedScene = null
@@ -15,7 +16,23 @@ func _enter_tree() -> void:
 	instance = self
 
 func _ready() -> void:
-	collectable_holder = ($SubViewportContainer/SubViewport.get_child(0) as LevelManager).collectable_holder
+	
+	var _level = level_prefab.instantiate()
+	get_child(0).get_child(0).add_child(_level,true)
+	get_child(0).get_child(0).move_child(_level,0)
+	
+	
+	collectable_holder = _level.collectable_holder
+	
+	#var _notification_manager = NotificationManager.new()
+	#get_child(0).get_child(0).add_child(_notification_manager, true)
+	
+	#if NotificationManager.instance == null:
+		#var _notification_manager = NotificationManager.new()
+		#get_child(0).get_child(0).add_child(_notification_manager, true)
+		##move_child(_notification_manager,0)
+	
+	
 
 
 

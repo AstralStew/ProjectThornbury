@@ -7,7 +7,9 @@ static var instance : CapitalShot = null
 @onready var explosion: Sprite2D = $Explosion
 @onready var dot: Sprite2D = $Dot
 
-@onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
+@onready var explosion_audio_player: AudioStreamPlayer = $ExplosionAudioPlayer
+@onready var warning_audio_player: AudioStreamPlayer = $WarningAudioPlayer
+
 
 
 
@@ -38,7 +40,10 @@ func _fire() -> void:
 	_tween.tween_property(circles,"modulate",Color(Color.WHITE,0.45),duration)
 	_tween.tween_property(self,"modulate",Color(Color.WHITE),duration)
 	_tween.tween_property(self,"tween_lerp",1,duration)
-	_tween.tween_callback(audio_stream_player.play).set_delay(2.45) #1.8
+	_tween.tween_callback(explosion_audio_player.play).set_delay(2.45) #1.8
+	#_tween.tween_callback(warning.set.bind("visible",false)).set_delay(5) 
+	#_tween.tween_callback(dot.set.bind("visible",false)).set_delay(5) 
+	#_tween.tween_callback(circles.set.bind("visible",false)).set_delay(5) 
 	#_tween.tween_property(self,"global_position",Vector2(360,320),duration)
 	
 	flashing()
@@ -46,7 +51,8 @@ func _fire() -> void:
 		global_position = start_pos.lerp(_target.global_position,tween_lerp)
 		await get_tree().process_frame
 	firing = false
-	
+	await get_tree().process_frame
+	circles.visible = false
 	warning.visible = false
 	dot.visible = false
 	
@@ -54,12 +60,12 @@ func _fire() -> void:
 	
 	#Ship.on_took_damage().emit()
 	
-	explosion.scale = Vector2.ONE * 0.35
+	explosion.scale = Vector2.ONE * 0.45
 	if _tween: _tween.kill()
 	_tween = create_tween().set_parallel()
-	_tween.tween_property(explosion,"scale",Vector2(0.02,0.02),1).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_ELASTIC)
-	_tween.tween_property(OutsideManager.instance.get_child(0),"modulate",Color(2,2,2,2),0.15).set_delay(0.85).set_ease(Tween.EASE_IN)
-	_tween.tween_property(InventoryManager.instance.get_child(0),"modulate",Color(2,2,2,2),0.15).set_delay(0.85).set_ease(Tween.EASE_IN)
+	_tween.tween_property(explosion,"scale",Vector2(0.01,0.01),1.25).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_ELASTIC)
+	_tween.tween_property(OutsideManager.instance.get_child(0),"modulate",Color(2.0, 1.916, 1.435, 1.0),0.15).set_delay(0.85).set_ease(Tween.EASE_IN)
+	_tween.tween_property(InventoryManager.instance.get_child(0),"modulate",Color(2.0, 1.916, 1.435, 1.0),0.15).set_delay(0.85).set_ease(Tween.EASE_IN)
 	_tween.tween_property(OutsideManager.instance.get_child(0),"modulate",Color(1,1,1,1),0.15).set_delay(1.0).set_ease(Tween.EASE_OUT)
 	_tween.tween_property(InventoryManager.instance.get_child(0),"modulate",Color(1,1,1,1),0.15).set_delay(1.0).set_ease(Tween.EASE_OUT)
 	await get_tree().create_timer(0.7,false).timeout
@@ -84,11 +90,21 @@ func _fire() -> void:
 
 
 func flashing() -> void:
+	var _time = duration/14
+	var _volume_db = -30
 	while (firing):
-		warning.visible = false
-		await get_tree().create_timer(duration/14,false).timeout
-		warning.visible = true
-		await get_tree().create_timer(duration/14,false).timeout
+		warning.visible = !warning.visible
+		if warning.visible:
+			warning_audio_player.volume_db = _volume_db
+			warning_audio_player.play()
+		else:
+			warning.scale = warning.scale.lerp(Vector2.ONE * 1.3,0.2)
+			warning_audio_player.stop()
+			_volume_db *= 0.95
+		await get_tree().create_timer(_time,false).timeout
+		_time *= 0.95
+
+	
 
 func fired() -> void:
 	UIManager.instance.lose()

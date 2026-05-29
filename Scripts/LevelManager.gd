@@ -13,10 +13,14 @@ static var current_prosperity : float = 0
 signal _on_prosperity_updated(percentage)
 static func on_prosperity_updated() -> Signal: return instance._on_prosperity_updated
 
+signal _on_level_ready
+static func on_level_ready() -> Signal: return instance._on_level_ready
+
 func _enter_tree() -> void:
 	instance = self
 	target_prosperity = 0
 	current_prosperity = 0
+	rotation = GLOBALS.random_rotation(180)
 	
 
 func activate_stations_over_time() -> void:
@@ -38,6 +42,8 @@ func _ready() -> void:
 	activate_stations_over_time()
 	
 	_on_prosperity_updated.emit(current_prosperity as float / target_prosperity as float)
+	
+	_on_level_ready.emit()
 
 func increase_prosperity(_station:Station) -> void:
 	print_rich(DEBUG_NAME,"IncreaseProsperity > Adding 1 and updating prosperity")

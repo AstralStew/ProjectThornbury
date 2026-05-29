@@ -10,10 +10,13 @@ var DEBUG_NAME : String :
 
 @export_category("UI")
 
+@export var portrait : Texture2D = null
+@export var voice_pitch : float = 1.03
+
+@export_category("STATION UI")
 @export var fade_duration : float = 2.0
 
 @export_category("CONTROLS")
-
 
 @export var cooldown_duration : Vector2 = Vector2(10.0,30.0)
 
@@ -49,6 +52,19 @@ var _order_items : Array[InventoryManager.ItemType]
 
 func _ready() -> void:
 	
+	station_name = NotificationManager.pop_random_station_name()
+	station_header.text = station_name
+	
+	population = NotificationManager.pop_random_population()
+	population_label.text = "Population: " + population
+	
+	prosperity = 0
+	
+	LevelManager.on_level_ready().connect(on_level_ready)
+
+func on_level_ready() -> void:
+	global_rotation_degrees = 0
+	
 	for _child:Node2D in get_child(0).get_children():
 		if "Expansion" in _child.name:
 			_expansions.append(_child)
@@ -56,15 +72,7 @@ func _ready() -> void:
 			(_child.get_child(0) as Node2D).global_position = _child.global_position + Vector2(8,10)
 	
 	_expansions.pick_random().visible = true
-	
-	station_name = NotificationManager.pop_random_station_name()
-	station_header.text = station_name
-	
-	population = NotificationManager.pop_random_population()
-	population_label.text = "Population: " + population
-	
-	
-	prosperity = 0
+
 
 func make_order() -> void:
 	if has_order || is_prosperous: return
@@ -83,6 +91,8 @@ func make_order() -> void:
 	
 	has_order = true
 	on_make_order.emit(self)
+	
+	NotificationManager.register_station_notification(self)
 
 
 func collect(collectable: Collectable) -> void:
@@ -95,11 +105,11 @@ func collect(collectable: Collectable) -> void:
 		order_number -= 1
 		if check_order(): complete_order()
 	
-	var _tween : Tween = create_tween().set_parallel().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUAD)
-	_tween.tween_property(collectable,"modulate",Color(0,0,0,0),0.75)
-	_tween.tween_property(collectable,"global_position",global_position + Vector2(remap(randf(),0,1,-30,30),remap(randf(),0,1,-30,30)),0.75)
-	_tween.tween_property(collectable,"scale",Vector2(0.25,0.25),0.75)
-	_tween.tween_callback(collectable.queue_free).set_delay(0.75)
+	var _collect_tween : Tween = create_tween().set_parallel().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUAD)
+	_collect_tween.tween_property(collectable,"modulate",Color(0,0,0,0),0.75)
+	_collect_tween.tween_property(collectable,"global_position",global_position + Vector2(remap(randf(),0,1,-30,30),remap(randf(),0,1,-30,30)),0.75)
+	_collect_tween.tween_property(collectable,"scale",Vector2(0.25,0.25),0.75)
+	_collect_tween.tween_callback(collectable.queue_free).set_delay(0.75)
 	await get_tree().create_timer(0.75,false).timeout
 	
 	

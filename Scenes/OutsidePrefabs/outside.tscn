@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://c14fl8nyl0y11" path="res://Scenes/OutsidePrefabs/collectable_rock.tscn" id="2_y5stx"]
 [ext_resource type="PackedScene" uid="uid://dtkur4468wq5q" path="res://Scenes/OutsidePrefabs/collectable_crate.tscn" id="3_dw31t"]
 [ext_resource type="Texture2D" uid="uid://bs8wppq8ctccy" path="res://Assets/Images/Ships/Ships_Sheet.png" id="3_slk23"]
+[ext_resource type="PackedScene" uid="uid://cbf7m3hmnto6d" path="res://Scenes/OutsidePrefabs/collectable_pipe.tscn" id="5_wro4f"]
 [ext_resource type="AudioStream" uid="uid://drhykpp8hryvb" path="res://Assets/Audio/Ship/427504__solarphasing__industrial-noises-ambient-sound-1.wav" id="8_dw31t"]
 [ext_resource type="Script" uid="uid://dvgg4pi46sf3l" path="res://Scripts/NotificationManager.gd" id="9_2x00p"]
 [ext_resource type="AudioStream" uid="uid://c4oqc6dubk2el" path="res://Assets/Audio/Ship/716972__newlocknew__expldsgn_engine-ignition-burstengine-startnitroflareblast.mp3" id="9_7c3hi"]
@@ -18,6 +19,7 @@
 [ext_resource type="Texture2D" uid="uid://bilt7cu3ivxxr" path="res://Assets/Images/City/Building40.png" id="16_34hon"]
 [ext_resource type="Texture2D" uid="uid://b23ulwq6eo2yy" path="res://Assets/Images/City/Building160.png" id="17_2tyim"]
 [ext_resource type="AudioStream" uid="uid://bddgytamfn588" path="res://Assets/Audio/Capital/822420__audiopapkin__riser-hit-sfx-120.wav" id="18_wro4f"]
+[ext_resource type="AudioStream" uid="uid://bmpuyrklwakep" path="res://Assets/Audio/Inventory/722376__qubodup__error-2.wav" id="20_xj71t"]
 
 [sub_resource type="Curve" id="Curve_mf7ev"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 1.4, 0.0, 0, 0]
@@ -42,36 +44,6 @@ random_pitch = 1.587401
 streams_count = 1
 stream_0/stream = ExtResource("11_b5k80")
 
-[sub_resource type="Gradient" id="Gradient_2x00p"]
-colors = PackedColorArray(0, 0, 0, 0, 1, 1, 1, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_2x00p"]
-gradient = SubResource("Gradient_2x00p")
-width = 8
-height = 7
-fill_to = Vector2(0, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2tyim"]
-bg_color = Color(0.20300001, 0.24955001, 0.35, 0.90588236)
-border_width_left = 4
-border_width_top = 4
-border_width_right = 4
-border_width_bottom = 4
-border_blend = true
-expand_margin_left = 4.0
-expand_margin_top = 4.0
-expand_margin_right = 4.0
-expand_margin_bottom = 4.0
-
-[sub_resource type="Gradient" id="Gradient_kbeus"]
-colors = PackedColorArray(0, 0, 0, 0, 1, 1, 1, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_4ehy8"]
-gradient = SubResource("Gradient_kbeus")
-width = 8
-height = 7
-fill_to = Vector2(0, 1)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_wro4f"]
 atlas = ExtResource("15_2tyim")
 region = Rect2(164, 78, 72, 72)
@@ -92,8 +64,10 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 script = ExtResource("1_dxilr")
+level_prefab = ExtResource("2_0luta")
 collectable_rock_prefab = ExtResource("2_y5stx")
 collectable_crate_prefab = ExtResource("3_dw31t")
+collectable_pipe_prefab = ExtResource("5_wro4f")
 metadata/_custom_type_script = "uid://di153cmafhifq"
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="." unique_id=2109690331]
@@ -108,8 +82,6 @@ physics_object_picking_sort = true
 physics_object_picking_first_only = true
 size = Vector2i(680, 600)
 render_target_update_mode = 4
-
-[node name="Level1" parent="SubViewportContainer/SubViewport" unique_id=647410072 instance=ExtResource("2_0luta")]
 
 [node name="Ship" type="CharacterBody2D" parent="SubViewportContainer/SubViewport" unique_id=632637021 node_paths=PackedStringArray("trails")]
 physics_interpolation_mode = 1
@@ -199,10 +171,9 @@ max_polyphony = 2
 process_mode = 3
 current = true
 
-[node name="NotificationManager" type="Node2D" parent="SubViewportContainer/SubViewport" unique_id=1939579723]
+[node name="NotificationManager" type="Node2D" parent="SubViewportContainer/SubViewport" unique_id=2142128963]
 z_index = 10
 script = ExtResource("9_2x00p")
-order_flavour_options = Array[String](["The old planet is dying; a new one struggles to be born.", "We stand for the pink, white, and blue around these parts.", "Those who bring us tools of our own - that is true aid.", "From each to their ability; to each an even bounty!", "Community or barbarism - there is no other choice.", "They say to 'get ahead'... of whom? Our neighbours?", "People of the stars unite! We lose nothing but our chains!", "Let us throw our bodies upon the gears of this machine!"])
 
 [node name="ShipsSheet3" type="Sprite2D" parent="SubViewportContainer/SubViewport" unique_id=870030565]
 visible = false
@@ -245,116 +216,6 @@ texture = ExtResource("3_slk23")
 offset = Vector2(0, -2.655)
 region_enabled = true
 region_rect = Rect2(54, 44, 24, 31)
-
-[node name="CanvasLayer" type="CanvasLayer" parent="SubViewportContainer/SubViewport" unique_id=1719000389]
-
-[node name="MarginContainer" type="MarginContainer" parent="SubViewportContainer/SubViewport/CanvasLayer" unique_id=485890872]
-visible = false
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/margin_left = 40
-theme_override_constants/margin_top = 40
-theme_override_constants/margin_right = 40
-theme_override_constants/margin_bottom = 40
-
-[node name="MarginContainer" type="MarginContainer" parent="SubViewportContainer/SubViewport/CanvasLayer/MarginContainer" unique_id=1804496861]
-visible = false
-layout_mode = 2
-theme_override_constants/margin_left = 16
-theme_override_constants/margin_top = 16
-theme_override_constants/margin_right = 16
-theme_override_constants/margin_bottom = 16
-
-[node name="VBoxContainer" type="VBoxContainer" parent="SubViewportContainer/SubViewport/CanvasLayer/MarginContainer/MarginContainer" unique_id=1499070291]
-layout_mode = 2
-theme_override_constants/separation = 15
-
-[node name="HBoxContainer" type="HBoxContainer" parent="SubViewportContainer/SubViewport/CanvasLayer/MarginContainer/MarginContainer/VBoxContainer" unique_id=1839051696]
-layout_mode = 2
-
-[node name="Scanlines2" type="TextureRect" parent="SubViewportContainer/SubViewport/CanvasLayer/MarginContainer" unique_id=761041328]
-visible = false
-modulate = Color(0.2891, 0.47967002, 0.59, 0.47058824)
-texture_repeat = 2
-custom_minimum_size = Vector2(264.345, 50.165)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 0
-mouse_filter = 2
-texture = SubResource("GradientTexture2D_2x00p")
-expand_mode = 1
-stretch_mode = 1
-
-[node name="VBoxContainer2" type="VBoxContainer" parent="SubViewportContainer/SubViewport/CanvasLayer/MarginContainer" unique_id=1452804356]
-layout_mode = 2
-size_flags_vertical = 0
-
-[node name="DialoguePC" type="PanelContainer" parent="SubViewportContainer/SubViewport/CanvasLayer/MarginContainer/VBoxContainer2" unique_id=752460918]
-modulate = Color(1, 1, 1, 0.795)
-self_modulate = Color(1.0349987, 1.0349987, 1.0349987, 1)
-custom_minimum_size = Vector2(500, 30)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-mouse_filter = 1
-theme_override_styles/panel = SubResource("StyleBoxFlat_2tyim")
-
-[node name="StationHeader" type="RichTextLabel" parent="SubViewportContainer/SubViewport/CanvasLayer/MarginContainer/VBoxContainer2/DialoguePC" unique_id=1799901078]
-process_mode = 3
-self_modulate = Color(1.908589, 1.908589, 1.908589, 1)
-clip_contents = false
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 0
-size_flags_stretch_ratio = 2.44
-mouse_filter = 1
-theme_override_colors/default_color = Color(0.3675, 0.60975003, 0.75, 1)
-theme_override_colors/font_outline_color = Color(0.3675, 0.60975003, 0.75, 1)
-theme_override_constants/line_separation = -2
-theme_override_constants/paragraph_separation = -6
-theme_override_constants/outline_size = 2
-theme_override_font_sizes/normal_font_size = 36
-bbcode_enabled = true
-text = "s a n k a r a   s t a t i o n"
-fit_content = true
-scroll_active = false
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Scanlines" type="TextureRect" parent="SubViewportContainer/SubViewport/CanvasLayer/MarginContainer/VBoxContainer2/DialoguePC" unique_id=827002072]
-modulate = Color(0.2891, 0.47967002, 0.59, 0.47058824)
-texture_repeat = 2
-layout_mode = 2
-mouse_filter = 2
-texture = SubResource("GradientTexture2D_4ehy8")
-expand_mode = 3
-stretch_mode = 1
-
-[node name="RichTextLabel2" type="RichTextLabel" parent="SubViewportContainer/SubViewport/CanvasLayer/MarginContainer/VBoxContainer2" unique_id=1849920057]
-layout_mode = 2
-size_flags_vertical = 3
-theme_override_font_sizes/normal_font_size = 20
-text = "population: 1312"
-fit_content = true
-scroll_active = false
-horizontal_alignment = 1
-
-[node name="RichTextLabel" type="RichTextLabel" parent="SubViewportContainer/SubViewport/CanvasLayer/MarginContainer/VBoxContainer2" unique_id=308368977]
-visible = false
-modulate = Color(1, 1, 1, 0.72300005)
-self_modulate = Color(1.101, 1.786, 2.183, 0.855)
-layout_mode = 2
-size_flags_vertical = 2
-theme_override_colors/default_color = Color(0, 1, 1, 1)
-theme_override_font_sizes/normal_font_size = 24
-bbcode_enabled = true
-text = "POPULATION: 1,312"
-fit_content = true
-scroll_active = false
-horizontal_alignment = 1
 
 [node name="ShipGfx" type="Node2D" parent="." unique_id=1045358773]
 physics_interpolation_mode = 1
@@ -404,11 +265,10 @@ scale = Vector2(0.23757839, 0.23454246)
 texture = ExtResource("16_34hon")
 
 [node name="Warning" type="Sprite2D" parent="CapitalShot" unique_id=747673784]
-visible = false
 modulate = Color(1.361005, 1.229893, 0, 1)
 texture_filter = 1
 position = Vector2(0, -11)
-scale = Vector2(1.2938029, 1.2938029)
+scale = Vector2(0.5, 0.5)
 texture = SubResource("AtlasTexture_4ehy8")
 offset = Vector2(0, 1)
 
@@ -438,7 +298,13 @@ scale = Vector2(0.1, 0.1)
 texture = ExtResource("17_2tyim")
 offset = Vector2(0, -6.465)
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="CapitalShot" unique_id=569745998]
+[node name="ExplosionAudioPlayer" type="AudioStreamPlayer" parent="CapitalShot" unique_id=569745998]
 process_mode = 3
 stream = ExtResource("18_wro4f")
 volume_db = 4.0
+
+[node name="WarningAudioPlayer" type="AudioStreamPlayer" parent="CapitalShot" unique_id=364387263]
+process_mode = 3
+stream = ExtResource("20_xj71t")
+volume_db = -5.55
+pitch_scale = 2.0

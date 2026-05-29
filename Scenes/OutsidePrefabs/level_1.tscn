@@ -11,6 +11,10 @@
 [ext_resource type="Shader" uid="uid://blns1mvk8wu7r" path="res://Assets/Shaders/scrolling.gdshader" id="9_2kmtg"]
 [ext_resource type="PackedScene" uid="uid://b6iil7b4pqyxy" path="res://Scenes/OutsidePrefabs/obstacle_spire.tscn" id="9_7ipgj"]
 [ext_resource type="PackedScene" uid="uid://cti12y32qfori" path="res://Scenes/OutsidePrefabs/obstacle_container.tscn" id="9_t1q4r"]
+[ext_resource type="Texture2D" uid="uid://bbawnyasy27xc" path="res://Assets/Images/UI/Potrait2.png" id="12_vpm5x"]
+[ext_resource type="Texture2D" uid="uid://bku7xuil1hld3" path="res://Assets/Images/UI/Potrait4.png" id="13_vronc"]
+[ext_resource type="Texture2D" uid="uid://cl68y0cwjkauc" path="res://Assets/Images/UI/Potrait1.png" id="14_20ipq"]
+[ext_resource type="Texture2D" uid="uid://b3r47mmbq4n2k" path="res://Assets/Images/UI/Potrait3.png" id="15_v4xb6"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_51e2h"]
 
@@ -2436,13 +2440,34 @@ stretch_mode = 1
 
 [node name="Station" parent="." unique_id=1439882274 groups=["Stations"] instance=ExtResource("2_80ic5")]
 position = Vector2(1518, 1459)
+portrait = ExtResource("12_vpm5x")
 cooldown_duration = Vector2(25, 45)
 
 [node name="Station2" parent="." unique_id=352694730 groups=["Stations"] instance=ExtResource("2_80ic5")]
 position = Vector2(-1886, -1954)
+portrait = ExtResource("13_vronc")
+voice_pitch = 0.91
 
 [node name="Station3" parent="." unique_id=1875856237 groups=["Stations"] instance=ExtResource("2_80ic5")]
 position = Vector2(1590, -939)
+portrait = ExtResource("14_20ipq")
+voice_pitch = 0.79
 
 [node name="Station4" parent="." unique_id=387573631 groups=["Stations"] instance=ExtResource("2_80ic5")]
 position = Vector2(-1446, 1708)
+portrait = ExtResource("15_v4xb6")
+voice_pitch = 0.67
+
+[node name="Pipeyard" type="Node2D" parent="." unique_id=1296183743]
+visible = false
+z_index = -6
+position = Vector2(1113, 18)
+
+[node name="Polygon2D" type="Polygon2D" parent="Pipeyard" unique_id=1732929784]
+modulate = Color(0.5644, 0.63761336, 0.68, 1)
+position = Vector2(82, -116)
+rotation = 0.39784756
+antialiased = true
+texture_offset = Vector2(400, 200)
+texture_scale = Vector2(0.085, 0.1)
+polygon = PackedVector2Array(23.48059, -220.30353, -164.43732, -218.34454, -373.5987, -220.47455, -436, 78, -472.23193, 453.36853, -254.81525, 513.85815, -95, 532, 312.51892, 521.6626, 332, 325, 358, 175, 364, 23, 357.61658, -176.32458)
