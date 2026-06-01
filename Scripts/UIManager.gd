@@ -240,7 +240,7 @@ func lose() -> void:
 	_tween.tween_property(msg_bg_overlay,"modulate", Color(1,1,1,1),3)
 	
 	await display_message_box( 
-		"[shake rate=10.0 level=3 connected=1]The capital ship arrived to obliterate your skimmer and your community from the safety of orbit.[/shake]\n\nYour final bounty on this planet was [color=yellow]%s credits![/color]" % BountyManager.current_bounty,
+		"[shake rate=10.0 level=3 connected=1]The capital ship arrived to obliterate your skimmer from the luxurious safety of low orbit.[/shake]\n\nYour final bounty on this planet was [color=yellow]%s credits![/color]" % BountyManager.current_bounty,
 	"They can't keep getting away with this!",
 	2
 	)

@@ -4,6 +4,8 @@ static var instance : LevelManager = null
 
 @onready var collectable_holder : Node2D = $CollectableHolder
 
+@export var rotate_level : bool = true
+
 @export_category("READ ONLY")
 
 @export var stations : Array[Station] = []
@@ -20,7 +22,7 @@ func _enter_tree() -> void:
 	instance = self
 	target_prosperity = 0
 	current_prosperity = 0
-	rotation = GLOBALS.random_rotation(180)
+	if rotate_level: rotation = GLOBALS.random_rotation(180)
 	
 
 func activate_stations_over_time() -> void:

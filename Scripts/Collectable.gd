@@ -22,6 +22,8 @@ func _spawn_countdown() -> void:
 	#shadow.modulate = Color(0.0, 0.0, 0.0, 0.0)
 	await get_tree().physics_frame
 	
+	if finished_spawning: return
+	
 	z_index = 2
 	
 	

@@ -7,13 +7,15 @@ static var instance : Ship = null
 @onready var boost_audio_player : AudioStreamPlayer = $BoostAudioPlayer
 @onready var damage_audio_player: AudioStreamPlayer = $DamageAudioPlayer
 
-#@onready var shadow : Sprite2D = $Shadow
 
 
 @export var engine_audio_volume_scale : Vector2 = Vector2(0.2,0.4)
 @export var engine_audio_pitch_scale : Vector2 = Vector2(0.75,1.75)
 
 @export_category("READ ONLY")
+
+@export var has_control := true
+@export var is_invulnerable := false
 
 @export var previous_speed : Vector2 = Vector2.ZERO
 @export var speed : Vector2 = Vector2.ZERO
@@ -61,20 +63,26 @@ func _physics_process(delta: float) -> void:
 		rotation = lerp_angle(rotation, rotation + deg_to_rad(speed.x), GLOBALS.SHIP_ROTATION_ACCELERATION)
 	else:
 		speed = Vector2(0,move_toward(speed.y,-GLOBALS.SHIP_BACK_SPEED, GLOBALS.SHIP_BACK_CHANGE_RATE * 0.5 * delta))
-	velocity = speed.y * transform.y
+	velocity = speed.y * transform.y.normalized()
 	
 	
 	var collision = move_and_collide(velocity * delta)
-	if collision && has_control && speed.y < -GLOBALS.SHIP_MINIMUM_BOUNCE_SPEED:
-		velocity = velocity.bounce(collision.get_normal())
-		speed.x = 0
-		speed.y = speed.y * 0.69
-		
-		rotation = collision.get_normal().angle() + deg_to_rad(90) + GLOBALS.random_rotation(30)
-		take_damage()
+	if collision && has_control && !is_invulnerable:
+		var col = collision.get_collider()
+		if col is AnimatableBody2D:
+			velocity = velocity.length() * col.global_position.direction_to(global_position) #.bounce(collision.get_normal())
+			speed.x = 0
+			speed.y = speed.y * 1.5
+			rotation = col.global_position.direction_to(global_position).angle() + deg_to_rad(90) #collision.get_normal().angle() + deg_to_rad(90) + GLOBALS.random_rotation(30)
+			take_damage()
+		elif (speed.y < -GLOBALS.SHIP_MINIMUM_BOUNCE_SPEED):
+			velocity = velocity.bounce(collision.get_normal())
+			speed.x = 0
+			speed.y = speed.y * 0.69
+			rotation = collision.get_normal().angle() + deg_to_rad(40) + GLOBALS.random_rotation(30)
+			take_damage()
 	
 	engine_audio_player.volume_linear = lerp(engine_audio_volume_scale.x,engine_audio_volume_scale.y,abs(speed.y / GLOBALS.SHIP_BOOST_SPEED))
-	#print("acceleration = " + str(acceleration))
 	engine_audio_player.pitch_scale = lerp(engine_audio_pitch_scale.x,engine_audio_pitch_scale.y,abs(speed.y / GLOBALS.SHIP_BOOST_SPEED))
 
 
@@ -86,36 +94,35 @@ func take_damage() -> void:
 	lose_control()
 	damage_audio_player.play()
 
-var has_control := true
 var _tween:Tween = null
 func lose_control() -> void:
 	has_control = false
-	#modulate = Color.RED
+	is_invulnerable = true
+	
+	set_collision_mask_value(5,false)
+	set_collision_mask_value(6,false)
+	
 	for _trail in trails: _trail.deactivate()
 	if _tween: _tween.kill()
 	_tween = create_tween().set_parallel().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_SPRING)
 	_tween.tween_property(self,"rotation",rotation + GLOBALS.random_rotation(50),0.25)
-	#_tween.tween_property($ShipsSheet,"rotation_degrees",$ShipsSheet.rotation_degrees+360,0.25)
-	
-	#if UIManager.instance != null: UIManager.instance.jolt()
-	#if Boot.instance != null: Boot.instance.jolt()
 	
 	await get_tree().create_timer(0.25).timeout
-	#$ShipsSheet.rotation_degrees = 180
 	for _trail in trails: _trail.activate()
-	#modulate = Color.WHITE
 	has_control = true
+	
+	await get_tree().create_timer(1.5).timeout
+	
+	set_collision_mask_value(5,true)
+	set_collision_mask_value(6,true)
+	
+	is_invulnerable = false
 
 
 func get_input(delta: float) -> void:
 	var _target_rotation : float
 	var _new_speed : float
-	#
-	#if Input.is_action_pressed("OpenChute"):
-		#shadow.global_position = shadow.global_position.move_toward(global_position + Vector2(2,2.5), 50 * delta)
-	#else:
-		#shadow.global_position = shadow.global_position.move_toward(global_position + Vector2(16,20), 50 * delta)
-	#
+	
 	if Input.is_action_just_pressed("Boost"):
 		if !boost_audio_player.playing || boost_audio_player.get_playback_position() > 2.5:
 			boost_audio_player.play()

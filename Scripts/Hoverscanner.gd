@@ -1,4 +1,4 @@
-class_name Hoverscanner extends Area2D
+class_name Hoverscanner extends AnimatableBody2D # Area2D
 
 @export var shadow_distance : float = 5
 
@@ -13,30 +13,27 @@ class_name Hoverscanner extends Area2D
 @export var is_cancelling : bool = false
 @export var is_cooling : bool = false
 
-var _line : Line2D = null
+@onready var _scan_area: Area2D = $ScanArea
+@onready var _sight_line: Line2D = $SightLine
+@onready var _sight_radius: Panel = $SightRadius
+@onready var _collision_shape: CollisionShape2D = $ScanArea/CollisionShape2D
+@onready var _hoverscanner_gfx: Sprite2D = $HoverscannerGfx
+@onready var _shadow: Sprite2D = $Shadow
+
 var _path_follow : PathFollow2D = null
-var _sight_radius : Panel = null
-var _collision_shape : CollisionShape2D = null
-var _hoverscanner: Sprite2D
-var _shadow: Sprite2D
 
 var _current_scan : Scan = null
 
 func _ready() -> void: 
 	
-	_line = $SightLine
 	_path_follow = $".."
-	_sight_radius = $SightRadius
-	_collision_shape = $CollisionShape2D
-	_hoverscanner = $Hoverscanner
-	_shadow = $Shadow
 	
 	_sight_radius.scale = Vector2.ONE * sight_radius
 	_collision_shape.scale = Vector2.ONE * sight_radius
 	
 
 func _physics_process(delta: float) -> void:
-	_shadow.global_position = _hoverscanner.global_position + Vector2(shadow_distance,shadow_distance)
+	_shadow.global_position = _hoverscanner_gfx.global_position + Vector2(shadow_distance,shadow_distance)
 
 
 var _tween : Tween
@@ -49,21 +46,21 @@ func start_scan() -> void:
 	_current_scan.scanning()
 	
 	_sight_radius.visible = false
-	_line.width = 69
-	_line.modulate = Color(1.0, 1.0, 0.5, 0.0)
-	_line.self_modulate = Color(1.0, 1.0, 1.0, 0.0)
-	_line.visible = true
+	_sight_line.width = 69
+	_sight_line.modulate = Color(1.0, 1.0, 0.5, 0.0)
+	_sight_line.self_modulate = Color(1.0, 1.0, 1.0, 0.0)
+	_sight_line.visible = true
 	
 	if _tween: _tween.kill()
 	_tween = create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUAD).set_parallel()
-	_tween.tween_property(_line,"self_modulate",Color(1.0, 1.0, 1.0, 1.0),8)
-	_tween.tween_property(_line,"width",3,10)
+	_tween.tween_property(_sight_line,"self_modulate",Color(1.0, 1.0, 1.0, 1.0),8)
+	_tween.tween_property(_sight_line,"width",3,10)
 	
 	while (is_scanning):
-		_line.set_point_position(2,_line.to_local(Ship.instance.global_position))
-		_line.set_point_position(1,_line.to_local(lerp(Ship.instance.global_position,global_position,0.5)))
+		_sight_line.set_point_position(2,_sight_line.to_local(Ship.instance.global_position))
+		_sight_line.set_point_position(1,_sight_line.to_local(lerp(Ship.instance.global_position,global_position,0.5)))
 		
-		_line.modulate = _current_scan.modulate
+		_sight_line.modulate = _current_scan.modulate
 		
 		if Ship.instance.global_position.distance_squared_to(global_position) > ((sight_radius + cancel_distance_adjust) * 100) * ((sight_radius + cancel_distance_adjust) * 100):
 			scan_cancel()
@@ -82,9 +79,9 @@ func scan_cancel() -> void:
 	_tween.tween_property(_current_scan,"modulate",Color(modulate,0),1)
 	_tween.tween_property(_current_scan.audio_stream_player,"volume_db",-60,1)
 	_tween.tween_property(_current_scan.audio_stream_player,'pitch_scale',0.5,1)
-	_tween.tween_property(_line,"modulate",Color(1.0, 1.0, 0.5, 0.0),1)
-	_tween.tween_property(_line,"self_modulate",Color(1.0, 1.0, 1.0, 0),1)
-	_tween.tween_property(_line,"width",0,1)
+	_tween.tween_property(_sight_line,"modulate",Color(1.0, 1.0, 0.5, 0.0),1)
+	_tween.tween_property(_sight_line,"self_modulate",Color(1.0, 1.0, 1.0, 0),1)
+	_tween.tween_property(_sight_line,"width",0,1)
 	
 	await get_tree().create_timer(1).timeout
 	
@@ -96,19 +93,19 @@ func scan_cancel() -> void:
 
 func scan_end(_found_items:Array[Item]) -> void:
 	if _found_items.size() > 0:
-		_line.modulate = Color(1.0, 0.0, 0.0, 1.0)
+		_sight_line.modulate = Color(1.0, 0.0, 0.0, 1.0)
 		BountyManager.add_from_scanned_items(_found_items)
 		CountdownManager.adjust_from_items(_found_items)
-	else: _line.modulate = Color(0.0, 1.0, 0.0, 1.0)
+	else: _sight_line.modulate = Color(0.0, 1.0, 0.0, 1.0)
 	
 	#await get_tree().create_timer(1,false).timeout
 	
 	_tween = create_tween()
-	_tween.tween_property(_line,"modulate", Color(_line.modulate,0),1.5)
+	_tween.tween_property(_sight_line,"modulate", Color(_sight_line.modulate,0),1.5)
 	
 	await get_tree().create_timer(1.5,false).timeout
 	
-	_line.visible = false
+	_sight_line.visible = false
 	
 	cooldown()
 	is_scanning = false
@@ -124,7 +121,7 @@ func cooldown() -> void:
 	await get_tree().create_timer(cooldown_duration,false).timeout
 	
 	is_cooling = false
-	for _body in get_overlapping_bodies():
+	for _body in _scan_area.get_overlapping_bodies():
 		_on_body_entered(_body)
 
 func _on_body_entered(body: Node2D) -> void:

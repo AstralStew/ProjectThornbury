@@ -41,7 +41,7 @@ func _ready() -> void:
 		_new_follower.loop = false
 		_new_follower.progress_ratio = i * (1 / (number_of_followers as float))
 		
-		(_new_hoverscanner.get_child(0) as Sprite2D).flip_v = _path_reversed
+		_new_hoverscanner._hoverscanner_gfx.flip_v = _path_reversed
 			
 
 
@@ -63,6 +63,6 @@ func _physics_process(delta: float) -> void:
 				
 			if !loop_path && number_of_followers == 1:
 				_path_reversed = !_path_reversed
-				(followers[i].get_child(0).get_child(0) as Sprite2D).flip_v = _path_reversed
+				(followers[i].get_child(0) as Hoverscanner)._hoverscanner_gfx.flip_v = _path_reversed
 		
 		followers[i].progress += follower_speed * delta * (-1 if _path_reversed else 1)

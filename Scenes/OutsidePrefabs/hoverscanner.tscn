@@ -4,6 +4,12 @@
 [ext_resource type="Texture2D" uid="uid://bs8wppq8ctccy" path="res://Assets/Images/Ships/Ships_Sheet.png" id="2_v38k4"]
 [ext_resource type="AudioStream" uid="uid://dwo2sxph66e6o" path="res://Assets/Audio/Hoverscanner/556963__copyc4t__pulse-engine-helicopter.wav" id="3_v38k4"]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_v38k4"]
+radius = 11.18881
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_65i52"]
+radius = 46.0
+
 [sub_resource type="Curve" id="Curve_65i52"]
 _data = [Vector2(0, 0.15162319), 0.0, 0.84837687, 0, 1, Vector2(1, 1), 0.84837687, 0.0, 1, 0]
 point_count = 2
@@ -27,24 +33,33 @@ corner_radius_bottom_right = 48
 corner_radius_bottom_left = 48
 corner_detail = 10
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_65i52"]
-radius = 46.0
-
-[node name="Hoverscanner" type="Area2D" unique_id=1942971500]
+[node name="Hoverscanner" type="AnimatableBody2D" unique_id=1992192598]
 scale = Vector2(2.145, 2.145)
-collision_layer = 0
-input_pickable = false
-monitorable = false
+collision_layer = 32
+collision_mask = 0
+sync_to_physics = false
 script = ExtResource("1_mob7o")
 cooldown_duration = 3.0
 metadata/_custom_type_script = "uid://du2cjhuyvairt"
 
-[node name="Hoverscanner" type="Sprite2D" parent="." unique_id=529130055]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=636660625]
+scale = Vector2(0.99999994, 0.99999994)
+shape = SubResource("CircleShape2D_v38k4")
+
+[node name="HoverscannerGfx" type="Sprite2D" parent="." unique_id=529130055]
 texture_filter = 1
 rotation = -1.5707964
 texture = ExtResource("2_v38k4")
 region_enabled = true
 region_rect = Rect2(8, 50, 28, 25)
+
+[node name="ScanArea" type="Area2D" parent="." unique_id=1166665752]
+scale = Vector2(0.9999998, 0.9999998)
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ScanArea" unique_id=1245731728]
+scale = Vector2(3.2500007, 3.2500007)
+shape = SubResource("CircleShape2D_65i52")
 
 [node name="Shadow" type="Sprite2D" parent="." unique_id=429174059]
 modulate = Color(0, 0, 0, 0.147)
@@ -78,10 +93,6 @@ pivot_offset_ratio = Vector2(0.5, 0.5)
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_65i52")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1245731728]
-scale = Vector2(3.25, 3.25)
-shape = SubResource("CircleShape2D_65i52")
-
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=346863330]
 stream = ExtResource("3_v38k4")
 pitch_scale = 1.6
@@ -89,4 +100,4 @@ autoplay = true
 max_distance = 818.0
 attenuation = 2.9281673
 
-[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_entered" from="ScanArea" to="." method="_on_body_entered"]

@@ -11,6 +11,11 @@ script = ExtResource("1_ngl7e")
 top_layer = NodePath("TopLayer")
 shadow_layer = NodePath("ShadowLayer")
 parallax_distance = 2.0
+parallax_distance_x = 2.0
+parallax_distance_y = 2.0
+
+[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="." unique_id=524356350]
+rect = Rect2(-55, -54, 108, 110)
 
 [node name="SmallSpireCliff" type="ColorRect" parent="." unique_id=973801819]
 z_index = -2

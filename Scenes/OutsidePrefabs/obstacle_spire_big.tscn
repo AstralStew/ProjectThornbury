@@ -12,6 +12,11 @@ top_layer = NodePath("TopLayer")
 shadow_layer = NodePath("ShadowLayer")
 shadow_distance = 20.0
 parallax_distance = 4.0
+parallax_distance_x = 4.0
+parallax_distance_y = 4.0
+
+[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="." unique_id=1387714436]
+rect = Rect2(-198, -197, 394, 396)
 
 [node name="BigSpireCliff" type="ColorRect" parent="." unique_id=973801819]
 z_index = -5

@@ -75,5 +75,17 @@ func lose_control() -> void:
 	await get_tree().create_timer(0.25).timeout
 	ship_gfx.rotation_degrees = 180
 	
-	#for _trail in trails: _trail.activate()	
+	#for _trail in trails: _trail.activate()
+	modulate = Color(Color.WHITE,0.4)
+	
+	if _tween: _tween.kill()
+	_tween = create_tween()
+	_tween.tween_property(self,"modulate",Color(Color.WHITE,0.7), 0.3)
+	_tween.tween_property(self,"modulate",Color(Color.WHITE,0.4), 0.3)#.set_delay(0.1)
+	_tween.tween_property(self,"modulate",Color(Color.WHITE,0.7), 0.3)#.set_delay(0.2)
+	_tween.tween_property(self,"modulate",Color(Color.WHITE,0.4), 0.3)#.set_delay(0.1)
+	_tween.tween_property(self,"modulate",Color(Color.WHITE,1), 0.3)#.set_delay(0.2)
+	#_tween.tween_property(self,"modulate",Color(Color.WHITE,1), 0.1)#.set_delay(0.3)
+	await get_tree().create_timer(1.5).timeout
 	modulate = Color.WHITE
+	

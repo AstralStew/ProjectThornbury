@@ -1,0 +1,67 @@
+[gd_scene format=3 uid="uid://c1dqu5napo4p8"]
+
+[ext_resource type="Script" uid="uid://rekamns27pb8" path="res://Scripts/Piston.gd" id="1_6pthj"]
+[ext_resource type="Texture2D" uid="uid://bs8wppq8ctccy" path="res://Assets/Images/Ships/Ships_Sheet.png" id="2_05iq4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_20ipq"]
+size = Vector2(42.352905, 57.720596)
+
+[node name="Piston" type="Line2D" unique_id=572926186 node_paths=PackedStringArray("remote_node")]
+rotation = 1.5707964
+points = PackedVector2Array(-80, 0, -400, 0)
+width = 5.0
+default_color = Color(0.2, 0.24705882, 0.34509805, 1)
+joint_mode = 1
+begin_cap_mode = 2
+end_cap_mode = 2
+script = ExtResource("1_6pthj")
+remote_node = NodePath("AnimatableBody2D")
+metadata/_custom_type_script = "uid://dv5g3it2i83re"
+
+[node name="AnimatableBody2D" type="AnimatableBody2D" parent="." unique_id=1392578752]
+z_index = 5
+position = Vector2(-49.023537, -1.3008137)
+rotation = -0.014265475
+scale = Vector2(0.69, 0.69)
+collision_layer = 32
+collision_mask = 0
+sync_to_physics = false
+
+[node name="ShipsSheet6" type="Sprite2D" parent="AnimatableBody2D" unique_id=251077319]
+modulate = Color(1.1088537, 0.88435686, 0.70067745, 1)
+texture_filter = 1
+rotation = 1.5707964
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("2_05iq4")
+flip_v = true
+region_enabled = true
+region_rect = Rect2(96, 46, 28, 35)
+
+[node name="Shadow" type="Sprite2D" parent="AnimatableBody2D" unique_id=1455122460]
+modulate = Color(0, 0, 0, 0.147)
+texture_filter = 1
+rotation = 1.5707964
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("2_05iq4")
+flip_v = true
+region_enabled = true
+region_rect = Rect2(96, 46, 28, 35)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatableBody2D" unique_id=2096864186]
+position = Vector2(-4.154419, 0)
+rotation = 1.5707964
+scale = Vector2(1.0000002, 1.0000002)
+shape = SubResource("RectangleShape2D_20ipq")
+
+[node name="HolderPos" type="Marker2D" parent="AnimatableBody2D" unique_id=1591707029]
+position = Vector2(54.117645, 7.180607e-05)
+
+[node name="PistonPath" type="Path2D" parent="." unique_id=2082660953]
+
+[node name="PathFollow2D" type="PathFollow2D" parent="PistonPath" unique_id=1107509697]
+loop = false
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="PistonPath/PathFollow2D" unique_id=1856576369]
+position = Vector2(0.00012205789, -1.7413319e-06)
+update_rotation = false
+update_scale = false

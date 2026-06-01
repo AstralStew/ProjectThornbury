@@ -13,6 +13,11 @@ top_layer = NodePath("TopLayer")
 shadow_layer = NodePath("ShadowLayer")
 shadow_distance = 8.0
 parallax_distance = 2.5
+parallax_distance_x = 2.5
+parallax_distance_y = 2.5
+
+[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="." unique_id=1870796556]
+rect = Rect2(-90, -29, 180, 58)
 
 [node name="ContainerBase" type="ColorRect" parent="." unique_id=2111633141]
 modulate = Color(0.92191374, 0.62178475, 0.66970366, 1)

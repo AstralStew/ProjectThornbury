@@ -37,9 +37,9 @@ func _ready() -> void:
 
 
 
-static func add_collectable(_type:InventoryManager.ItemType) -> void:
-	instance._add_collectable(_type)
-func _add_collectable(_type:InventoryManager.ItemType) -> void:
+static func add_collectable(_type:InventoryManager.ItemType,_parent:Node2D = null) -> void:
+	instance._add_collectable(_type,_parent)
+func _add_collectable(_type:InventoryManager.ItemType,_parent:Node2D) -> void:
 	var _prefab : PackedScene = null
 	var _name : String 
 	match _type:
@@ -55,13 +55,24 @@ func _add_collectable(_type:InventoryManager.ItemType) -> void:
 	
 	await get_tree().physics_frame
 	var _new_scene = _prefab.instantiate() as Collectable
-	collectable_holder.add_child(_new_scene)
-	_new_scene.global_position = Ship.instance.global_position
-	_new_scene.rotation_degrees = randf_range(-360,360)
-	_new_scene.scale = Vector2(1,1)
-	_new_scene.modulate = Color(0,0,0,0)
-	_new_scene.reset_physics_interpolation()
-	_new_scene.name = _name
+	if _parent == null:
+		collectable_holder.add_child(_new_scene)
+		_new_scene.global_position = Ship.instance.global_position
+		_new_scene.rotation_degrees = randf_range(-360,360)
+		_new_scene.scale = Vector2(1,1)
+		_new_scene.modulate = Color(0,0,0,0)
+		_new_scene.reset_physics_interpolation()
+		_new_scene.name = _name
+	else:
+		_parent.add_child(_new_scene)
+		_new_scene.global_position = _parent.global_position
+		_new_scene.rotation_degrees = 0
+		_new_scene.scale = Vector2(1.15,1.15)
+		#_new_scene.modulate = Color(0,0,0,0)
+		_new_scene.reset_physics_interpolation()
+		_new_scene.name = _name
+		_new_scene.finished_spawning = true
+		
 	#_new_scene.finished_spawning = false
 	#_new_scene.call_deferred("_spawn_countdown")
 	

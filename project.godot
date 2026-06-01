@@ -77,6 +77,8 @@ Boost={
 
 2d_physics/layer_1="Player"
 2d_physics/layer_5="Obstacles"
+2d_physics/layer_6="MovingObstacle"
+2d_physics/layer_7="Boundary"
 2d_physics/layer_9="Items"
 2d_physics/layer_10="ItemBoundary"
 2d_physics/layer_11="Chute"
