@@ -19,6 +19,7 @@ func _ready() -> void:
 	
 
 func on_level_ready() -> void:
+	await get_tree().process_frame
 	shadow_layer.global_position = global_position + (Vector2.ONE * shadow_distance)
 	
 

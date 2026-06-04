@@ -31,7 +31,10 @@ var DEBUG_NAME : String :
 @export var prosperity : int = 0 :
 	set(value):
 		prosperity = value
-		get_child(0).modulate = Color.WHITE.lerp(Color(0.65, 0.599, 0.396, 1.0), 1 - (prosperity as float / prosperity_target as float))
+		change_visuals_based_on_prosperity()
+		#get_child(0).modulate = Color.WHITE.lerp(Color(0.65, 0.599, 0.396, 1.0), 1 - (prosperity as float / prosperity_target as float))
+		#get_child(1).modulate = Color.WHITE.lerp(Color(0.65, 0.599, 0.396, 1.0), 1 - (prosperity as float / prosperity_target as float))
+
 
 @export var is_prosperous : bool = false :
 	get: return prosperity >= prosperity_target
@@ -58,7 +61,6 @@ func _ready() -> void:
 	population = NotificationManager.pop_random_population()
 	population_label.text = "Population: " + population
 	
-	prosperity = 0
 	
 	LevelManager.on_level_ready().connect(on_level_ready)
 
@@ -69,9 +71,12 @@ func on_level_ready() -> void:
 		if "Expansion" in _child.name:
 			_expansions.append(_child)
 			_child.rotation = GLOBALS.random_rotation(180)
-			(_child.get_child(0) as Node2D).global_position = _child.global_position + Vector2(8,10)
+			(_child.get_child(0) as Node2D).global_position = _child.global_position + Vector2(4,4)
 	
-	_expansions.pick_random().visible = true
+	prosperity = 0
+	
+	#_expansions.shuffle()
+	#_expansions.pop_back().visible = true
 
 
 func make_order() -> void:
@@ -125,20 +130,21 @@ func complete_order() -> void:
 		
 	prosperity += 1
 	
-	if _expansions.size() > 0:
-		_expansions.shuffle()
-		_expansions.pop_back().visible = true
-	
 	on_complete_order.emit(self)
-	if !is_prosperous: cooldown()
-	else: on_become_prosperous.emit(self)
+	
+	change_visuals_based_on_prosperity()
+	
+	if is_prosperous: on_become_prosperous.emit(self)
+	
+	#if !is_prosperous: cooldown()
+	#else: on_become_prosperous.emit(self)
 
-func cooldown() -> void:
-	#update_text()
-	for i in prosperity+1:
-		await get_tree().create_timer(randf_range(cooldown_duration.x,cooldown_duration.y),false).timeout
-	print_rich(DEBUG_NAME,"Cooldown > Cooldown finished! Making a new order...")
-	make_order()
+#func cooldown() -> void:
+	##update_text()
+	#for i in prosperity+1:
+		#await get_tree().create_timer(randf_range(cooldown_duration.x,cooldown_duration.y),false).timeout
+	#print_rich(DEBUG_NAME,"Cooldown > Cooldown finished! Making a new order...")
+	#make_order()
 
 
 func _physics_process(delta: float) -> void:
@@ -155,6 +161,24 @@ func _physics_process(delta: float) -> void:
 				if !is_displaying_info:
 					display_info()
 
+
+var prosperity_visual_tween:Tween
+func change_visuals_based_on_prosperity() -> void:
+	if prosperity_visual_tween: prosperity_visual_tween.kill()
+	
+	var _duration := 4.0
+	var _delay := 0.5
+	prosperity_visual_tween = create_tween().set_parallel()
+	prosperity_visual_tween.tween_property(get_child(0),"modulate",Color.WHITE.lerp(Color(0.65, 0.599, 0.396, 1.0), 1 - (prosperity as float / prosperity_target as float)),_duration).set_delay(_delay)
+	prosperity_visual_tween.tween_property(get_child(1),"modulate",Color.WHITE.lerp(Color(0.65, 0.599, 0.396, 1.0), 1 - (prosperity as float / prosperity_target as float)),_duration).set_delay(_delay)
+	if _expansions.size() > 0:
+		_expansions.shuffle()
+		prosperity_visual_tween.tween_property(_expansions.pop_back(),"visible",true,_duration).set_delay(_delay)
+	
+	while prosperity_visual_tween.is_running():
+		await get_tree().physics_frame
+	#get_child(1).set_deferred("modulate", Color.WHITE.lerp(Color(0.65, 0.599, 0.396, 1.0), 1 - (prosperity as float / prosperity_target as float)))
+		
 
 
 var _tween:Tween

@@ -12,6 +12,8 @@ static var instance : LevelManager = null
 static var target_prosperity : int = 0
 static var current_prosperity : float = 0
 
+var _stations_with_orders : int = 0
+
 signal _on_prosperity_updated(percentage)
 static func on_prosperity_updated() -> Signal: return instance._on_prosperity_updated
 
@@ -26,13 +28,36 @@ func _enter_tree() -> void:
 	
 
 func activate_stations_over_time() -> void:
-	await get_tree().create_timer(10,false).timeout
-	var _first : bool = false
-	for _station:Station in get_tree().get_nodes_in_group("Stations"):
-		if !_first: _station.make_order()
-		else: _station.cooldown()
+	
+	var _elapsed_time : float = 4
+	while stations.size() > 0:
+		while _elapsed_time < 5 + (30 * _stations_with_orders):
+			_elapsed_time += 1
+			await get_tree().create_timer(1,false).timeout
 		
-		await get_tree().create_timer(20,false).timeout
+		print(DEBUG_NAME,"ActivateStationsOverTime > Activating next station...")
+		stations.front().make_order()
+		stations.append(stations.pop_front())
+		_stations_with_orders += 1
+		_elapsed_time = 0 
+	
+	print(DEBUG_NAME,"ActivateStationsOverTime > No more stations! You should win now :)")
+	#await get_tree().create_timer(10,false).timeout
+	#var _first : bool = false
+	#for _station:Station in get_tree().get_nodes_in_group("Stations"):
+		#if !_first: _station.make_order()
+		#else: _station.cooldown()
+		#
+		#await get_tree().create_timer(20,false).timeout
+
+
+
+#func cooldown() -> void:
+	##update_text()
+	#for i in prosperity+1:
+		#await get_tree().create_timer(randf_range(cooldown_duration.x,cooldown_duration.y),false).timeout
+	#print_rich(DEBUG_NAME,"Cooldown > Cooldown finished! Making a new order...")
+	#make_order()
 
 func _ready() -> void:
 	for _station:Station in get_tree().get_nodes_in_group("Stations"):
@@ -40,8 +65,12 @@ func _ready() -> void:
 		stations.append(_station)
 		target_prosperity += _station.prosperity_target
 		_station.on_complete_order.connect(increase_prosperity)
+		_station.on_complete_order.connect(func(ref):_stations_with_orders -= 1)
 		_station.on_become_prosperous.connect(station_became_prosperous)
-	activate_stations_over_time()
+		_station.on_become_prosperous.connect(func(ref):stations.remove_at(stations.find(_station)))
+	
+	stations.shuffle()
+	#activate_stations_over_time()
 	
 	_on_prosperity_updated.emit(current_prosperity as float / target_prosperity as float)
 	

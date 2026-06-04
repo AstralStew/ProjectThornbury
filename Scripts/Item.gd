@@ -84,6 +84,9 @@ func jettison() -> void:
 	await get_tree().create_timer(0.66,false).timeout
 	
 	queue_free()
+	
+	#if !UIManager.has_transferred_item:
+		#UIManager.instance.transfer_item_first_time()
 
 func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 	

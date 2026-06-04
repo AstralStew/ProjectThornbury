@@ -118,7 +118,35 @@ color = Color(0, 0.77254903, 0.6509804, 1)
 polygon = PackedVector2Array(0, -3500, 3500, -3500, 3500, 3500, -3500, 3500, -3500, -3500, 0, -3500, 0, -3000, -201, -3028, -416, -2977, -799, -3026, -1115, -2991, -1439, -3019, -1846, -2983, -2221, -3014, -2531, -2987, -2743, -3023, -2978, -2998, -3029, -2837, -2988, -2580, -3016, -2229, -2971, -1851, -3010, -1415, -2987, -1116, -3013, -771, -2982, -403, -3015, 7, -2991, 388, -3010, 716, -2991, 1073, -3011, 1442, -2978, 1823, -3017, 2175, -2981, 2499, -3021, 2792, -3000, 3000, -2762, 2984, -2484, 3022, -2034, 2974, -1758, 3011, -1364, 2979, -1086, 3009, -660, 2974, -323, 3007, 60, 2985, 364, 3014, 792, 2985, 1141, 3022, 1453, 2985, 1731, 3019, 2002, 2993, 2167, 3019, 2468, 2983, 2758, 3017, 2968, 2959, 3018, 2817, 2982, 2541, 3020, 2249, 2985, 1893, 3016, 1506, 2985, 1308, 3017, 941, 2983, 590, 3006, 278, 2985, -14, 3012, -362, 2981, -690, 3016, -969, 2983, -1262, 3008, -1543, 2987, -1765, 3015, -2028, 2981, -2285, 3014, -2533, 2987, -2787, 3000, -3000, 2798, -3004, 2547, -2981, 2356, -3014, 2132, -2984, 1840, -3017, 1543, -2987, 1373, -3018, 1002, -2980, 730, -3021, 454, -2973, 212, -3032, 0, -3000)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="LevelBoundary" unique_id=1527145670]
+visible = false
 polygon = PackedVector2Array(0, -3500, 3500, -3500, 3500, 3500, -3500, 3500, -3500, -3500, 0, -3500, 0, -3000, -201, -3028, -416, -2977, -799, -3026, -1115, -2991, -1439, -3019, -1846, -2983, -2221, -3014, -2531, -2987, -2743, -3023, -2978, -2998, -3029, -2837, -2988, -2580, -3016, -2229, -2971, -1851, -3010, -1415, -2987, -1116, -3013, -771, -2982, -403, -3015, 7, -2991, 388, -3010, 716, -2991, 1073, -3011, 1442, -2978, 1823, -3017, 2175, -2981, 2499, -3021, 2792, -3000, 3000, -2762, 2984, -2484, 3022, -2034, 2974, -1758, 3011, -1364, 2979, -1086, 3009, -660, 2974, -323, 3007, 60, 2985, 364, 3014, 792, 2985, 1141, 3022, 1453, 2985, 1731, 3019, 2002, 2993, 2167, 3019, 2468, 2983, 2758, 3017, 2968, 2959, 3018, 2817, 2982, 2541, 3020, 2249, 2985, 1893, 3016, 1506, 2985, 1308, 3017, 941, 2983, 590, 3006, 278, 2985, -14, 3012, -362, 2981, -690, 3016, -969, 2983, -1262, 3008, -1543, 2987, -1765, 3015, -2028, 2981, -2285, 3014, -2533, 2987, -2787, 3000, -3000, 2798, -3004, 2547, -2981, 2356, -3014, 2132, -2984, 1840, -3017, 1543, -2987, 1373, -3018, 1002, -2980, 730, -3021, 454, -2973, 212, -3032, 0, -3000)
+
+[node name="ColorRect2" type="ColorRect" parent="LevelBoundary" unique_id=543172935]
+z_index = 15
+offset_left = 2100.0
+offset_top = 3007.0
+offset_right = 2140.0
+offset_bottom = 3027.0
+rotation = 0.1765893
+color = Color(0.16078432, 0.15686275, 0.19215687, 1)
+
+[node name="ColorRect3" type="ColorRect" parent="LevelBoundary" unique_id=108544427]
+z_index = 15
+offset_left = -2998.9998
+offset_top = -200.99997
+offset_right = -2958.9998
+offset_bottom = -180.99997
+rotation = 1.6394238
+color = Color(0.16078432, 0.15686275, 0.19215687, 1)
+
+[node name="ColorRect4" type="ColorRect" parent="LevelBoundary" unique_id=1228580279]
+z_index = 15
+offset_left = -2938.0002
+offset_top = -3002.0
+offset_right = -2898.0002
+offset_bottom = -2982.0
+rotation = 3.0390441
+color = Color(0.16078432, 0.15686275, 0.19215687, 1)
 
 [node name="CollectableHolder" type="Node2D" parent="." unique_id=9974128]
 
@@ -147,7 +175,17 @@ finished_spawning = true
 
 [node name="CollectableA5" parent="CollectableHolder/CollectableRockCloud" unique_id=1172708884 instance=ExtResource("1_tmlh5")]
 texture_filter = 1
-position = Vector2(406, 1494)
+position = Vector2(271, 1355)
+finished_spawning = true
+
+[node name="CollectableA43" parent="CollectableHolder/CollectableRockCloud" unique_id=1843489661 instance=ExtResource("1_tmlh5")]
+texture_filter = 1
+position = Vector2(446, 1421)
+finished_spawning = true
+
+[node name="CollectableA44" parent="CollectableHolder/CollectableRockCloud" unique_id=403535714 instance=ExtResource("1_tmlh5")]
+texture_filter = 1
+position = Vector2(188, 1610)
 finished_spawning = true
 
 [node name="CollectableA6" parent="CollectableHolder/CollectableRockCloud" unique_id=2141476614 instance=ExtResource("1_tmlh5")]
@@ -157,7 +195,12 @@ finished_spawning = true
 
 [node name="CollectableA7" parent="CollectableHolder/CollectableRockCloud" unique_id=1836460842 instance=ExtResource("1_tmlh5")]
 texture_filter = 1
-position = Vector2(407, -805)
+position = Vector2(584, -740)
+finished_spawning = true
+
+[node name="CollectableA47" parent="CollectableHolder/CollectableRockCloud" unique_id=1539632757 instance=ExtResource("1_tmlh5")]
+texture_filter = 1
+position = Vector2(366, -1043)
 finished_spawning = true
 
 [node name="CollectableA8" parent="CollectableHolder/CollectableRockCloud" unique_id=60675736 instance=ExtResource("1_tmlh5")]
@@ -182,7 +225,22 @@ finished_spawning = true
 
 [node name="CollectableA12" parent="CollectableHolder/CollectableRockCloud" unique_id=2035964398 instance=ExtResource("1_tmlh5")]
 texture_filter = 1
-position = Vector2(-7, -1005)
+position = Vector2(21, -1009)
+finished_spawning = true
+
+[node name="CollectableA48" parent="CollectableHolder/CollectableRockCloud" unique_id=1361026567 instance=ExtResource("1_tmlh5")]
+texture_filter = 1
+position = Vector2(926, -570)
+finished_spawning = true
+
+[node name="CollectableA49" parent="CollectableHolder/CollectableRockCloud" unique_id=1234714339 instance=ExtResource("1_tmlh5")]
+texture_filter = 1
+position = Vector2(1251, -495)
+finished_spawning = true
+
+[node name="CollectableA50" parent="CollectableHolder/CollectableRockCloud" unique_id=1261090432 instance=ExtResource("1_tmlh5")]
+texture_filter = 1
+position = Vector2(2007, -158)
 finished_spawning = true
 
 [node name="CollectableA13" parent="CollectableHolder/CollectableRockCloud" unique_id=1961842409 instance=ExtResource("1_tmlh5")]
@@ -192,7 +250,7 @@ finished_spawning = true
 
 [node name="CollectableA14" parent="CollectableHolder/CollectableRockCloud" unique_id=441734093 instance=ExtResource("1_tmlh5")]
 texture_filter = 1
-position = Vector2(262, -2)
+position = Vector2(381, -53)
 finished_spawning = true
 
 [node name="CollectableA15" parent="CollectableHolder/CollectableRockCloud" unique_id=581351745 instance=ExtResource("1_tmlh5")]
@@ -200,9 +258,19 @@ texture_filter = 1
 position = Vector2(3748.0002, 110)
 finished_spawning = true
 
-[node name="CollectableA37" parent="CollectableHolder/CollectableRockCloud" unique_id=1843489661 instance=ExtResource("1_tmlh5")]
+[node name="CollectableA52" parent="CollectableHolder/CollectableRockCloud" unique_id=1948190259 instance=ExtResource("1_tmlh5")]
+texture_filter = 1
+position = Vector2(3716, 409)
+finished_spawning = true
+
+[node name="CollectableA37" parent="CollectableHolder/CollectableRockCloud" unique_id=279486085 instance=ExtResource("1_tmlh5")]
 texture_filter = 1
 position = Vector2(3581.0002, 158)
+finished_spawning = true
+
+[node name="CollectableA51" parent="CollectableHolder/CollectableRockCloud" unique_id=1510949634 instance=ExtResource("1_tmlh5")]
+texture_filter = 1
+position = Vector2(3437, 212)
 finished_spawning = true
 
 [node name="CollectableA38" parent="CollectableHolder/CollectableRockCloud" unique_id=732174896 instance=ExtResource("1_tmlh5")]
@@ -212,7 +280,17 @@ finished_spawning = true
 
 [node name="CollectableA16" parent="CollectableHolder/CollectableRockCloud" unique_id=1591863578 instance=ExtResource("1_tmlh5")]
 texture_filter = 1
-position = Vector2(527, -561)
+position = Vector2(753, -689)
+finished_spawning = true
+
+[node name="CollectableA39" parent="CollectableHolder/CollectableRockCloud" unique_id=2077610892 instance=ExtResource("1_tmlh5")]
+texture_filter = 1
+position = Vector2(941, -751)
+finished_spawning = true
+
+[node name="CollectableA40" parent="CollectableHolder/CollectableRockCloud" unique_id=300347682 instance=ExtResource("1_tmlh5")]
+texture_filter = 1
+position = Vector2(1450, -224)
 finished_spawning = true
 
 [node name="CollectableA17" parent="CollectableHolder/CollectableRockCloud" unique_id=2147123719 instance=ExtResource("1_tmlh5")]
@@ -225,9 +303,24 @@ texture_filter = 1
 position = Vector2(2448, -985)
 finished_spawning = true
 
+[node name="CollectableA41" parent="CollectableHolder/CollectableRockCloud" unique_id=36265458 instance=ExtResource("1_tmlh5")]
+texture_filter = 1
+position = Vector2(1912, -1593)
+finished_spawning = true
+
+[node name="CollectableA42" parent="CollectableHolder/CollectableRockCloud" unique_id=2060697423 instance=ExtResource("1_tmlh5")]
+texture_filter = 1
+position = Vector2(1739, -1420)
+finished_spawning = true
+
 [node name="CollectableA19" parent="CollectableHolder/CollectableRockCloud" unique_id=1217607553 instance=ExtResource("1_tmlh5")]
 texture_filter = 1
-position = Vector2(1613, 1443)
+position = Vector2(1500, 1451)
+finished_spawning = true
+
+[node name="CollectableA53" parent="CollectableHolder/CollectableRockCloud" unique_id=147034196 instance=ExtResource("1_tmlh5")]
+texture_filter = 1
+position = Vector2(1782, 1322)
 finished_spawning = true
 
 [node name="CollectableA20" parent="CollectableHolder/CollectableRockCloud" unique_id=738136607 instance=ExtResource("1_tmlh5")]
@@ -242,12 +335,12 @@ finished_spawning = true
 
 [node name="CollectableA22" parent="CollectableHolder/CollectableRockCloud" unique_id=329892485 instance=ExtResource("1_tmlh5")]
 texture_filter = 1
-position = Vector2(194, -1178)
+position = Vector2(171, -1086)
 finished_spawning = true
 
 [node name="CollectableA23" parent="CollectableHolder/CollectableRockCloud" unique_id=1267362735 instance=ExtResource("1_tmlh5")]
 texture_filter = 1
-position = Vector2(263, 2164)
+position = Vector2(1117, 1900)
 finished_spawning = true
 
 [node name="CollectableA24" parent="CollectableHolder/CollectableRockCloud" unique_id=1746468428 instance=ExtResource("1_tmlh5")]
@@ -267,7 +360,7 @@ finished_spawning = true
 
 [node name="CollectableA27" parent="CollectableHolder/CollectableRockCloud" unique_id=1676354754 instance=ExtResource("1_tmlh5")]
 texture_filter = 1
-position = Vector2(923, 1310)
+position = Vector2(850, 1312)
 finished_spawning = true
 
 [node name="CollectableA28" parent="CollectableHolder/CollectableRockCloud" unique_id=1670289713 instance=ExtResource("1_tmlh5")]
@@ -277,7 +370,17 @@ finished_spawning = true
 
 [node name="CollectableA29" parent="CollectableHolder/CollectableRockCloud" unique_id=2010207518 instance=ExtResource("1_tmlh5")]
 texture_filter = 1
-position = Vector2(1377, 1685)
+position = Vector2(1213, 1697)
+finished_spawning = true
+
+[node name="CollectableA45" parent="CollectableHolder/CollectableRockCloud" unique_id=1933652113 instance=ExtResource("1_tmlh5")]
+texture_filter = 1
+position = Vector2(1245, 1422)
+finished_spawning = true
+
+[node name="CollectableA46" parent="CollectableHolder/CollectableRockCloud" unique_id=397265562 instance=ExtResource("1_tmlh5")]
+texture_filter = 1
+position = Vector2(1826, 1167)
 finished_spawning = true
 
 [node name="CollectableA30" parent="CollectableHolder/CollectableRockCloud" unique_id=489922958 instance=ExtResource("1_tmlh5")]
@@ -336,7 +439,7 @@ finished_spawning = true
 
 [node name="CollectableA5" parent="CollectableHolder/CollectableRockCloud2" unique_id=1915079097 instance=ExtResource("1_tmlh5")]
 texture_filter = 1
-position = Vector2(-1, 2166)
+position = Vector2(-102, 2181)
 finished_spawning = true
 
 [node name="CollectableA6" parent="CollectableHolder/CollectableRockCloud2" unique_id=1390032610 instance=ExtResource("1_tmlh5")]
@@ -346,7 +449,17 @@ finished_spawning = true
 
 [node name="CollectableA7" parent="CollectableHolder/CollectableRockCloud2" unique_id=512483888 instance=ExtResource("1_tmlh5")]
 texture_filter = 1
-position = Vector2(753.00006, 262.00006)
+position = Vector2(-86, -239)
+finished_spawning = true
+
+[node name="CollectableA35" parent="CollectableHolder/CollectableRockCloud2" unique_id=800265856 instance=ExtResource("1_tmlh5")]
+texture_filter = 1
+position = Vector2(881, 107)
+finished_spawning = true
+
+[node name="CollectableA41" parent="CollectableHolder/CollectableRockCloud2" unique_id=1717820200 instance=ExtResource("1_tmlh5")]
+texture_filter = 1
+position = Vector2(1121, -11)
 finished_spawning = true
 
 [node name="CollectableA8" parent="CollectableHolder/CollectableRockCloud2" unique_id=2015305420 instance=ExtResource("1_tmlh5")]
@@ -356,12 +469,12 @@ finished_spawning = true
 
 [node name="CollectableA9" parent="CollectableHolder/CollectableRockCloud2" unique_id=658718551 instance=ExtResource("1_tmlh5")]
 texture_filter = 1
-position = Vector2(382, 259)
+position = Vector2(363, 271)
 finished_spawning = true
 
 [node name="CollectableA10" parent="CollectableHolder/CollectableRockCloud2" unique_id=266069443 instance=ExtResource("1_tmlh5")]
 texture_filter = 1
-position = Vector2(-301, 236)
+position = Vector2(-283, 164)
 finished_spawning = true
 
 [node name="CollectableA12" parent="CollectableHolder/CollectableRockCloud2" unique_id=1147182863 instance=ExtResource("1_tmlh5")]
@@ -376,7 +489,27 @@ finished_spawning = true
 
 [node name="CollectableA14" parent="CollectableHolder/CollectableRockCloud2" unique_id=297339924 instance=ExtResource("1_tmlh5")]
 texture_filter = 1
-position = Vector2(944, 2680)
+position = Vector2(978, 2775)
+finished_spawning = true
+
+[node name="CollectableA48" parent="CollectableHolder/CollectableRockCloud2" unique_id=309637011 instance=ExtResource("1_tmlh5")]
+texture_filter = 1
+position = Vector2(-1858, 3396)
+finished_spawning = true
+
+[node name="CollectableA96" parent="CollectableHolder/CollectableRockCloud2" unique_id=1606359386 instance=ExtResource("1_tmlh5")]
+texture_filter = 1
+position = Vector2(-2826, 3685.0002)
+finished_spawning = true
+
+[node name="CollectableA97" parent="CollectableHolder/CollectableRockCloud2" unique_id=1029693863 instance=ExtResource("1_tmlh5")]
+texture_filter = 1
+position = Vector2(-2840, 2423)
+finished_spawning = true
+
+[node name="CollectableA107" parent="CollectableHolder/CollectableRockCloud2" unique_id=380987005 instance=ExtResource("1_tmlh5")]
+texture_filter = 1
+position = Vector2(-2534, -494)
 finished_spawning = true
 
 [node name="CollectableA15" parent="CollectableHolder/CollectableRockCloud2" unique_id=2139203386 instance=ExtResource("1_tmlh5")]
@@ -391,17 +524,67 @@ finished_spawning = true
 
 [node name="CollectableA18" parent="CollectableHolder/CollectableRockCloud2" unique_id=543496504 instance=ExtResource("1_tmlh5")]
 texture_filter = 1
-position = Vector2(-1385, 3202)
+position = Vector2(-1427, 3329)
 finished_spawning = true
 
 [node name="CollectableA19" parent="CollectableHolder/CollectableRockCloud2" unique_id=732169092 instance=ExtResource("1_tmlh5")]
 texture_filter = 1
-position = Vector2(433, 1282)
+position = Vector2(-846, 1388)
+finished_spawning = true
+
+[node name="CollectableA134" parent="CollectableHolder/CollectableRockCloud2" unique_id=2044991950 instance=ExtResource("1_tmlh5")]
+texture_filter = 1
+position = Vector2(-1017.00006, 2191)
+finished_spawning = true
+
+[node name="CollectableA154" parent="CollectableHolder/CollectableRockCloud2" unique_id=872134246 instance=ExtResource("1_tmlh5")]
+texture_filter = 1
+position = Vector2(-1396, 2124)
+finished_spawning = true
+
+[node name="CollectableA155" parent="CollectableHolder/CollectableRockCloud2" unique_id=161746166 instance=ExtResource("1_tmlh5")]
+texture_filter = 1
+position = Vector2(-1395, 1744)
+finished_spawning = true
+
+[node name="CollectableA156" parent="CollectableHolder/CollectableRockCloud2" unique_id=180861852 instance=ExtResource("1_tmlh5")]
+texture_filter = 1
+position = Vector2(-1229, 1450)
+finished_spawning = true
+
+[node name="CollectableA157" parent="CollectableHolder/CollectableRockCloud2" unique_id=727183201 instance=ExtResource("1_tmlh5")]
+texture_filter = 1
+position = Vector2(-1132, 1182)
+finished_spawning = true
+
+[node name="CollectableA158" parent="CollectableHolder/CollectableRockCloud2" unique_id=813086473 instance=ExtResource("1_tmlh5")]
+texture_filter = 1
+position = Vector2(-1062, 785)
+finished_spawning = true
+
+[node name="CollectableA159" parent="CollectableHolder/CollectableRockCloud2" unique_id=1477939236 instance=ExtResource("1_tmlh5")]
+texture_filter = 1
+position = Vector2(-1027, 510)
+finished_spawning = true
+
+[node name="CollectableA160" parent="CollectableHolder/CollectableRockCloud2" unique_id=1888142088 instance=ExtResource("1_tmlh5")]
+texture_filter = 1
+position = Vector2(-1212, 148)
+finished_spawning = true
+
+[node name="CollectableA161" parent="CollectableHolder/CollectableRockCloud2" unique_id=1197339536 instance=ExtResource("1_tmlh5")]
+texture_filter = 1
+position = Vector2(-1701, -245)
 finished_spawning = true
 
 [node name="CollectableA20" parent="CollectableHolder/CollectableRockCloud2" unique_id=1366300262 instance=ExtResource("1_tmlh5")]
 texture_filter = 1
-position = Vector2(400, 2316)
+position = Vector2(265, 2280)
+finished_spawning = true
+
+[node name="CollectableA133" parent="CollectableHolder/CollectableRockCloud2" unique_id=1225102937 instance=ExtResource("1_tmlh5")]
+texture_filter = 1
+position = Vector2(197, 2030)
 finished_spawning = true
 
 [node name="CollectableA21" parent="CollectableHolder/CollectableRockCloud2" unique_id=1232217298 instance=ExtResource("1_tmlh5")]
@@ -461,12 +644,12 @@ finished_spawning = true
 
 [node name="CollectableA36" parent="CollectableHolder/CollectableRockCloud2" unique_id=1090192500 instance=ExtResource("1_tmlh5")]
 texture_filter = 1
-position = Vector2(-1495, 3037)
+position = Vector2(-1234, 3476)
 finished_spawning = true
 
 [node name="CollectableA3" parent="CollectableHolder/CollectableRockCloud2" unique_id=1276828133 instance=ExtResource("1_tmlh5")]
 texture_filter = 1
-position = Vector2(2058, 1835)
+position = Vector2(1369, 2031.0001)
 finished_spawning = true
 
 [node name="CollectableA11" parent="CollectableHolder/CollectableRockCloud2" unique_id=321686884 instance=ExtResource("1_tmlh5")]
@@ -476,7 +659,7 @@ finished_spawning = true
 
 [node name="CollectableA17" parent="CollectableHolder/CollectableRockCloud2" unique_id=1547669849 instance=ExtResource("1_tmlh5")]
 texture_filter = 1
-position = Vector2(2527, 2284)
+position = Vector2(1713.0001, 2493)
 finished_spawning = true
 
 [node name="CollectableA23" parent="CollectableHolder/CollectableRockCloud2" unique_id=1160528482 instance=ExtResource("1_tmlh5")]
@@ -496,7 +679,12 @@ finished_spawning = true
 
 [node name="CollectableA37" parent="CollectableHolder/CollectableRockCloud2" unique_id=1473236750 instance=ExtResource("1_tmlh5")]
 texture_filter = 1
-position = Vector2(2058, 1835)
+position = Vector2(1517, 2022.0001)
+finished_spawning = true
+
+[node name="CollectableA164" parent="CollectableHolder/CollectableRockCloud2" unique_id=1810892237 instance=ExtResource("1_tmlh5")]
+texture_filter = 1
+position = Vector2(1168, 2119)
 finished_spawning = true
 
 [node name="CollectableA38" parent="CollectableHolder/CollectableRockCloud2" unique_id=2146980280 instance=ExtResource("1_tmlh5")]
@@ -506,7 +694,7 @@ finished_spawning = true
 
 [node name="CollectableA39" parent="CollectableHolder/CollectableRockCloud2" unique_id=1317228379 instance=ExtResource("1_tmlh5")]
 texture_filter = 1
-position = Vector2(2527, 2284)
+position = Vector2(2762, 2353)
 finished_spawning = true
 
 [node name="CollectableA40" parent="CollectableHolder/CollectableRockCloud2" unique_id=1471319624 instance=ExtResource("1_tmlh5")]
@@ -516,7 +704,12 @@ finished_spawning = true
 
 [node name="CollectableA42" parent="CollectableHolder/CollectableRockCloud2" unique_id=674816291 instance=ExtResource("1_tmlh5")]
 texture_filter = 1
-position = Vector2(665, 1925)
+position = Vector2(595, 1955)
+finished_spawning = true
+
+[node name="CollectableA165" parent="CollectableHolder/CollectableRockCloud2" unique_id=1637922646 instance=ExtResource("1_tmlh5")]
+texture_filter = 1
+position = Vector2(777, 1967)
 finished_spawning = true
 
 [node name="CollectableA68" parent="CollectableHolder/CollectableRockCloud2" unique_id=1373441545 instance=ExtResource("1_tmlh5")]
@@ -526,7 +719,7 @@ finished_spawning = true
 
 [node name="CollectableA71" parent="CollectableHolder/CollectableRockCloud2" unique_id=1385186396 instance=ExtResource("1_tmlh5")]
 texture_filter = 1
-position = Vector2(-688, 1769)
+position = Vector2(-629, 1807)
 finished_spawning = true
 
 [node name="CollectableA72" parent="CollectableHolder/CollectableRockCloud2" unique_id=1867683393 instance=ExtResource("1_tmlh5")]
@@ -536,7 +729,7 @@ finished_spawning = true
 
 [node name="CollectableA73" parent="CollectableHolder/CollectableRockCloud2" unique_id=617685926 instance=ExtResource("1_tmlh5")]
 texture_filter = 1
-position = Vector2(-2264, -665)
+position = Vector2(-2341, -614)
 finished_spawning = true
 
 [node name="CollectableA74" parent="CollectableHolder/CollectableRockCloud2" unique_id=1533686079 instance=ExtResource("1_tmlh5")]
@@ -546,7 +739,7 @@ finished_spawning = true
 
 [node name="CollectableA75" parent="CollectableHolder/CollectableRockCloud2" unique_id=2129218871 instance=ExtResource("1_tmlh5")]
 texture_filter = 1
-position = Vector2(-1087, -1278)
+position = Vector2(-1013, -1263)
 finished_spawning = true
 
 [node name="CollectableA76" parent="CollectableHolder/CollectableRockCloud2" unique_id=179030572 instance=ExtResource("1_tmlh5")]
@@ -576,7 +769,12 @@ finished_spawning = true
 
 [node name="CollectableA81" parent="CollectableHolder/CollectableRockCloud2" unique_id=1001817711 instance=ExtResource("1_tmlh5")]
 texture_filter = 1
-position = Vector2(1975.0001, 1590)
+position = Vector2(2048, 1610.0001)
+finished_spawning = true
+
+[node name="CollectableA163" parent="CollectableHolder/CollectableRockCloud2" unique_id=1168667938 instance=ExtResource("1_tmlh5")]
+texture_filter = 1
+position = Vector2(1945, 1679)
 finished_spawning = true
 
 [node name="CollectableA82" parent="CollectableHolder/CollectableRockCloud2" unique_id=958175453 instance=ExtResource("1_tmlh5")]
@@ -596,12 +794,17 @@ finished_spawning = true
 
 [node name="CollectableA85" parent="CollectableHolder/CollectableRockCloud2" unique_id=1786032441 instance=ExtResource("1_tmlh5")]
 texture_filter = 1
-position = Vector2(856, 3209)
+position = Vector2(726, 3150)
+finished_spawning = true
+
+[node name="CollectableA89" parent="CollectableHolder/CollectableRockCloud2" unique_id=1838467588 instance=ExtResource("1_tmlh5")]
+texture_filter = 1
+position = Vector2(931, 3266.0002)
 finished_spawning = true
 
 [node name="CollectableA86" parent="CollectableHolder/CollectableRockCloud2" unique_id=45675071 instance=ExtResource("1_tmlh5")]
 texture_filter = 1
-position = Vector2(1801, 3346)
+position = Vector2(1208, 3208)
 finished_spawning = true
 
 [node name="CollectableA87" parent="CollectableHolder/CollectableRockCloud2" unique_id=1107859161 instance=ExtResource("1_tmlh5")]
@@ -611,7 +814,7 @@ finished_spawning = true
 
 [node name="CollectableA88" parent="CollectableHolder/CollectableRockCloud2" unique_id=1112124885 instance=ExtResource("1_tmlh5")]
 texture_filter = 1
-position = Vector2(2202, 3179)
+position = Vector2(2411, 2896)
 finished_spawning = true
 
 [node name="CollectableA92" parent="CollectableHolder/CollectableRockCloud2" unique_id=1378396200 instance=ExtResource("1_tmlh5")]
@@ -641,7 +844,12 @@ finished_spawning = true
 
 [node name="CollectableA102" parent="CollectableHolder/CollectableRockCloud2" unique_id=72851671 instance=ExtResource("1_tmlh5")]
 texture_filter = 1
-position = Vector2(-1029, -1605)
+position = Vector2(-1050, -1553)
+finished_spawning = true
+
+[node name="CollectableA119" parent="CollectableHolder/CollectableRockCloud2" unique_id=70653582 instance=ExtResource("1_tmlh5")]
+texture_filter = 1
+position = Vector2(-957, -1584)
 finished_spawning = true
 
 [node name="CollectableA141" parent="CollectableHolder/CollectableRockCloud2" unique_id=1196808971 instance=ExtResource("1_tmlh5")]
@@ -721,7 +929,7 @@ finished_spawning = true
 
 [node name="CollectableA105" parent="CollectableHolder/CollectableRockCloud2" unique_id=1995307468 instance=ExtResource("1_tmlh5")]
 texture_filter = 1
-position = Vector2(1946, 3045)
+position = Vector2(2167, 2633)
 finished_spawning = true
 
 [node name="CollectableA106" parent="CollectableHolder/CollectableRockCloud2" unique_id=963505025 instance=ExtResource("1_tmlh5")]
@@ -761,7 +969,52 @@ finished_spawning = true
 
 [node name="CollectableA114" parent="CollectableHolder/CollectableRockCloud2" unique_id=1674290906 instance=ExtResource("1_tmlh5")]
 texture_filter = 1
-position = Vector2(-1040, -1885)
+position = Vector2(-939, -1771)
+finished_spawning = true
+
+[node name="CollectableA120" parent="CollectableHolder/CollectableRockCloud2" unique_id=1545123202 instance=ExtResource("1_tmlh5")]
+texture_filter = 1
+position = Vector2(-1050, -2040)
+finished_spawning = true
+
+[node name="CollectableA121" parent="CollectableHolder/CollectableRockCloud2" unique_id=60133985 instance=ExtResource("1_tmlh5")]
+texture_filter = 1
+position = Vector2(645, -2003)
+finished_spawning = true
+
+[node name="CollectableA122" parent="CollectableHolder/CollectableRockCloud2" unique_id=2121555448 instance=ExtResource("1_tmlh5")]
+texture_filter = 1
+position = Vector2(2986, -790)
+finished_spawning = true
+
+[node name="CollectableA124" parent="CollectableHolder/CollectableRockCloud2" unique_id=783382875 instance=ExtResource("1_tmlh5")]
+texture_filter = 1
+position = Vector2(2984, -46)
+finished_spawning = true
+
+[node name="CollectableA125" parent="CollectableHolder/CollectableRockCloud2" unique_id=2052859795 instance=ExtResource("1_tmlh5")]
+texture_filter = 1
+position = Vector2(2962, 1085)
+finished_spawning = true
+
+[node name="CollectableA126" parent="CollectableHolder/CollectableRockCloud2" unique_id=1518567981 instance=ExtResource("1_tmlh5")]
+texture_filter = 1
+position = Vector2(2962, 1729)
+finished_spawning = true
+
+[node name="CollectableA128" parent="CollectableHolder/CollectableRockCloud2" unique_id=1071382176 instance=ExtResource("1_tmlh5")]
+texture_filter = 1
+position = Vector2(1491, 2558)
+finished_spawning = true
+
+[node name="CollectableA131" parent="CollectableHolder/CollectableRockCloud2" unique_id=1048535717 instance=ExtResource("1_tmlh5")]
+texture_filter = 1
+position = Vector2(1328, 2792)
+finished_spawning = true
+
+[node name="CollectableA132" parent="CollectableHolder/CollectableRockCloud2" unique_id=128415979 instance=ExtResource("1_tmlh5")]
+texture_filter = 1
+position = Vector2(792, 2213)
 finished_spawning = true
 
 [node name="CollectableA115" parent="CollectableHolder/CollectableRockCloud2" unique_id=1387329151 instance=ExtResource("1_tmlh5")]
@@ -786,7 +1039,7 @@ finished_spawning = true
 
 [node name="CollectableA123" parent="CollectableHolder/CollectableRockCloud2" unique_id=302584458 instance=ExtResource("1_tmlh5")]
 texture_filter = 1
-position = Vector2(2618, -1507)
+position = Vector2(2569, -1585)
 finished_spawning = true
 
 [node name="CollectableA127" parent="CollectableHolder/CollectableRockCloud2" unique_id=2122529417 instance=ExtResource("1_tmlh5")]
@@ -796,7 +1049,12 @@ finished_spawning = true
 
 [node name="CollectableA129" parent="CollectableHolder/CollectableRockCloud2" unique_id=1991055093 instance=ExtResource("1_tmlh5")]
 texture_filter = 1
-position = Vector2(2140, 894)
+position = Vector2(2122, 870.00006)
+finished_spawning = true
+
+[node name="CollectableA162" parent="CollectableHolder/CollectableRockCloud2" unique_id=1552523190 instance=ExtResource("1_tmlh5")]
+texture_filter = 1
+position = Vector2(2302, 1366)
 finished_spawning = true
 
 [node name="CollectableA130" parent="CollectableHolder/CollectableRockCloud2" unique_id=899966406 instance=ExtResource("1_tmlh5")]
@@ -841,7 +1099,7 @@ finished_spawning = true
 
 [node name="CollectableA99" parent="CollectableHolder/CollectableRockCloud2" unique_id=209660872 instance=ExtResource("1_tmlh5")]
 texture_filter = 1
-position = Vector2(9, 692)
+position = Vector2(-375, 865)
 finished_spawning = true
 
 [node name="CollectableA100" parent="CollectableHolder/CollectableRockCloud2" unique_id=809959604 instance=ExtResource("1_tmlh5")]
@@ -851,7 +1109,7 @@ finished_spawning = true
 
 [node name="CollectableA44" parent="CollectableHolder/CollectableRockCloud2" unique_id=285619483 instance=ExtResource("1_tmlh5")]
 texture_filter = 1
-position = Vector2(582, 1760)
+position = Vector2(561, 1720)
 finished_spawning = true
 
 [node name="CollectableA45" parent="CollectableHolder/CollectableRockCloud2" unique_id=741366613 instance=ExtResource("1_tmlh5")]
@@ -936,7 +1194,42 @@ finished_spawning = true
 
 [node name="CollectableA62" parent="CollectableHolder/CollectableRockCloud2" unique_id=723160236 instance=ExtResource("1_tmlh5")]
 texture_filter = 1
-position = Vector2(-443, 3687)
+position = Vector2(-225, 3819.0002)
+finished_spawning = true
+
+[node name="CollectableA65" parent="CollectableHolder/CollectableRockCloud2" unique_id=118215998 instance=ExtResource("1_tmlh5")]
+texture_filter = 1
+position = Vector2(-1150, 3814.0002)
+finished_spawning = true
+
+[node name="CollectableA66" parent="CollectableHolder/CollectableRockCloud2" unique_id=7571709 instance=ExtResource("1_tmlh5")]
+texture_filter = 1
+position = Vector2(-787, 3823)
+finished_spawning = true
+
+[node name="CollectableA67" parent="CollectableHolder/CollectableRockCloud2" unique_id=1543391934 instance=ExtResource("1_tmlh5")]
+texture_filter = 1
+position = Vector2(-1447, 3816)
+finished_spawning = true
+
+[node name="CollectableA69" parent="CollectableHolder/CollectableRockCloud2" unique_id=153544920 instance=ExtResource("1_tmlh5")]
+texture_filter = 1
+position = Vector2(221, 3814.0002)
+finished_spawning = true
+
+[node name="CollectableA70" parent="CollectableHolder/CollectableRockCloud2" unique_id=94051925 instance=ExtResource("1_tmlh5")]
+texture_filter = 1
+position = Vector2(594, 3827)
+finished_spawning = true
+
+[node name="CollectableA90" parent="CollectableHolder/CollectableRockCloud2" unique_id=2061158160 instance=ExtResource("1_tmlh5")]
+texture_filter = 1
+position = Vector2(628, 3636)
+finished_spawning = true
+
+[node name="CollectableA91" parent="CollectableHolder/CollectableRockCloud2" unique_id=619702931 instance=ExtResource("1_tmlh5")]
+texture_filter = 1
+position = Vector2(1039, 3540.0002)
 finished_spawning = true
 
 [node name="CollectableA63" parent="CollectableHolder/CollectableRockCloud2" unique_id=347345708 instance=ExtResource("1_tmlh5")]
@@ -951,7 +1244,7 @@ finished_spawning = true
 
 [node name="CollectableA43" parent="CollectableHolder/CollectableRockCloud2" unique_id=2071764415 instance=ExtResource("1_tmlh5")]
 texture_filter = 1
-position = Vector2(450, 1792)
+position = Vector2(256.00003, 1865)
 finished_spawning = true
 
 [node name="CollectableRockCloud3" type="Node2D" parent="CollectableHolder" unique_id=1472344152]
@@ -1051,7 +1344,7 @@ finished_spawning = true
 
 [node name="CollectableA90" parent="CollectableHolder/CollectableRocks_RightBorder" unique_id=2073798960 instance=ExtResource("1_tmlh5")]
 texture_filter = 1
-position = Vector2(2829, 1973)
+position = Vector2(2844, 2022)
 finished_spawning = true
 
 [node name="CollectableA91" parent="CollectableHolder/CollectableRocks_RightBorder" unique_id=8164483 instance=ExtResource("1_tmlh5")]
@@ -1121,7 +1414,7 @@ finished_spawning = true
 
 [node name="CollectableA133" parent="CollectableHolder/CollectableRocks_RightBorder" unique_id=1352353047 instance=ExtResource("1_tmlh5")]
 texture_filter = 1
-position = Vector2(2820, 2470)
+position = Vector2(2873, 2443)
 finished_spawning = true
 
 [node name="CollectableA134" parent="CollectableHolder/CollectableRocks_RightBorder" unique_id=336109709 instance=ExtResource("1_tmlh5")]
@@ -1136,17 +1429,17 @@ finished_spawning = true
 
 [node name="CollectableA65" parent="CollectableHolder/CollectableRocks_RightBorder" unique_id=1310661306 instance=ExtResource("1_tmlh5")]
 texture_filter = 1
-position = Vector2(2392, 2857)
+position = Vector2(2627, 2860)
 finished_spawning = true
 
 [node name="CollectableA66" parent="CollectableHolder/CollectableRocks_RightBorder" unique_id=91889598 instance=ExtResource("1_tmlh5")]
 texture_filter = 1
-position = Vector2(2573, 2615)
+position = Vector2(2620, 2554)
 finished_spawning = true
 
 [node name="CollectableA67" parent="CollectableHolder/CollectableRocks_RightBorder" unique_id=2046924117 instance=ExtResource("1_tmlh5")]
 texture_filter = 1
-position = Vector2(2793, 2690)
+position = Vector2(2839, 2721)
 finished_spawning = true
 
 [node name="CollectableA8" parent="CollectableHolder/CollectableRocks_RightBorder" unique_id=1669703853 instance=ExtResource("1_tmlh5")]
@@ -1200,194 +1493,243 @@ rotation = -2.4227133
 
 [node name="ObstacleSpireBig35" parent="ObstacleHolder/BigSpires" unique_id=2108071402 instance=ExtResource("7_25cc2")]
 position = Vector2(345, 1128)
+collision_layer = 64
 
 [node name="ObstacleSpireBig36" parent="ObstacleHolder/BigSpires" unique_id=1115230686 instance=ExtResource("7_25cc2")]
 position = Vector2(1178.9999, 624)
 rotation = 0.3661548
+collision_layer = 64
 
 [node name="ObstacleSpireBig37" parent="ObstacleHolder/BigSpires" unique_id=1551054271 instance=ExtResource("7_25cc2")]
 position = Vector2(2002, 1583.0001)
 rotation = -0.2607997
+collision_layer = 64
 
 [node name="ObstacleSpireBig82" parent="ObstacleHolder/BigSpires" unique_id=491437681 instance=ExtResource("7_25cc2")]
 position = Vector2(2701, 1146.9999)
 rotation = -0.2607997
+collision_layer = 64
 
 [node name="ObstacleSpireBig38" parent="ObstacleHolder/BigSpires" unique_id=1871511598 instance=ExtResource("7_25cc2")]
 position = Vector2(2184, 634.0001)
 rotation = 0.8708712
+collision_layer = 64
 
 [node name="ObstacleSpireBig73" parent="ObstacleHolder/BigSpires" unique_id=1334986003 instance=ExtResource("7_25cc2")]
 position = Vector2(1667, 763.0001)
 rotation = 0.8708712
+collision_layer = 64
 
 [node name="ObstacleSpireBig39" parent="ObstacleHolder/BigSpires" unique_id=1249265689 instance=ExtResource("7_25cc2")]
 position = Vector2(1952, -186)
 rotation = -0.2607997
+collision_layer = 64
 
 [node name="ObstacleSpireBig40" parent="ObstacleHolder/BigSpires" unique_id=261430180 instance=ExtResource("7_25cc2")]
 position = Vector2(2798, -216)
 rotation = 0.6100715
+collision_layer = 64
 
 [node name="ObstacleSpireBig41" parent="ObstacleHolder/BigSpires" unique_id=1243470663 instance=ExtResource("7_25cc2")]
 position = Vector2(2164.9998, -947)
 rotation = -0.2607997
+collision_layer = 64
 
 [node name="ObstacleSpireBig71" parent="ObstacleHolder/BigSpires" unique_id=1761849072 instance=ExtResource("7_25cc2")]
 position = Vector2(2178.0002, -1587.9999)
 rotation = -0.4537257
+collision_layer = 64
 
 [node name="ObstacleSpireBig42" parent="ObstacleHolder/BigSpires" unique_id=694547649 instance=ExtResource("7_25cc2")]
 position = Vector2(2509, -2752)
 rotation = -0.2607997
+collision_layer = 64
 
 [node name="ObstacleSpireBig72" parent="ObstacleHolder/BigSpires" unique_id=1276110742 instance=ExtResource("7_25cc2")]
 position = Vector2(2776, -1390)
 rotation = -0.2607997
+collision_layer = 64
 
 [node name="ObstacleSpireBig43" parent="ObstacleHolder/BigSpires" unique_id=727172489 instance=ExtResource("7_25cc2")]
 position = Vector2(2583, -2286)
 rotation = 0.8708712
+collision_layer = 64
 
 [node name="ObstacleSpireBig44" parent="ObstacleHolder/BigSpires" unique_id=1782284478 instance=ExtResource("7_25cc2")]
 position = Vector2(1412, -1797)
 rotation = -0.2607997
+collision_layer = 64
 
 [node name="ObstacleSpireBig45" parent="ObstacleHolder/BigSpires" unique_id=2145232824 instance=ExtResource("7_25cc2")]
 position = Vector2(957, -2296)
+collision_layer = 64
 
 [node name="ObstacleSpireBig46" parent="ObstacleHolder/BigSpires" unique_id=326638554 instance=ExtResource("7_25cc2")]
 position = Vector2(521, -1763)
 rotation = 0.8708712
+collision_layer = 64
 
 [node name="ObstacleSpireBig47" parent="ObstacleHolder/BigSpires" unique_id=937683173 instance=ExtResource("7_25cc2")]
 position = Vector2(288, -2580.9998)
 rotation = -0.2607997
+collision_layer = 64
 
 [node name="ObstacleSpireBig48" parent="ObstacleHolder/BigSpires" unique_id=1130490786 instance=ExtResource("7_25cc2")]
 position = Vector2(-264.00006, -1776.0002)
 rotation = 0.8708712
+collision_layer = 64
 
 [node name="ObstacleSpireBig83" parent="ObstacleHolder/BigSpires" unique_id=2003220075 instance=ExtResource("7_25cc2")]
 position = Vector2(-1058, -1498.0001)
 rotation = 0.8708712
+collision_layer = 64
 
 [node name="ObstacleSpireBig49" parent="ObstacleHolder/BigSpires" unique_id=948623981 instance=ExtResource("7_25cc2")]
 position = Vector2(-911, -2285)
 rotation = -0.2607997
+collision_layer = 64
 
 [node name="ObstacleSpireBig50" parent="ObstacleHolder/BigSpires" unique_id=1171325902 instance=ExtResource("7_25cc2")]
 position = Vector2(-1283.0001, -2386)
 rotation = 0.8708712
+collision_layer = 64
 
 [node name="ObstacleSpireBig51" parent="ObstacleHolder/BigSpires" unique_id=770629094 instance=ExtResource("7_25cc2")]
 position = Vector2(-2479, -1078)
+collision_layer = 64
 
 [node name="ObstacleSpireBig52" parent="ObstacleHolder/BigSpires" unique_id=1693555589 instance=ExtResource("7_25cc2")]
 position = Vector2(-2604, -468)
 rotation = -0.2607997
+collision_layer = 64
 
 [node name="ObstacleSpireBig80" parent="ObstacleHolder/BigSpires" unique_id=554242507 instance=ExtResource("7_25cc2")]
 position = Vector2(-1776, -971.00006)
 rotation = -0.2607997
+collision_layer = 64
 
 [node name="ObstacleSpireBig81" parent="ObstacleHolder/BigSpires" unique_id=470142992 instance=ExtResource("7_25cc2")]
 position = Vector2(891.00006, 1198)
 rotation = -0.2607997
+collision_layer = 64
 
 [node name="ObstacleSpireBig53" parent="ObstacleHolder/BigSpires" unique_id=1209201933 instance=ExtResource("7_25cc2")]
 position = Vector2(-1107, -812)
 rotation = 0.8708712
+collision_layer = 64
 
 [node name="ObstacleSpireBig54" parent="ObstacleHolder/BigSpires" unique_id=982166344 instance=ExtResource("7_25cc2")]
 position = Vector2(-1236, -274.00003)
 rotation = -0.2607997
+collision_layer = 64
 
 [node name="ObstacleSpireBig55" parent="ObstacleHolder/BigSpires" unique_id=421764489 instance=ExtResource("7_25cc2")]
 position = Vector2(-678, -135)
 rotation = 0.8708712
+collision_layer = 64
 
 [node name="ObstacleSpireBig56" parent="ObstacleHolder/BigSpires" unique_id=1081924386 instance=ExtResource("7_25cc2")]
 position = Vector2(-1094, 450)
 rotation = -0.2607997
+collision_layer = 64
 
 [node name="ObstacleSpireBig57" parent="ObstacleHolder/BigSpires" unique_id=291614692 instance=ExtResource("7_25cc2")]
 position = Vector2(-2285, 797.0002)
 rotation = 0.6100715
+collision_layer = 64
 
 [node name="ObstacleSpireBig58" parent="ObstacleHolder/BigSpires" unique_id=451128796 instance=ExtResource("7_25cc2")]
 position = Vector2(-2457, 1451)
+collision_layer = 64
 
 [node name="ObstacleSpireBig59" parent="ObstacleHolder/BigSpires" unique_id=605381967 instance=ExtResource("7_25cc2")]
 position = Vector2(-2035, 2228)
 rotation = 0.6100715
+collision_layer = 64
 
 [node name="ObstacleSpireBig75" parent="ObstacleHolder/BigSpires" unique_id=407414210 instance=ExtResource("7_25cc2")]
 position = Vector2(-1323, 1935.0001)
 rotation = 0.6100715
+collision_layer = 64
 
 [node name="ObstacleSpireBig76" parent="ObstacleHolder/BigSpires" unique_id=562554948 instance=ExtResource("7_25cc2")]
 position = Vector2(-1251, 1256.0001)
 rotation = 0.6100715
+collision_layer = 64
 
 [node name="ObstacleSpireBig77" parent="ObstacleHolder/BigSpires" unique_id=764493082 instance=ExtResource("7_25cc2")]
 position = Vector2(-290.00012, 416)
 rotation = 0.6100715
+collision_layer = 64
 
 [node name="ObstacleSpireBig78" parent="ObstacleHolder/BigSpires" unique_id=1328765178 instance=ExtResource("7_25cc2")]
 position = Vector2(-478.00006, 966.00006)
 rotation = 0.6100715
+collision_layer = 64
 
 [node name="ObstacleSpireBig79" parent="ObstacleHolder/BigSpires" unique_id=1553126585 instance=ExtResource("7_25cc2")]
 position = Vector2(-2239, -1631)
 rotation = 0.6100715
+collision_layer = 64
 
 [node name="ObstacleSpireBig60" parent="ObstacleHolder/BigSpires" unique_id=691827829 instance=ExtResource("7_25cc2")]
 position = Vector2(-2740, 2504)
 rotation = -0.2607997
+collision_layer = 64
 
 [node name="ObstacleSpireBig61" parent="ObstacleHolder/BigSpires" unique_id=1205414724 instance=ExtResource("7_25cc2")]
 position = Vector2(-1761, 2739)
 rotation = -0.2607997
+collision_layer = 64
 
 [node name="ObstacleSpireBig62" parent="ObstacleHolder/BigSpires" unique_id=581172866 instance=ExtResource("7_25cc2")]
 position = Vector2(-457.99988, 2787.0002)
 rotation = 1.1886299
+collision_layer = 64
 
 [node name="ObstacleSpireBig63" parent="ObstacleHolder/BigSpires" unique_id=2001690271 instance=ExtResource("7_25cc2")]
 position = Vector2(412, 2431)
 rotation = -0.2607997
+collision_layer = 64
 
 [node name="ObstacleSpireBig74" parent="ObstacleHolder/BigSpires" unique_id=1751445226 instance=ExtResource("7_25cc2")]
 position = Vector2(819, 2781)
 rotation = -0.2607997
+collision_layer = 64
 
 [node name="ObstacleSpireBig64" parent="ObstacleHolder/BigSpires" unique_id=1505248240 instance=ExtResource("7_25cc2")]
 position = Vector2(721, 1841)
 rotation = -0.2607997
+collision_layer = 64
 
 [node name="ObstacleSpireBig65" parent="ObstacleHolder/BigSpires" unique_id=2081391465 instance=ExtResource("7_25cc2")]
 position = Vector2(1471, 1845)
 rotation = 0.9517243
+collision_layer = 64
 
 [node name="ObstacleSpireBig66" parent="ObstacleHolder/BigSpires" unique_id=361351372 instance=ExtResource("7_25cc2")]
 position = Vector2(2793, 2253)
+collision_layer = 64
 
 [node name="ObstacleSpireBig67" parent="ObstacleHolder/BigSpires" unique_id=2045838572 instance=ExtResource("7_25cc2")]
 position = Vector2(1095, -634)
 rotation = -0.2607997
+collision_layer = 64
 
 [node name="ObstacleSpireBig68" parent="ObstacleHolder/BigSpires" unique_id=765278853 instance=ExtResource("7_25cc2")]
 position = Vector2(361, -904)
 rotation = 0.8708712
+collision_layer = 64
 
 [node name="ObstacleSpireBig69" parent="ObstacleHolder/BigSpires" unique_id=1279656564 instance=ExtResource("7_25cc2")]
 position = Vector2(129, -425)
 rotation = -0.2607997
+collision_layer = 64
 
 [node name="ObstacleSpireBig70" parent="ObstacleHolder/BigSpires" unique_id=229268911 instance=ExtResource("7_25cc2")]
 position = Vector2(-506, -1000)
 rotation = 0.8708712
+collision_layer = 64
 
 [node name="Spires" type="Node2D" parent="ObstacleHolder" unique_id=993982021]
 
@@ -1428,13 +1770,13 @@ position = Vector2(2459, -531)
 position = Vector2(1970, -669)
 
 [node name="ObstacleSpire339" parent="ObstacleHolder/Spires" unique_id=1677324250 instance=ExtResource("9_7ipgj")]
-position = Vector2(1879, -500)
+position = Vector2(1833, -451)
 
 [node name="ObstacleSpire338" parent="ObstacleHolder/Spires" unique_id=769070560 instance=ExtResource("9_7ipgj")]
-position = Vector2(1631, -587)
+position = Vector2(1636, -615)
 
 [node name="ObstacleSpire340" parent="ObstacleHolder/Spires" unique_id=159842150 instance=ExtResource("9_7ipgj")]
-position = Vector2(2183, -153)
+position = Vector2(2208, -147)
 
 [node name="ObstacleSpire341" parent="ObstacleHolder/Spires" unique_id=1544337791 instance=ExtResource("9_7ipgj")]
 position = Vector2(2307, 421)
@@ -1464,7 +1806,7 @@ position = Vector2(2203, -1946)
 position = Vector2(2234, -2157)
 
 [node name="ObstacleSpire337" parent="ObstacleHolder/Spires" unique_id=1789590459 instance=ExtResource("9_7ipgj")]
-position = Vector2(2386, -2409)
+position = Vector2(2349, -2500)
 
 [node name="ObstacleSpire174" parent="ObstacleHolder/Spires" unique_id=1946390529 instance=ExtResource("9_7ipgj")]
 position = Vector2(2815, -2346)
@@ -1488,10 +1830,10 @@ position = Vector2(1653, -1718)
 position = Vector2(1079, -1690)
 
 [node name="ObstacleSpire181" parent="ObstacleHolder/Spires" unique_id=1622796224 instance=ExtResource("9_7ipgj")]
-position = Vector2(1208, -1553)
+position = Vector2(1243, -1516)
 
 [node name="ObstacleSpire182" parent="ObstacleHolder/Spires" unique_id=622305919 instance=ExtResource("9_7ipgj")]
-position = Vector2(353, -1452)
+position = Vector2(411, -1500)
 
 [node name="ObstacleSpire183" parent="ObstacleHolder/Spires" unique_id=13119956 instance=ExtResource("9_7ipgj")]
 position = Vector2(1181, -2129)
@@ -1518,16 +1860,16 @@ position = Vector2(1022, -2573)
 position = Vector2(328, -1941)
 
 [node name="ObstacleSpire191" parent="ObstacleHolder/Spires" unique_id=1819618723 instance=ExtResource("9_7ipgj")]
-position = Vector2(275, -1683)
+position = Vector2(228, -1658)
 
 [node name="ObstacleSpire192" parent="ObstacleHolder/Spires" unique_id=145238445 instance=ExtResource("9_7ipgj")]
 position = Vector2(497, -2325)
 
 [node name="ObstacleSpire193" parent="ObstacleHolder/Spires" unique_id=1041703815 instance=ExtResource("9_7ipgj")]
-position = Vector2(25, -1719)
+position = Vector2(47, -1739)
 
 [node name="ObstacleSpire311" parent="ObstacleHolder/Spires" unique_id=350920157 instance=ExtResource("9_7ipgj")]
-position = Vector2(-102, -1544)
+position = Vector2(789, -1485)
 
 [node name="ObstacleSpire194" parent="ObstacleHolder/Spires" unique_id=986590349 instance=ExtResource("9_7ipgj")]
 position = Vector2(12, -1929)
@@ -1536,10 +1878,10 @@ position = Vector2(12, -1929)
 position = Vector2(167, -2124)
 
 [node name="ObstacleSpire196" parent="ObstacleHolder/Spires" unique_id=745463025 instance=ExtResource("9_7ipgj")]
-position = Vector2(-410, -2556)
+position = Vector2(-404, -2701)
 
 [node name="ObstacleSpire197" parent="ObstacleHolder/Spires" unique_id=773190615 instance=ExtResource("9_7ipgj")]
-position = Vector2(-529, -2805)
+position = Vector2(-653, -2839)
 
 [node name="ObstacleSpire198" parent="ObstacleHolder/Spires" unique_id=1272200953 instance=ExtResource("9_7ipgj")]
 position = Vector2(-550, -2285)
@@ -1548,13 +1890,13 @@ position = Vector2(-550, -2285)
 position = Vector2(-46, -2687)
 
 [node name="ObstacleSpire200" parent="ObstacleHolder/Spires" unique_id=1648397450 instance=ExtResource("9_7ipgj")]
-position = Vector2(-283, -2740)
+position = Vector2(-679, -2581)
 
 [node name="ObstacleSpire201" parent="ObstacleHolder/Spires" unique_id=1681065282 instance=ExtResource("9_7ipgj")]
 position = Vector2(-378, -2014)
 
 [node name="ObstacleSpire202" parent="ObstacleHolder/Spires" unique_id=2005583094 instance=ExtResource("9_7ipgj")]
-position = Vector2(-664, -2042)
+position = Vector2(-700, -2091)
 
 [node name="ObstacleSpire203" parent="ObstacleHolder/Spires" unique_id=1118099897 instance=ExtResource("9_7ipgj")]
 position = Vector2(-93, -2129)
@@ -1585,6 +1927,12 @@ position = Vector2(36, -1174)
 
 [node name="ObstacleSpire212" parent="ObstacleHolder/Spires" unique_id=1955627108 instance=ExtResource("9_7ipgj")]
 position = Vector2(1182, -1066)
+
+[node name="ObstacleSpire368" parent="ObstacleHolder/Spires" unique_id=1750776554 instance=ExtResource("9_7ipgj")]
+position = Vector2(1324, -860)
+
+[node name="ObstacleSpire369" parent="ObstacleHolder/Spires" unique_id=617437913 instance=ExtResource("9_7ipgj")]
+position = Vector2(2322, 47)
 
 [node name="ObstacleSpire343" parent="ObstacleHolder/Spires" unique_id=380463033 instance=ExtResource("9_7ipgj")]
 position = Vector2(587, -990)
@@ -1635,7 +1983,7 @@ position = Vector2(-1331, -730)
 position = Vector2(-1630, -790)
 
 [node name="ObstacleSpire359" parent="ObstacleHolder/Spires" unique_id=1027426588 instance=ExtResource("9_7ipgj")]
-position = Vector2(-1751, -1194)
+position = Vector2(-1744, -1236)
 
 [node name="ObstacleSpire360" parent="ObstacleHolder/Spires" unique_id=860942824 instance=ExtResource("9_7ipgj")]
 position = Vector2(-2255, -986)
@@ -1694,6 +2042,9 @@ position = Vector2(-149, 55)
 [node name="ObstacleSpire225" parent="ObstacleHolder/Spires" unique_id=1265639979 instance=ExtResource("9_7ipgj")]
 position = Vector2(449, 739)
 
+[node name="ObstacleSpire372" parent="ObstacleHolder/Spires" unique_id=1580711129 instance=ExtResource("9_7ipgj")]
+position = Vector2(634, 1040)
+
 [node name="ObstacleSpire226" parent="ObstacleHolder/Spires" unique_id=1072483274 instance=ExtResource("9_7ipgj")]
 position = Vector2(278, 924)
 
@@ -1713,7 +2064,7 @@ position = Vector2(663, 1344)
 position = Vector2(274, 1330)
 
 [node name="ObstacleSpire232" parent="ObstacleHolder/Spires" unique_id=1377226533 instance=ExtResource("9_7ipgj")]
-position = Vector2(108, 1157)
+position = Vector2(56, 1124)
 
 [node name="ObstacleSpire233" parent="ObstacleHolder/Spires" unique_id=2054413623 instance=ExtResource("9_7ipgj")]
 position = Vector2(-137, 747)
@@ -1725,28 +2076,34 @@ position = Vector2(122, 1415)
 position = Vector2(-280, 1275)
 
 [node name="ObstacleSpire236" parent="ObstacleHolder/Spires" unique_id=865060597 instance=ExtResource("9_7ipgj")]
-position = Vector2(-199, 1492)
+position = Vector2(-195, 1456)
 
 [node name="ObstacleSpire237" parent="ObstacleHolder/Spires" unique_id=1738954160 instance=ExtResource("9_7ipgj")]
 position = Vector2(-473, 1455)
 
 [node name="ObstacleSpire238" parent="ObstacleHolder/Spires" unique_id=361639205 instance=ExtResource("9_7ipgj")]
-position = Vector2(-515, 1151)
+position = Vector2(-2557, 356)
 
 [node name="ObstacleSpire322" parent="ObstacleHolder/Spires" unique_id=1248981184 instance=ExtResource("9_7ipgj")]
-position = Vector2(-592, 920)
+position = Vector2(-719, 1142)
 
 [node name="ObstacleSpire323" parent="ObstacleHolder/Spires" unique_id=1828242329 instance=ExtResource("9_7ipgj")]
 position = Vector2(-923, 969)
 
 [node name="ObstacleSpire324" parent="ObstacleHolder/Spires" unique_id=717425041 instance=ExtResource("9_7ipgj")]
-position = Vector2(-1119, 1323)
+position = Vector2(-1000, 2699)
 
 [node name="ObstacleSpire325" parent="ObstacleHolder/Spires" unique_id=1240935386 instance=ExtResource("9_7ipgj")]
-position = Vector2(-1522, 1049)
+position = Vector2(-1689, 999)
+
+[node name="ObstacleSpire366" parent="ObstacleHolder/Spires" unique_id=330148861 instance=ExtResource("9_7ipgj")]
+position = Vector2(-1718, 1415)
+
+[node name="ObstacleSpire367" parent="ObstacleHolder/Spires" unique_id=391180150 instance=ExtResource("9_7ipgj")]
+position = Vector2(-1576, 2297)
 
 [node name="ObstacleSpire326" parent="ObstacleHolder/Spires" unique_id=1879072667 instance=ExtResource("9_7ipgj")]
-position = Vector2(-1250, 1458)
+position = Vector2(-1289, 1465)
 
 [node name="ObstacleSpire327" parent="ObstacleHolder/Spires" unique_id=1194506192 instance=ExtResource("9_7ipgj")]
 position = Vector2(-1473, 1587)
@@ -1755,13 +2112,13 @@ position = Vector2(-1473, 1587)
 position = Vector2(-1212, 1673)
 
 [node name="ObstacleSpire239" parent="ObstacleHolder/Spires" unique_id=739475799 instance=ExtResource("9_7ipgj")]
-position = Vector2(-665, 1343)
+position = Vector2(-732, 1378)
 
 [node name="ObstacleSpire240" parent="ObstacleHolder/Spires" unique_id=1325579141 instance=ExtResource("9_7ipgj")]
-position = Vector2(-1103, 1137)
+position = Vector2(-1059, 1130)
 
 [node name="ObstacleSpire241" parent="ObstacleHolder/Spires" unique_id=1231992196 instance=ExtResource("9_7ipgj")]
-position = Vector2(-805, 336)
+position = Vector2(-746, 298)
 
 [node name="ObstacleSpire242" parent="ObstacleHolder/Spires" unique_id=1553205434 instance=ExtResource("9_7ipgj")]
 position = Vector2(-829, 778)
@@ -1771,22 +2128,22 @@ position = Vector2(-605, 531)
 rotation = -0.5206008
 
 [node name="ObstacleSpire244" parent="ObstacleHolder/Spires" unique_id=1859557805 instance=ExtResource("9_7ipgj")]
-position = Vector2(-858, 1240)
+position = Vector2(-920, 1263)
 
 [node name="ObstacleSpire245" parent="ObstacleHolder/Spires" unique_id=187196510 instance=ExtResource("9_7ipgj")]
-position = Vector2(-1022, 1541)
+position = Vector2(-1002, 1502)
 
 [node name="ObstacleSpire246" parent="ObstacleHolder/Spires" unique_id=1767831819 instance=ExtResource("9_7ipgj")]
 position = Vector2(-101, 959)
 
 [node name="ObstacleSpire247" parent="ObstacleHolder/Spires" unique_id=1965972187 instance=ExtResource("9_7ipgj")]
-position = Vector2(-1386, 864)
+position = Vector2(-1410, 907)
 
 [node name="ObstacleSpire248" parent="ObstacleHolder/Spires" unique_id=647711676 instance=ExtResource("9_7ipgj")]
-position = Vector2(-1284, 1160)
+position = Vector2(-1359, 593)
 
 [node name="ObstacleSpire249" parent="ObstacleHolder/Spires" unique_id=1071689412 instance=ExtResource("9_7ipgj")]
-position = Vector2(-1391, 1309)
+position = Vector2(-1551, 1231)
 
 [node name="ObstacleSpire250" parent="ObstacleHolder/Spires" unique_id=1349113329 instance=ExtResource("9_7ipgj")]
 position = Vector2(-2807, 1148)
@@ -1816,7 +2173,7 @@ position = Vector2(-1034, 1777)
 position = Vector2(-1165, 2357)
 
 [node name="ObstacleSpire329" parent="ObstacleHolder/Spires" unique_id=2009125303 instance=ExtResource("9_7ipgj")]
-position = Vector2(-1221, 2561)
+position = Vector2(-2736, 131)
 
 [node name="ObstacleSpire259" parent="ObstacleHolder/Spires" unique_id=2021336263 instance=ExtResource("9_7ipgj")]
 position = Vector2(-1664, 737)
@@ -1864,7 +2221,7 @@ position = Vector2(255, 2677)
 position = Vector2(2485, 1393)
 
 [node name="ObstacleSpire274" parent="ObstacleHolder/Spires" unique_id=1361796728 instance=ExtResource("9_7ipgj")]
-position = Vector2(1169, 1608)
+position = Vector2(1233, 1667)
 
 [node name="ObstacleSpire313" parent="ObstacleHolder/Spires" unique_id=1886507889 instance=ExtResource("9_7ipgj")]
 position = Vector2(1680, 1513)
@@ -1873,10 +2230,10 @@ position = Vector2(1680, 1513)
 position = Vector2(2288, 2028)
 
 [node name="ObstacleSpire315" parent="ObstacleHolder/Spires" unique_id=1426214634 instance=ExtResource("9_7ipgj")]
-position = Vector2(902, 2222)
+position = Vector2(896, 2231)
 
 [node name="ObstacleSpire316" parent="ObstacleHolder/Spires" unique_id=1407019567 instance=ExtResource("9_7ipgj")]
-position = Vector2(644, 2279)
+position = Vector2(1196, 2580)
 
 [node name="ObstacleSpire317" parent="ObstacleHolder/Spires" unique_id=525312129 instance=ExtResource("9_7ipgj")]
 position = Vector2(771, 2496)
@@ -1894,7 +2251,7 @@ position = Vector2(1077, 2751)
 position = Vector2(2697, -1017)
 
 [node name="ObstacleSpire275" parent="ObstacleHolder/Spires" unique_id=405450910 instance=ExtResource("9_7ipgj")]
-position = Vector2(1173, 2163)
+position = Vector2(1180, 2136)
 
 [node name="ObstacleSpire276" parent="ObstacleHolder/Spires" unique_id=906353707 instance=ExtResource("9_7ipgj")]
 position = Vector2(1352, 2032)
@@ -1905,8 +2262,14 @@ position = Vector2(967, 1989)
 [node name="ObstacleSpire278" parent="ObstacleHolder/Spires" unique_id=1188757915 instance=ExtResource("9_7ipgj")]
 position = Vector2(1220, 1237)
 
+[node name="ObstacleSpire370" parent="ObstacleHolder/Spires" unique_id=1425212081 instance=ExtResource("9_7ipgj")]
+position = Vector2(1121, 1044)
+
+[node name="ObstacleSpire371" parent="ObstacleHolder/Spires" unique_id=436202979 instance=ExtResource("9_7ipgj")]
+position = Vector2(1544, 1155)
+
 [node name="ObstacleSpire279" parent="ObstacleHolder/Spires" unique_id=1590921838 instance=ExtResource("9_7ipgj")]
-position = Vector2(1722, 2507)
+position = Vector2(1270, 2766)
 
 [node name="ObstacleSpire280" parent="ObstacleHolder/Spires" unique_id=1516453951 instance=ExtResource("9_7ipgj")]
 position = Vector2(1365, 1065)
@@ -1927,7 +2290,7 @@ position = Vector2(2735, 1796)
 position = Vector2(2685, 1521)
 
 [node name="ObstacleSpire286" parent="ObstacleHolder/Spires" unique_id=1855421597 instance=ExtResource("9_7ipgj")]
-position = Vector2(2355, 2376)
+position = Vector2(2366, 2364)
 
 [node name="ObstacleSpire287" parent="ObstacleHolder/Spires" unique_id=1504981929 instance=ExtResource("9_7ipgj")]
 position = Vector2(2709, 2512)
@@ -1960,7 +2323,7 @@ position = Vector2(-2831, 479)
 position = Vector2(-2502, -152)
 
 [node name="ObstacleSpire297" parent="ObstacleHolder/Spires" unique_id=1991052180 instance=ExtResource("9_7ipgj")]
-position = Vector2(-2798, -467)
+position = Vector2(-2816, -501)
 
 [node name="ObstacleSpire298" parent="ObstacleHolder/Spires" unique_id=305388290 instance=ExtResource("9_7ipgj")]
 position = Vector2(-2827, -870)
@@ -1969,7 +2332,7 @@ position = Vector2(-2827, -870)
 position = Vector2(-2020, -939)
 
 [node name="ObstacleSpire300" parent="ObstacleHolder/Spires" unique_id=2143448040 instance=ExtResource("9_7ipgj")]
-position = Vector2(-1681, -1028)
+position = Vector2(-1882, -683)
 
 [node name="ObstacleSpire301" parent="ObstacleHolder/Spires" unique_id=784025681 instance=ExtResource("9_7ipgj")]
 position = Vector2(-2199, -735)
@@ -2011,7 +2374,7 @@ position = Vector2(-2726, -1156)
 position = Vector2(-2449, -1677)
 
 [node name="ObstacleSpire308" parent="ObstacleHolder/Spires" unique_id=78053460 instance=ExtResource("9_7ipgj")]
-position = Vector2(-1875, -2811)
+position = Vector2(-1867, -2827)
 
 [node name="ObstacleSpire309" parent="ObstacleHolder/Spires" unique_id=912818656 instance=ExtResource("9_7ipgj")]
 position = Vector2(-1375, -2843)
@@ -2020,9 +2383,9 @@ position = Vector2(-1375, -2843)
 position = Vector2(-1025, -2591)
 
 [node name="RoadHolder" type="Node2D" parent="." unique_id=596469565]
+z_index = -5
 
 [node name="Road" parent="RoadHolder" unique_id=1763522874 instance=ExtResource("6_80ic5")]
-z_index = -5
 position = Vector2(-1908, -1943)
 points = PackedVector2Array(-1089, -1139, -888, -701, -799, -466, -750.8699, -250.79312, -763, 31, -413, 64, 57, 13, 339, 555, 1482, 1265, 2313, 2213, 2819, 2701, 4027, 3121, 4571, 3976, 3961, 5078)
 
@@ -2124,26 +2487,32 @@ polygon = PackedVector2Array(-109.884476, -264.05, -285.6768, -44.819336, -172.4
 
 [node name="Piston5" parent="Launchpad2" unique_id=168789567 instance=ExtResource("16_vronc")]
 position = Vector2(-100, 0)
+fetch_speed = 7.5
 
 [node name="Piston12" parent="Launchpad2" unique_id=1247505039 instance=ExtResource("16_vronc")]
 position = Vector2(-100, 0)
 rotation = 2.6179938
+fetch_speed = 7.5
 
 [node name="Piston13" parent="Launchpad2" unique_id=832541433 instance=ExtResource("16_vronc")]
 position = Vector2(-100, 0)
 rotation = -2.6179938
+fetch_speed = 7.5
 
 [node name="Piston14" parent="Launchpad2" unique_id=906291739 instance=ExtResource("16_vronc")]
 position = Vector2(-100, 0)
 rotation = -1.5707964
+fetch_speed = 7.5
 
 [node name="Piston15" parent="Launchpad2" unique_id=1019808086 instance=ExtResource("16_vronc")]
 position = Vector2(-100, 0)
 rotation = -0.5235988
+fetch_speed = 7.5
 
 [node name="Piston11" parent="Launchpad2" unique_id=1462965618 instance=ExtResource("16_vronc")]
 position = Vector2(-100, 0)
 rotation = 0.5235988
+fetch_speed = 7.5
 
 [node name="ObstaclePad" type="StaticBody2D" parent="Launchpad2" unique_id=507715777 node_paths=PackedStringArray("top_layer", "shadow_layer")]
 modulate = Color(1.1088537, 0.88435686, 0.70067745, 1)
@@ -2908,26 +3277,32 @@ polygon = PackedVector2Array(-109.884476, -264.05, -285.6768, -44.819336, -172.4
 
 [node name="Piston5" parent="Launchpad3" unique_id=1792382550 instance=ExtResource("16_vronc")]
 position = Vector2(-100, 0)
+fetch_speed = 7.5
 
 [node name="Piston12" parent="Launchpad3" unique_id=147133305 instance=ExtResource("16_vronc")]
 position = Vector2(-100, 0)
 rotation = 2.6179938
+fetch_speed = 7.5
 
 [node name="Piston13" parent="Launchpad3" unique_id=991294263 instance=ExtResource("16_vronc")]
 position = Vector2(-100, 0)
 rotation = -2.6179938
+fetch_speed = 7.5
 
 [node name="Piston14" parent="Launchpad3" unique_id=1148962392 instance=ExtResource("16_vronc")]
 position = Vector2(-100, 0)
 rotation = -1.5707964
+fetch_speed = 7.5
 
 [node name="Piston15" parent="Launchpad3" unique_id=581716502 instance=ExtResource("16_vronc")]
 position = Vector2(-100, 0)
 rotation = -0.5235988
+fetch_speed = 7.5
 
 [node name="Piston11" parent="Launchpad3" unique_id=2106435971 instance=ExtResource("16_vronc")]
 position = Vector2(-100, 0)
 rotation = 0.5235988
+fetch_speed = 7.5
 
 [node name="ObstaclePad" type="StaticBody2D" parent="Launchpad3" unique_id=1382082749 node_paths=PackedStringArray("top_layer", "shadow_layer")]
 modulate = Color(1.1088537, 0.88435686, 0.70067745, 1)
@@ -3692,26 +4067,32 @@ polygon = PackedVector2Array(-109.884476, -264.05, -285.6768, -44.819336, -172.4
 
 [node name="Piston5" parent="Launchpad4" unique_id=341223604 instance=ExtResource("16_vronc")]
 position = Vector2(-100, 0)
+fetch_speed = 7.5
 
 [node name="Piston12" parent="Launchpad4" unique_id=1415778300 instance=ExtResource("16_vronc")]
 position = Vector2(-100, 0)
 rotation = 2.6179938
+fetch_speed = 7.5
 
 [node name="Piston13" parent="Launchpad4" unique_id=1617233981 instance=ExtResource("16_vronc")]
 position = Vector2(-100, 0)
 rotation = -2.6179938
+fetch_speed = 7.5
 
 [node name="Piston14" parent="Launchpad4" unique_id=495383987 instance=ExtResource("16_vronc")]
 position = Vector2(-100, 0)
 rotation = -1.5707964
+fetch_speed = 7.5
 
 [node name="Piston15" parent="Launchpad4" unique_id=1119367505 instance=ExtResource("16_vronc")]
 position = Vector2(-100, 0)
 rotation = -0.5235988
+fetch_speed = 7.5
 
 [node name="Piston11" parent="Launchpad4" unique_id=1719557602 instance=ExtResource("16_vronc")]
 position = Vector2(-100, 0)
 rotation = 0.5235988
+fetch_speed = 7.5
 
 [node name="ObstaclePad" type="StaticBody2D" parent="Launchpad4" unique_id=1938315963 node_paths=PackedStringArray("top_layer", "shadow_layer")]
 modulate = Color(1.1088537, 0.88435686, 0.70067745, 1)
@@ -4926,8 +5307,8 @@ position = Vector2(-152.22798, 561.0702)
 rotation = 0.91329193
 
 [node name="ObstacleContainer7" parent="Pipeyard2" unique_id=1289134512 instance=ExtResource("9_t1q4r")]
-position = Vector2(532.1992, -505.87512)
-rotation = -0.311522
+position = Vector2(423.92615, -395.2725)
+rotation = -1.5143219
 
 [node name="ObstacleContainer8" parent="Pipeyard2" unique_id=1032555929 instance=ExtResource("9_t1q4r")]
 position = Vector2(4.548401, -605.4419)

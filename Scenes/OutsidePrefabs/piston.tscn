@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://bs8wppq8ctccy" path="res://Assets/Images/Ships/Ships_Sheet.png" id="2_05iq4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_20ipq"]
-size = Vector2(42.352905, 57.720596)
+size = Vector2(40.57558, 40.782936)
 
 [node name="Piston" type="Line2D" unique_id=572926186 node_paths=PackedStringArray("remote_node")]
 rotation = 1.5707964
@@ -48,9 +48,8 @@ region_enabled = true
 region_rect = Rect2(96, 46, 28, 35)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatableBody2D" unique_id=2096864186]
-position = Vector2(-4.154419, 0)
+position = Vector2(-14.463394, 0.22966862)
 rotation = 1.5707964
-scale = Vector2(1.0000002, 1.0000002)
 shape = SubResource("RectangleShape2D_20ipq")
 
 [node name="HolderPos" type="Marker2D" parent="AnimatableBody2D" unique_id=1591707029]

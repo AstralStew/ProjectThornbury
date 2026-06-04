@@ -11,8 +11,6 @@ script = ExtResource("1_ngl7e")
 top_layer = NodePath("TopLayer")
 shadow_layer = NodePath("ShadowLayer")
 parallax_distance = 2.0
-parallax_distance_x = 2.0
-parallax_distance_y = 2.0
 
 [node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="." unique_id=524356350]
 rect = Rect2(-55, -54, 108, 110)
@@ -43,7 +41,10 @@ color = Color(0.5019608, 0.35686275, 0.14117648, 1)
 [node name="ShadowLayer" type="Node2D" parent="." unique_id=1079910012]
 z_index = -1
 
-[node name="SmallSpireShadow" type="ColorRect" parent="ShadowLayer" unique_id=168198058]
+[node name="CanvasGroup" type="CanvasGroup" parent="ShadowLayer" unique_id=476608913]
+self_modulate = Color(0, 0, 0, 0.147)
+
+[node name="SmallSpireShadow" type="ColorRect" parent="ShadowLayer/CanvasGroup" unique_id=168198058]
 offset_left = -30.0
 offset_top = -30.0
 offset_right = 30.0
@@ -51,9 +52,9 @@ offset_bottom = 30.0
 scale = Vector2(1.21, 1.21)
 pivot_offset_ratio = Vector2(0.5, 0.5)
 mouse_filter = 2
-color = Color(0, 0, 0, 0.147)
+color = Color(0, 0, 0, 1)
 
-[node name="SmallSpireShadow2" type="ColorRect" parent="ShadowLayer" unique_id=2105441735]
+[node name="SmallSpireShadow2" type="ColorRect" parent="ShadowLayer/CanvasGroup" unique_id=2105441735]
 offset_left = -30.0
 offset_top = -30.0
 offset_right = 30.0
@@ -62,7 +63,7 @@ rotation = 0.7853982
 scale = Vector2(1.21, 1.21)
 pivot_offset_ratio = Vector2(0.5, 0.5)
 mouse_filter = 2
-color = Color(0, 0, 0, 0.147)
+color = Color(0, 0, 0, 1)
 
 [node name="TopLayer" type="Node2D" parent="." unique_id=643906579]
 z_index = 1

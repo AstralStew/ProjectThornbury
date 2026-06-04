@@ -13,6 +13,8 @@ static var is_time_stopped : bool = false
 
 static var has_taken_damage : bool = false # don't reset this on restart!
 
+static var has_transferred_item : bool = false # don't reset this on restart!
+
 signal _on_restart_game
 static func on_restart_game() -> Signal: return instance._on_restart_game
 
@@ -43,6 +45,7 @@ func _ready() -> void:
 		IntroManager.remove()
 		msg_bg_overlay.visible = false
 		msg_bg_overlay.modulate = Color(1,1,1,0)
+		GLOBALS.start_game()
 		_start_time()
 		return
 	
@@ -134,24 +137,41 @@ func _stop_time(fade:=0.0,affect_bg:bool=true) -> void:
 
 func opening_tutorial() -> void:
 	seen_opening_tutorial = true
+	if GLOBALS.skip_everything: return
+	
 	await get_tree().create_timer(0.35,true,false,true).timeout
 	await _stop_time(1)
 	await display_message_box(
-		"""wasd to fly
-hold spacebar to take/drop items you pass over
+		"""[color=white]wasd[/color] to move + rotate
+[color=white]shift[/color] to boost forward
 
-click the [color=cyan]station icons[/color] to find out what they need
-click + drag items in cargo bay to move them around
-
-drop the right items on stations to raise community
-you have 10 mins until the capital ships arrive""",
-	"Let's get to work!",
-	4
+[color=white]hold space[/color] to open the cargo bay doors
+then fly over a resource to pick it up""",
+	"I'll try that now!",
+	0, Vector2(500,150)
 	)
 	#await get_tree().create_timer(0.25,true,false,true).timeout
 	await _start_time(1)
 
 
+func transfer_item_first_time() -> void:
+	has_transferred_item = true
+	LevelManager.instance.activate_stations_over_time()
+	if GLOBALS.skip_everything: return
+	
+	await get_tree().create_timer(2.35,true,false,true).timeout
+	await _stop_time(1)
+	await display_message_box(
+		"""click  [color=40ccff]station icons[/color]  to hear what they need
+drop the right resource near the station
+you can [color=white]click + drag[/color] resources in the cargo bay
+
+you have  [color=red]12 mins[/color]   until the capital ships arrive""",
+	"Let's get to work!",
+	0, Vector2(600,150)
+	)
+	#await get_tree().create_timer(0.25,true,false,true).timeout
+	await _start_time(1)
 
 
 func took_damage() -> void:
@@ -167,13 +187,11 @@ func took_damage_first_time() -> void:
 	await get_tree().create_timer(0.35,true,false,true).timeout
 	await _stop_time(1)
 	await display_message_box(
-		"""You just took a hit of [shake rate=20.0 level=5 connected=1][color=red] Damage [/color][/shake] for the first time!
-		
-		Whether you take damage depends on how fast you are moving. You can take a total of  [color=cyan]%s hits[/color]  before your ship is destroyed.\nPay attention to how your hangar bay is looking.
-
-Good luck & fly safe!""" % GLOBALS.SHIP_MAX_HEALTH,
+		"""You just took [shake rate=20.0 level=5 connected=1][color=red] Damage [/color][/shake] for the first time!
+You can take a total of  [color=cyan]%s hits[/color]  before you explode.
+Pay attention to how damaged your cargo bay looks.""" % GLOBALS.SHIP_MAX_HEALTH,
 	NotificationManager.random_button_option(),
-	4
+	0,Vector2(600,150)
 	)
 	#await get_tree().create_timer(0.25,true,false,true).timeout
 	await _start_time(1)
@@ -186,12 +204,9 @@ func was_scanned_first_time() -> void:
 	await _stop_time(1)
 	await display_message_box(
 		"""You just got [wave amp=50.0 freq=5.0 connected=1][color=yellow] Scanned [/color][/wave] for the first time!
-		
-		Haulers will scan your cargo when you get close.\nMove all items out of the zone to quietly [color=green]pass[/color] the scan.\n If any of your cargo is [color=red]found[/color], your bounty will increase and the Capital ship will arrive sooner.
-
-Keep it secret! Keep it safe!""",
+Move resources out of the zone to [color=green]pass[/color] the scan.\n Your bounty increases if anything is [color=red]found[/color].""",
 	NotificationManager.random_button_option(),
-	4
+	0,Vector2(600,150)
 	)
 	#await get_tree().create_timer(0.25,true,false,true).timeout
 	await _start_time(1)

@@ -43,9 +43,11 @@ func _display_dialogue_box(message_text:="",button_1_text:="OK",button_2_text:="
 	
 	if affect_time && !UIManager.is_time_stopped: await UIManager.stop_time(0.5)
 	
+	modulate = Color(Color.WHITE,0)
+	dialogue_label.visible_characters = 0
 	dialogue_button_1.modulate = Color(Color.WHITE,0)
 	dialogue_button_2.modulate = Color(Color.WHITE,0)
-	get_tree().process_frame
+	await get_tree().process_frame
 	
 	dialogue_label.text = message_text
 	dialogue_button_1.text = button_1_text
@@ -61,6 +63,7 @@ func _display_dialogue_box(message_text:="",button_1_text:="OK",button_2_text:="
 		portrait_box.texture = portrait
 	
 	await get_tree().process_frame
+	modulate = Color.WHITE
 	visible = true
 	
 	waiting_for_button = true

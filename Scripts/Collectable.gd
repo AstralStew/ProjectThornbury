@@ -55,6 +55,9 @@ func collect() -> void:
 	
 	InventoryManager.add_item(type)
 	queue_free()
+	
+	if !UIManager.has_transferred_item:
+		UIManager.instance.transfer_item_first_time()
 
 func _on_body_entered(body: Node2D) -> void:
 	if body is Ship:

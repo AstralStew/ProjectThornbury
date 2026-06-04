@@ -12,8 +12,6 @@ top_layer = NodePath("TopLayer")
 shadow_layer = NodePath("ShadowLayer")
 shadow_distance = 20.0
 parallax_distance = 4.0
-parallax_distance_x = 4.0
-parallax_distance_y = 4.0
 
 [node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="." unique_id=1387714436]
 rect = Rect2(-198, -197, 394, 396)
@@ -44,7 +42,10 @@ color = Color(0.5, 0.356, 0.13999999, 1)
 [node name="ShadowLayer" type="Node2D" parent="." unique_id=1079910012]
 z_index = -1
 
-[node name="BigSpireShadow" type="ColorRect" parent="ShadowLayer" unique_id=168198058]
+[node name="CanvasGroup" type="CanvasGroup" parent="ShadowLayer" unique_id=513154407]
+self_modulate = Color(0, 0, 0, 0.147)
+
+[node name="BigSpireShadow" type="ColorRect" parent="ShadowLayer/CanvasGroup" unique_id=168198058]
 offset_left = -30.0
 offset_top = -30.0
 offset_right = 30.0
@@ -52,9 +53,9 @@ offset_bottom = 30.0
 scale = Vector2(4.6, 4.6)
 pivot_offset_ratio = Vector2(0.5, 0.5)
 mouse_filter = 2
-color = Color(0, 0, 0, 0.147)
+color = Color(0, 0, 0, 1)
 
-[node name="BigSpireShadow2" type="ColorRect" parent="ShadowLayer" unique_id=2105441735]
+[node name="BigSpireShadow2" type="ColorRect" parent="ShadowLayer/CanvasGroup" unique_id=2105441735]
 offset_left = -30.0
 offset_top = -30.0
 offset_right = 30.0
@@ -63,7 +64,7 @@ rotation = 0.7853982
 scale = Vector2(4.6, 4.6)
 pivot_offset_ratio = Vector2(0.5, 0.5)
 mouse_filter = 2
-color = Color(0, 0, 0, 0.147)
+color = Color(0, 0, 0, 1)
 
 [node name="TopLayer" type="Node2D" parent="." unique_id=643906579]
 

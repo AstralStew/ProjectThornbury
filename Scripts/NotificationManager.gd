@@ -27,8 +27,19 @@ enum RewardType {REPAIR,DELAY,RESOURCE}
 	"Even %s would help get us back in the green.",
 	"%s would let us take the fight upwards!",
 	"We will need %s before the Capital ship arrives.",
-	"just %s and we can finally get back on track.",
-	"can someone spare %s for our hydroponic facility?",
+	"Just %s and we can finally get back on track.",
+	"Can someone spare %s for our hydroponic facility?",
+]
+
+@export var complete_options : Array[String] = [
+	"Thank you comrade! Please let us help you with something in turn...",
+	"We won't forget this. Here's a token of our gratitude...",
+	"Haha, we won't be outdone! Here's a gift of your own...",
+	"You don't know the impact you've made. Is there anything you need...?",
+	"This is too much friend! Give us a moment to find a fair trade...",
+	"Our people are too proud for charity, but perhaps an exchange...?",
+	"Just what we needed, and not a moment too soon. Here, in return...",
+	"Ah, a fellow traveller. Please, take what you need from our stores...",
 ]
 
 @export var button_options : Array[String] = [
@@ -69,6 +80,7 @@ enum RewardType {REPAIR,DELAY,RESOURCE}
 
 var local_order_flavour_options : Array[String] = []
 var local_order_options : Array[String] = []
+var local_complete_options : Array[String] = []
 
 var local_station_names : Array[String] = []
 var local_populations : Array[String] = []
@@ -90,6 +102,11 @@ static func pop_random_order_option() -> String:
 	if instance.local_order_options.size() == 0:
 		instance.local_order_options = instance.order_options.duplicate()
 	return instance.local_order_options.pop_at(randi() % instance.local_order_options.size())
+
+static func pop_random_complete_option() -> String:
+	if instance.local_complete_options.size() == 0:
+		instance.local_complete_options = instance.complete_options.duplicate()
+	return instance.local_complete_options.pop_at(randi() % instance.local_complete_options.size())
 
 static func random_button_option() -> String:
 	return instance.button_options.pick_random()

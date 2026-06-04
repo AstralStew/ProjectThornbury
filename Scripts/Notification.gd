@@ -38,12 +38,33 @@ var awaiting_reward : bool = false
 
 #func _ready() -> void:
 	#tracking(get_tree().get_first_node_in_group("Stations"))
+#
+#func _enter_tree() -> void:
+	#visible = false
 
 func begin(_station:Station) -> void:
+	modulate = Color(1,1,1,0)
 	station = _station
 	create_dialogue_message(station)
 	define_rewards(station)
 	tracking(station)
+	await get_tree().create_timer(0.5).timeout
+	#visible = true
+	
+	var _tween : Tween
+	var _duration : float = 0.125
+	var _number_of_times : int = 3
+	notification_audio_player.pitch_scale = 1.25
+	while _number_of_times > 0:
+		_tween = create_tween().set_parallel().set_trans(Tween.TRANS_QUAD)
+		_tween.tween_property(self,"modulate",Color(1.25,1.25,1.45,1),_duration)#.set_ease(Tween.EASE)
+		_tween.tween_property(self,"scale",Vector2(1.25,1.25),_duration)#.set_ease(Tween.EASE_IN)
+		_tween.tween_callback(notification_audio_player.play)
+		_tween.tween_property(self,"modulate",Color.WHITE,_duration).set_delay(_duration)#.set_ease(Tween.EASE_OUT)
+		_tween.tween_property(self,"scale",Vector2.ONE,_duration).set_delay(_duration)#.set_ease(Tween.EASE_OUT)
+		await get_tree().create_timer(_duration*2,false).timeout
+		_number_of_times -= 1
+	notification_audio_player.pitch_scale = 1
 
 func tracking(_node:Node2D) -> void:
 	var _minimum_alpha_sqr_distance : float = minimum_alpha_distance * minimum_alpha_distance
@@ -101,6 +122,7 @@ func tracking(_node:Node2D) -> void:
 		if !is_inside_tree(): break
 
 
+
 func define_rewards(_node:Node2D) -> void:
 	
 	rewards = NotificationManager.RewardType.values()
@@ -116,7 +138,7 @@ func finish(_node:Node2D) -> void:
 	stop()
 	notification_audio_player.play()
 	
-	var _current_message = "Thank you comrade! Please let us help you with something in turn..." # dialogue_message % ("[color=7dcfff]" + str(station.order_number) + " " + str(InventoryManager.ItemType.keys()[station.order_type]) + ("s" if station.order_number > 1 else "") + "[/color]")
+	var _current_message = NotificationManager.pop_random_complete_option() # "Thank you comrade! Please let us help you with something in turn..." # dialogue_message % ("[color=7dcfff]" + str(station.order_number) + " " + str(InventoryManager.ItemType.keys()[station.order_type]) + ("s" if station.order_number > 1 else "") + "[/color]")
 	
 	var _button_1_text : String
 	match rewards[0]:
@@ -148,7 +170,7 @@ func on_choose_reward(reward_index:int) -> void:
 			GLOBALS.health += 3 * station.prosperity
 		
 		NotificationManager.RewardType.DELAY:
-			CountdownManager.adjust_countdown(-45 * station.prosperity)
+			CountdownManager.adjust_countdown(-50 - (40 * station.prosperity))
 		
 		NotificationManager.RewardType.RESOURCE:
 			match station.order_type:
@@ -201,6 +223,6 @@ func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 		
 		notification_audio_player.play()
 		
-		var _current_message = dialogue_message % ("[color=7dcfff]" + str(station.order_number) + " " + str(InventoryManager.ItemType.keys()[station.order_type]) + ("s" if station.order_number > 1 else "") + "[/color]")
+		var _current_message = (dialogue_message % ("[color=7dcfff]" + str(station.order_number) + " " + str(InventoryManager.ItemType.keys()[station.order_type]) + ("s" if station.order_number > 1 else "") + "[/color]"))
 		
-		DialogueManager.display_dialogue_box(_current_message,NotificationManager.random_button_option(),"",station.portrait,true,true,30,station.voice_pitch)
+		DialogueManager.display_dialogue_box(_current_message.replacen("rock","ore"),NotificationManager.random_button_option(),"",station.portrait,true,true,30,station.voice_pitch)

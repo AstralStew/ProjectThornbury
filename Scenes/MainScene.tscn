@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" uid="uid://d20p3gscbndy2" path="res://Scripts/UIManager.gd" id="1_7rqgy"]
 [ext_resource type="PackedScene" uid="uid://l0cg84jp4bre" path="res://Scenes/OutsidePrefabs/outside.tscn" id="2_qxria"]
-[ext_resource type="PackedScene" uid="uid://cbf7m3hmnto6d" path="res://Scenes/OutsidePrefabs/collectable_pipe.tscn" id="3_y4jh7"]
 [ext_resource type="PackedScene" uid="uid://dfbi3x303ug65" path="res://Scenes/InventoryPrefabs/inventory.tscn" id="4_q68mp"]
 [ext_resource type="Script" uid="uid://cncokyrrq0buv" path="res://Scripts/BountyManager.gd" id="4_qxria"]
 [ext_resource type="Script" uid="uid://ck5g8xe0ginh2" path="res://Scripts/CountdownManager.gd" id="5_y4jh7"]
@@ -191,7 +190,6 @@ size_flags_stretch_ratio = 1.26
 [node name="OutsideManager" parent="UIHolder/MC_ScreenHolders/HB_ScreenHolders/LeftScreen" unique_id=1854772268 instance=ExtResource("2_qxria")]
 custom_minimum_size = Vector2(680, 640)
 layout_mode = 2
-collectable_pipe_prefab = ExtResource("3_y4jh7")
 
 [node name="PanelContainer" type="PanelContainer" parent="UIHolder/MC_ScreenHolders/HB_ScreenHolders/LeftScreen" unique_id=1521003445]
 custom_minimum_size = Vector2(0, 27)
@@ -380,6 +378,7 @@ color = Color(0.16078432, 0.15686275, 0.19215687, 1)
 [node name="DialogueBox" type="MarginContainer" parent="UIHolder" unique_id=1546584707]
 process_mode = 3
 visible = false
+modulate = Color(1, 1, 1, 0)
 z_index = 14
 layout_mode = 0
 offset_left = 20.0
@@ -493,7 +492,7 @@ volume_db = -22.0
 [node name="MessageBox" type="PanelContainer" parent="UIHolder" unique_id=258760470]
 visible = false
 z_index = 15
-custom_minimum_size = Vector2(700, 300)
+custom_minimum_size = Vector2(700, 150)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -518,9 +517,13 @@ alignment = 1
 [node name="RTL_Message" type="RichTextLabel" parent="UIHolder/MessageBox/VBoxContainer" unique_id=1987009389]
 process_mode = 3
 layout_mode = 2
+theme_override_colors/default_color = Color(0.88, 0.928, 1, 0.8235294)
 theme_override_font_sizes/normal_font_size = 28
 bbcode_enabled = true
-text = "a"
+text = "You just took [shake rate=20.0 level=5 connected=1][color=red] Damage [/color][/shake] for the first time!
+
+You can take a total of  [color=cyan]%s hits[/color]  before exploding.
+Pay attention to how damaged your cargo bay looks."
 fit_content = true
 scroll_active = false
 horizontal_alignment = 1

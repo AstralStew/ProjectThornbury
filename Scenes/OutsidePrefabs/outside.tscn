@@ -154,7 +154,6 @@ rotation_smoothing_speed = 3.185
 
 [node name="EngineAudioPlayer" type="AudioStreamPlayer" parent="SubViewportContainer/SubViewport/Ship" unique_id=1394407564]
 stream = ExtResource("8_dw31t")
-autoplay = true
 
 [node name="BoostAudioPlayer" type="AudioStreamPlayer" parent="SubViewportContainer/SubViewport/Ship" unique_id=847278325]
 stream = SubResource("AudioStreamRandomizer_2x00p")
